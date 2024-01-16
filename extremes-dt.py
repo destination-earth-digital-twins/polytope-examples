@@ -23,5 +23,9 @@ request = {
         "param": "31"
     }
 
-
+# The data will be saved in the current working directory
 files = client.retrieve('destination-earth', request)
+
+# If you want to download the data later, you can use the pointer option, which
+# will return a URL to the data instead of downloading it.
+# url = client.retrieve('destination-earth', request, pointer=True)
