@@ -1,16 +1,6 @@
-from polytope.api import Client
-
-# You can pass your email and apikey here, or put them in ~/.polytopeapirc (as JSON)
-# You can also set POLYTOPE_USER_EMAIL and POLYTOPE_USER_KEY in your environment
-client = Client(address='polytope.apps.lumi.ewctest.link', 
-                    user_email='<YOUR EMAIL>', 
-                    user_key='<YOUR ECMWF API KEY>')
-
-# Optionally revoke previous requests
-client.revoke('all')
-
-# This request matches a single parameter of the extremes DT, at 4km resolution
-# which began production on 2023-12-11
+import earthkit.data
+import earthkit.maps
+import earthkit.regrid
 
 request = {
         "class": "rd",
@@ -24,9 +14,12 @@ request = {
         "param": "31"
     }
 
-# The data will be saved in the current working directory
-files = client.retrieve('destination-earth', request)
+data = earthkit.data.from_source("polytope", "destination-earth", request, address="polytope.apps.lumi.ewctest.link", stream=False)
 
-# If you want to download the data later, you can use the pointer option, which
-# will return a URL to the data instead of downloading it.
-# url = client.retrieve('destination-earth', request, pointer=True)
+style = earthkit.maps.Style(
+    levels=range(-40, 31, 5),
+    units='celsius',
+    extend='both',
+)
+
+earthkit.maps.quickplot(data, style=style)
