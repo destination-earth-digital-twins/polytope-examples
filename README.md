@@ -31,7 +31,7 @@ To run the examples in this repository, you simply need to:
 
 1. Install polytope-client from PyPI:
 ```
-pip install polytope-client
+pip install --upgrade polytope-client
 ```
 
 2. Register for an ECMWF account* at ecmwf.int and retrieve your API key from https://api.ecmwf.int/v1/key/
