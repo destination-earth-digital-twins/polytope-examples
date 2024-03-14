@@ -32,6 +32,6 @@ The script automatically places your token in `~/.polytopeapirc` where the clien
 pip install --upgrade polytope-client
 ```
 
-2. Register for an ECMWF account* at ecmwf.int and retrieve your API key from https://api.ecmwf.int/v1/key/
+2. Register for an ECMWF account at ecmwf.int and retrieve your API key from https://api.ecmwf.int/v1/key/
 
 3. Modify the example scripts in this repository to include your email address and API key. Or alternatively see the documentation at https://github.com/ecmwf/polytope-client to see how to set this globally.
