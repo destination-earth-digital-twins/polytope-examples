@@ -1,6 +1,6 @@
 from typing import Annotated
 import requests
-from pu import html
+from lxml import html
 from urllib.parse import parse_qs, urlparse
 from conflator import Conflator, ConfigModel, CLIArg, EnvVar
 from pydantic import Field
