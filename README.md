@@ -27,8 +27,6 @@ The script automatically places your token in `~/.polytopeapirc` where the clien
 
 ## Access using your ECMWF credentials
 
-To run the examples in this repository, you simply need to:
-
 1. Install polytope-client from PyPI:
 ```
 pip install --upgrade polytope-client
