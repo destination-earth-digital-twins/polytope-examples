@@ -28,7 +28,7 @@ with requests.Session() as s:
                                      params = {
                                             "client_id": CLIENT_ID,
                                             "redirect_uri": SERVICE_URL,
-                                            "scope": "openid",
+                                            "scope": "openid offline_access",
                                             "response_type": "code"
                                      }
                                        ).content.decode()).forms[0].action
@@ -57,7 +57,7 @@ with requests.Session() as s:
     auth_code = parse_qs(urlparse(login.headers["Location"]).query)['code'][0]
 
     # Use the auth code to get the token
-    response = requests.post("https://iam.ivv.desp.space/realms/desp/protocol/openid-connect/token",
+    response = requests.post(IAM_URL + "/realms/" + REALM + "/protocol/openid-connect/token",
             data = {
                 "client_id" : CLIENT_ID,
                 "redirect_uri" : SERVICE_URL,
@@ -70,7 +70,9 @@ with requests.Session() as s:
     if response.status_code != 200:
         raise Exception("Failed to get token")
     
-    token = response.json()['access_token']
+    # instead of storing the access token, we store the offline_access (kind of "refresh") token
+    token = response.json()['refresh_token']
+    # offline_token = response.json()['refresh_token']
 
     if config.outpath != "stdout":
         with open(config.outpath, 'w') as file:
