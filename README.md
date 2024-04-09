@@ -21,7 +21,7 @@ You will need some dependencies to run the script, which can be installed using 
 pip install --upgrade lxml conflator
 ```
 
-The script automatically places your token in `~/.polytopeapirc` where the client will pick it up. The token is valid for 5 minutes.
+The script automatically places your token in `~/.polytopeapirc` where the client will pick it up. The token is a long-lived ("offline_access") token.
 
 3. Run the example scripts in this repostory to download data, and customise them as you wish.
 
