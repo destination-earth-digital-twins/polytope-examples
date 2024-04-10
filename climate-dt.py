@@ -2,7 +2,7 @@ from polytope.api import Client
 
 # You can pass your email and apikey here, or put them in ~/.polytopeapirc (as JSON)
 # You can also set POLYTOPE_USER_EMAIL and POLYTOPE_USER_KEY in your environment
-client = Client(address='polytope.apps.lumi.ewctest.link', 
+client = Client(address='polytope.lumi.apps.dte.destination-earth.eu', 
                     # user_email='<YOUR EMAIL>', 
                     # user_key='<YOUR ECMWF API KEY>' or '<YOUR_DESP_KEY>'
                     )
