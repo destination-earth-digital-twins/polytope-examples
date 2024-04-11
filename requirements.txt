@@ -1,3 +1,7 @@
 polytope-client
 lxml
 conflator
+earthkit-data
+earthkit-maps
+earthkit-regrid
+cf-units
