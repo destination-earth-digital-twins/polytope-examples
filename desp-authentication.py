@@ -7,10 +7,10 @@ from pydantic import Field
 from pathlib import Path
 import json
 
-IAM_URL = "https://iam.ivv.desp.space/"
+IAM_URL = "https://auth.destine.eu"
 CLIENT_ID="polytope-api-public"
 REALM = "desp"
-SERVICE_URL = "https://polytope.apps.lumi.ewctest.link/"
+SERVICE_URL = "https://polytope.lumi.apps.dte.destination-earth.eu/"
 
 
 class Config(ConfigModel):
