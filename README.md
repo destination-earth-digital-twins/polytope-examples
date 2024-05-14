@@ -4,6 +4,13 @@
 
 </h3>
 
+- [Polytope Examples for DT Data Access](#polytope-examples-for-dt-data-access)
+  - [Access using your Destination Earth Service Platform credentials](#access-using-your-destination-earth-service-platform-credentials)
+  - [Access using your ECMWF credentials](#access-using-your-ecmwf-credentials)
+  - [Climate-DT Examples](#climate-dt-examples)
+  - [Extremes-DT Examples](#extremes-dt-examples)
+
+
 # Polytope Examples for DT Data Access
 
 This repository describes the process for accessing Destination Earth DT data via the Polytope web service hosted on the LUMI Databridge.
@@ -41,3 +48,16 @@ pip install --upgrade polytope-client
 2. Register for an ECMWF account at ecmwf.int and retrieve your API key from https://api.ecmwf.int/v1/key/
 
 3. Modify the example scripts in this repository to include your email address and API key. Or alternatively see the documentation at https://github.com/ecmwf/polytope-client to see how to set this globally.
+
+## Climate-DT Examples
+
+- [Climate DT Example Directory](Climate-DT)
+  - [Climate DT Python Script](Climate-DT/climate-dt.py)
+  - [Climate DT notebook example](Climate-DT/climate-dt-earthkit-example.ipynb)
+  - [Climate DT healpix regrid](Climate-DT/healpix-data.ipynb)
+
+## Extremes-DT Examples
+
+- [Extremes DT Example Directory](Extremes-DT)
+  - [Extremes DT Python Script](Extremes-DT/Extremes-dt.py)
+  - [Extremes DT notebook example](Extremes-DT/Extremes-dt-earthkit-example.ipynb)
