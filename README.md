@@ -51,16 +51,16 @@ pip install --upgrade polytope-client
 
 ## Climate-DT Examples
 
-- [Climate DT Example Directory](climate-DT)
-  - [Climate DT python Script](climate-DT/climate-dt.py)
-  - [Climate DT notebook example](climate-DT/climate-dt-earthkit-example.ipynb)
-  - [Climate DT notebook domain example](climate-DT/climate-dt-earthkit-example-domain.ipynb)
-  - [Climate DT healpix regrid](climate-DT/healpix-data.ipynb)
+- [Climate DT Example Directory](climate-dt)
+  - [Climate DT python Script](climate-dt/climate-dt.py)
+  - [Climate DT notebook example](climate-dt/climate-dt-earthkit-example.ipynb)
+  - [Climate DT notebook domain example](climate-dt/climate-dt-earthkit-example-domain.ipynb)
+  - [Climate DT notebook healpix regrid](climate-dt/healpix-data.ipynb)
 
 ## Extremes-DT Examples
 
-- [Extremes DT Example Directory](extremes-DT)
-  - [Extremes DT python Script](extremes-DT/extremes-dt.py)
-  - [Extremes DT notebook example](extremes-DT/extremes-dt-earthkit-example.ipynb)
-  - [Extremes DT notebook domain example](extremes-DT/extremes-dt-earthkit-example-domain.ipynb)
-  - [Extremes DT notebook regrid example](extremes-DT/extremes-dt-earthkit-example-regrid.ipynb)
+- [Extremes DT Example Directory](extremes-dt)
+  - [Extremes DT python Script](extremes-dt/extremes-dt.py)
+  - [Extremes DT notebook example](extremes-dt/extremes-dt-earthkit-example.ipynb)
+  - [Extremes DT notebook domain example](extremes-dt/extremes-dt-earthkit-example-domain.ipynb)
+  - [Extremes DT notebook regrid example](extremes-dt/extremes-dt-earthkit-example-regrid.ipynb)
