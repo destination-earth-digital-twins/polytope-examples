@@ -1,3 +1,9 @@
+<h3 align="center">
+<img src="./docs/images/Logo_Destination_Earth_White.png" width=60%>
+</br>
+
+</h3>
+
 # Polytope Examples for DT Data Access
 
 This repository describes the process for accessing Destination Earth DT data via the Polytope web service hosted on the LUMI Databridge.
