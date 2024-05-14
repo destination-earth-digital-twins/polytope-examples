@@ -1,5 +1,5 @@
 <h3 align="center">
-<img src="./docs/images/Logo_Destination_Earth_White.png" width=60%>
+<img src="./docs/images/Logo_Destination_Earth_Colours.png" width=60%>
 </br>
 
 </h3>
@@ -51,16 +51,16 @@ pip install --upgrade polytope-client
 
 ## Climate-DT Examples
 
-- [Climate DT Example Directory](Climate-DT)
-  - [Climate DT python Script](Climate-DT/climate-dt.py)
-  - [Climate DT notebook example](Climate-DT/climate-dt-earthkit-example.ipynb)
-  - [Climate DT notebook domain example](Climate-DT/climate-dt-earthkit-example-domain.ipynb)
-  - [Climate DT healpix regrid](Climate-DT/healpix-data.ipynb)
+- [Climate DT Example Directory](climate-DT)
+  - [Climate DT python Script](climate-DT/climate-dt.py)
+  - [Climate DT notebook example](climate-DT/climate-dt-earthkit-example.ipynb)
+  - [Climate DT notebook domain example](climate-DT/climate-dt-earthkit-example-domain.ipynb)
+  - [Climate DT healpix regrid](climate-DT/healpix-data.ipynb)
 
 ## Extremes-DT Examples
 
-- [Extremes DT Example Directory](Extremes-DT)
-  - [Extremes DT python Script](Extremes-DT/extremes-dt.py)
-  - [Extremes DT notebook example](Extremes-DT/extremes-dt-earthkit-example.ipynb)
-  - [Extremes DT notebook domain example](Extremes-DT/extremes-dt-earthkit-example-domain.ipynb)
-  - [Extremes DT notebook regrid example](Extremes-DT/extremes-dt-earthkit-example-regrid.ipynb)
+- [Extremes DT Example Directory](extremes-DT)
+  - [Extremes DT python Script](extremes-DT/extremes-dt.py)
+  - [Extremes DT notebook example](extremes-DT/extremes-dt-earthkit-example.ipynb)
+  - [Extremes DT notebook domain example](extremes-DT/extremes-dt-earthkit-example-domain.ipynb)
+  - [Extremes DT notebook regrid example](extremes-DT/extremes-dt-earthkit-example-regrid.ipynb)
