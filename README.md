@@ -60,6 +60,7 @@ pip install --upgrade polytope-client
 ## Extremes-DT Examples
 
 - [Extremes DT Example Directory](Extremes-DT)
-  - [Extremes DT python Script](Extremes-DT/xxtremes-dt.py)
+  - [Extremes DT python Script](Extremes-DT/extremes-dt.py)
   - [Extremes DT notebook example](Extremes-DT/extremes-dt-earthkit-example.ipynb)
   - [Extremes DT notebook domain example](Extremes-DT/extremes-dt-earthkit-example-domain.ipynb)
+  - [Extremes DT notebook regrid example](Extremes-DT/extremes-dt-earthkit-example-regrid.ipynb)
