@@ -54,6 +54,7 @@ pip install --upgrade polytope-client
 - [Climate DT Example Directory](Climate-DT)
   - [Climate DT python Script](Climate-DT/climate-dt.py)
   - [Climate DT notebook example](Climate-DT/climate-dt-earthkit-example.ipynb)
+  - [Climate DT notebook domain example](Climate-DT/climate-dt-earthkit-example-domain.ipynb)
   - [Climate DT healpix regrid](Climate-DT/healpix-data.ipynb)
 
 ## Extremes-DT Examples
@@ -61,3 +62,4 @@ pip install --upgrade polytope-client
 - [Extremes DT Example Directory](Extremes-DT)
   - [Extremes DT python Script](Extremes-DT/xxtremes-dt.py)
   - [Extremes DT notebook example](Extremes-DT/extremes-dt-earthkit-example.ipynb)
+  - [Extremes DT notebook domain example](Extremes-DT/extremes-dt-earthkit-example-domain.ipynb)
