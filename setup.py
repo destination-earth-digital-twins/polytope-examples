@@ -3,10 +3,9 @@ import re
 
 from setuptools import find_packages, setup
 
-
 setup(
     name="polytope-examples",
-    #version=__version__,
+    # version=__version__,
     description="""This repository describes the process for accessing Destination Earth DT data via the Polytope web service hosted on the LUMI Databridge.
  """,
     long_description="",
