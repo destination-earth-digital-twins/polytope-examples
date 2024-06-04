@@ -28,6 +28,12 @@ pip install --upgrade polytope-client
 python desp-authentication.py -u <username> -p <password>
 # see --help for more options
 ```
+Or you can run the script without arguments
+```
+python desp-authentication.py 
+# see --help for more options
+```
+You will then be prompted to enter your username and password if no credentials are found in a config or through environment variables.
 
 You will need some dependencies to run the script, which can be installed using pip:
 ```
