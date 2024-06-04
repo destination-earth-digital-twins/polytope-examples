@@ -5,3 +5,4 @@ earthkit-data
 earthkit-maps
 earthkit-regrid
 cf-units
+getpass
