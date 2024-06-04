@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import Annotated
+from typing import Annotated, Optional
 from urllib.parse import parse_qs, urlparse
 
 import requests
@@ -10,7 +10,9 @@ from urllib.parse import parse_qs, urlparse
 from conflator import Conflator, ConfigModel, CLIArg, EnvVar
 from pydantic import Field
 from pathlib import Path
+from getpass import getpass, getuser
 import json
+import sys
 
 IAM_URL = "https://auth.destine.eu"
 CLIENT_ID = "polytope-api-public"
@@ -20,25 +22,29 @@ SERVICE_URL = "https://polytope.lumi.apps.dte.destination-earth.eu/"
 
 class Config(ConfigModel):
     user: Annotated[
-        str,
+        Optional[str],
         Field(description="Your DESP username"),
         CLIArg("-u", "--user"),
         EnvVar("USER"),
-    ]
+    ] = None
     password: Annotated[
-        str,
+        Optional[str],
         Field(description="Your DESP password"),
         CLIArg("-p", "--password"),
         EnvVar("PASSWORD"),
-    ]
+    ] = None
     outpath: Annotated[
         str,
         Field(description='The file to write the token to (or "stdout")'),
         CLIArg("-o", "--outpath"),
     ] = str(Path().home() / ".polytopeapirc")
 
-
 config = Conflator("despauth", Config).load()
+
+if config.user == None:
+    config.user = getpass(prompt='Username: ')
+if config.password == None:
+    config.password = getpass(prompt='Password: ')
 
 with requests.Session() as s:
     # Get the auth url
