@@ -1,0 +1,20 @@
+name: polytope
+channels:
+  - conda-forge
+dependencies:
+- jupyter
+- cf-units==3.2.0
+- cartopy
+- rasterio
+- pip
+- eccodes
+- pip:
+  - polytope-client==0.7.4
+  - lxml
+  - conflator
+  - earthkit-data==0.7.0
+  - earthkit-maps==0.0.18
+  - earthkit-meteo==0.0.1
+  - earthkit-regrid==0.3.0
+  - ipykernel
+  - ipython
