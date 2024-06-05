@@ -55,6 +55,20 @@ pip install --upgrade polytope-client
 
 3. Modify the example scripts in this repository to include your email address and API key. Or alternatively see the documentation at https://github.com/ecmwf/polytope-client to see how to set this globally.
 
+## Installation 
+
+To run the notebooks you can use the `environment.yml` file provided to create a conda environment that can run the notebooks. The following commands create the environment and also create an ipykernel called `earthkit` than can be used in notebooks if selected.
+
+```
+envname=earthkit
+conda create -n $envname -c conda-forge -y python=3.10
+conda env update -n $envname -f environment.yml
+conda activate $envname
+
+# set earthkit environment to the default used by ipykernels
+python3 -m ipykernel install --user --name=$envname
+```
+
 ## Climate-DT Examples
 
 - [Climate DT Example Directory](climate-dt)
@@ -62,6 +76,7 @@ pip install --upgrade polytope-client
   - [Climate DT notebook example](climate-dt/climate-dt-earthkit-example.ipynb)
   - [Climate DT notebook domain example](climate-dt/climate-dt-earthkit-example-domain.ipynb)
   - [Climate DT notebook healpix regrid](climate-dt/healpix-data.ipynb)
+  - [Climate DT notebook healpix ocean](climate-dt/climate-dt-healpix-ocean-example.ipynb)
 
 ## Extremes-DT Examples
 
