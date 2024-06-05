@@ -7,6 +7,7 @@
 - [Polytope Examples for DT Data Access](#polytope-examples-for-dt-data-access)
   - [Access using your Destination Earth Service Platform credentials](#access-using-your-destination-earth-service-platform-credentials)
   - [Access using your ECMWF credentials](#access-using-your-ecmwf-credentials)
+  - [Installation](#installation)
   - [Climate-DT Examples](#climate-dt-examples)
   - [Extremes-DT Examples](#extremes-dt-examples)
 
