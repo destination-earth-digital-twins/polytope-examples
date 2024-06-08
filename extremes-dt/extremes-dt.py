@@ -11,19 +11,19 @@ client = Client(
 # Optionally revoke previous requests
 client.revoke("all")
 
-# This request matches a single parameter of the extremes DT, at 4km resolution
-# which began production on 2023-12-11
+# This request retrieves a parameter from the extremes-dt dataset, for the previous week
 
 request = {
-    "class": "rd",
-    "expver": "i7yv",
+    "class": "d1",
+    "expver": "0001",
+    "dataset": "extremes-dt",
     "stream": "oper",
-    "date": "20231211/to/20231220",
+    "date": "-7/to/-1",
     "time": "0000",
     "type": "fc",
     "levtype": "sfc",
-    "step": "0",
-    "param": "31",
+    "step": "0/to/120",
+    "param": "31"
 }
 
 # The data will be saved in the current working directory
