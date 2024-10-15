@@ -1,4 +1,6 @@
 import json
+import sys
+from getpass import getpass, getuser
 from pathlib import Path
 from typing import Annotated, Optional
 from urllib.parse import parse_qs, urlparse
@@ -6,13 +8,7 @@ from urllib.parse import parse_qs, urlparse
 import requests
 from conflator import CLIArg, ConfigModel, Conflator, EnvVar
 from lxml import html
-from urllib.parse import parse_qs, urlparse
-from conflator import Conflator, ConfigModel, CLIArg, EnvVar
 from pydantic import Field
-from pathlib import Path
-from getpass import getpass, getuser
-import json
-import sys
 
 IAM_URL = "https://auth.destine.eu"
 CLIENT_ID = "polytope-api-public"
@@ -39,12 +35,13 @@ class Config(ConfigModel):
         CLIArg("-o", "--outpath"),
     ] = str(Path().home() / ".polytopeapirc")
 
+
 config = Conflator("despauth", Config).load()
 
 if config.user == None:
-    config.user = getpass(prompt='Username: ')
+    config.user = input("Username: ")
 if config.password == None:
-    config.password = getpass(prompt='Password: ')
+    config.password = getpass(prompt="Password: ")
 
 with requests.Session() as s:
     # Get the auth url
