@@ -2,6 +2,6 @@ polytope-client
 lxml
 conflator
 earthkit-data
-earthkit-maps
+earthkit-plots
 earthkit-regrid
 cf-units
