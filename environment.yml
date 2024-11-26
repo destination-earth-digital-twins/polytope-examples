@@ -12,8 +12,8 @@ dependencies:
   - polytope-client==0.7.4
   - lxml
   - conflator
-  - earthkit-data==0.7.0
-  - earthkit-maps==0.0.18
+  - earthkit-data
+  - earthkit-plots
   - earthkit-meteo==0.0.1
   - earthkit-regrid==0.3.0
   - ipykernel
