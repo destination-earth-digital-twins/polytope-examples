@@ -6,13 +6,14 @@
 
 - [Polytope Examples for DT Data Access](#polytope-examples-for-dt-data-access)
   - [Access using your Destination Earth Service Platform credentials](#access-using-your-destination-earth-service-platform-credentials)
-  - [Access using your ECMWF credentials](#access-using-your-ecmwf-credentials)
   - [Installation](#installation)
   - [Climate-DT Examples](#climate-dt-examples)
   - [Extremes-DT Examples](#extremes-dt-examples)
 
 
 # Polytope Examples for DT Data Access
+
+## Access using your Destination Earth Service Platform credentials
 
 This repository describes the process for accessing Destination Earth DT data via the Polytope web service hosted on the LUMI Databridge.
 
