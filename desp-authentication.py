@@ -1,6 +1,5 @@
 import json
-import sys
-from getpass import getpass, getuser
+from getpass import getpass
 from pathlib import Path
 from typing import Annotated, Optional
 from urllib.parse import parse_qs, urlparse
