@@ -9,6 +9,7 @@
   - [Installation](#installation)
   - [Climate-DT Examples](#climate-dt-examples)
   - [Extremes-DT Examples](#extremes-dt-examples)
+  - [Polytope Quota Limits for DestinE](#polytope-quota-limits-for-destine)
 
 
 # Polytope Examples for DT Data Access
@@ -75,3 +76,12 @@ python3 -m ipykernel install --user --name=$envname
   - [Extremes DT notebook domain example](extremes-dt/extremes-dt-earthkit-example-domain.ipynb)
   - [Extremes DT notebook regrid example](extremes-dt/extremes-dt-earthkit-example-regrid.ipynb)
   - [Extremes DT notebook feature extraction timeseries example](extremes-dt/extremes-dt-earthkit-example-fe-timeseries.ipynb)
+
+## Polytope Quota Limits for DestinE
+
+To ensure system stability and fair usage, the following operational limits are enforced:
+
+- **API Rate Limit:** Up to 50 requests per second. This limit may be adjusted based on system usage.
+- **Concurrent Operations Limit:** A maximum of 5 download requests can be active at the same time.
+
+Please plan your usage accordingly to avoid interruptions.
