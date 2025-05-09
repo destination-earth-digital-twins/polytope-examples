@@ -10,3 +10,4 @@ ipykernel
 nbformat
 healpy
 kaleido
+lxml
