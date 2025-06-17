@@ -77,6 +77,12 @@ python3 -m ipykernel install --user --name=$envname
   - [Extremes DT notebook regrid example](extremes-dt/extremes-dt-earthkit-example-regrid.ipynb)
   - [Extremes DT notebook feature extraction timeseries example](extremes-dt/extremes-dt-earthkit-example-fe-timeseries.ipynb)
 
+## On-Demand Extremes-DT Examples
+
+- [On-Demand Extremes DT Example Directory](on-demand-extremes-dt)
+  - [On-Demand Extremes DT python Script](on-demand-extremes-dt/on-demand-extremes-dt.py)
+  - [On-Demand Extremes DT notebook example](on-demand-extremes-dt/on-demand-extremes-dt.ipynb)
+
 ## Polytope Quota Limits for DestinE
 
 To ensure system stability and fair usage, the following operational limits are enforced:
