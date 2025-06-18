@@ -11,3 +11,4 @@ nbformat
 healpy
 kaleido
 lxml
+h3
