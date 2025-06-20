@@ -67,6 +67,8 @@ python3 -m ipykernel install --user --name=$envname
   - [Climate DT notebook healpix regrid](climate-dt/healpix-data.ipynb)
   - [Climate DT notebook healpix ocean](climate-dt/climate-dt-healpix-ocean-example.ipynb)
   - [Climate DT notebook feature extraction timeseries](climate-dt/climate-dt-earthkit-fe-timeseries.ipynb)
+  - [Climate DT MN5 notebook example](climate-dt/climate-dt-earthkit-MN5-example.ipynb)
+  - [Climate DT MN5 monthly means notebook example](climate-dt/climate-dt-earthkit-MN5-monthly-mean-example.ipynb)
 
 ## Extremes-DT Examples
 
