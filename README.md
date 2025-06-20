@@ -76,6 +76,8 @@ python3 -m ipykernel install --user --name=$envname
   - [Extremes DT notebook domain example](extremes-dt/extremes-dt-earthkit-example-domain.ipynb)
   - [Extremes DT notebook regrid example](extremes-dt/extremes-dt-earthkit-example-regrid.ipynb)
   - [Extremes DT notebook feature extraction timeseries example](extremes-dt/extremes-dt-earthkit-example-fe-timeseries.ipynb)
+  - [Extremes DT notebook feature extraction using H3 example](extremes-dt/extremes-dt-earthkit-example-H3-example.ipynb)
+
 
 ## Polytope Quota Limits for DestinE
 
