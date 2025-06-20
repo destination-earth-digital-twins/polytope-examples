@@ -18,3 +18,4 @@ dependencies:
       - polytope-client
       - earthkit-geo
       - kaleido
+      - h3
