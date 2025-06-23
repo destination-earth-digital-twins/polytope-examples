@@ -80,8 +80,8 @@ python3 -m ipykernel install --user --name=$envname
 ## On-Demand Extremes-DT Examples
 
 - [On-Demand Extremes DT Example Directory](on-demand-extremes-dt)
-  - [On-Demand Extremes DT python Script](on-demand-extremes-dt/on-demand-extremes-dt.py)
-  - [On-Demand Extremes DT notebook example](on-demand-extremes-dt/on-demand-extremes-dt.ipynb)
+  - [On-Demand Extremes DT python Script](on-demand-extremes-dt/on-demand-extremes-dt-example.py)
+  - [On-Demand Extremes DT notebook example](on-demand-extremes-dt/on-demand-extremes-dt-example.ipynb)
 
 ## Polytope Quota Limits for DestinE
 
