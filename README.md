@@ -81,6 +81,12 @@ python3 -m ipykernel install --user --name=$envname
   - [Extremes DT notebook feature extraction using H3 example](extremes-dt/extremes-dt-earthkit-example-H3-example.ipynb)
 
 
+## On-Demand Extremes-DT Examples
+
+- [On-Demand Extremes DT Example Directory](on-demand-extremes-dt)
+  - [On-Demand Extremes DT python Script](on-demand-extremes-dt/on-demand-extremes-dt-example.py)
+  - [On-Demand Extremes DT notebook example](on-demand-extremes-dt/on-demand-extremes-dt-example.ipynb)
+
 ## Polytope Quota Limits for DestinE
 
 To ensure system stability and fair usage, the following operational limits are enforced:
