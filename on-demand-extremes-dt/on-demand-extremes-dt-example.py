@@ -51,7 +51,7 @@ data.ls()
 
 import earthkit.plots
 chart = earthkit.plots.Map()
-chart.quickplot(data)
+chart.block(data)
 chart.title(f"Results from on-demand-extremes-dt")
 chart.coastlines()
 chart.gridlines()
