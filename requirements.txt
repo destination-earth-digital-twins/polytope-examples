@@ -1,8 +1,4 @@
-earthkit-data==0.14.1
-earthkit-plots==0.2.8
-earthkit-transforms==0.3.4.1
-earthkit-regrid==0.4.0
-earthkit-plots-default-styles==0.0.1
+earthkit==0.11.2
 covjsonkit
 polytope-client
 earthkit-geo
@@ -12,3 +8,4 @@ healpy
 kaleido
 lxml
 h3
+rasterio
