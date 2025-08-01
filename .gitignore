@@ -1,3 +1,6 @@
-.venv
-*.grib
-*.nc
+.venv/
+__pycache__/
+tests/
+.vscode/
+env/
+.ipynb_checkpoints/
