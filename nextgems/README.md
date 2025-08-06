@@ -1,9 +1,9 @@
-# NextGems Data
+# NextGEMS Data
 
-NextGems data is split by date across two simulations:
+NextGEMS data is split by date across two simulations:
 
-For 19900101 to 20191231 data is stored under `CMIP6-hist` in `class` `ng`and an example can be found at [nextgems-1990-2020-earthkit-example.ipynb](nextgems-1990-2020-earthkit-example.ipynb).
+The historical simulation is stored under `class=ng`, `activity=CMIP6`, `experiment=hist` and an example can be found at [nextGEMS-historical-1990-2020-earthkit-example.ipynb](nextGEMS-historical-1990-2020-earthkit-example.ipynb).
 
-For 20200120 to 20491231 data is stored under `ScenarioMIP-SSP3-7.0` in `class` `d1` and an example can be found at [nextgems-2020-2050-earthkit-example.ipynb](nextgems-2020-2050-earthkit-example.ipynb).
+The future projection (SSP3-7.0) simulation was produced before the necessary DGOV work could be carried out. Therefore, this simulation is provided using ClimateDT metadata with `realization=2` . Thus, this is stored under `class=d1`, `dataset=climate-dt`, `activity=ScenarioMIP`, `experiment=SSP3-7.0`, `realization=2` and an example can be found at [nextGEMS-scenario-2020-2050-earthkit-example.ipynb](nextGEMS-scenario-2020-2050-earthkit-example.ipynb).
 
-Further information on the nextgems data can be found at [nextgems dataset information](https://confluence.ecmwf.int/display/DDCZ/NextGEMS+data+catalogue)
+Further information on the nextGEMS data can be found at [nextGEMS dataset information](https://confluence.ecmwf.int/display/DDCZ/NextGEMS+data+catalogue)
