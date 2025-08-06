@@ -92,8 +92,8 @@ python3 -m ipykernel install --user --name=$envname
 ## NextGEMS Examples
 
 - [NextGEMS Example Directory](nextgems)
-  - [NextGEMS historical 1990-2020 Notebook](nextgems/nextGEMS-historical-1990-2020-earthkit-example.ipynb)
-  - [NextGEMS scenario 2020-2050 Notebook](nextgems/nextGEMS-scenario-2020-2050-earthkit-example.ipynb)
+  - [NextGEMS historical 1990-2020 Notebook](nextgems/nextGEMS-historical-earthkit-example.ipynb)
+  - [NextGEMS scenario 2020-2050 Notebook](nextgems/nextGEMS-scenario-earthkit-example.ipynb)
 
 ## Polytope Quota Limits for DestinE
 
