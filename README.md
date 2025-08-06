@@ -10,7 +10,7 @@
   - [Climate-DT Examples](#climate-dt-examples)
   - [Extremes-DT Examples](#extremes-dt-examples)
   - [On-Demand Extremes-DT Examples](#on-demand-extremes-dt-examples)
-  - [NextGems Examples](#nextgems-examples)
+  - [NextGEMS Examples](#nextgems-examples)
   - [Polytope Quota Limits for DestinE](#polytope-quota-limits-for-destine)
 
 
@@ -89,11 +89,11 @@ python3 -m ipykernel install --user --name=$envname
   - [On-Demand Extremes DT python Script](on-demand-extremes-dt/on-demand-extremes-dt-example.py)
   - [On-Demand Extremes DT notebook example](on-demand-extremes-dt/on-demand-extremes-dt-example.ipynb)
 
-## NextGems Examples
+## NextGEMS Examples
 
-- [NextGems Example Directory](nextgems)
-  - [NextGems 1990-2020 Notebook](nextgems/nextgems-1990-2020-earthkit-example.ipynb)
-  - [NextGems 2020-2050 Notebook](nextgems/nextgems-2020-2050-earthkit-example.ipynb)
+- [NextGEMS Example Directory](nextgems)
+  - [NextGEMS historical 1990-2020 Notebook](nextgems/nextGEMS-historical-1990-2020-earthkit-example.ipynb)
+  - [NextGEMS scenario 2020-2050 Notebook](nextgems/nextGEMS-scenario-2020-2050-earthkit-example.ipynb)
 
 ## Polytope Quota Limits for DestinE
 
