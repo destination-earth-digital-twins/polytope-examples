@@ -4,3 +4,5 @@ tests/
 .vscode/
 env/
 .ipynb_checkpoints/
+*/data/
+.gitattributes
