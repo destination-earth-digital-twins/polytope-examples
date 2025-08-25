@@ -60,6 +60,10 @@ conda activate $envname
 python3 -m ipykernel install --user --name=$envname
 ```
 
+## Data Locations
+
+Data can be found on both LUMI and MN5, to access data on either change the `address` argument in `earthkit.data.from_source()` to either `polytope.mn5.apps.dte.destination-earth.eu` for MN5 or `polytope.lumi.apps.dte.destination-earth.eu` for LUMI.
+
 ## Climate-DT Examples
 
 - [Climate DT Example Directory](climate-dt)
