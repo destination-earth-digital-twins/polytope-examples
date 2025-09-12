@@ -1,0 +1,15 @@
+format: jb-article
+root: README.md
+sections:
+- file: climate-dt/README.md
+  sections:
+  - glob: climate-dt/*
+- file: extremes-dt/README.md
+  sections:
+  - glob: extremes-dt/*
+- file: on-demand-extremes-dt/README.md
+  sections:
+  - glob: on-demand-extremes-dt/*
+- file: nextgems/README.md
+  sections:
+  - glob: nextgems/*
