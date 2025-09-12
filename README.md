@@ -1,20 +1,17 @@
-<h3 align="center">
-<img src="./docs/images/Logo_Destination_Earth_Colours.png" width=60%>
-</br>
+<img src="./docs/images/Logo_Destination_Earth_Colours.png" width=60% >
 
-</h3>
-
-- [Polytope Examples for DT Data Access](#polytope-examples-for-dt-data-access)
-  - [Access using your Destination Earth Service Platform credentials](#access-using-your-destination-earth-service-platform-credentials)
-  - [Installation](#installation)
-  - [Climate-DT Examples](#climate-dt-examples)
-  - [Extremes-DT Examples](#extremes-dt-examples)
-  - [On-Demand Extremes-DT Examples](#on-demand-extremes-dt-examples)
-  - [NextGEMS Examples](#nextgems-examples)
-  - [Polytope Quota Limits for DestinE](#polytope-quota-limits-for-destine)
-
+<br /><br />
 
 # Polytope Examples for DT Data Access
+
+- [Access using your Destination Earth Service Platform credentials](#access-using-your-destination-earth-service-platform-credentials)
+- [Installation](#installation)
+- [Climate-DT Examples](#climate-dt-examples)
+- [Extremes-DT Examples](#extremes-dt-examples)
+- [On-Demand Extremes-DT Examples](#on-demand-extremes-dt-examples)
+- [NextGEMS Examples](#nextgems-examples)
+- [Polytope Quota Limits for DestinE](#polytope-quota-limits-for-destine)
+
 
 ## Access using your Destination Earth Service Platform credentials
 
