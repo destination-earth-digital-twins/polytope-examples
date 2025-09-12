@@ -21,7 +21,7 @@ jobs:
         python-version: '3.x'
         cache: 'pip'
     - run: pip install -U jupyter-book
-    - run: make build-book PRE_BUILD_DIR=${{ env.PRE_BUILD_DIR }}
+    - run: jupyter-book build -W -n --keep-going ${{ env.PRE_BUILD_DIR }}
     - run: touch ${{ env.PRE_BUILD_DIR }}/_build/html/.nojekyll
     - uses: JamesIves/github-pages-deploy-action@v4
       with:
