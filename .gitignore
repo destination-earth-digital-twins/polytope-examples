@@ -1,9 +1,0 @@
-.venv/
-__pycache__/
-tests/
-.vscode/
-env/
-.ipynb_checkpoints/
-*/data/
-.gitattributes
-_build/

@@ -1,0 +1,1217 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Polytope Climate-DT example notebook &#8212; Polytope Examples for DT Data Access</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'climate-dt/climate-dt-earthkit-area-example';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Polytope Climate-DT example notebook" href="climate-dt-earthkit-example.html" />
+    <link rel="prev" title="Polytope Climate-DT AOI example notebook" href="climate-dt-earthkit-aoi-example.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Logo_Destination_Earth_Colours.png" class="logo__image only-light" alt="Polytope Examples for DT Data Access - Home"/>
+    <script>document.write(`<img src="../_static/Logo_Destination_Earth_Colours.png" class="logo__image only-dark" alt="Polytope Examples for DT Data Access - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Polytope Examples for DT Data Access
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Climate DT</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="climate-dt-earthkit-MN5-example.html">Polytope Climate-DT MN5 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt-earthkit-MN5-monthly-mean-example.html">Polytope Climate-DT MN5 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt-earthkit-aoi-example.html">Polytope Climate-DT AOI example notebook</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt-earthkit-example.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt-earthkit-example-domain.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt-earthkit-fe-boundingbox.html">Polytope Climate-DT Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt-earthkit-fe-country.html">Polytope Climate-DT Country cut-out example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt-earthkit-fe-polygon.html">Polytope Climate-DT Polygon example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt-earthkit-fe-story-nudging.html">Polytope Climate-DT Time Series example notebook for story nudging</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt-earthkit-fe-timeseries.html">Polytope Climate-DT Time Series example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt-earthkit-fe-trajectory.html">Polytope Climate-DT Trajectory example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt-earthkit-fe-verticalprofile.html">Polytope Climate-DT Feature Extraction Vertical Profile example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt-earthkit-grid-example.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt-earthkit-healpix-interpolate.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt-healpix-data.html">Climate-DT Healpix data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt-healpix-ocean-example.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="climate-dt-highresmip-earthkit-example.html">Polytope Climate-DT example notebook</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extremes-dt/README.html">Extremes DT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extremes-dt/extremes-dt-earthkit-example.html">Polytope Extremes-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../extremes-dt/extremes-dt-earthkit-example-H3.html">Polytope Extremes-DT Feature Extraction Timeseries H3 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../extremes-dt/extremes-dt-earthkit-example-domain.html">Polytope Extremes-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../extremes-dt/extremes-dt-earthkit-example-fe-boundingbox.html">Polytope Extremes-DT Feature Extraction Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../extremes-dt/extremes-dt-earthkit-example-fe-country.html">Polytope Extremes-DT Feature Extraction Country cut out example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../extremes-dt/extremes-dt-earthkit-example-fe-polygon.html">Polytope Extremes-DT Feature Extraction Polygon example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../extremes-dt/extremes-dt-earthkit-example-fe-polygon-H3.html">Polytope Extremes-DT Feature Extraction Polygon example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../extremes-dt/extremes-dt-earthkit-example-fe-timeseries.html">Polytope Extremes-DT Feature Extraction Timeseries example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../extremes-dt/extremes-dt-earthkit-example-fe-trajectory.html">Polytope Extremes-DT Feature Extraction Trajectory example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../extremes-dt/extremes-dt-earthkit-example-fe-trajectory4d.html">Polytope Extremes-DT Feature Extraction Trajectory 4d example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../extremes-dt/extremes-dt-earthkit-example-fe-verticalprofile.html">Polytope Extremes-DT Feature Extraction Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../extremes-dt/extremes-dt-earthkit-example-fe-wave.html">Polytope Extremes-DT Feature Extraction Timeseries example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../extremes-dt/extremes-dt-earthkit-example-regrid.html">Polytope Extremes-DT example notebook</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../on-demand-extremes-dt/README.html">On-Demand Extremes-DT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../on-demand-extremes-dt/on-demand-extremes-dt-example.html">Polytope On-Demand Extremes-DT example notebook</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nextgems/README.html">NextGEMS Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nextgems/nextGEMS-historical-earthkit-example.html">Polytope nextGEMS historical 1990-2020 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../nextgems/nextGEMS-scenario-earthkit-example.html">Polytope nextGEMS historical 2020-2050 example notebook</a></li>
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/climate-dt/climate-dt-earthkit-area-example.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Polytope Climate-DT example notebook</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Polytope Climate-DT example notebook</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><img alt="logo" src="../_images/Logo_Destination_Earth_Colours1.png" /></p>
+<section id="polytope-climate-dt-example-notebook">
+<h1>Polytope Climate-DT example notebook<a class="headerlink" href="#polytope-climate-dt-example-notebook" title="Link to this heading">#</a></h1>
+<p>This notebook shows how to use earthkit-data and earthkit-plots to pull destination-earth data from LUMI and plot it using earthkit-plots. Specifically this notebook shows how to do server side interpolation to a supported grid and then retrieve a rectangular area.</p>
+<p>Before running the notebook you need to set up your credentials. See the main readme of this repository for different ways to do this or use the following cells to authenticate.</p>
+<p>You will need to generate your credentials using the desp-authentication.py script.</p>
+<p>This can be run as follows:</p>
+<div class="cell tag_hide-input tag_skip-execution docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> cap
+<span class="o">%</span><span class="n">run</span> <span class="o">../</span><span class="n">desp</span><span class="o">-</span><span class="n">authentication</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>This will generate a token that can then be used by earthkit and polytope.</p>
+<div class="cell tag_hide-input tag_skip-execution docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">access_token</span> <span class="o">=</span> <span class="n">output_1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="requirements">
+<h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
+<p>To run this notebook install the following:</p>
+<ul class="simple">
+<li><p>pip install earthkit-data</p></li>
+<li><p>pip install earthkit-plots</p></li>
+<li><p>pip install earthkit-regrid  (Optional for spectral variables)</p></li>
+<li><p>pip install cf-units         (Optional for unit conversion in maps)</p></li>
+</ul>
+<p>If you do not have eccodes installed please install eccodes using conda as it is a dependency of earthkit, or install earthkit via conda</p>
+<ul class="simple">
+<li><p>conda install eccodes -c conda-forge</p></li>
+<li><p>conda install earthkit-data -c conda-forge</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.data</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.plots</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.regrid</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">polytope.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">Client</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set True if you want to make a live request for the data, or false if you want to use the cached grib file</span>
+<span class="n">LIVE_REQUEST</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;activity&#39;</span><span class="p">:</span> <span class="s1">&#39;scenariomip&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;d1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dataset&#39;</span><span class="p">:</span> <span class="s1">&#39;climate-dt&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;20300101&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="s2">&quot;0000&quot;</span><span class="p">,</span>
+    <span class="s1">&#39;experiment&#39;</span><span class="p">:</span> <span class="s1">&#39;SSP3-7.0&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;expver&#39;</span><span class="p">:</span> <span class="s1">&#39;0001&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;generation&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;levtype&#39;</span><span class="p">:</span> <span class="s1">&#39;sfc&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="s1">&#39;IFS-NEMO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;param&#39;</span><span class="p">:</span> <span class="s1">&#39;167&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;realization&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;resolution&#39;</span><span class="p">:</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;stream&#39;</span><span class="p">:</span> <span class="s1">&#39;clte&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;grid&#39;</span> <span class="p">:</span> <span class="s1">&#39;O2560&#39;</span><span class="p">,</span> <span class="c1"># currently O, F, N grids are supported </span>
+    <span class="s1">&#39;area&#39;</span> <span class="p">:</span> <span class="s1">&#39;75/-15/30/42.5&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;fc&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;data/climate-dt-earthkit-area-example.grib&quot;</span>
+<span class="k">if</span> <span class="n">LIVE_REQUEST</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;polytope&quot;</span><span class="p">,</span> <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.lumi.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>centre</th>
+      <th>shortName</th>
+      <th>typeOfLevel</th>
+      <th>level</th>
+      <th>dataDate</th>
+      <th>dataTime</th>
+      <th>stepRange</th>
+      <th>dataType</th>
+      <th>number</th>
+      <th>gridType</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ecmf</td>
+      <td>2t</td>
+      <td>heightAboveGround</td>
+      <td>2</td>
+      <td>20300101</td>
+      <td>0</td>
+      <td>0</td>
+      <td>fc</td>
+      <td>None</td>
+      <td>reduced_gg</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_skip-text-html tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base rgba(0, 0, 0, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, white)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 15))
+  );
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base, rgba(255, 255, 255, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, #111111)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 15))
+  );
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+  border: 2px solid transparent !important;
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0) !important;
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  border-color: var(--xr-background-color-row-odd);
+  margin-bottom: 0;
+  padding-top: 2px;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+  border-color: var(--xr-background-color-row-even);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  border-top: 2px dotted var(--xr-background-color);
+  padding-bottom: 20px !important;
+  padding-top: 10px !important;
+}
+
+.xr-var-attrs-in + label,
+.xr-var-data-in + label,
+.xr-index-data-in + label {
+  padding: 0 1px;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-data > pre,
+.xr-index-data > pre,
+.xr-var-data > table > tbody > tr {
+  background-color: transparent !important;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.xr-var-attrs-in:checked + label > .xr-icon-file-text2,
+.xr-var-data-in:checked + label > .xr-icon-database,
+.xr-index-data-in:checked + label > .xr-icon-database {
+  color: var(--xr-font-color0);
+  filter: drop-shadow(1px 1px 5px var(--xr-font-color2));
+  stroke-width: 0.8px;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 21MB
+Dimensions:    (values: 876649)
+Coordinates:
+    latitude   (values) float64 7MB ...
+    longitude  (values) float64 7MB ...
+Dimensions without coordinates: values
+Data variables:
+    2t         (values) float64 7MB ...
+Attributes:
+    param:        2t
+    paramId:      167
+    class:        d1
+    stream:       clte
+    levtype:      sfc
+    type:         fc
+    expver:       0001
+    date:         20300101
+    time:         0
+    Conventions:  CF-1.8
+    institution:  ECMWF</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-5a0a59c3-ea06-46d8-b7a3-9ef9ae0e38d3' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-5a0a59c3-ea06-46d8-b7a3-9ef9ae0e38d3' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span>values</span>: 876649</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-4218f75a-6446-4c58-9ccd-be4666d460ff' class='xr-section-summary-in' type='checkbox'  checked><label for='section-4218f75a-6446-4c58-9ccd-be4666d460ff' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>latitude</span></div><div class='xr-var-dims'>(values)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4f5215c9-a59d-4e12-a814-8e986e48689f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4f5215c9-a59d-4e12-a814-8e986e48689f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1ccb0982-599e-44ee-9779-9bb1602179ce' class='xr-var-data-in' type='checkbox'><label for='data-1ccb0982-599e-44ee-9779-9bb1602179ce' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><pre>[876649 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>longitude</span></div><div class='xr-var-dims'>(values)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4eb1c470-3a41-4307-99a4-3ff517515cf3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4eb1c470-3a41-4307-99a4-3ff517515cf3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8ffcf5bf-e7dc-4b0a-9db9-69aca22bc9e0' class='xr-var-data-in' type='checkbox'><label for='data-8ffcf5bf-e7dc-4b0a-9db9-69aca22bc9e0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><pre>[876649 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-3faf3ab2-8074-417c-a57e-d4fd5c5dd1dd' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3faf3ab2-8074-417c-a57e-d4fd5c5dd1dd' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>2t</span></div><div class='xr-var-dims'>(values)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-b217ce68-5697-4701-9a5d-2856d06c88e9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b217ce68-5697-4701-9a5d-2856d06c88e9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6a8a6ba3-7bff-42e4-b3a7-eb56d6b60538' class='xr-var-data-in' type='checkbox'><label for='data-6a8a6ba3-7bff-42e4-b3a7-eb56d6b60538' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>air_temperature</dd><dt><span>long_name :</span></dt><dd>2 metre temperature</dd><dt><span>units :</span></dt><dd>K</dd><dt><span>_earthkit :</span></dt><dd>{&#x27;message&#x27;: b&#x27;GRIB\xff\xff\x00\x02\x00\x00\x00\x00\x00\x00\n\xd8\x00\x00\x00\x15\x01\x00b\x03\xeb\x1f\x01\x02\x07\xee\x01\x01\x00\x00\x00\x0c\x01\x00\x00\x00\x1f\x02\x00\x01\x00\x01\x00\x02\x00\x07\x01\x00\x02\x01\x00\x02\x00\x01\x00.\x00\t\x04J0001\x00\x00\nJ\x03\x00\x00\r`i\x02\x01\x00(\x06\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x05\x01\x00\x00\x00\x00\xff\xff\xff\xff\x04xc\x07\x14\x90H@\x00\x01\xc9\xce\xf1\x02\x88\x7f\xa0\xff\xff\xff\xff\x00\x00\n\x00\x00\x06\xbc\x06\xc0\x06\xc4\x06\xc8\x06\xcc\x06\xd0\x06\xd4\x06\xd8\x06\xdc\x06\xe0\x06\xe4\x06\xe8\x06\xec\x06\xf0\x06\xf4\x06\xf8\x06\xfc\x07\x00\x07\x04\x07\x08\x07\x0c\x07\x10\x07\x14\x07\x18\x07\x1c\x07 \x07$\x07(\x07,\x070\x074\x078\x07&lt;\x07@\x07D\x07H\x07L\x07P\x07T\x07X\x07\\\x07`\x07d\x07h\x07l\x07p\x07t\x07x\x07|\x07\x80\x07\x84\x07\x88\x07\x8c\x07\x90\x07\x94\x07\x98\x07\x9c\x07\xa0\x07\xa4\x07\xa8\x07\xac\x07\xb0\x07\xb4\x07\xb8\x07\xbc\x07\xc0\x07\xc4\x07\xc8\x07\xcc\x07\xd0\x07\xd4\x07\xd8\x07\xdc\x07\xe0\x07\xe4\x07\xe8\x07\xec\x07\xf0\x07\xf4\x07\xf8\x07\xfc\x08\x00\x08\x04\x08\x08\x08\x0c\x08\x10\x08\x14\x08\x18\x08\x1c\x08 \x08$\x08(\x08,\x080\x084\x088\x08&lt;\x08@\x08D\x08H\x08L\x08P\x08T\x08X\x08\\\x08`\x08d\x08h\x08l\x08p\x08t\x08x\x08|\x08\x80\x08\x84\x08\x88\x08\x8c\x08\x90\x08\x94\x08\x98\x08\x9c\x08\xa0\x08\xa4\x08\xa8\x08\xac\x08\xb0\x08\xb4\x08\xb8\x08\xbc\x08\xc0\x08\xc4\x08\xc8\x08\xcc\x08\xd0\x08\xd4\x08\xd8\x08\xdc\x08\xe0\x08\xe4\x08\xe8\x08\xec\x08\xf0\x08\xf4\x08\xf8\x08\xfc\t\x00\t\x04\t\x08\t\x0c\t\x10\t\x14\t\x18\t\x1c\t \t$\t(\t,\t0\t4\t8\t&lt;\t@\tD\tH\tL\tP\tT\tX\t\\\t`\td\th\tl\tp\tt\tx\t|\t\x80\t\x84\t\x88\t\x8c\t\x90\t\x94\t\x98\t\x9c\t\xa0\t\xa4\t\xa8\t\xac\t\xb0\t\xb4\t\xb8\t\xbc\t\xc0\t\xc4\t\xc8\t\xcc\t\xd0\t\xd4\t\xd8\t\xdc\t\xe0\t\xe4\t\xe8\t\xec\t\xf0\t\xf4\t\xf8\t\xfc\n\x00\n\x04\n\x08\n\x0c\n\x10\n\x14\n\x18\n\x1c\n \n$\n(\n,\n0\n4\n8\n&lt;\n@\nD\nH\nL\nP\nT\nX\n\\\n`\nd\nh\nl\np\nt\nx\n|\n\x80\n\x84\n\x88\n\x8c\n\x90\n\x94\n\x98\n\x9c\n\xa0\n\xa4\n\xa8\n\xac\n\xb0\n\xb4\n\xb8\n\xbc\n\xc0\n\xc4\n\xc8\n\xcc\n\xd0\n\xd4\n\xd8\n\xdc\n\xe0\n\xe4\n\xe8\n\xec\n\xf0\n\xf4\n\xf8\n\xfc\x0b\x00\x0b\x04\x0b\x08\x0b\x0c\x0b\x10\x0b\x14\x0b\x18\x0b\x1c\x0b \x0b$\x0b(\x0b,\x0b0\x0b4\x0b8\x0b&lt;\x0b@\x0bD\x0bH\x0bL\x0bP\x0bT\x0bX\x0b\\\x0b`\x0bd\x0bh\x0bl\x0bp\x0bt\x0bx\x0b|\x0b\x80\x0b\x84\x0b\x88\x0b\x8c\x0b\x90\x0b\x94\x0b\x98\x0b\x9c\x0b\xa0\x0b\xa4\x0b\xa8\x0b\xac\x0b\xb0\x0b\xb4\x0b\xb8\x0b\xbc\x0b\xc0\x0b\xc4\x0b\xc8\x0b\xcc\x0b\xd0\x0b\xd4\x0b\xd8\x0b\xdc\x0b\xe0\x0b\xe4\x0b\xe8\x0b\xec\x0b\xf0\x0b\xf4\x0b\xf8\x0b\xfc\x0c\x00\x0c\x04\x0c\x08\x0c\x0c\x0c\x10\x0c\x14\x0c\x18\x0c\x1c\x0c \x0c$\x0c(\x0c,\x0c0\x0c4\x0c8\x0c&lt;\x0c@\x0cD\x0cH\x0cL\x0cP\x0cT\x0cX\x0c\\\x0c`\x0cd\x0ch\x0cl\x0cp\x0ct\x0cx\x0c|\x0c\x80\x0c\x84\x0c\x88\x0c\x8c\x0c\x90\x0c\x94\x0c\x98\x0c\x9c\x0c\xa0\x0c\xa4\x0c\xa8\x0c\xac\x0c\xb0\x0c\xb4\x0c\xb8\x0c\xbc\x0c\xc0\x0c\xc4\x0c\xc8\x0c\xcc\x0c\xd0\x0c\xd4\x0c\xd8\x0c\xdc\x0c\xe0\x0c\xe4\x0c\xe8\x0c\xec\x0c\xf0\x0c\xf4\x0c\xf8\x0c\xfc\r\x00\r\x04\r\x08\r\x0c\r\x10\r\x14\r\x18\r\x1c\r \r$\r(\r,\r0\r4\r8\r&lt;\r@\rD\rH\rL\rP\rT\rX\r\\\r`\rd\rh\rl\rp\rt\rx\r|\r\x80\r\x84\r\x88\r\x8c\r\x90\r\x94\r\x98\r\x9c\r\xa0\r\xa4\r\xa8\r\xac\r\xb0\r\xb4\r\xb8\r\xbc\r\xc0\r\xc4\r\xc8\r\xcc\r\xd0\r\xd4\r\xd8\r\xdc\r\xe0\r\xe4\r\xe8\r\xec\r\xf0\r\xf4\r\xf8\r\xfc\x0e\x00\x0e\x04\x0e\x08\x0e\x0c\x0e\x10\x0e\x14\x0e\x18\x0e\x1c\x0e \x0e$\x0e(\x0e,\x0e0\x0e4\x0e8\x0e&lt;\x0e@\x0eD\x0eH\x0eL\x0eP\x0eT\x0eX\x0e\\\x0e`\x0ed\x0eh\x0el\x0ep\x0et\x0ex\x0e|\x0e\x80\x0e\x84\x0e\x88\x0e\x8c\x0e\x90\x0e\x94\x0e\x98\x0e\x9c\x0e\xa0\x0e\xa4\x0e\xa8\x0e\xac\x0e\xb0\x0e\xb4\x0e\xb8\x0e\xbc\x0e\xc0\x0e\xc4\x0e\xc8\x0e\xcc\x0e\xd0\x0e\xd4\x0e\xd8\x0e\xdc\x0e\xe0\x0e\xe4\x0e\xe8\x0e\xec\x0e\xf0\x0e\xf4\x0e\xf8\x0e\xfc\x0f\x00\x0f\x04\x0f\x08\x0f\x0c\x0f\x10\x0f\x14\x0f\x18\x0f\x1c\x0f \x0f$\x0f(\x0f,\x0f0\x0f4\x0f8\x0f&lt;\x0f@\x0fD\x0fH\x0fL\x0fP\x0fT\x0fX\x0f\\\x0f`\x0fd\x0fh\x0fl\x0fp\x0ft\x0fx\x0f|\x0f\x80\x0f\x84\x0f\x88\x0f\x8c\x0f\x90\x0f\x94\x0f\x98\x0f\x9c\x0f\xa0\x0f\xa4\x0f\xa8\x0f\xac\x0f\xb0\x0f\xb4\x0f\xb8\x0f\xbc\x0f\xc0\x0f\xc4\x0f\xc8\x0f\xcc\x0f\xd0\x0f\xd4\x0f\xd8\x0f\xdc\x0f\xe0\x0f\xe4\x0f\xe8\x0f\xec\x0f\xf0\x0f\xf4\x0f\xf8\x0f\xfc\x10\x00\x10\x04\x10\x08\x10\x0c\x10\x10\x10\x14\x10\x18\x10\x1c\x10 \x10$\x10(\x10,\x100\x104\x108\x10&lt;\x10@\x10D\x10H\x10L\x10P\x10T\x10X\x10\\\x10`\x10d\x10h\x10l\x10p\x10t\x10x\x10|\x10\x80\x10\x84\x10\x88\x10\x8c\x10\x90\x10\x94\x10\x98\x10\x9c\x10\xa0\x10\xa4\x10\xa8\x10\xac\x10\xb0\x10\xb4\x10\xb8\x10\xbc\x10\xc0\x10\xc4\x10\xc8\x10\xcc\x10\xd0\x10\xd4\x10\xd8\x10\xdc\x10\xe0\x10\xe4\x10\xe8\x10\xec\x10\xf0\x10\xf4\x10\xf8\x10\xfc\x11\x00\x11\x04\x11\x08\x11\x0c\x11\x10\x11\x14\x11\x18\x11\x1c\x11 \x11$\x11(\x11,\x110\x114\x118\x11&lt;\x11@\x11D\x11H\x11L\x11P\x11T\x11X\x11\\\x11`\x11d\x11h\x11l\x11p\x11t\x11x\x11|\x11\x80\x11\x84\x11\x88\x11\x8c\x11\x90\x11\x94\x11\x98\x11\x9c\x11\xa0\x11\xa4\x11\xa8\x11\xac\x11\xb0\x11\xb4\x11\xb8\x11\xbc\x11\xc0\x11\xc4\x11\xc8\x11\xcc\x11\xd0\x11\xd4\x11\xd8\x11\xdc\x11\xe0\x11\xe4\x11\xe8\x11\xec\x11\xf0\x11\xf4\x11\xf8\x11\xfc\x12\x00\x12\x04\x12\x08\x12\x0c\x12\x10\x12\x14\x12\x18\x12\x1c\x12 \x12$\x12(\x12,\x120\x124\x128\x12&lt;\x12@\x12D\x12H\x12L\x12P\x12T\x12X\x12\\\x12`\x12d\x12h\x12l\x12p\x12t\x12x\x12|\x12\x80\x12\x84\x12\x88\x12\x8c\x12\x90\x12\x94\x12\x98\x12\x9c\x12\xa0\x12\xa4\x12\xa8\x12\xac\x12\xb0\x12\xb4\x12\xb8\x12\xbc\x12\xc0\x12\xc4\x12\xc8\x12\xcc\x12\xd0\x12\xd4\x12\xd8\x12\xdc\x12\xe0\x12\xe4\x12\xe8\x12\xec\x12\xf0\x12\xf4\x12\xf8\x12\xfc\x13\x00\x13\x04\x13\x08\x13\x0c\x13\x10\x13\x14\x13\x18\x13\x1c\x13 \x13$\x13(\x13,\x130\x134\x138\x13&lt;\x13@\x13D\x13H\x13L\x13P\x13T\x13X\x13\\\x13`\x13d\x13h\x13l\x13p\x13t\x13x\x13|\x13\x80\x13\x84\x13\x88\x13\x8c\x13\x90\x13\x94\x13\x98\x13\x9c\x13\xa0\x13\xa4\x13\xa8\x13\xac\x13\xb0\x13\xb4\x13\xb8\x13\xbc\x13\xc0\x13\xc4\x13\xc8\x13\xcc\x13\xd0\x13\xd4\x13\xd8\x13\xdc\x13\xe0\x13\xe4\x13\xe8\x13\xec\x13\xf0\x13\xf4\x13\xf8\x13\xfc\x14\x00\x14\x04\x14\x08\x14\x0c\x14\x10\x14\x14\x14\x18\x14\x1c\x14 \x14$\x14(\x14,\x140\x144\x148\x14&lt;\x14@\x14D\x14H\x14L\x14P\x14T\x14X\x14\\\x14`\x14d\x14h\x14l\x14p\x14t\x14x\x14|\x14\x80\x14\x84\x14\x88\x14\x8c\x14\x90\x14\x94\x14\x98\x14\x9c\x14\xa0\x14\xa4\x14\xa8\x14\xac\x14\xb0\x14\xb4\x14\xb8\x14\xbc\x14\xc0\x14\xc4\x14\xc8\x14\xcc\x14\xd0\x14\xd4\x14\xd8\x14\xdc\x14\xe0\x14\xe4\x14\xe8\x14\xec\x14\xf0\x14\xf4\x14\xf8\x14\xfc\x15\x00\x15\x04\x15\x08\x15\x0c\x15\x10\x15\x14\x15\x18\x15\x1c\x15 \x15$\x15(\x15,\x150\x154\x158\x15&lt;\x15@\x15D\x15H\x15L\x15P\x15T\x15X\x15\\\x15`\x15d\x15h\x15l\x15p\x15t\x15x\x15|\x15\x80\x15\x84\x15\x88\x15\x8c\x15\x90\x15\x94\x15\x98\x15\x9c\x15\xa0\x15\xa4\x15\xa8\x15\xac\x15\xb0\x15\xb4\x15\xb8\x15\xbc\x15\xc0\x15\xc4\x15\xc8\x15\xcc\x15\xd0\x15\xd4\x15\xd8\x15\xdc\x15\xe0\x15\xe4\x15\xe8\x15\xec\x15\xf0\x15\xf4\x15\xf8\x15\xfc\x16\x00\x16\x04\x16\x08\x16\x0c\x16\x10\x16\x14\x16\x18\x16\x1c\x16 \x16$\x16(\x16,\x160\x164\x168\x16&lt;\x16@\x16D\x16H\x16L\x16P\x16T\x16X\x16\\\x16`\x16d\x16h\x16l\x16p\x16t\x16x\x16|\x16\x80\x16\x84\x16\x88\x16\x8c\x16\x90\x16\x94\x16\x98\x16\x9c\x16\xa0\x16\xa4\x16\xa8\x16\xac\x16\xb0\x16\xb4\x16\xb8\x16\xbc\x16\xc0\x16\xc4\x16\xc8\x16\xcc\x16\xd0\x16\xd4\x16\xd8\x16\xdc\x16\xe0\x16\xe4\x16\xe8\x16\xec\x16\xf0\x16\xf4\x16\xf8\x16\xfc\x17\x00\x17\x04\x17\x08\x17\x0c\x17\x10\x17\x14\x17\x18\x17\x1c\x17 \x17$\x17(\x17,\x170\x174\x178\x17&lt;\x17@\x17D\x17H\x17L\x17P\x17T\x17X\x17\\\x17`\x17d\x17h\x17l\x17p\x17t\x17x\x17|\x17\x80\x17\x84\x17\x88\x17\x8c\x17\x90\x17\x94\x17\x98\x17\x9c\x17\xa0\x17\xa4\x17\xa8\x17\xac\x17\xb0\x17\xb4\x17\xb8\x17\xbc\x17\xc0\x17\xc4\x17\xc8\x17\xcc\x17\xd0\x17\xd4\x17\xd8\x17\xdc\x17\xe0\x17\xe4\x17\xe8\x17\xec\x17\xf0\x17\xf4\x17\xf8\x17\xfc\x18\x00\x18\x04\x18\x08\x18\x0c\x18\x10\x18\x14\x18\x18\x18\x1c\x18 \x18$\x18(\x18,\x180\x184\x188\x18&lt;\x18@\x18D\x18H\x18L\x18P\x18T\x18X\x18\\\x18`\x18d\x18h\x18l\x18p\x18t\x18x\x18|\x18\x80\x18\x84\x18\x88\x18\x8c\x18\x90\x18\x94\x18\x98\x18\x9c\x18\xa0\x18\xa4\x18\xa8\x18\xac\x18\xb0\x18\xb4\x18\xb8\x18\xbc\x18\xc0\x18\xc4\x18\xc8\x18\xcc\x18\xd0\x18\xd4\x18\xd8\x18\xdc\x18\xe0\x18\xe4\x18\xe8\x18\xec\x18\xf0\x18\xf4\x18\xf8\x18\xfc\x19\x00\x19\x04\x19\x08\x19\x0c\x19\x10\x19\x14\x19\x18\x19\x1c\x19 \x19$\x19(\x19,\x190\x194\x198\x19&lt;\x19@\x19D\x19H\x19L\x19P\x19T\x19X\x19\\\x19`\x19d\x19h\x19l\x19p\x19t\x19x\x19|\x19\x80\x19\x84\x19\x88\x19\x8c\x19\x90\x19\x94\x19\x98\x19\x9c\x19\xa0\x19\xa4\x19\xa8\x19\xac\x19\xb0\x19\xb4\x19\xb8\x19\xbc\x19\xc0\x19\xc4\x19\xc8\x19\xcc\x19\xd0\x19\xd4\x19\xd8\x19\xdc\x19\xe0\x19\xe4\x19\xe8\x19\xec\x19\xf0\x19\xf4\x19\xf8\x19\xfc\x1a\x00\x1a\x04\x1a\x08\x1a\x0c\x1a\x10\x1a\x14\x1a\x18\x1a\x1c\x1a \x1a$\x1a(\x1a,\x1a0\x1a4\x1a8\x1a&lt;\x1a@\x1aD\x1aH\x1aL\x1aP\x1aT\x1aX\x1a\\\x1a`\x1ad\x1ah\x1al\x1ap\x1at\x1ax\x1a|\x1a\x80\x1a\x84\x1a\x88\x1a\x8c\x1a\x90\x1a\x94\x1a\x98\x1a\x9c\x1a\xa0\x1a\xa4\x1a\xa8\x1a\xac\x1a\xb0\x1a\xb4\x1a\xb8\x1a\xbc\x00\x00\x00&quot;\x04\x00\x00\x00\x00\x00\x00\x02\xff\x9c\xff\xff\xff\x01\x00\x00\x00\x00g\x00\x00\x00\x00\x02\xff\xff\xff\xff\xff\xff\x00\x00\x00\x19\x05\x00\r`i\x00*C\x88\x80\x00\x00\x00\x00\x00\x00\x00\x0e \x00\x80\x00\x00\x00\x06\x06\xff\x00\x00\x00\x05\x077777&#x27;, &#x27;bitsPerValue&#x27;: 24}</dd></dl></div><div class='xr-var-data'><pre>[876649 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-c588ed9c-86e0-4f4b-b504-fa1ff1c4e882' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-c588ed9c-86e0-4f4b-b504-fa1ff1c4e882' class='xr-section-summary'  title='Expand/collapse section'>Indexes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-70c0551c-aaa5-4664-a475-86a935a1049a' class='xr-section-summary-in' type='checkbox'  ><label for='section-70c0551c-aaa5-4664-a475-86a935a1049a' class='xr-section-summary' >Attributes: <span>(11)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>param :</span></dt><dd>2t</dd><dt><span>paramId :</span></dt><dd>167</dd><dt><span>class :</span></dt><dd>d1</dd><dt><span>stream :</span></dt><dd>clte</dd><dt><span>levtype :</span></dt><dd>sfc</dd><dt><span>type :</span></dt><dd>fc</dd><dt><span>expver :</span></dt><dd>0001</dd><dt><span>date :</span></dt><dd>20300101</dd><dt><span>time :</span></dt><dd>0</dd><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>institution :</span></dt><dd>ECMWF</dd></dl></div></li></ul></div></div></div></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./climate-dt"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="climate-dt-earthkit-aoi-example.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Polytope Climate-DT AOI example notebook</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="climate-dt-earthkit-example.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Polytope Climate-DT example notebook</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Polytope Climate-DT example notebook</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Adam Warde, James Hawkes, Alice Sartori Monteiro de Barros and Tiago Quintino
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

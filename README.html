@@ -1,0 +1,678 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Polytope Examples for DT Data Access &#8212; Polytope Examples for DT Data Access</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'README';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Climate DT" href="climate-dt/README.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/Logo_Destination_Earth_Colours.png" class="logo__image only-light" alt="Polytope Examples for DT Data Access - Home"/>
+    <script>document.write(`<img src="_static/Logo_Destination_Earth_Colours.png" class="logo__image only-dark" alt="Polytope Examples for DT Data Access - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Polytope Examples for DT Data Access
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="climate-dt/README.html">Climate DT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-MN5-example.html">Polytope Climate-DT MN5 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-MN5-monthly-mean-example.html">Polytope Climate-DT MN5 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-aoi-example.html">Polytope Climate-DT AOI example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-area-example.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-example.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-example-domain.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-fe-boundingbox.html">Polytope Climate-DT Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-fe-country.html">Polytope Climate-DT Country cut-out example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-fe-polygon.html">Polytope Climate-DT Polygon example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-fe-story-nudging.html">Polytope Climate-DT Time Series example notebook for story nudging</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-fe-timeseries.html">Polytope Climate-DT Time Series example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-fe-trajectory.html">Polytope Climate-DT Trajectory example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-fe-verticalprofile.html">Polytope Climate-DT Feature Extraction Vertical Profile example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-grid-example.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-healpix-interpolate.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-healpix-data.html">Climate-DT Healpix data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-healpix-ocean-example.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-highresmip-earthkit-example.html">Polytope Climate-DT example notebook</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="extremes-dt/README.html">Extremes DT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example.html">Polytope Extremes-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-H3.html">Polytope Extremes-DT Feature Extraction Timeseries H3 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-domain.html">Polytope Extremes-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-fe-boundingbox.html">Polytope Extremes-DT Feature Extraction Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-fe-country.html">Polytope Extremes-DT Feature Extraction Country cut out example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-fe-polygon.html">Polytope Extremes-DT Feature Extraction Polygon example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-fe-polygon-H3.html">Polytope Extremes-DT Feature Extraction Polygon example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-fe-timeseries.html">Polytope Extremes-DT Feature Extraction Timeseries example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-fe-trajectory.html">Polytope Extremes-DT Feature Extraction Trajectory example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-fe-trajectory4d.html">Polytope Extremes-DT Feature Extraction Trajectory 4d example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-fe-verticalprofile.html">Polytope Extremes-DT Feature Extraction Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-fe-wave.html">Polytope Extremes-DT Feature Extraction Timeseries example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-regrid.html">Polytope Extremes-DT example notebook</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="on-demand-extremes-dt/README.html">On-Demand Extremes-DT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="on-demand-extremes-dt/on-demand-extremes-dt-example.html">Polytope On-Demand Extremes-DT example notebook</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="nextgems/README.html">NextGEMS Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="nextgems/nextGEMS-historical-earthkit-example.html">Polytope nextGEMS historical 1990-2020 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="nextgems/nextGEMS-scenario-earthkit-example.html">Polytope nextGEMS historical 2020-2050 example notebook</a></li>
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/README.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Polytope Examples for DT Data Access</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-using-your-destination-earth-service-platform-credentials">Access using your Destination Earth Service Platform credentials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-locations">Data Locations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-dt-examples">Climate-DT Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extremes-dt-examples">Extremes-DT Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-demand-extremes-dt-examples">On-Demand Extremes-DT Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nextgems-examples">NextGEMS Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polytope-quota-limits-for-destine">Polytope Quota Limits for DestinE</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <a class="reference internal image-reference" href="_images/Logo_Destination_Earth_Colours.png"><img alt="_images/Logo_Destination_Earth_Colours.png" src="_images/Logo_Destination_Earth_Colours.png" style="width: 60%;" />
+</a>
+<p><br /><br /></p>
+<section id="polytope-examples-for-dt-data-access">
+<h1>Polytope Examples for DT Data Access<a class="headerlink" href="#polytope-examples-for-dt-data-access" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="#access-using-your-destination-earth-service-platform-credentials"><span class="xref myst">Access using your Destination Earth Service Platform credentials</span></a></p></li>
+<li><p><a class="reference internal" href="#installation"><span class="xref myst">Installation</span></a></p></li>
+<li><p><a class="reference internal" href="#climate-dt-examples"><span class="xref myst">Climate-DT Examples</span></a></p></li>
+<li><p><a class="reference internal" href="#extremes-dt-examples"><span class="xref myst">Extremes-DT Examples</span></a></p></li>
+<li><p><a class="reference internal" href="#on-demand-extremes-dt-examples"><span class="xref myst">On-Demand Extremes-DT Examples</span></a></p></li>
+<li><p><a class="reference internal" href="#nextgems-examples"><span class="xref myst">NextGEMS Examples</span></a></p></li>
+<li><p><a class="reference internal" href="#polytope-quota-limits-for-destine"><span class="xref myst">Polytope Quota Limits for DestinE</span></a></p></li>
+</ul>
+<section id="access-using-your-destination-earth-service-platform-credentials">
+<h2>Access using your Destination Earth Service Platform credentials<a class="headerlink" href="#access-using-your-destination-earth-service-platform-credentials" title="Link to this heading">#</a></h2>
+<p>This repository describes the process for accessing Destination Earth DT data via the Polytope web service hosted on the LUMI Databridge.</p>
+<ol class="arabic simple">
+<li><p>Install polytope-client from PyPI:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">polytope</span><span class="o">-</span><span class="n">client</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Retrieve a token from the Destination Earth Service Platform (DESP) by running the script included in this repository:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">desp</span><span class="o">-</span><span class="n">authentication</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">password</span><span class="o">&gt;</span>
+<span class="c1"># see --help for more options</span>
+</pre></div>
+</div>
+<p>Or you can run the script without arguments</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">desp</span><span class="o">-</span><span class="n">authentication</span><span class="o">.</span><span class="n">py</span> 
+<span class="c1"># see --help for more options</span>
+</pre></div>
+</div>
+<p>You will then be prompted to enter your username and password if no credentials are found in a config or through environment variables.</p>
+<p>You will need some dependencies to run the script, which can be installed using pip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">lxml</span> <span class="n">conflator</span>
+</pre></div>
+</div>
+<p>The script automatically places your token in <code class="docutils literal notranslate"><span class="pre">~/.polytopeapirc</span></code> where the client will pick it up. The token is a long-lived (“offline_access”) token.</p>
+<ol class="arabic simple" start="3">
+<li><p>Run the example scripts in this repostory to download data, and customise them as you wish.</p></li>
+</ol>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>To run the notebooks you can use the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file provided to create a conda environment that can run the notebooks. The following commands create the environment and also create an ipykernel called <code class="docutils literal notranslate"><span class="pre">earthkit</span></code> than can be used in notebooks if selected.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>envname=earthkit
+conda create -n $envname -c conda-forge -y python=3.10
+conda env update -n $envname -f environment.yml
+conda activate $envname
+
+# set earthkit environment to the default used by ipykernels
+python3 -m ipykernel install --user --name=$envname
+</pre></div>
+</div>
+</section>
+<section id="data-locations">
+<h2>Data Locations<a class="headerlink" href="#data-locations" title="Link to this heading">#</a></h2>
+<p>Data can be found on both LUMI and MN5, to access data on either change the <code class="docutils literal notranslate"><span class="pre">address</span></code> argument in <code class="docutils literal notranslate"><span class="pre">earthkit.data.from_source()</span></code> to either <code class="docutils literal notranslate"><span class="pre">polytope.mn5.apps.dte.destination-earth.eu</span></code> for MN5 or <code class="docutils literal notranslate"><span class="pre">polytope.lumi.apps.dte.destination-earth.eu</span></code> for LUMI.</p>
+</section>
+<section id="climate-dt-examples">
+<h2>Climate-DT Examples<a class="headerlink" href="#climate-dt-examples" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#climate-dt"><span class="xref myst">Climate DT Example Directory</span></a></p>
+<ul>
+<li><p><a class="reference download internal" download="" href="_downloads/6a4d0caf27d61546596396e798f99d81/climate-dt.py"><span class="xref download myst">Climate DT python Script</span></a></p></li>
+<li><p><a class="reference internal" href="climate-dt/climate-dt-earthkit-example.html"><span class="std std-doc">Climate DT notebook example</span></a></p></li>
+<li><p><a class="reference internal" href="climate-dt/climate-dt-earthkit-example-domain.html"><span class="std std-doc">Climate DT notebook domain example</span></a></p></li>
+<li><p><a class="reference internal" href="#climate-dt/healpix-data.ipynb"><span class="xref myst">Climate DT notebook healpix regrid</span></a></p></li>
+<li><p><a class="reference internal" href="climate-dt/climate-dt-healpix-ocean-example.html"><span class="std std-doc">Climate DT notebook healpix ocean</span></a></p></li>
+<li><p><a class="reference internal" href="climate-dt/climate-dt-earthkit-fe-timeseries.html"><span class="std std-doc">Climate DT notebook feature extraction timeseries</span></a></p></li>
+<li><p><a class="reference internal" href="climate-dt/climate-dt-earthkit-MN5-example.html"><span class="std std-doc">Climate DT MN5 notebook example</span></a></p></li>
+<li><p><a class="reference internal" href="climate-dt/climate-dt-earthkit-MN5-monthly-mean-example.html"><span class="std std-doc">Climate DT MN5 monthly means notebook example</span></a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="extremes-dt-examples">
+<h2>Extremes-DT Examples<a class="headerlink" href="#extremes-dt-examples" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#extremes-dt"><span class="xref myst">Extremes DT Example Directory</span></a></p>
+<ul>
+<li><p><a class="reference download internal" download="" href="_downloads/7883c26ac2de2df270aa79e6fa1ba1ff/extremes-dt.py"><span class="xref download myst">Extremes DT python Script</span></a></p></li>
+<li><p><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example.html"><span class="std std-doc">Extremes DT notebook example</span></a></p></li>
+<li><p><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-domain.html"><span class="std std-doc">Extremes DT notebook domain example</span></a></p></li>
+<li><p><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-regrid.html"><span class="std std-doc">Extremes DT notebook regrid example</span></a></p></li>
+<li><p><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-fe-timeseries.html"><span class="std std-doc">Extremes DT notebook feature extraction timeseries example</span></a></p></li>
+<li><p><a class="reference internal" href="#extremes-dt/extremes-dt-earthkit-example-H3-example.ipynb"><span class="xref myst">Extremes DT notebook feature extraction using H3 example</span></a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="on-demand-extremes-dt-examples">
+<h2>On-Demand Extremes-DT Examples<a class="headerlink" href="#on-demand-extremes-dt-examples" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#on-demand-extremes-dt"><span class="xref myst">On-Demand Extremes DT Example Directory</span></a></p>
+<ul>
+<li><p><a class="reference download internal" download="" href="_downloads/d3ce6a5cf43ac7ea8ab095f60e5c2008/on-demand-extremes-dt-example.py"><span class="xref download myst">On-Demand Extremes DT python Script</span></a></p></li>
+<li><p><a class="reference internal" href="on-demand-extremes-dt/on-demand-extremes-dt-example.html"><span class="std std-doc">On-Demand Extremes DT notebook example</span></a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="nextgems-examples">
+<h2>NextGEMS Examples<a class="headerlink" href="#nextgems-examples" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#nextgems"><span class="xref myst">NextGEMS Example Directory</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="nextgems/nextGEMS-historical-earthkit-example.html"><span class="std std-doc">NextGEMS historical 1990-2020 Notebook</span></a></p></li>
+<li><p><a class="reference internal" href="nextgems/nextGEMS-scenario-earthkit-example.html"><span class="std std-doc">NextGEMS scenario 2020-2050 Notebook</span></a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="polytope-quota-limits-for-destine">
+<h2>Polytope Quota Limits for DestinE<a class="headerlink" href="#polytope-quota-limits-for-destine" title="Link to this heading">#</a></h2>
+<p>To ensure system stability and fair usage, the following operational limits are enforced:</p>
+<ul class="simple">
+<li><p><strong>API Rate Limit:</strong> Up to 50 requests per second. This limit may be adjusted based on system usage.</p></li>
+<li><p><strong>Concurrent Operations Limit:</strong> A maximum of 5 download requests can be active at the same time.</p></li>
+</ul>
+<p>Please plan your usage accordingly to avoid interruptions.</p>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="climate-dt/README.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Climate DT</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-using-your-destination-earth-service-platform-credentials">Access using your Destination Earth Service Platform credentials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-locations">Data Locations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-dt-examples">Climate-DT Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extremes-dt-examples">Extremes-DT Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-demand-extremes-dt-examples">On-Demand Extremes-DT Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nextgems-examples">NextGEMS Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polytope-quota-limits-for-destine">Polytope Quota Limits for DestinE</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Adam Warde, James Hawkes, Alice Sartori Monteiro de Barros and Tiago Quintino
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
