@@ -6,7 +6,14 @@ env/
 .ipynb_checkpoints/
 */data/
 .gitattributes
-_build/
 .github
+
+
+# Jupyter Book configs and TOC files
+_config.yaml
+_toc.yaml
+_build/
+
 scripts/
+Makefile
 
