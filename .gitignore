@@ -7,3 +7,6 @@ env/
 */data/
 .gitattributes
 _build/
+.github
+scripts/
+
