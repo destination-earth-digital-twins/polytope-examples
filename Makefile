@@ -13,4 +13,4 @@ pre-build-book: clean-book
 	python scripts/pre-build.py $(PRE_BUILD_DIR) $(PRE_BUILD_FLAGS)
 
 build-book: pre-build-book
-	jupyter-book build -W -n --keep-going $(PRE_BUILD_DIR)
+	jupyter-book build -n --keep-going $(PRE_BUILD_DIR)
