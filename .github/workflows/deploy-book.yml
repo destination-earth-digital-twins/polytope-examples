@@ -22,7 +22,7 @@ jobs:
       with:
         python-version: '3.x'
         cache: 'pip'
-    - run: pip install -U jupyter-book
+    - run: pip install -r requirements.txt
     - run: make build-book PRE_BUILD_DIR=${{ env.PRE_BUILD_DIR }}
     - run: touch ${{ env.PRE_BUILD_DIR }}/_build/html/.nojekyll
     - uses: JamesIves/github-pages-deploy-action@v4
