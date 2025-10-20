@@ -4,13 +4,17 @@
 
 # Polytope Examples for DT Data Access
 
-- [Access using your Destination Earth Service Platform credentials](#access-using-your-destination-earth-service-platform-credentials)
-- [Installation](#installation)
-- [Climate-DT Examples](#climate-dt-examples)
-- [Extremes-DT Examples](#extremes-dt-examples)
-- [On-Demand Extremes-DT Examples](#on-demand-extremes-dt-examples)
-- [NextGEMS Examples](#nextgems-examples)
-- [Polytope Quota Limits for DestinE](#polytope-quota-limits-for-destine)
+- [Polytope Examples for DT Data Access](#polytope-examples-for-dt-data-access)
+  - [Access using your Destination Earth Service Platform credentials](#access-using-your-destination-earth-service-platform-credentials)
+  - [Installation](#installation)
+    - [Option 1: Conda Instructions](#option-1-conda-instructions)
+    - [Option 2: Python Virtual Environment (venv)](#option-2-python-virtual-environment-venv)
+  - [Data Locations](#data-locations)
+  - [Climate-DT Examples](#climate-dt-examples)
+  - [Extremes-DT Examples](#extremes-dt-examples)
+  - [On-Demand Extremes-DT Examples](#on-demand-extremes-dt-examples)
+  - [NextGEMS Examples](#nextgems-examples)
+  - [Polytope Quota Limits for DestinE](#polytope-quota-limits-for-destine)
 
 
 ## Access using your Destination Earth Service Platform credentials
@@ -43,9 +47,17 @@ The script automatically places your token in `~/.polytopeapirc` where the clien
 
 3. Run the example scripts in this repostory to download data, and customise them as you wish.
 
-## Installation 
+## Installation
 
-To run the notebooks you can use the `environment.yml` file provided to create a conda environment that can run the notebooks. The following commands create the environment and also create an ipykernel called `earthkit` than can be used in notebooks if selected.
+You can run the notebooks by setting up an appropriate environment using one of the following options:
+
+* Option 1: Use the `environment.yml` file to create a Conda environment, or
+
+* Option 2: Use the `requirements.txt` file to set up a Python virtual environment.
+
+After creating the environment, the provided commands will also register an IPython kernel named earthkit, which you can select when working with the notebooks.
+
+### Option 1: Conda Instructions
 
 ```
 envname=earthkit
@@ -54,6 +66,24 @@ conda env update -n $envname -f environment.yml
 conda activate $envname
 
 # set earthkit environment to the default used by ipykernels
+python3 -m ipykernel install --user --name=$envname
+```
+
+### Option 2: Python Virtual Environment (venv)
+
+```
+envname=earthkit
+
+# Create a virtual environment
+python3 -m venv $envname
+
+# Activate it
+source $envname/bin/activate      # macOS/Linux
+
+# Install dependencies
+pip install -r requirements.txt
+
+# If using Jupyter notebooks, register your environment as a kernel for ipykernel
 python3 -m ipykernel install --user --name=$envname
 ```
 
