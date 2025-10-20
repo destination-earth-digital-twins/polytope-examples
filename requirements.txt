@@ -1,5 +1,5 @@
 earthkit==0.11.2
-covjsonkit
+covjsonkit>=0.2.5
 polytope-client
 earthkit-geo
 ipykernel
@@ -9,6 +9,3 @@ kaleido
 lxml
 h3
 rasterio
-jupyter-book
-nbformat
-sphinx_new_tab_link
