@@ -1,0 +1,14 @@
+*.ipynb    diff=jupyternotebook
+*.ipynb    merge=jupyternotebook
+
+# --------------------------------------------------------
+# Files that should *always* keep our version on this branch
+# --------------------------------------------------------
+# When merging from main, these files/folders will *never*
+# be overwritten or deleted. Git will always keep "ours".
+_config.yml             merge=ours
+_toc.yml                merge=ours
+scripts/pre-build.py    merge=ours
+docs/**                 merge=ours
+book-requirements.txt   merge=ours
+.gitattributes          merge=ours   # ensure this file itself is never overridden

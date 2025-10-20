@@ -1,0 +1,2 @@
+jupyter-book
+sphinx_new_tab_link
