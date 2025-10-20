@@ -9,3 +9,6 @@ kaleido
 lxml
 h3
 rasterio
+jupyter-book
+nbformat
+sphinx_new_tab_link
