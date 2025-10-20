@@ -1,136 +1,31 @@
-<img src="./docs/images/Logo_Destination_Earth_Colours.png" width=60% >
+# Instructions for Contributors
 
-<br /><br />
+This branch contains files specific to building the Jupyter Book.
+Some files (like _config.yml, _toc.yml, scripts/pre-build.py, etc.) are protected using .gitattributes and should never be overwritten by merges from main.
+The ours merge driver enforces this behavior.
 
-# Polytope Examples for DT Data Access
+## Steps
 
-- [Polytope Examples for DT Data Access](#polytope-examples-for-dt-data-access)
-  - [Access using your Destination Earth Service Platform credentials](#access-using-your-destination-earth-service-platform-credentials)
-  - [Installation](#installation)
-    - [Option 1: Conda Instructions](#option-1-conda-instructions)
-    - [Option 2: Python Virtual Environment (venv)](#option-2-python-virtual-environment-venv)
-  - [Data Locations](#data-locations)
-  - [Climate-DT Examples](#climate-dt-examples)
-  - [Extremes-DT Examples](#extremes-dt-examples)
-  - [On-Demand Extremes-DT Examples](#on-demand-extremes-dt-examples)
-  - [NextGEMS Examples](#nextgems-examples)
-  - [Polytope Quota Limits for DestinE](#polytope-quota-limits-for-destine)
+### 1. Configure the merge driver (only once)
 
+Ensures that the protected files defined in .gitattributes are kept when merging:
 
-## Access using your Destination Earth Service Platform credentials
-
-This repository describes the process for accessing Destination Earth DT data via the Polytope web service hosted on the LUMI Databridge.
-
-1. Install polytope-client from PyPI:
-```
-pip install --upgrade polytope-client
+```bash
+git config merge.ours.driver true
 ```
 
-2. Retrieve a token from the Destination Earth Service Platform (DESP) by running the script included in this repository:
-```
-python desp-authentication.py -u <username> -p <password>
-# see --help for more options
-```
-Or you can run the script without arguments
-```
-python desp-authentication.py 
-# see --help for more options
-```
-You will then be prompted to enter your username and password if no credentials are found in a config or through environment variables.
-
-You will need some dependencies to run the script, which can be installed using pip:
-```
-pip install --upgrade lxml conflator
+### 2. Fetch the latest updates from main
+```bash
+git fetch origin main
 ```
 
-The script automatically places your token in `~/.polytopeapirc` where the client will pick it up. The token is a long-lived ("offline_access") token.
-
-3. Run the example scripts in this repostory to download data, and customise them as you wish.
-
-## Installation
-
-You can run the notebooks by setting up an appropriate environment using one of the following options:
-
-* Option 1: Use the `environment.yml` file to create a Conda environment, or
-
-* Option 2: Use the `requirements.txt` file to set up a Python virtual environment.
-
-After creating the environment, the provided commands will also register an IPython kernel named earthkit, which you can select when working with the notebooks.
-
-### Option 1: Conda Instructions
-
+### 3. Merge main into your jupyterbook branch
+```bash
+git rebase origin/main
 ```
-envname=earthkit
-conda create -n $envname -c conda-forge -y python=3.10
-conda env update -n $envname -f environment.yml
-conda activate $envname
-
-# set earthkit environment to the default used by ipykernels
-python3 -m ipykernel install --user --name=$envname
+### 4. Push your changes to the remote
+```bash
+git push
 ```
 
-### Option 2: Python Virtual Environment (venv)
-
-```
-envname=earthkit
-
-# Create a virtual environment
-python3 -m venv $envname
-
-# Activate it
-source $envname/bin/activate      # macOS/Linux
-
-# Install dependencies
-pip install -r requirements.txt
-
-# If using Jupyter notebooks, register your environment as a kernel for ipykernel
-python3 -m ipykernel install --user --name=$envname
-```
-
-## Data Locations
-
-Data can be found on both LUMI and MN5, to access data on either change the `address` argument in `earthkit.data.from_source()` to either `polytope.mn5.apps.dte.destination-earth.eu` for MN5 or `polytope.lumi.apps.dte.destination-earth.eu` for LUMI.
-
-## Climate-DT Examples
-
-- [Climate DT Example Directory](climate-dt)
-  - [Climate DT python Script](climate-dt/climate-dt.py)
-  - [Climate DT notebook example](climate-dt/climate-dt-earthkit-example.ipynb)
-  - [Climate DT notebook domain example](climate-dt/climate-dt-earthkit-example-domain.ipynb)
-  - [Climate DT notebook healpix regrid](climate-dt/healpix-data.ipynb)
-  - [Climate DT notebook healpix ocean](climate-dt/climate-dt-healpix-ocean-example.ipynb)
-  - [Climate DT notebook feature extraction timeseries](climate-dt/climate-dt-earthkit-fe-timeseries.ipynb)
-  - [Climate DT MN5 notebook example](climate-dt/climate-dt-earthkit-MN5-example.ipynb)
-  - [Climate DT MN5 monthly means notebook example](climate-dt/climate-dt-earthkit-MN5-monthly-mean-example.ipynb)
-
-## Extremes-DT Examples
-
-- [Extremes DT Example Directory](extremes-dt)
-  - [Extremes DT python Script](extremes-dt/extremes-dt.py)
-  - [Extremes DT notebook example](extremes-dt/extremes-dt-earthkit-example.ipynb)
-  - [Extremes DT notebook domain example](extremes-dt/extremes-dt-earthkit-example-domain.ipynb)
-  - [Extremes DT notebook regrid example](extremes-dt/extremes-dt-earthkit-example-regrid.ipynb)
-  - [Extremes DT notebook feature extraction timeseries example](extremes-dt/extremes-dt-earthkit-example-fe-timeseries.ipynb)
-  - [Extremes DT notebook feature extraction using H3 example](extremes-dt/extremes-dt-earthkit-example-H3-example.ipynb)
-
-
-## On-Demand Extremes-DT Examples
-
-- [On-Demand Extremes DT Example Directory](on-demand-extremes-dt)
-  - [On-Demand Extremes DT python Script](on-demand-extremes-dt/on-demand-extremes-dt-example.py)
-  - [On-Demand Extremes DT notebook example](on-demand-extremes-dt/on-demand-extremes-dt-example.ipynb)
-
-## NextGEMS Examples
-
-- [NextGEMS Example Directory](nextgems)
-  - [NextGEMS historical 1990-2020 Notebook](nextgems/nextGEMS-historical-earthkit-example.ipynb)
-  - [NextGEMS scenario 2020-2050 Notebook](nextgems/nextGEMS-scenario-earthkit-example.ipynb)
-
-## Polytope Quota Limits for DestinE
-
-To ensure system stability and fair usage, the following operational limits are enforced:
-
-- **API Rate Limit:** Up to 50 requests per second. This limit may be adjusted based on system usage.
-- **Concurrent Operations Limit:** A maximum of 5 download requests can be active at the same time.
-
-Please plan your usage accordingly to avoid interruptions.
+Pushing triggers the GitHub Actions workflow, which builds the Jupyter Book and deploys it to GitHub Pages

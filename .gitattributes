@@ -11,4 +11,6 @@ _toc.yml                merge=ours
 scripts/pre-build.py    merge=ours
 docs/**                 merge=ours
 book-requirements.txt   merge=ours
-.gitattributes          merge=ours   # ensure this file itself is never overridden
+.gitattributes          merge=ours
+README.md               merge=ours
+.github/**              merge=ours
