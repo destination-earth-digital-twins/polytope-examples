@@ -198,6 +198,8 @@
 
 <li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-fe-country.html">Polytope Climate-DT Country cut-out example notebook</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-fe-pcolormesh.html">Polytope Climate-DT Country pcolormesh example notebook</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-fe-polygon.html">Polytope Climate-DT Polygon example notebook</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="climate-dt/climate-dt-earthkit-fe-story-nudging.html">Polytope Climate-DT Time Series example notebook for story nudging</a></li>
@@ -230,6 +232,8 @@
 
 <li class="toctree-l2"><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-fe-country.html">Polytope Extremes-DT Feature Extraction Country cut out example notebook</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-fe-pcolormesh.html">Polytope Extremes-DT Feature Extraction pcolormesh example notebook</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-fe-polygon.html">Polytope Extremes-DT Feature Extraction Polygon example notebook</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="extremes-dt/extremes-dt-earthkit-example-fe-polygon-H3.html">Polytope Extremes-DT Feature Extraction Polygon example notebook</a></li>
@@ -257,6 +261,16 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="nextgems/README.html">NextGEMS Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="nextgems/nextGEMS-historical-earthkit-example.html">Polytope nextGEMS historical 1990-2020 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="nextgems/nextGEMS-historical-fe-boundingbox-example.html">Polytope nextGEMS historical bounding box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="nextgems/nextGEMS-historical-fe-country-example.html">Polytope nextGEMS historical bounding box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="nextgems/nextGEMS-historical-fe-timeseries-example.html">Polytope nextGEMS historical timeseries example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="nextgems/nextGEMS-historical-fe-trajectory-example.html">Polytope nextGEMS historical trajectory example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="nextgems/nextGEMS-historical-fe-verticalprofile-example.html">Polytope nextGEMS historical vertical profile example notebook</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="nextgems/nextGEMS-scenario-earthkit-example.html">Polytope nextGEMS historical 2020-2050 example notebook</a></li>
 
@@ -411,7 +425,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-using-your-destination-earth-service-platform-credentials">Access using your Destination Earth Service Platform credentials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-conda-instructions">Option 1: Conda Instructions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-python-virtual-environment-venv">Option 2: Python Virtual Environment (venv)</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-locations">Data Locations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-dt-examples">Climate-DT Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extremes-dt-examples">Extremes-DT Examples</a></li>
@@ -435,13 +453,23 @@ document.write(`
 <section id="polytope-examples-for-dt-data-access">
 <h1>Polytope Examples for DT Data Access<a class="headerlink" href="#polytope-examples-for-dt-data-access" title="Link to this heading">#</a></h1>
 <ul class="simple">
+<li><p><a class="reference internal" href="#polytope-examples-for-dt-data-access"><span class="xref myst">Polytope Examples for DT Data Access</span></a></p>
+<ul>
 <li><p><a class="reference internal" href="#access-using-your-destination-earth-service-platform-credentials"><span class="xref myst">Access using your Destination Earth Service Platform credentials</span></a></p></li>
-<li><p><a class="reference internal" href="#installation"><span class="xref myst">Installation</span></a></p></li>
+<li><p><a class="reference internal" href="#installation"><span class="xref myst">Installation</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#option-1-conda-instructions"><span class="xref myst">Option 1: Conda Instructions</span></a></p></li>
+<li><p><a class="reference internal" href="#option-2-python-virtual-environment-venv"><span class="xref myst">Option 2: Python Virtual Environment (venv)</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#data-locations"><span class="xref myst">Data Locations</span></a></p></li>
 <li><p><a class="reference internal" href="#climate-dt-examples"><span class="xref myst">Climate-DT Examples</span></a></p></li>
 <li><p><a class="reference internal" href="#extremes-dt-examples"><span class="xref myst">Extremes-DT Examples</span></a></p></li>
 <li><p><a class="reference internal" href="#on-demand-extremes-dt-examples"><span class="xref myst">On-Demand Extremes-DT Examples</span></a></p></li>
 <li><p><a class="reference internal" href="#nextgems-examples"><span class="xref myst">NextGEMS Examples</span></a></p></li>
 <li><p><a class="reference internal" href="#polytope-quota-limits-for-destine"><span class="xref myst">Polytope Quota Limits for DestinE</span></a></p></li>
+</ul>
+</li>
 </ul>
 <section id="access-using-your-destination-earth-service-platform-credentials">
 <h2>Access using your Destination Earth Service Platform credentials<a class="headerlink" href="#access-using-your-destination-earth-service-platform-credentials" title="Link to this heading">#</a></h2>
@@ -476,7 +504,14 @@ document.write(`
 </section>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
-<p>To run the notebooks you can use the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file provided to create a conda environment that can run the notebooks. The following commands create the environment and also create an ipykernel called <code class="docutils literal notranslate"><span class="pre">earthkit</span></code> than can be used in notebooks if selected.</p>
+<p>You can run the notebooks by setting up an appropriate environment using one of the following options:</p>
+<ul class="simple">
+<li><p>Option 1: Use the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file to create a Conda environment, or</p></li>
+<li><p>Option 2: Use the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file to set up a Python virtual environment.</p></li>
+</ul>
+<p>After creating the environment, the provided commands will also register an IPython kernel named earthkit, which you can select when working with the notebooks.</p>
+<section id="option-1-conda-instructions">
+<h3>Option 1: Conda Instructions<a class="headerlink" href="#option-1-conda-instructions" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>envname=earthkit
 conda create -n $envname -c conda-forge -y python=3.10
 conda env update -n $envname -f environment.yml
@@ -486,6 +521,25 @@ conda activate $envname
 python3 -m ipykernel install --user --name=$envname
 </pre></div>
 </div>
+</section>
+<section id="option-2-python-virtual-environment-venv">
+<h3>Option 2: Python Virtual Environment (venv)<a class="headerlink" href="#option-2-python-virtual-environment-venv" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>envname=earthkit
+
+# Create a virtual environment
+python3 -m venv $envname
+
+# Activate it
+source $envname/bin/activate      # macOS/Linux
+
+# Install dependencies
+pip install -r requirements.txt
+
+# If using Jupyter notebooks, register your environment as a kernel for ipykernel
+python3 -m ipykernel install --user --name=$envname
+</pre></div>
+</div>
+</section>
 </section>
 <section id="data-locations">
 <h2>Data Locations<a class="headerlink" href="#data-locations" title="Link to this heading">#</a></h2>
@@ -614,7 +668,11 @@ python3 -m ipykernel install --user --name=$envname
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-using-your-destination-earth-service-platform-credentials">Access using your Destination Earth Service Platform credentials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-conda-instructions">Option 1: Conda Instructions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-python-virtual-environment-venv">Option 2: Python Virtual Environment (venv)</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-locations">Data Locations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-dt-examples">Climate-DT Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extremes-dt-examples">Extremes-DT Examples</a></li>
