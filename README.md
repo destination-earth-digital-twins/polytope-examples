@@ -119,6 +119,8 @@ Data can be found on both LUMI and MN5, to access data on either change the `add
 - [On-Demand Extremes DT Example Directory](on-demand-extremes-dt)
   - [On-Demand Extremes DT python Script](on-demand-extremes-dt/on-demand-extremes-dt-example.py)
   - [On-Demand Extremes DT notebook example](on-demand-extremes-dt/on-demand-extremes-dt-example.ipynb)
+  - [On-Demand Extremes DT feature extraction country example](on-demand-extremes-dt/on-demand-country-fe-example.ipynb)
+  - [On-Demand Extremes DT feature extraction trajectory example](on-demand-extremes-dt/on-demand-trajectory-fe-example.ipynb)
 
 ## NextGEMS Examples
 
