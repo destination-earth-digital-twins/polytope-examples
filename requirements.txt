@@ -1,4 +1,5 @@
 earthkit==0.11.2
+earthkit-plots==0.4.0
 covjsonkit>=0.2.5
 polytope-client
 earthkit-geo
