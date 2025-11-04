@@ -17,3 +17,5 @@ dependencies:
       - kaleido
       - h3
       - rasterio
+      - xgboost
+      - scikit-learn
