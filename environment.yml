@@ -14,6 +14,8 @@ dependencies:
       - covjsonkit>=0.2.5
       - polytope-client
       - earthkit-geo
-      - kaleido
+      - kaleido==0.2.1
       - h3
       - rasterio
+      - xgboost
+      - scikit-learn
