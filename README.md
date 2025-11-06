@@ -21,12 +21,17 @@
 
 This repository describes the process for accessing Destination Earth DT data via the Polytope web service hosted on the LUMI Databridge.
 
-1. Install polytope-client from PyPI:
+1. Clone the repo locally or if using polytope via Insula `cd` into the polytope directory.
+```
+git clone git@github.com:destination-earth-digital-twins/polytope-examples.git
+```
+
+2. Install polytope-client from PyPI:
 ```
 pip install --upgrade polytope-client
 ```
 
-2. Retrieve a token from the Destination Earth Service Platform (DESP) by running the script included in this repository:
+1. Retrieve a token from the Destination Earth Service Platform (DESP) by running the script included in this repository:
 ```
 python desp-authentication.py -u <username> -p <password>
 # see --help for more options
