@@ -31,7 +31,7 @@ git clone git@github.com:destination-earth-digital-twins/polytope-examples.git
 pip install --upgrade polytope-client
 ```
 
-1. Retrieve a token from the Destination Earth Service Platform (DESP) by running the script included in this repository:
+3. Retrieve a token from the Destination Earth Service Platform (DESP) by running the script included in this repository:
 ```
 python desp-authentication.py -u <username> -p <password>
 # see --help for more options
