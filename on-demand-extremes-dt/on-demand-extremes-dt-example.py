@@ -26,12 +26,12 @@ request = {
     'dataset': 'on-demand-extremes-dt',
     'expver': '0099',
     'stream': 'oper',
-    'date': '20250616',
+    'date': '20250601',
     'time': 0,
     'type': 'fc',
     'levtype': 'sfc',
-    'georef': 'u4usq2',
-    'step': 12,
+    'georef': 'u1516b',
+    'step': '12hm15',
     'param': 167
 }
 data = earthkit.data.from_source("polytope", "destination-earth", request, address=polytope_address, stream=False)
@@ -51,11 +51,11 @@ data.ls()
 
 import earthkit.plots
 chart = earthkit.plots.Map()
-chart.block(data)
+chart.grid_cells(data)
 chart.title(f"Results from on-demand-extremes-dt")
 chart.coastlines()
 chart.gridlines()
 chart.legend()
-chart.show()
 chart.save("on-demand-extremes-dt.png")
+chart.show()
 
