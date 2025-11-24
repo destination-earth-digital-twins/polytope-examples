@@ -31,3 +31,11 @@ repository:
 binder:
   binderhub_url               : "https://code.insula.destine.eu"
   text                        : "Launch DestinE Insula (requires login)"
+
+# Sitemap
+sphinx:
+  config:
+    html_baseurl            : "https://destination-earth-digital-twins.github.io/polytope-examples/"
+    sitemap_url_scheme      : "{link}"
+  extra_extensions:
+    - sphinx_sitemap
