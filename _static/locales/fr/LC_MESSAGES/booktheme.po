@@ -8,53 +8,32 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "By the"
-msgstr "Par le"
-
-msgid "By"
-msgstr "Par"
-
-msgid "Contents"
-msgstr "Contenu"
-
 msgid "Copyright"
 msgstr "droits d'auteur"
-
-msgid "Download notebook file"
-msgstr "Télécharger le fichier notebook"
-
-msgid "Download source file"
-msgstr "Télécharger le fichier source"
-
-msgid "Download this page"
-msgstr "Téléchargez cette page"
-
-msgid "Edit this page"
-msgstr "Modifier cette page"
-
-msgid "Fullscreen mode"
-msgstr "Mode plein écran"
-
-msgid "Last updated on"
-msgstr "Dernière mise à jour le"
-
-msgid "Launch"
-msgstr "lancement"
-
-msgid "Open an issue"
-msgstr "Ouvrez un problème"
 
 msgid "Print to PDF"
 msgstr "Imprimer au format PDF"
 
-msgid "Source repository"
-msgstr "Dépôt source"
+msgid "Edit this page"
+msgstr "Modifier cette page"
+
+msgid "suggest edit"
+msgstr "suggestion de modification"
 
 msgid "Sphinx Book Theme"
 msgstr "Thème du livre Sphinx"
 
+msgid "open issue"
+msgstr "signaler un problème"
+
+msgid "By the"
+msgstr "Par le"
+
 msgid "Theme by the"
 msgstr "Thème par le"
+
+msgid "Download notebook file"
+msgstr "Télécharger le fichier notebook"
 
 msgid "Toggle navigation"
 msgstr "Basculer la navigation"
@@ -62,14 +41,41 @@ msgstr "Basculer la navigation"
 msgid "next page"
 msgstr "page suivante"
 
-msgid "open issue"
-msgstr "signaler un problème"
+msgid "Contents"
+msgstr "Contenu"
+
+msgid "Source repository"
+msgstr "Dépôt source"
+
+msgid "Search the docs ..."
+msgstr "Rechercher dans les documents ..."
+
+msgid "Last updated on"
+msgstr "Dernière mise à jour le"
+
+msgid "Search this book..."
+msgstr "Rechercher dans ce livre ..."
+
+msgid "Download this page"
+msgstr "Téléchargez cette page"
+
+msgid "Launch"
+msgstr "lancement"
+
+msgid "Download source file"
+msgstr "Télécharger le fichier source"
 
 msgid "previous page"
 msgstr "page précédente"
 
+msgid "By"
+msgstr "Par"
+
+msgid "Open an issue"
+msgstr "Ouvrez un problème"
+
+msgid "Fullscreen mode"
+msgstr "Mode plein écran"
+
 msgid "repository"
 msgstr "dépôt"
-
-msgid "suggest edit"
-msgstr "suggestion de modification"
