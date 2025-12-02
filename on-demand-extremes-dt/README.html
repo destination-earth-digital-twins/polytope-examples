@@ -62,8 +62,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://destination-earth-digital-twins.github.io/polytope-examples/on-demand-extremes-dt/README.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Polytope On-Demand Extremes-DT example notebook" href="on-demand-extremes-dt-example.html" />
-    <link rel="prev" title="Polytope Extremes-DT example notebook" href="../extremes-dt/extremes-dt-earthkit-example-regrid.html" />
+    <link rel="next" title="Polytope On-Demand-DT Country cut-out example notebook" href="on-demand-country-fe-example.html" />
+    <link rel="prev" title="Polytope Extremes-DT Serverside Interpolation example notebook" href="../extremes-dt/extremes-dt-earthkit-serverside-interpolation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -321,7 +321,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../README.html">
-                    Instructions for Contributors
+                    Polytope Examples for DT Data Access
                 </a>
             </li>
         </ul>
@@ -355,9 +355,13 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l2"><a class="reference internal" href="../climate-dt/climate-dt-earthkit-fe-verticalprofile.html">Polytope Climate-DT Feature Extraction Vertical Profile example notebook</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="../climate-dt/climate-dt-earthkit-geotiff.html">Polytope Climate-DT Bounding Box example notebook</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../climate-dt/climate-dt-earthkit-grid-example.html">Polytope Climate-DT example notebook</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../climate-dt/climate-dt-earthkit-healpix-interpolate.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../climate-dt/climate-dt-earthkit-serverside-interpolation.html">Polytope Climate-DT Serverside Interpolation example notebook</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../climate-dt/climate-dt-healpix-data.html">Climate-DT Healpix data</a></li>
 
@@ -395,12 +399,22 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l2"><a class="reference internal" href="../extremes-dt/extremes-dt-earthkit-example-regrid.html">Polytope Extremes-DT example notebook</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="../extremes-dt/extremes-dt-earthkit-serverside-interpolation.html">Polytope Extremes-DT Serverside Interpolation example notebook</a></li>
+
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">On-Demand Extremes-DT</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="on-demand-country-fe-example.html">Polytope On-Demand-DT Country cut-out example notebook</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="on-demand-extremes-dt-example.html">Polytope On-Demand Extremes-DT example notebook</a></li>
 
 
+
+<li class="toctree-l2"><a class="reference internal" href="on-demand-extremes-dt-timeseries-fe-example.html">Polytope On-Demand DT Feature Extraction Timeseries example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="on-demand-extremes-dt-vertical-profile-fe-example.html">Polytope On-Demand DT Feature Extraction</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="on-demand-trajectory-fe-example.html">Polytope On-Demand DT Trajectory example notebook</a></li>
 
 </ul>
 </li>
@@ -535,6 +549,21 @@ title="Print to PDF"
               
   <section id="on-demand-extremes-dt">
 <h1>On-Demand Extremes-DT<a class="headerlink" href="#on-demand-extremes-dt" title="Permalink to this heading">#</a></h1>
+<p>Polytope feature extraction is currently only enabled for a specific experiment of the On-Demand Extremes DT.</p>
+<p>The supported experiment is defined by the partial MARS request</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+    &quot;class&quot;: &quot;d1&quot;,
+    &quot;dataset&quot;: &quot;on-demand-extremes-dt&quot;,
+    &quot;stream&quot;: &quot;oper&quot;,
+    &quot;expver&quot;: &quot;0099&quot;,
+    &quot;type&quot;: &quot;fc&quot;,
+    &quot;date&quot;: &quot;2025-09-26&quot;,
+    &quot;time&quot;: &quot;0000&quot;,
+    &quot;georef&quot;: &quot;gcgkrb&quot;,
+}
+</pre></div>
+</div>
+<p>Available key-value pairs for this datacube can be visualised through the <a class="reference external" href="https://catalogue.lumi.apps.dte.destination-earth.eu/?class=d1&amp;dataset=on-demand-extremes-dt&amp;stream=oper&amp;expver=0099&amp;type=fc&amp;date=2025-09-26&amp;time=0000&amp;georef=gcgkrb">Destination Earth STAC catalogue</a>.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -567,17 +596,17 @@ title="Print to PDF"
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="../extremes-dt/extremes-dt-earthkit-example-regrid.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="../extremes-dt/extremes-dt-earthkit-serverside-interpolation.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Polytope Extremes-DT example notebook</p>
+          <p class="prev-next-title">Polytope Extremes-DT Serverside Interpolation example notebook</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="on-demand-extremes-dt-example.html" title="next page">
+  <a class='right-next' id="next-link" href="on-demand-country-fe-example.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Polytope On-Demand Extremes-DT example notebook</p>
+      <p class="prev-next-title">Polytope On-Demand-DT Country cut-out example notebook</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
