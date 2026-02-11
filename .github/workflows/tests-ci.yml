@@ -63,7 +63,7 @@ jobs:
       - name: Run full notebook suite (PR)
         if: github.event_name == 'pull_request'
         run: |
-          pytest -v tests/test_notebooks.py
+          pytest -v tests/pass_fail_test.py
 
       # -------------------------------------------------
       # Run ONLY changed notebooks on push
@@ -85,7 +85,7 @@ jobs:
           NODE_IDS=""
           for nb in $NOTEBOOKS; do
             REL_PATH=$(realpath --relative-to=. "$nb")
-            NODE_IDS="$NODE_IDS tests/test_notebooks.py::test_notebook_execution[$REL_PATH]"
+            NODE_IDS="$NODE_IDS tests/pass_fail_test.py::test_notebook_execution[$REL_PATH]"
           done
 
           echo "Running:"
