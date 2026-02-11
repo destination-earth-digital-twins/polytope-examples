@@ -5,6 +5,11 @@ on:
     branches:
       - main
       - develop
+
+  push:
+    branches:
+      - main
+      - develop
       - notebook-tests
 
 jobs:
@@ -14,27 +19,76 @@ jobs:
     env:
       LIVE_REQUEST: "false"
 
-    timeout-minutes: 30
+    timeout-minutes: 60
 
     steps:
+      # -------------------------------------------------
+      # Checkout repository with Git LFS
+      # -------------------------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           lfs: true
           fetch-depth: 0
 
+      # -------------------------------------------------
+      # Detect changed files (push only)
+      # -------------------------------------------------
+      - name: Get changed files
+        if: github.event_name == 'push'
+        id: changed
+        uses: tj-actions/changed-files@v44
+
+      # -------------------------------------------------
+      # Set up Python
+      # -------------------------------------------------
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: "pip"
 
+      # -------------------------------------------------
+      # Install dependencies
+      # -------------------------------------------------
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install -r requirements-dev.txt
 
-      - name: Run notebook tests
+      # -------------------------------------------------
+      # Run FULL suite on PR
+      # -------------------------------------------------
+      - name: Run full notebook suite (PR)
+        if: github.event_name == 'pull_request'
         run: |
-          pytest -v
+          pytest -v tests/test_notebooks.py
+
+      # -------------------------------------------------
+      # Run ONLY changed notebooks on push
+      # -------------------------------------------------
+      - name: Run changed notebooks (push)
+        if: github.event_name == 'push'
+        run: |
+          NOTEBOOKS=$(echo "${{ steps.changed.outputs.all_changed_files }}" | tr ' ' '\n' | grep '\.ipynb$' || true)
+
+          if [ -z "$NOTEBOOKS" ]; then
+            echo "No notebook changes detected. Skipping."
+            exit 0
+          fi
+
+          echo "Changed notebooks:"
+          echo "$NOTEBOOKS"
+
+          # Build exact pytest node ids
+          NODE_IDS=""
+          for nb in $NOTEBOOKS; do
+            REL_PATH=$(realpath --relative-to=. "$nb")
+            NODE_IDS="$NODE_IDS tests/test_notebooks.py::test_notebook_execution[$REL_PATH]"
+          done
+
+          echo "Running:"
+          echo "pytest -v $NODE_IDS"
+
+          pytest -v $NODE_IDS

@@ -2,16 +2,15 @@ import nbformat
 import pytest
 from nbclient import NotebookClient
 from nbclient.exceptions import CellExecutionError
-from pathlib import Path, PosixPath
+from pathlib import Path
+
+
+# ---------------------------------------------------------------------
+# Paths
+# ---------------------------------------------------------------------
 
 HERE = Path(__file__).resolve().parent
 PROJECT_ROOT = HERE.parent
-
-SKIP_NOTEBOOKS = {
-    PROJECT_ROOT / "climate-dt/climate-dt-train-ai-timeseries-polytope.ipynb",
-    }
-
-LIVE_REQUEST = False
 
 NOTEBOOK_ROOTS = [
     PROJECT_ROOT / "climate-dt",
@@ -20,29 +19,25 @@ NOTEBOOK_ROOTS = [
     PROJECT_ROOT / "nextgems",
 ]
 
+SKIP_NOTEBOOKS = {
+    PROJECT_ROOT / "climate-dt/climate-dt-train-ai-timeseries-polytope.ipynb",
+}
+
+
+# ---------------------------------------------------------------------
+# Utilities
+# ---------------------------------------------------------------------
+
 def collect_notebooks():
     notebooks = []
     for root in NOTEBOOK_ROOTS:
         notebooks.extend(root.rglob("*.ipynb"))
-    return notebooks
-
-NOTEBOOKS = collect_notebooks()
+    return sorted(notebooks)
 
 
-@pytest.mark.parametrize(
-    "notebook_path",
-    NOTEBOOKS,
-    ids=lambda p: str(p.relative_to(PROJECT_ROOT)),
-)
-@pytest.mark.timeout(600)
-def test_notebook_execution(notebook_path, monkeypatch):
-    if notebook_path in SKIP_NOTEBOOKS:
-        # import pdb; pdb.set_trace()
-        pytest.skip("Notebook skipped by test configuration")
-
-    monkeypatch.setenv("LIVE_REQUEST", "false")
-
+def execute_notebook(notebook_path: Path):
     nb = nbformat.read(notebook_path, as_version=4)
+
     client = NotebookClient(
         nb,
         timeout=600,
@@ -62,3 +57,24 @@ Notebook: {notebook_path}
 """,
             pytrace=False,
         )
+
+
+# ---------------------------------------------------------------------
+# Single Professional Test
+# ---------------------------------------------------------------------
+
+ALL_NOTEBOOKS = collect_notebooks()
+
+
+@pytest.mark.parametrize(
+    "notebook_path",
+    ALL_NOTEBOOKS,
+    ids=lambda p: str(p.relative_to(PROJECT_ROOT)),
+)
+@pytest.mark.timeout(600)
+def test_notebook_execution(notebook_path, monkeypatch):
+    if notebook_path in SKIP_NOTEBOOKS:
+        pytest.skip("Notebook skipped by configuration")
+
+    monkeypatch.setenv("LIVE_REQUEST", "false")
+    execute_notebook(notebook_path)
