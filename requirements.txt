@@ -13,3 +13,5 @@ h3
 jupyter-book
 nbformat
 sphinx_new_tab_link
+rasterio
+rioxarray
