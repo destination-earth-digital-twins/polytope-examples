@@ -1,18 +1,12 @@
 .venv/
 __pycache__/
-tests/
 .vscode/
 env/
 .ipynb_checkpoints/
-*/data/
-.gitattributes
 
 
 # Jupyter Book configs and TOC files
 _config.yaml
 _toc.yaml
 _build/
-
-scripts/
-Makefile
 

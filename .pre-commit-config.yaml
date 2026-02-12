@@ -1,0 +1,8 @@
+repos:
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.6.1
+    hooks:
+      - id: nbstripout
+        args:
+          - --drop-output-type error
+          - --drop-output-type stream
