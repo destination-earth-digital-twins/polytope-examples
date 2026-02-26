@@ -19,3 +19,4 @@ dependencies:
       - rasterio
       - xgboost
       - scikit-learn
+      - cmocean
