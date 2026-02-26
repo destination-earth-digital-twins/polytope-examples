@@ -12,3 +12,4 @@ kaleido==0.2.1
 lxml
 h3
 rasterio
+cmocean
