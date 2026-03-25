@@ -9,7 +9,7 @@ client = Client(
 )
 
 # Optionally revoke previous requests
-client.revoke("all")
+# client.revoke("all")
 
 # This request matches a single parameter of the extremes DT, at 4km resolution
 # which began production on 2023-12-11

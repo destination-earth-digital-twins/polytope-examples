@@ -9,7 +9,7 @@ client = Client(
 )
 
 # Optionally revoke previous requests
-client.revoke("all")
+# client.revoke("all")
 
 # This request retrieves a parameter from the extremes-dt dataset, for the previous week
 

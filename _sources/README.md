@@ -133,6 +133,10 @@ Data can be found on both LUMI and MN5, to access data on either change the `add
   - [NextGEMS historical 1990-2020 Notebook](nextgems/nextGEMS-historical-earthkit-example.ipynb)
   - [NextGEMS scenario 2020-2050 Notebook](nextgems/nextGEMS-scenario-earthkit-example.ipynb)
 
+## Polytope Documentation
+
+General infomration about the Polytope Web service and how to use it can be found here: https://polytope.readthedocs.io/en/latest/Service/Full_fields/
+
 ## Polytope Quota Limits for DestinE
 
 To ensure system stability and fair usage, the following operational limits are enforced:
