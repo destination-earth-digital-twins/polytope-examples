@@ -6,6 +6,8 @@ dependencies:
   - ipykernel
   - nbformat
   - healpy
+  - fiona
+  - gdal
   - pip
   - pip:
       - lxml
