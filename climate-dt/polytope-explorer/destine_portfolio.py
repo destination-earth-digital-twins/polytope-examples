@@ -57,9 +57,9 @@ SFC_VARIABLES = {
     "avg_inss":     {"dims": D_SFC, "long_name": "Time-mean northward turbulent surface stress",    "units": "N m**-2"},
     "avg_ie":       {"dims": D_SFC, "long_name": "Time-mean moisture flux",                         "units": "kg m**-2 s**-1"},
     "avg_tnswrfcs": {"dims": D_SFC, "long_name": "Time-mean top net short-wave radiation flux, clear sky",     "units": "W m**-2"},
-    "avg_tnlwrcs":  {"dims": D_SFC, "long_name": "Time-mean top net long-wave radiation flux, clear sky",      "units": "W m**-2"},
+    "avg_tnlwrfcs": {"dims": D_SFC, "long_name": "Time-mean top net long-wave radiation flux, clear sky",      "units": "W m**-2"},
     "avg_snswrfcs": {"dims": D_SFC, "long_name": "Time-mean surface net short-wave radiation flux, clear sky", "units": "W m**-2"},
-    "avg_snlwrcs":  {"dims": D_SFC, "long_name": "Time-mean surface net long-wave radiation flux, clear sky",  "units": "W m**-2"},
+    "avg_snlwrfcs": {"dims": D_SFC, "long_name": "Time-mean surface net long-wave radiation flux, clear sky",  "units": "W m**-2"},
     "avg_tdswrf":   {"dims": D_SFC, "long_name": "Time-mean top downward short-wave radiation flux","units": "W m**-2"},
     "avg_tprate":   {"dims": D_SFC, "long_name": "Time-mean total precipitation rate",              "units": "kg m**-2 s**-1"},
 }
@@ -210,9 +210,9 @@ CLTE_SFC_MEAN_VARIABLES = {
     "avg_inss":     {"dims": D_SFC, "long_name": "Time-mean northward turbulent surface stress",                           "units": "N m**-2"},
     "avg_ie":       {"dims": D_SFC, "long_name": "Time-mean moisture flux",                                                "units": "kg m**-2 s**-1"},
     "avg_tnswrfcs": {"dims": D_SFC, "long_name": "Time-mean top net short-wave radiation flux, clear sky",                 "units": "W m**-2"},
-    "avg_tnlwrcs":  {"dims": D_SFC, "long_name": "Time-mean top net long-wave radiation flux, clear sky",                  "units": "W m**-2"},
+    "avg_tnlwrfcs": {"dims": D_SFC, "long_name": "Time-mean top net long-wave radiation flux, clear sky",                  "units": "W m**-2"},
     "avg_snswrfcs": {"dims": D_SFC, "long_name": "Time-mean surface net short-wave radiation flux, clear sky",             "units": "W m**-2"},
-    "avg_snlwrcs":  {"dims": D_SFC, "long_name": "Time-mean surface net long-wave radiation flux, clear sky",              "units": "W m**-2"},
+    "avg_snlwrfcs": {"dims": D_SFC, "long_name": "Time-mean surface net long-wave radiation flux, clear sky",              "units": "W m**-2"},
     "avg_tdswrf":   {"dims": D_SFC, "long_name": "Time-mean top downward short-wave radiation flux",                       "units": "W m**-2"},
     "avg_tprate":   {"dims": D_SFC, "long_name": "Time-mean total precipitation rate",                                     "units": "kg m**-2 s**-1"},
 }
