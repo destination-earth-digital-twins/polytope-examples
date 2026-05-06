@@ -36,7 +36,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-> **Note:** `polytope_zarr.py` (used by the `polytope-explorer` notebooks) requires **zarr v2**
+> **Note:** `polytope_zarr.py` (used by the `climate-dt-explorer` notebooks) requires **zarr v2**
 > (`zarr>=2.18,<3`) and `numcodecs<0.16`. These pins are included in `requirements.txt`.
 > Installing zarr v3 will cause a `TypeError: Unsupported type for store_like` error.
 
@@ -47,7 +47,7 @@ If you are running on the **DESP**, the packages may already be available. Ensur
 
 Before running any notebook you need a valid [DESP account](https://platform.destine.eu/) with
 upgraded Climate DT access. Run **`polytope-explorer/01_key_destine_once.ipynb`** once to store
-your API key in `~/.polytopeapirc`. All other notebooks will pick it up automatically.
+your API key in `~/.polytopeapirc` if you have not already done this using the `desp-authentication.py` script. All other notebooks will pick it up automatically.
 
 ---
 
@@ -97,7 +97,7 @@ Notebooks that apply post-processing steps to retrieved fields.
 | `climate-dt-earthkit-geotiff.ipynb` | Convert full fields and bounding-box extractions to GeoTIFF |
 | `climate-dt-train-ai-timeseries-polytope.ipynb` | Train an XGBoost model on a Polytope-sourced time series |
 
-### `polytope-explorer/`
+### `climate-dt-explorer/`
 
 Notebooks for lazily browsing the full Climate DT data portfolio without downloading data upfront.
 
@@ -116,7 +116,7 @@ Notebooks for lazily browsing the full Climate DT data portfolio without downloa
 
 ## Dataset details
 
-### `polytope-explorer/02_climate_change_destine.ipynb` — configuration options
+### `climate-dt-explorer/02_climate_change_destine.ipynb` — configuration options
 
 All options are set in the configuration cell of the notebook:
 
@@ -175,7 +175,7 @@ Atmosphere fields (sfc, pl, hl, sol) are hourly; ocean/ice (o2d, o3d) are daily 
 > ```
 > Without `.sel(level=...)`, xarray will try to fetch data for **all** levels at once.
 
-The full variable catalogue is defined in `polytope-explorer/destine_portfolio.py` (clmn: 65 vars, clte: 64 vars across all levtypes). Use `polytope-explorer/05_variable_lookup.ipynb` to search by name or keyword and generate ready-to-copy `from_climate_dt()` code snippets. You can also inspect the last Polytope request sent by the store for reuse with `earthkit.data` directly:
+The full variable catalogue is defined in `climate-dt-explorer/destine_portfolio.py` (clmn: 65 vars, clte: 64 vars across all levtypes). Use `climate-dt-explorer/05_variable_lookup.ipynb` to search by name or keyword and generate ready-to-copy `from_climate_dt()` code snippets. You can also inspect the last Polytope request sent by the store for reuse with `earthkit.data` directly:
 
 ```python
 r = store.last_request
