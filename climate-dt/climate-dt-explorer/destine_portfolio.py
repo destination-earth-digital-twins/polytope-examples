@@ -106,7 +106,6 @@ O2D_VARIABLES = {
     # Ocean surface
     "avg_sos":       {"dims": D_O2D, "long_name": "Time-mean sea surface practical salinity",                              "units": "g kg**-1"},
     "avg_tos":       {"dims": D_O2D, "long_name": "Time-mean sea surface temperature",                                    "units": "K"},
-    "avg_mlotst030": {"dims": D_O2D, "long_name": "Time-mean ocean mixed layer depth defined by sigma theta 0.03 kg m-3", "units": "m"},
     "avg_hc300m":    {"dims": D_O2D, "long_name": "Time-mean vertically-integrated heat content in the upper 300 m",      "units": "J m**-2"},
     "avg_hc700m":    {"dims": D_O2D, "long_name": "Time-mean vertically-integrated heat content in the upper 700 m",      "units": "J m**-2"},
     "avg_hcbtm":     {"dims": D_O2D, "long_name": "Time-mean total column heat content",                                  "units": "J m**-2"},
