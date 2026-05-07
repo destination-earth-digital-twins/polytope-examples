@@ -106,10 +106,10 @@ Data can be found on both LUMI and MN5, to access data on either change the `add
 
 ```
 climate-dt/
-├── full-field/                  # Retrieve and visualise complete global or regional fields
-├── full-field-post-processing/  # Apply server-side or client-side post-processing to retrieved fields
+├── explorer/                    # Browse the Climate DT data portfolio lazily without downloading upfront
 ├── feature-extraction/          # Extract specific spatial or temporal features from the datacube
-└── polytope-explorer/           # Browse the Climate DT data portfolio lazily without downloading upfront
+├── full-field/                  # Retrieve and visualise complete global or regional fields
+└── full-field-post-processing/  # Apply server-side or client-side post-processing to retrieved fields
 ```
 
 ### Full Field
@@ -152,10 +152,10 @@ Polytope feature extraction reads only the user-requested data rather than whole
 
 The Climate DT Explorer notebooks allow you to lazily browse the full Climate DT data portfolio without downloading any data upfront. They expose the datacube as a virtual [zarr](https://zarr.readthedocs.io/) store backed by Polytope, so you can inspect available variables, perform climate change analysis over multi-decadal periods, and generate ready-to-use request snippets — only fetching the data chunks you actually need.
 
-- [Climate DT lazy portfolio browser (monthly)](climate-dt/climate-dt-explorer/03_lazy_browse_portfolio.ipynb)
-- [Climate DT lazy portfolio browser (hourly)](climate-dt/climate-dt-explorer/04_lazy_browse_portfolio_hourly.ipynb)
-- [Climate DT climate change analysis](climate-dt/climate-dt-explorer/02_climate_change_destine.ipynb)
-- [Climate DT variable lookup](climate-dt/climate-dt-explorer/05_variable_lookup.ipynb)
+- [Climate DT lazy portfolio browser (monthly)](climate-dt/explorer/03_lazy_browse_portfolio.ipynb)
+- [Climate DT lazy portfolio browser (hourly)](climate-dt/explorer/04_lazy_browse_portfolio_hourly.ipynb)
+- [Climate DT climate change analysis](climate-dt/explorer/02_climate_change_destine.ipynb)
+- [Climate DT variable lookup](climate-dt/explorer/05_variable_lookup.ipynb)
 
 ## Extremes-DT Examples
 
