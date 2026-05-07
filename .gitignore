@@ -4,6 +4,9 @@ __pycache__/
 env/
 .ipynb_checkpoints/
 
+# Local dev sandbox (not pushed upstream)
+climate-dt/polytope-explorer/dev/
+
 
 # Jupyter Book configs and TOC files
 _config.yaml
