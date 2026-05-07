@@ -156,7 +156,42 @@ data/
     └── ...
 ```
 
-### CLTE (hourly) stream — variable summary
+### [`explorer/03_lazy_browse_portfolio.ipynb`](explorer/03_lazy_browse_portfolio.ipynb) — monthly portfolio
+
+Lazy browse of the **monthly (`clmn`) stream** using `PolytopeZarrStore`. Sections:
+
+- **Store creation at standard resolution (enough for global maps)** — `from_climate_dt(frequency="monthly", resolution="standard")`; choose levtype (`sfc`, `pl`, `sol`, ...)
+- **Lazy open** — `store.open()` returns an xarray Dataset without downloading data
+- **Global plot** — `healpy.mollview()` of a single monthly field (triggers first fetch)
+- **Annual mean** — `.sel(time=slice(...)).mean("time")` with in-memory caching
+- **Climate Change signal** — SSP3-7.0 versus Historical difference map
+- **Server-side spatial subsetting** (Polytope features):
+  - *Timeseries* — `point=(lat, lon)`
+  - *Bounding box* — `bbox=(S, W, N, E)` → rectangular subset of HEALPix cells (using high-res data)
+  - *Polygon* — `polygon=country_polygons(...)` → country-shaped subset of HEALPix cells
+  - *Area* — `area=(N, W, S, E)` with MARS keywords → regular lat/lon grid (server-side interpolation)
+
+> **Second store at high resolution:** The notebook creates a second store with `resolution="high"` (`store_high`) for the spatial subsetting sections to show finer detail.
+
+### [`explorer/04_lazy_browse_portfolio_hourly.ipynb`](explorer/04_lazy_browse_portfolio_hourly.ipynb) — hourly portfolio
+
+Lazy browse of the **hourly (`clte`) stream** using `PolytopeZarrStore`. Sections:
+
+- **Store creation at standard resolution** — `from_climate_dt(frequency="hourly", resolution="standard")`; 6 levtypes available
+- **Lazy open** — `store.open()` returns an xarray Dataset
+- **Global plot** — `healpy.mollview()` of a single hourly field
+- **Annual mean / std** — demonstrates in-memory caching (second computation of standard deviation is then almost instant)
+- **Ocean store** — separate `levtype="o2d"` store for daily sea-ice and ocean surface fields
+- **Storyline store** — `activity="story-nudging"`, experiments `cont`/`hist`/`Tplus2.0K`
+  - Global Mollweide view of the 2019-07-25 Paris heatwave (present-day climate)
+  - 3-scenario timeseries comparison (PI vs PD vs +2K) at a single point (Paris)
+- **Server-side spatial subsetting** (same 4 Polytope features as in notebook 03, but applied to hourly data):
+  - *Timeseries* — hourly point extraction + hourly storyline point extraction
+  - *Bounding box* — native HEALPix (high-res `store_high`)
+  - *Polygon* — country cut-out
+  - *Area* — MARS keywords, regular grid
+
+#### CLTE variable summary
 
 The hourly (`clte`) stream provides 64 variables across 6 levtypes.
 Atmosphere fields (sfc, pl, hl, sol) are hourly; ocean/ice (o2d, o3d) are daily means.
