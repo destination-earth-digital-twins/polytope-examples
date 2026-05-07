@@ -11,7 +11,7 @@ climate-dt/
 ├── feature-extraction/          # Extract specific spatial/temporal features
 ├── full-field/                  # Retrieve and visualise full fields
 ├── full-field-post-processing/  # Post-process full fields (interpolation, GeoTIFF, AI)
-├── polytope-explorer/           # Browse the Climate DT portfolio lazily
+├── explorer/                    # Browse the Climate DT portfolio lazily
 ├── data/                        # Cached sample data files
 ├── environment.yml              # Conda environment definition
 └── requirements.txt             # pip requirements with version pins
@@ -97,7 +97,7 @@ Notebooks that apply post-processing steps to retrieved fields.
 | `climate-dt-earthkit-geotiff.ipynb` | Convert full fields and bounding-box extractions to GeoTIFF |
 | `climate-dt-train-ai-timeseries-polytope.ipynb` | Train an XGBoost model on a Polytope-sourced time series |
 
-### `climate-dt-explorer/`
+### `explorer/`
 
 Notebooks for lazily browsing the full Climate DT data portfolio without downloading data upfront.
 
