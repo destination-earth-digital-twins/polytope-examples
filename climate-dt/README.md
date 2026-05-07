@@ -66,6 +66,8 @@ The explorer can also help you build valid Polytope `request` dictionaries for t
 | [`03_lazy_browse_portfolio.ipynb`](explorer/03_lazy_browse_portfolio.ipynb) | Lazy xarray Dataset over the full monthly (`clmn`) portfolio |
 | [`04_lazy_browse_portfolio_hourly.ipynb`](explorer/04_lazy_browse_portfolio_hourly.ipynb) | Lazy xarray Dataset over the hourly (`clte`) and daily ocean portfolio |
 | [`05_variable_lookup.ipynb`](explorer/05_variable_lookup.ipynb) | Search variables by name/keyword and generate `from_climate_dt()` code snippets (incl. storyline) |
+| | |
+| **Supporting modules** | *(no need to edit these)* |
 | [`destine_climate_helpers.py`](explorer/destine_climate_helpers.py) | Helper module for Polytope requests, caching, and chunked year iteration |
 | [`destine_portfolio.py`](explorer/destine_portfolio.py) | Variable catalogue (clmn: 65 vars, clte: 64 vars) and lookup helpers |
 | [`polytope_zarr.py`](explorer/polytope_zarr.py) | Virtual zarr store backed by Polytope for lazy chunk fetching |
