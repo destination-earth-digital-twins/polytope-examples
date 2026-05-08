@@ -385,6 +385,14 @@ _EXPERIMENT_TIME_RANGES = {
     "SSP3-7.0":  {"start": "2015-01-01", "end": "2049-12-31"},
 }
 
+# Per-model end year for the SSP3-7.0 scenario (inclusive).
+# Update these values as new simulation data becomes available.
+_MODEL_ENDYEAR_RELEASE = {
+    "IFS-NEMO":  2049,
+    "IFS-FESOM": 2049,
+    "ICON":      2040,
+}
+
 _STORYLINE_TIME_RANGES = {
     "cont":      {"start": "2017-01-01", "end": "2024-12-31"},
     "hist":      {"start": "2017-01-01", "end": "2024-12-31"},
@@ -521,11 +529,31 @@ def access_snippet(query, stream="clte", experiment=None, model=None):
     start_year = int(tr["start"][:4])
     end_year = int(tr["end"][:4])
 
+    # Clamp end year per model for SSP3-7.0 based on data availability
+    icon_note = False
+    if exp_key == "SSP3-7.0" and stream != "storyline":
+        model_end_years = [_MODEL_ENDYEAR_RELEASE.get(m, end_year) for m in models]
+        if len(models) == 1:
+            # Single model: use that model's end year
+            end_year = model_end_years[0]
+        else:
+            # Multiple models: use the maximum (ICON returns NaN beyond its limit)
+            if min(model_end_years) < max(model_end_years):
+                icon_note = True
+            end_year = max(model_end_years)
+        tr = dict(tr)  # copy to avoid mutating the original
+        tr["end"] = f"{end_year}-12-31"
+
     lines = [
         "from polytope_zarr import PolytopeZarrStore\n",
-        "store = PolytopeZarrStore.from_climate_dt(",
-        f'    models=[{models_str}],',
     ]
+
+    if icon_note:
+        lines.append(f"# Note: ICON returns NaN after {_MODEL_ENDYEAR_RELEASE['ICON']}; "
+                     f"IFS-NEMO/IFS-FESOM available to {_MODEL_ENDYEAR_RELEASE['IFS-NEMO']}")
+
+    lines.append("store = PolytopeZarrStore.from_climate_dt(")
+    lines.append(f'    models=[{models_str}],')
 
     if stream == "storyline":
         lines.append(f'    experiment={exp},')
