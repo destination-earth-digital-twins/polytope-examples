@@ -1,6 +1,9 @@
 covjsonkit
-earthkit==0.13.2
-earthkit-geo
+earthkit-plots==0.6.1
+earthkit-data==0.19.4
+earthkit-geo==0.5.2
+earthkit-transforms==0.5.4
+earthkit-regrid==0.5.1
 h3
 healpy
 kaleido
