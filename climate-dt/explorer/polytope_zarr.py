@@ -118,7 +118,7 @@ class PolytopeZarrStore(MutableMapping):
         address : str, optional
             Override the Polytope server URL.  When set, all models use
             this address (e.g. for test servers like
-            ``"polytope-test.mn5.apps.dte.destination-earth.eu"``).
+            ``"polytope.mn5.apps.dte.destination-earth.eu"``).
             Default None = auto-detect per model.
 
         Returns
