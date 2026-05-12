@@ -18,10 +18,13 @@ FILES=(
   "LICENSE"
   ".gitignore"
   ".pre-commit-config.yaml"
+  "requirements-lock.txt"
+  "conda-lock.yml"
 )
 
 FILES_EXCLUDE=(
   "climate-dt/data/"
+  "climate-dt/explorer/data/"
   "extremes-dt/data/"
   "nextgems/data/"
   "on-demand-extremes-dt/data/"
