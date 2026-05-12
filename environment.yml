@@ -2,36 +2,39 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - python>=3.10
+  - python==3.11
   - pip
-  - cartopy
-  - healpy
   - ipykernel
-  - matplotlib
-  - nbclient
   - nbformat
+  - nbclient
+  - healpy
+  - cartopy
+  - matplotlib
   - netcdf4
   - numcodecs<0.16
   - numpy
   - pandas
   - pydantic
+  - rasterio
   - requests
-  - xarray
+  - rioxarray
+  - scikit-learn
+  - xgboost
   - zarr>=2.18,<3
+  - lxml
+  - eccodes>=2.42.0
   - pip:
-      - conflator
-      - covjsonkit
+      - covjsonkit==0.2.19
+      - h3
+      - earthkit-plots==0.6.1
       - earthkit-data==0.19.4
       - earthkit-geo==0.5.2
-      - earthkit-plots==0.6.1
-      - earthkit-regrid==0.5.1
       - earthkit-transforms==0.5.4
-      - h3
-      - kaleido
-      - lxml
+      - earthkit-regrid==0.5.1
+      - kaleido==0.2.1
       - polytope-client
       - python-dotenv
-      - rasterio
-      - rioxarray
-      - scikit-learn
-      - xgboost
+      - conflator
+      - pip-tools
+      - conda-lock
+      - pytest
