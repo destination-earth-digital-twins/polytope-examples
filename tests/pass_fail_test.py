@@ -15,9 +15,9 @@ PROJECT_ROOT = HERE.parent
 
 NOTEBOOK_ROOTS = [
     PROJECT_ROOT / "climate-dt",
-    # PROJECT_ROOT / "extremes-dt",
-    # PROJECT_ROOT / "on-demand-extremes-dt",
-    # PROJECT_ROOT / "nextgems",
+    PROJECT_ROOT / "extremes-dt",
+    PROJECT_ROOT / "on-demand-extremes-dt",
+    PROJECT_ROOT / "nextgems",
 ]
 
 SKIP_NOTEBOOKS = {
