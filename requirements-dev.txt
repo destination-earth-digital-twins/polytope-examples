@@ -3,3 +3,5 @@ pytest
 pytest-timeout
 ipykernel
 nbdime
+pip-tools
+conda-lock
