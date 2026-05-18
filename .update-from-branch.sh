@@ -24,7 +24,6 @@ FILES=(
 
 FILES_EXCLUDE=(
   "climate-dt/data/"
-  "climate-dt/explorer/data/"
   "extremes-dt/data/"
   "nextgems/data/"
   "on-demand-extremes-dt/data/"
