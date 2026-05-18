@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - main
+      - generation_2
 
   # push:
   #   branches:
