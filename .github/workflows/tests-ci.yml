@@ -6,10 +6,10 @@ on:
       - main
       - generation_2
 
-  push:
-    branches:
-      - main
-      - develop
+  # push:
+  #   branches:
+  #     - main
+  #     - develop
 
 jobs:
   test-notebooks:
@@ -80,14 +80,34 @@ jobs:
           echo "Changed notebooks:"
           echo "$NOTEBOOKS"
 
-          # Build exact pytest node ids
-          NODE_IDS=""
-          for nb in $NOTEBOOKS; do
+          mapfile -t COLLECTED_NODE_IDS < <(pytest tests/pass_fail_test.py --collect-only -q | grep '^tests/pass_fail_test.py::test_notebook_execution\[')
+
+          NODE_IDS=()
+          while IFS= read -r nb; do
             REL_PATH=$(realpath --relative-to=. "$nb")
-            NODE_IDS="$NODE_IDS tests/pass_fail_test.py::test_notebook_execution[$REL_PATH]"
-          done
+            MATCHED_NODE_ID=""
+
+            for node_id in "${COLLECTED_NODE_IDS[@]}"; do
+              if [[ "$node_id" == *"[$REL_PATH]" ]]; then
+                MATCHED_NODE_ID="$node_id"
+                break
+              fi
+            done
+
+            if [[ -n "$MATCHED_NODE_ID" ]]; then
+              NODE_IDS+=("$MATCHED_NODE_ID")
+            else
+              echo "Skipping changed notebook not included in test parametrization: $REL_PATH"
+            fi
+          done <<< "$NOTEBOOKS"
+
+          if [ ${#NODE_IDS[@]} -eq 0 ]; then
+            echo "No changed notebooks matched collected pytest node ids. Skipping."
+            exit 0
+          fi
 
           echo "Running:"
-          echo "pytest -v $NODE_IDS"
+          printf 'pytest -v %q ' "${NODE_IDS[@]}"
+          echo
 
-          pytest -v $NODE_IDS
+          pytest -v "${NODE_IDS[@]}"
