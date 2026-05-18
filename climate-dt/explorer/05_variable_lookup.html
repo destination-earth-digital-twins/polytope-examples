@@ -1,0 +1,2273 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Variable Lookup — Climate DT Portfolio &#8212; Polytope Examples for DT Data Access</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'climate-dt/explorer/05_variable_lookup';</script>
+    <link rel="canonical" href="https://destination-earth-digital-twins.github.io/polytope-examples/climate-dt/explorer/05_variable_lookup.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../README.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../_static/Logo_Destination_Earth_Colours.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/Logo_Destination_Earth_Colours.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../README.html">
+                        Climate DT Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../extremes-dt/README.html">
+                        Extremes DT
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../on-demand-extremes-dt/README.html">
+                        On-Demand Extremes-DT
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../nextgems/README.html">
+                        NextGEMS Data
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../README.html">
+                        Climate DT Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../extremes-dt/README.html">
+                        Extremes DT
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../on-demand-extremes-dt/README.html">
+                        On-Demand Extremes-DT
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../nextgems/README.html">
+                        NextGEMS Data
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">
+  
+
+
+<a class="navbar-brand logo" href="../../README.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../_static/Logo_Destination_Earth_Colours.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/Logo_Destination_Earth_Colours.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    </div>
+    <div class="sidebar-start-items__item">
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Polytope Examples for DT Data Access
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../README.html">Climate DT Examples</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../full-field/climate-dt-earthkit-aoi-example.html">Polytope Climate-DT AOI example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../full-field/climate-dt-earthkit-area-example.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../full-field/climate-dt-earthkit-example.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../full-field/climate-dt-earthkit-example-domain.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../full-field/climate-dt-earthkit-grid-example.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../full-field/climate-dt-earthkit-monthly-mean-example.html">Polytope Climate-DT MN5 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../full-field/climate-dt-healpix-data.html">Climate-DT Healpix data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../full-field/climate-dt-healpix-ocean-example.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../full-field/climate-dt-highresmip-earthkit-example.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../full-field-post-processing/climate-dt-earthkit-geotiff.html">Polytope Climate-DT Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../full-field-post-processing/climate-dt-earthkit-healpix-interpolate.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../full-field-post-processing/climate-dt-earthkit-serverside-interpolation.html">Polytope Climate-DT Serverside Interpolation example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../feature-extraction/climate-dt-earthkit-fe-boundingbox.html">Polytope Climate-DT Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../feature-extraction/climate-dt-earthkit-fe-country.html">Polytope Climate-DT Country cut-out example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../feature-extraction/climate-dt-earthkit-fe-pcolormesh.html">Polytope Climate-DT Country pcolormesh example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../feature-extraction/climate-dt-earthkit-fe-polygon.html">Polytope Climate-DT Polygon example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../feature-extraction/climate-dt-earthkit-fe-story-nudging.html">Polytope Climate-DT Time Series example notebook for story nudging</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../feature-extraction/climate-dt-earthkit-fe-timeseries.html">Polytope Climate-DT Time Series example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../feature-extraction/climate-dt-earthkit-fe-trajectory.html">Polytope Climate-DT Trajectory example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../feature-extraction/climate-dt-earthkit-fe-verticalprofile.html">Polytope Climate-DT Feature Extraction Vertical Profile example notebook</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../extremes-dt/README.html">Extremes DT</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/full-field/extremes-dt-earthkit-example.html">Polytope Extremes-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/full-field/extremes-dt-earthkit-example-H3.html">Polytope Extremes-DT Feature Extraction Timeseries H3 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/full-field/extremes-dt-earthkit-example-domain.html">Polytope Extremes-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/full-field-post-processing/extremes-dt-earthkit-example-regrid.html">Polytope Extremes-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/full-field-post-processing/extremes-dt-earthkit-serverside-interpolation.html">Polytope Extremes-DT Serverside Interpolation example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-boundingbox.html">Polytope Extremes-DT Feature Extraction Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-country.html">Polytope Extremes-DT Feature Extraction Country cut out example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-pcolormesh.html">Polytope Extremes-DT Feature Extraction pcolormesh example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-polygon.html">Polytope Extremes-DT Feature Extraction Polygon example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-polygon-H3.html">Polytope Extremes-DT Feature Extraction Polygon example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-timeseries.html">Polytope Extremes-DT Feature Extraction Timeseries example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-trajectory.html">Polytope Extremes-DT Feature Extraction Trajectory example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-trajectory4d.html">Polytope Extremes-DT Feature Extraction Trajectory 4d example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-verticalprofile.html">Polytope Extremes-DT Feature Extraction Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-wave.html">Polytope Extremes-DT Feature Extraction Timeseries example notebook</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../on-demand-extremes-dt/README.html">On-Demand Extremes-DT</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../on-demand-extremes-dt/full-field/on-demand-extremes-dt-example.html">Polytope On-Demand Extremes-DT example notebook</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../on-demand-extremes-dt/feature-extraction/on-demand-country-fe-example.html">Polytope On-Demand-DT Country cut-out example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../on-demand-extremes-dt/feature-extraction/on-demand-extremes-dt-timeseries-fe-example.html">Polytope On-Demand DT Feature Extraction Timeseries example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../on-demand-extremes-dt/feature-extraction/on-demand-extremes-dt-vertical-profile-fe-example.html">Polytope On-Demand DT Feature Extraction</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../on-demand-extremes-dt/feature-extraction/on-demand-trajectory-fe-example.html">Polytope On-Demand DT Trajectory example notebook</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../nextgems/README.html">NextGEMS Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../nextgems/full-field/nextGEMS-historical-earthkit-example.html">Polytope nextGEMS historical 1990-2020 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../nextgems/full-field/nextGEMS-scenario-earthkit-example.html">Polytope nextGEMS historical 2020-2050 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../nextgems/feature-extraction/nextGEMS-historical-fe-boundingbox-example.html">Polytope nextGEMS historical bounding box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../nextgems/feature-extraction/nextGEMS-historical-fe-country-example.html">Polytope nextGEMS historical bounding box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../nextgems/feature-extraction/nextGEMS-historical-fe-timeseries-example.html">Polytope nextGEMS historical timeseries example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../nextgems/feature-extraction/nextGEMS-historical-fe-trajectory-example.html">Polytope nextGEMS historical trajectory example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../nextgems/feature-extraction/nextGEMS-historical-fe-verticalprofile-example.html">Polytope nextGEMS historical vertical profile example notebook</a></li>
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
+            <span class="fa-solid fa-bars"></span>
+        </label>
+    </div>
+    <div class="header-article__right">
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+  </ul>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="../../_sources/climate-dt/explorer/05_variable_lookup.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</a>
+      
+      <li>
+<button onclick="printPdf(this)"
+  class="btn btn-sm dropdown-item"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</a>
+      
+  </ul>
+</div>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
+    </div>
+</div>
+            </div>
+            
+            
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Variable Lookup — Climate DT Portfolio</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#search-by-shortname">
+   Search by shortName
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#search-by-keyword-in-long-name">
+   Search by keyword in long name
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#full-catalogue">
+   Full catalogue
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#test-the-above-snippets">
+   Test the above snippets
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+            <article class="bd-article" role="main">
+              
+  <p><img alt="logo" src="../../_images/Logo_Destination_Earth_Colours1.png" /></p>
+<section id="variable-lookup-climate-dt-portfolio">
+<h1>Variable Lookup — Climate DT Portfolio<a class="headerlink" href="#variable-lookup-climate-dt-portfolio" title="Permalink to this heading">#</a></h1>
+<p>Search for a variable by <strong>shortName</strong> (e.g. <code class="docutils literal notranslate"><span class="pre">2t</span></code>, <code class="docutils literal notranslate"><span class="pre">avg_tos</span></code>) or by
+<strong>keyword</strong> in the long name (e.g. <code class="docutils literal notranslate"><span class="pre">temperature</span></code>, <code class="docutils literal notranslate"><span class="pre">wind</span></code>, <code class="docutils literal notranslate"><span class="pre">salinity</span></code>).</p>
+<p>The table shows which streams (monthly, hourly, storyline), level types,
+frequencies, models and resolutions are available.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">access_snippet()</span></code> to get a ready-to-copy <code class="docutils literal notranslate"><span class="pre">from_climate_dt()</span></code> call.</p>
+<blockquote>
+<div><p><strong>Time coverage for SSP3-7.0:</strong> IFS-NEMO and IFS-FESOM data extends to <strong>2049</strong>;
+ICON data extends to <strong>2040</strong> on the day of release. Generated code snippets automatically reflect this
+when requesting scenario data with all models.</p>
+</div></blockquote>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">destine_portfolio</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_variable</span><span class="p">,</span> <span class="n">access_snippet</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="search-by-shortname">
+<h2>Search by shortName<a class="headerlink" href="#search-by-shortname" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input tag_keep_output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">find_variable</span><span class="p">(</span><span class="s2">&quot;2t&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stream/activity</th>
+      <th>shortName</th>
+      <th>levtype</th>
+      <th>freq</th>
+      <th>access</th>
+      <th>long_name</th>
+      <th>units</th>
+      <th>models</th>
+      <th>experiments</th>
+      <th>nside</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>clte</td>
+      <td>2t</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly/sfc</td>
+      <td>2 metre temperature</td>
+      <td>K</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>storyline</td>
+      <td>2t</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/sfc</td>
+      <td>2 metre temperature</td>
+      <td>K</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>clmn</td>
+      <td>avg_2t</td>
+      <td>sfc</td>
+      <td>monthly</td>
+      <td>monthly/sfc</td>
+      <td>Time-mean 2 metre temperature</td>
+      <td>K</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ready-to-copy code for hourly 2t</span>
+<span class="n">access_snippet</span><span class="p">(</span><span class="s2">&quot;2t&quot;</span><span class="p">,</span> <span class="s2">&quot;clte&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input tag_keep_output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ocean variable — note the different frequencies per stream</span>
+<span class="n">find_variable</span><span class="p">(</span><span class="s2">&quot;thetao&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stream/activity</th>
+      <th>shortName</th>
+      <th>levtype</th>
+      <th>freq</th>
+      <th>access</th>
+      <th>long_name</th>
+      <th>units</th>
+      <th>models</th>
+      <th>experiments</th>
+      <th>nside</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>clmn</td>
+      <td>avg_thetao</td>
+      <td>o3d</td>
+      <td>monthly</td>
+      <td>monthly/o3d</td>
+      <td>Time-mean sea water potential temperature</td>
+      <td>K</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>clte</td>
+      <td>avg_thetao</td>
+      <td>o3d</td>
+      <td>daily</td>
+      <td>hourly/o3d</td>
+      <td>Time-mean sea water potential temperature</td>
+      <td>K</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>storyline</td>
+      <td>avg_thetao</td>
+      <td>o3d</td>
+      <td>daily</td>
+      <td>hourly (storyline)/o3d</td>
+      <td>Time-mean sea water potential temperature</td>
+      <td>K</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">access_snippet</span><span class="p">(</span><span class="s2">&quot;avg_thetao&quot;</span><span class="p">,</span> <span class="s2">&quot;clte&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="search-by-keyword-in-long-name">
+<h2>Search by keyword in long name<a class="headerlink" href="#search-by-keyword-in-long-name" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input tag_keep_output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">find_variable</span><span class="p">(</span><span class="s2">&quot;temperature&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stream/activity</th>
+      <th>shortName</th>
+      <th>levtype</th>
+      <th>freq</th>
+      <th>access</th>
+      <th>long_name</th>
+      <th>units</th>
+      <th>models</th>
+      <th>experiments</th>
+      <th>nside</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>clte</td>
+      <td>2d</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly/sfc</td>
+      <td>2 metre dewpoint temperature</td>
+      <td>K</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>storyline</td>
+      <td>2d</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/sfc</td>
+      <td>2 metre dewpoint temperature</td>
+      <td>K</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>clte</td>
+      <td>2t</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly/sfc</td>
+      <td>2 metre temperature</td>
+      <td>K</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>storyline</td>
+      <td>2t</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/sfc</td>
+      <td>2 metre temperature</td>
+      <td>K</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>clmn</td>
+      <td>avg_2d</td>
+      <td>sfc</td>
+      <td>monthly</td>
+      <td>monthly/sfc</td>
+      <td>Time-mean 2 metre dewpoint temperature</td>
+      <td>K</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>clmn</td>
+      <td>avg_2t</td>
+      <td>sfc</td>
+      <td>monthly</td>
+      <td>monthly/sfc</td>
+      <td>Time-mean 2 metre temperature</td>
+      <td>K</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>clmn</td>
+      <td>avg_skt</td>
+      <td>sfc</td>
+      <td>monthly</td>
+      <td>monthly/sfc</td>
+      <td>Time-mean skin temperature</td>
+      <td>K</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>clmn</td>
+      <td>avg_t</td>
+      <td>pl</td>
+      <td>monthly</td>
+      <td>monthly/pl</td>
+      <td>Time-mean temperature</td>
+      <td>K</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>clmn</td>
+      <td>avg_thetao</td>
+      <td>o3d</td>
+      <td>monthly</td>
+      <td>monthly/o3d</td>
+      <td>Time-mean sea water potential temperature</td>
+      <td>K</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>clte</td>
+      <td>avg_thetao</td>
+      <td>o3d</td>
+      <td>daily</td>
+      <td>hourly/o3d</td>
+      <td>Time-mean sea water potential temperature</td>
+      <td>K</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>storyline</td>
+      <td>avg_thetao</td>
+      <td>o3d</td>
+      <td>daily</td>
+      <td>hourly (storyline)/o3d</td>
+      <td>Time-mean sea water potential temperature</td>
+      <td>K</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>clmn</td>
+      <td>avg_tos</td>
+      <td>o2d</td>
+      <td>monthly</td>
+      <td>monthly/o2d</td>
+      <td>Time-mean sea surface temperature</td>
+      <td>K</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>clte</td>
+      <td>avg_tos</td>
+      <td>o2d</td>
+      <td>daily</td>
+      <td>hourly/o2d</td>
+      <td>Time-mean sea surface temperature</td>
+      <td>K</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>storyline</td>
+      <td>avg_tos</td>
+      <td>o2d</td>
+      <td>daily</td>
+      <td>hourly (storyline)/o2d</td>
+      <td>Time-mean sea surface temperature</td>
+      <td>K</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>clte</td>
+      <td>skt</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly/sfc</td>
+      <td>Skin temperature</td>
+      <td>K</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>storyline</td>
+      <td>skt</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/sfc</td>
+      <td>Skin temperature</td>
+      <td>K</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>storyline</td>
+      <td>sot</td>
+      <td>sol</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/sol</td>
+      <td>Soil temperature</td>
+      <td>K</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>clte</td>
+      <td>t</td>
+      <td>pl</td>
+      <td>hourly</td>
+      <td>hourly/pl</td>
+      <td>Temperature</td>
+      <td>K</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>storyline</td>
+      <td>t</td>
+      <td>pl</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/pl</td>
+      <td>Temperature</td>
+      <td>K</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input tag_keep_output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">find_variable</span><span class="p">(</span><span class="s2">&quot;wind&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stream/activity</th>
+      <th>shortName</th>
+      <th>levtype</th>
+      <th>freq</th>
+      <th>access</th>
+      <th>long_name</th>
+      <th>units</th>
+      <th>models</th>
+      <th>experiments</th>
+      <th>nside</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>clte</td>
+      <td>10si</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly/sfc</td>
+      <td>10 metre wind speed</td>
+      <td>m s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>storyline</td>
+      <td>10si</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/sfc</td>
+      <td>10 metre wind speed</td>
+      <td>m s**-1</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>clte</td>
+      <td>10u</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly/sfc</td>
+      <td>10 metre U wind component</td>
+      <td>m s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>storyline</td>
+      <td>10u</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/sfc</td>
+      <td>10 metre U wind component</td>
+      <td>m s**-1</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>clte</td>
+      <td>10v</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly/sfc</td>
+      <td>10 metre V wind component</td>
+      <td>m s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>storyline</td>
+      <td>10v</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/sfc</td>
+      <td>10 metre V wind component</td>
+      <td>m s**-1</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>clmn</td>
+      <td>avg_10u</td>
+      <td>sfc</td>
+      <td>monthly</td>
+      <td>monthly/sfc</td>
+      <td>Time-mean 10 metre U wind component</td>
+      <td>m s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>clmn</td>
+      <td>avg_10v</td>
+      <td>sfc</td>
+      <td>monthly</td>
+      <td>monthly/sfc</td>
+      <td>Time-mean 10 metre V wind component</td>
+      <td>m s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>clmn</td>
+      <td>avg_10ws</td>
+      <td>sfc</td>
+      <td>monthly</td>
+      <td>monthly/sfc</td>
+      <td>Time-mean 10 metre wind speed</td>
+      <td>m s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>clmn</td>
+      <td>avg_u</td>
+      <td>hl</td>
+      <td>monthly</td>
+      <td>monthly/hl</td>
+      <td>Time-mean U component of wind</td>
+      <td>m s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>clmn</td>
+      <td>avg_u</td>
+      <td>pl</td>
+      <td>monthly</td>
+      <td>monthly/pl</td>
+      <td>Time-mean U component of wind</td>
+      <td>m s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>clmn</td>
+      <td>avg_v</td>
+      <td>hl</td>
+      <td>monthly</td>
+      <td>monthly/hl</td>
+      <td>Time-mean V component of wind</td>
+      <td>m s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>clmn</td>
+      <td>avg_v</td>
+      <td>pl</td>
+      <td>monthly</td>
+      <td>monthly/pl</td>
+      <td>Time-mean V component of wind</td>
+      <td>m s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>clte</td>
+      <td>u</td>
+      <td>hl</td>
+      <td>hourly</td>
+      <td>hourly/hl</td>
+      <td>U component of wind</td>
+      <td>m s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>clte</td>
+      <td>u</td>
+      <td>pl</td>
+      <td>hourly</td>
+      <td>hourly/pl</td>
+      <td>U component of wind</td>
+      <td>m s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>storyline</td>
+      <td>u</td>
+      <td>hl</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/hl</td>
+      <td>U component of wind</td>
+      <td>m s**-1</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>storyline</td>
+      <td>u</td>
+      <td>pl</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/pl</td>
+      <td>U component of wind</td>
+      <td>m s**-1</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>clte</td>
+      <td>v</td>
+      <td>hl</td>
+      <td>hourly</td>
+      <td>hourly/hl</td>
+      <td>V component of wind</td>
+      <td>m s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>clte</td>
+      <td>v</td>
+      <td>pl</td>
+      <td>hourly</td>
+      <td>hourly/pl</td>
+      <td>V component of wind</td>
+      <td>m s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>storyline</td>
+      <td>v</td>
+      <td>hl</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/hl</td>
+      <td>V component of wind</td>
+      <td>m s**-1</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>storyline</td>
+      <td>v</td>
+      <td>pl</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/pl</td>
+      <td>V component of wind</td>
+      <td>m s**-1</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">access_snippet</span><span class="p">(</span><span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="s2">&quot;clte&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input tag_keep_output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">find_variable</span><span class="p">(</span><span class="s2">&quot;soil&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stream/activity</th>
+      <th>shortName</th>
+      <th>levtype</th>
+      <th>freq</th>
+      <th>access</th>
+      <th>long_name</th>
+      <th>units</th>
+      <th>models</th>
+      <th>experiments</th>
+      <th>nside</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>clmn</td>
+      <td>avg_vsw</td>
+      <td>sol</td>
+      <td>monthly</td>
+      <td>monthly/sol</td>
+      <td>Time-mean volumetric soil moisture</td>
+      <td>m**3 m**-3</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>storyline</td>
+      <td>sot</td>
+      <td>sol</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/sol</td>
+      <td>Soil temperature</td>
+      <td>K</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>clte</td>
+      <td>vsw</td>
+      <td>sol</td>
+      <td>hourly</td>
+      <td>hourly/sol</td>
+      <td>Volumetric soil moisture</td>
+      <td>m**3 m**-3</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>storyline</td>
+      <td>vsw</td>
+      <td>sol</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/sol</td>
+      <td>Volumetric soil moisture</td>
+      <td>m**3 m**-3</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">access_snippet</span><span class="p">(</span><span class="s2">&quot;vsw&quot;</span><span class="p">,</span> <span class="s2">&quot;clte&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">access_snippet</span><span class="p">(</span><span class="s2">&quot;sot&quot;</span><span class="p">,</span> <span class="s2">&quot;storyline&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scenario snippet — note the ICON time limit in the generated comment</span>
+<span class="n">access_snippet</span><span class="p">(</span><span class="s2">&quot;2t&quot;</span><span class="p">,</span> <span class="s2">&quot;clmn&quot;</span><span class="p">,</span> <span class="n">experiment</span><span class="o">=</span><span class="s2">&quot;SSP3-7.0&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="full-catalogue">
+<h2>Full catalogue<a class="headerlink" href="#full-catalogue" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input tag_keep_output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">find_variable</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stream/activity</th>
+      <th>shortName</th>
+      <th>levtype</th>
+      <th>freq</th>
+      <th>access</th>
+      <th>long_name</th>
+      <th>units</th>
+      <th>models</th>
+      <th>experiments</th>
+      <th>nside</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>clte</td>
+      <td>10si</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly/sfc</td>
+      <td>10 metre wind speed</td>
+      <td>m s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>storyline</td>
+      <td>10si</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/sfc</td>
+      <td>10 metre wind speed</td>
+      <td>m s**-1</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>clte</td>
+      <td>10u</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly/sfc</td>
+      <td>10 metre U wind component</td>
+      <td>m s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>storyline</td>
+      <td>10u</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/sfc</td>
+      <td>10 metre U wind component</td>
+      <td>m s**-1</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>clte</td>
+      <td>10v</td>
+      <td>sfc</td>
+      <td>hourly</td>
+      <td>hourly/sfc</td>
+      <td>10 metre V wind component</td>
+      <td>m s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>188</th>
+      <td>storyline</td>
+      <td>vsw</td>
+      <td>sol</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/sol</td>
+      <td>Volumetric soil moisture</td>
+      <td>m**3 m**-3</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>189</th>
+      <td>clte</td>
+      <td>w</td>
+      <td>pl</td>
+      <td>hourly</td>
+      <td>hourly/pl</td>
+      <td>Vertical velocity</td>
+      <td>Pa s**-1</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>190</th>
+      <td>storyline</td>
+      <td>w</td>
+      <td>pl</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/pl</td>
+      <td>Vertical velocity</td>
+      <td>Pa s**-1</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+    <tr>
+      <th>191</th>
+      <td>clte</td>
+      <td>z</td>
+      <td>pl</td>
+      <td>hourly</td>
+      <td>hourly/pl</td>
+      <td>Geopotential</td>
+      <td>m**2 s**-2</td>
+      <td>IFS-NEMO, IFS-FESOM, ICON</td>
+      <td>cont, hist, SSP3-7.0</td>
+      <td>{'standard': 128, 'high': 1024}</td>
+    </tr>
+    <tr>
+      <th>192</th>
+      <td>storyline</td>
+      <td>z</td>
+      <td>pl</td>
+      <td>hourly</td>
+      <td>hourly (storyline)/pl</td>
+      <td>Geopotential</td>
+      <td>m**2 s**-2</td>
+      <td>IFS-FESOM</td>
+      <td>cont, hist, Tplus2.0K</td>
+      <td>{'standard': 128, 'high': 512}</td>
+    </tr>
+  </tbody>
+</table>
+<p>193 rows × 10 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="test-the-above-snippets">
+<h2>Test the above snippets<a class="headerlink" href="#test-the-above-snippets" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span><span class="o">,</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">polytope_zarr</span><span class="w"> </span><span class="kn">import</span> <span class="n">PolytopeZarrStore</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">healpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">hp</span>
+
+
+<span class="c1"># Disable earthkit disk cache (polytope_zarr caches decoded arrays in memory)</span>
+<span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;cache-policy&quot;</span><span class="p">,</span> <span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+<span class="c1"># Silence verbose output from polytope / earthkit internals</span>
+<span class="k">for</span> <span class="n">_ln</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;polytope&quot;</span><span class="p">,</span> <span class="s2">&quot;polytope.api&quot;</span><span class="p">,</span> <span class="s2">&quot;earthkit.data&quot;</span><span class="p">,</span> <span class="s2">&quot;urllib3&quot;</span><span class="p">):</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">_ln</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store</span> <span class="o">=</span> <span class="n">PolytopeZarrStore</span><span class="o">.</span><span class="n">from_climate_dt</span><span class="p">(</span>
+    <span class="n">models</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;IFS-NEMO&quot;</span><span class="p">,</span> <span class="s2">&quot;IFS-FESOM&quot;</span><span class="p">,</span> <span class="s2">&quot;ICON&quot;</span><span class="p">],</span>
+    <span class="n">experiment</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">,</span>
+    <span class="n">levtype</span><span class="o">=</span><span class="s2">&quot;sfc&quot;</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="s2">&quot;hourly&quot;</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;1990-01-01T00:00:00&quot;</span><span class="p">,</span>
+    <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;2014-12-31T23:00:00&quot;</span><span class="p">,</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+
+<span class="n">field</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;2t&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;IFS-NEMO&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s2">&quot;1990-01-01T00:00&quot;</span><span class="p">)</span>
+<span class="n">field_values</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># triggers the Polytope request</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input tag_keep_output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hp</span><span class="o">.</span><span class="n">mollview</span><span class="p">(</span><span class="n">field_values</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;IFS-NEMO — 2t — 1990-01-01T00:00&quot;</span><span class="p">,</span>
+           <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;K&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlBu_r&quot;</span><span class="p">,</span> <span class="n">nest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">flip</span><span class="o">=</span><span class="s2">&quot;geo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/039e10950b4f07de1aad133dba1ad5d53e1fef1c90da24b26b1667202bbae160.png" src="../../_images/039e10950b4f07de1aad133dba1ad5d53e1fef1c90da24b26b1667202bbae160.png" />
+</div>
+</div>
+<div class="cell tag_hide-input tag_keep_output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># circumventing the store to use earthkit&#39;s built-in caching and decoding</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">last_request</span>
+<span class="n">r</span><span class="p">[</span><span class="s2">&quot;request&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;class&#39;: &#39;d1&#39;,
+ &#39;dataset&#39;: &#39;climate-dt&#39;,
+ &#39;type&#39;: &#39;fc&#39;,
+ &#39;expver&#39;: &#39;0001&#39;,
+ &#39;generation&#39;: &#39;2&#39;,
+ &#39;realization&#39;: &#39;1&#39;,
+ &#39;activity&#39;: &#39;baseline&#39;,
+ &#39;experiment&#39;: &#39;hist&#39;,
+ &#39;levtype&#39;: &#39;sfc&#39;,
+ &#39;resolution&#39;: &#39;standard&#39;,
+ &#39;stream&#39;: &#39;clte&#39;,
+ &#39;param&#39;: &#39;2t&#39;,
+ &#39;model&#39;: &#39;IFS-NEMO&#39;,
+ &#39;date&#39;: &#39;19900101&#39;,
+ &#39;time&#39;: &#39;0000/0100/0200/0300/0400/0500/0600/0700/0800/0900/1000/1100/1200/1300/1400/1500/1600/1700/1800/1900/2000/2100/2200/2300&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input tag_keep_output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;polytope&quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;collection&quot;</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;request&quot;</span><span class="p">],</span>
+                                 <span class="n">address</span><span class="o">=</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;address&quot;</span><span class="p">],</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">field</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                               
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(24, 196608)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input tag_keep_output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hp</span><span class="o">.</span><span class="n">mollview</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;IFS-NEMO — 2t — 1990-01-01T00:00&quot;</span><span class="p">,</span>
+           <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;K&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlBu_r&quot;</span><span class="p">,</span> <span class="n">nest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">flip</span><span class="o">=</span><span class="s2">&quot;geo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/091694640dd4699a144534d3c163b0dd7acf3bbbbcd78356503197c67766224a.png" src="../../_images/091694640dd4699a144534d3c163b0dd7acf3bbbbcd78356503197c67766224a.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store</span> <span class="o">=</span> <span class="n">PolytopeZarrStore</span><span class="o">.</span><span class="n">from_climate_dt</span><span class="p">(</span>
+    <span class="n">models</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;IFS-NEMO&quot;</span><span class="p">,</span> <span class="s2">&quot;IFS-FESOM&quot;</span><span class="p">,</span> <span class="s2">&quot;ICON&quot;</span><span class="p">],</span>
+    <span class="n">experiment</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">,</span>
+    <span class="n">levtype</span><span class="o">=</span><span class="s2">&quot;o2d&quot;</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="s2">&quot;monthly&quot;</span><span class="p">,</span>
+    <span class="n">years</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2015</span><span class="p">),</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+
+<span class="n">field</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;avg_tos&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;IFS-NEMO&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s2">&quot;1990-01-01&quot;</span><span class="p">)</span>
+<span class="n">field_values</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># triggers the Polytope request</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input tag_keep_output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hp</span><span class="o">.</span><span class="n">mollview</span><span class="p">(</span><span class="n">field_values</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;IFS-NEMO — avg_tos — 1990-01-01&quot;</span><span class="p">,</span>
+           <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;K&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlBu_r&quot;</span><span class="p">,</span> <span class="n">nest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">flip</span><span class="o">=</span><span class="s2">&quot;geo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/d44d43d2ad771f44905bba0fb17d5cd1edc70994ecb30ce22ce1120236725f6d.png" src="../../_images/d44d43d2ad771f44905bba0fb17d5cd1edc70994ecb30ce22ce1120236725f6d.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store</span> <span class="o">=</span> <span class="n">PolytopeZarrStore</span><span class="o">.</span><span class="n">from_climate_dt</span><span class="p">(</span>
+    <span class="n">models</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;IFS-NEMO&quot;</span><span class="p">,</span> <span class="s2">&quot;IFS-FESOM&quot;</span><span class="p">,</span> <span class="s2">&quot;ICON&quot;</span><span class="p">],</span>
+    <span class="n">experiment</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">,</span>
+    <span class="n">levtype</span><span class="o">=</span><span class="s2">&quot;o3d&quot;</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="s2">&quot;hourly&quot;</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;1990-01-01T00:00:00&quot;</span><span class="p">,</span>
+    <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;2014-12-31T23:00:00&quot;</span><span class="p">,</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+
+<span class="n">field</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;avg_thetao&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;IFS-NEMO&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s2">&quot;1990-01-01T00:00&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">field_values</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># triggers the Polytope request</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input tag_keep_output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hp</span><span class="o">.</span><span class="n">mollview</span><span class="p">(</span><span class="n">field_values</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;IFS-NEMO — avg_thetao — 1990-01-01T00:00&quot;</span><span class="p">,</span>
+           <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;K&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlBu_r&quot;</span><span class="p">,</span> <span class="n">nest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">flip</span><span class="o">=</span><span class="s2">&quot;geo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/235e5618b4eb1592fa482f9b6fa610269ee2695c1d43e4e6a1f12430d95da627.png" src="../../_images/235e5618b4eb1592fa482f9b6fa610269ee2695c1d43e4e6a1f12430d95da627.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store</span> <span class="o">=</span> <span class="n">PolytopeZarrStore</span><span class="o">.</span><span class="n">from_climate_dt</span><span class="p">(</span>
+    <span class="n">models</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;IFS-NEMO&quot;</span><span class="p">,</span> <span class="s2">&quot;IFS-FESOM&quot;</span><span class="p">,</span> <span class="s2">&quot;ICON&quot;</span><span class="p">],</span>
+    <span class="n">experiment</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">,</span>
+    <span class="n">levtype</span><span class="o">=</span><span class="s2">&quot;pl&quot;</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="s2">&quot;hourly&quot;</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;1990-01-01T00:00:00&quot;</span><span class="p">,</span>
+    <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;2014-12-31T23:00:00&quot;</span><span class="p">,</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+
+<span class="n">field</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;u&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;IFS-NEMO&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s2">&quot;1990-01-01T00:00&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">field_values</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># triggers the Polytope request</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input tag_keep_output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hp</span><span class="o">.</span><span class="n">mollview</span><span class="p">(</span><span class="n">field_values</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;IFS-NEMO — u — 1990-01-01T00:00&quot;</span><span class="p">,</span>
+           <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;m s**-1&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlBu_r&quot;</span><span class="p">,</span> <span class="n">nest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">flip</span><span class="o">=</span><span class="s2">&quot;geo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/f04f81a5a11b689d61e2a771df3c43dd2066b3e71afbbe5c987eb99781b0e4a8.png" src="../../_images/f04f81a5a11b689d61e2a771df3c43dd2066b3e71afbbe5c987eb99781b0e4a8.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store</span> <span class="o">=</span> <span class="n">PolytopeZarrStore</span><span class="o">.</span><span class="n">from_climate_dt</span><span class="p">(</span>
+    <span class="n">models</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;IFS-NEMO&quot;</span><span class="p">,</span> <span class="s2">&quot;IFS-FESOM&quot;</span><span class="p">,</span> <span class="s2">&quot;ICON&quot;</span><span class="p">],</span>
+    <span class="n">experiment</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">,</span>
+    <span class="n">levtype</span><span class="o">=</span><span class="s2">&quot;sol&quot;</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="s2">&quot;hourly&quot;</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;1990-01-01T00:00:00&quot;</span><span class="p">,</span>
+    <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;2014-12-31T23:00:00&quot;</span><span class="p">,</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+
+<span class="n">field</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;vsw&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;IFS-NEMO&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s2">&quot;1990-01-01T00:00&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">field_values</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># triggers the Polytope request</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input tag_keep_output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hp</span><span class="o">.</span><span class="n">mollview</span><span class="p">(</span><span class="n">field_values</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;IFS-NEMO — vsw — 1990-01-01T00:00&quot;</span><span class="p">,</span>
+           <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;m**3 m**-3&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlBu_r&quot;</span><span class="p">,</span> <span class="n">nest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">flip</span><span class="o">=</span><span class="s2">&quot;geo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/99f5b788d21c4650ec2db9641c089f9b3cdbca57a4112d2ef1b011ba571c717f.png" src="../../_images/99f5b788d21c4650ec2db9641c089f9b3cdbca57a4112d2ef1b011ba571c717f.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store</span> <span class="o">=</span> <span class="n">PolytopeZarrStore</span><span class="o">.</span><span class="n">from_climate_dt</span><span class="p">(</span>
+    <span class="n">models</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;IFS-FESOM&quot;</span><span class="p">],</span>
+    <span class="n">experiment</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cont&#39;</span><span class="p">,</span> <span class="s1">&#39;hist&#39;</span><span class="p">,</span> <span class="s1">&#39;Tplus2.0K&#39;</span><span class="p">],</span>
+    <span class="n">activity</span><span class="o">=</span><span class="s2">&quot;story-nudging&quot;</span><span class="p">,</span>
+    <span class="n">levtype</span><span class="o">=</span><span class="s2">&quot;sol&quot;</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="s2">&quot;hourly&quot;</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;2017-01-01T00:00:00&quot;</span><span class="p">,</span>
+    <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;2024-12-31T23:00:00&quot;</span><span class="p">,</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+
+<span class="n">field</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;sot&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">climate</span><span class="o">=</span><span class="s2">&quot;cont&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s2">&quot;2017-01-01T00:00&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">field_values</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># triggers the Polytope request</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input tag_keep_output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hp</span><span class="o">.</span><span class="n">mollview</span><span class="p">(</span><span class="n">field_values</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;IFS-FESOM — sot — 2017-01-01T00:00&quot;</span><span class="p">,</span>
+           <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;K&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlBu_r&quot;</span><span class="p">,</span> <span class="n">nest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">flip</span><span class="o">=</span><span class="s2">&quot;geo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/7719929dfa1f8a406d2b5882e35c1b93284411ee47838e71263353c7b91db25d.png" src="../../_images/7719929dfa1f8a406d2b5882e35c1b93284411ee47838e71263353c7b91db25d.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./climate-dt/explorer"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+            </article>
+            
+
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#search-by-shortname">
+   Search by shortName
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#search-by-keyword-in-long-name">
+   Search by keyword in long name
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#full-catalogue">
+   Full catalogue
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#test-the-above-snippets">
+   Test the above snippets
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Adam Warde, James Hawkes, Alice Sartori Monteiro de Barros and Tiago Quintino
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+Last updated on None.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </div>
+        </footer>
+        
+
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+
+  </body>
+</html>

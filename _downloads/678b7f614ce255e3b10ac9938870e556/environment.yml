@@ -1,0 +1,32 @@
+name: destine-analysis
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python >=3.10
+  - ipykernel
+  - nbformat
+  - healpy
+  - pip
+  - cartopy
+  - matplotlib
+  - netcdf4
+  - numcodecs<0.16
+  - numpy
+  - pandas
+  - pydantic
+  - xarray
+  - zarr>=2.18,<3
+  - pip:
+      - lxml
+      - conflator
+      - earthkit==0.13.2
+      - earthkit-geo
+      - covjsonkit>=0.2.5
+      - polytope-client
+      - kaleido==0.2.1
+      - h3
+      - rasterio
+      - xgboost
+      - scikit-learn
+      - rioxarray
