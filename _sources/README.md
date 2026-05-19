@@ -80,10 +80,12 @@ python3 -m ipykernel install --user --name=$envname
 
 ### Option 2: Python Virtual Environment (venv)
 
+> **Requires Python 3.10 or higher.** You can check your version with `python3 --version`.
+
 ```
 envname=earthkit
 
-# Create a virtual environment
+# Create a virtual environment (Python 3.10+ required)
 python3 -m venv $envname
 
 # Activate it
