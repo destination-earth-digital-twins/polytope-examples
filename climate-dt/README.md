@@ -30,6 +30,8 @@ conda activate destine-analysis
 
 **Option B: venv**
 
+> **Requires Python 3.10 or higher.** You can check your version with `python3 --version`.
+
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
