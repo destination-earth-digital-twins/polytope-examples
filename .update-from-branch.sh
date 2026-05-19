@@ -20,19 +20,18 @@ FILES=(
   ".pre-commit-config.yaml"
   "requirements-lock.txt"
   "conda-lock.yml"
-  "climate-dt/explorer/02_climate_change_destine.ipynb" # temporary inclusion because of resource limits on insula code
 )
 
 
 # List files or folders to exclude (relative paths)
 
 FILES_EXCLUDE=(
+    ".gitignore"          # Exclude .gitignore to prevent overwriting local ignore rules
     "climate-dt/data/"      # Exclude folder
     "extremes-dt/data/"    # Exclude folder
     "nextgems/data/"       # Exclude folder
     "on-demand-extremes-dt/data/" # Exclude folder
-    # Add files to exclude as needed, e.g.:
-    # "climate-dt/somefile.txt"
+    "climate-dt/explorer/02_climate_change_destine.ipynb" # temporary inclusion because of resource limits on insula code
 )
 
 # Print configuration
