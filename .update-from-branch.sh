@@ -20,6 +20,7 @@ FILES=(
   ".pre-commit-config.yaml"
   "requirements-lock.txt"
   "conda-lock.yml"
+  "climate-dt/explorer/02_climate_change_destine.ipynb" # temporary inclusion because of resource limits on insula code
 )
 
 
