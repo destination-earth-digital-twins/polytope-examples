@@ -22,15 +22,21 @@ FILES=(
   "conda-lock.yml"
 )
 
+
+# List files or folders to exclude (relative paths)
+
 FILES_EXCLUDE=(
-  "climate-dt/data/"
-  "extremes-dt/data/"
-  "nextgems/data/"
-  "on-demand-extremes-dt/data/"
+    "climate-dt/data/"      # Exclude folder
+    "extremes-dt/data/"    # Exclude folder
+    "nextgems/data/"       # Exclude folder
+    "on-demand-extremes-dt/data/" # Exclude folder
+    # Add files to exclude as needed, e.g.:
+    # "climate-dt/somefile.txt"
 )
 
 # Print configuration
 echo "=========================================="
+
 echo "Merge Configuration:"
 echo "  Branch: $BRANCH"
 echo "  Dry Run: $DRY_RUN"
@@ -60,12 +66,17 @@ for path in "${FILES[@]}"; do
 done
 
 echo ""
+
 echo "Restoring excluded paths back to current branch state..."
 for path in "${FILES_EXCLUDE[@]}"; do
-    RESTORE_CMD="git restore --source=HEAD -- \"$path\""
-    echo "  - $path"
-    if [ "$DRY_RUN" != "true" ]; then
-        eval $RESTORE_CMD
+    if [ -e "$path" ]; then
+        RESTORE_CMD="git restore --source=HEAD -- \"$path\""
+        echo "  - $path"
+        if [ "$DRY_RUN" != "true" ]; then
+            eval $RESTORE_CMD
+        fi
+    else
+        echo "  - $path (skipped, does not exist in working tree)"
     fi
 done
 
