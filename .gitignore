@@ -1,19 +1,15 @@
 .venv/
 __pycache__/
-tests/
 .vscode/
 env/
 .ipynb_checkpoints/
-*/data/
-.gitattributes
-.github
+
+# Local dev sandbox (not pushed upstream)
+climate-dt/polytope-explorer/dev/
 
 
 # Jupyter Book configs and TOC files
 _config.yaml
 _toc.yaml
 _build/
-
-scripts/
-Makefile
 

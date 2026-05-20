@@ -1,0 +1,113 @@
+name: Notebook Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+      - generation_2
+
+  # push:
+  #   branches:
+  #     - main
+  #     - develop
+
+jobs:
+  test-notebooks:
+    runs-on: ubuntu-latest
+
+    env:
+      LIVE_REQUEST: "false"
+
+    timeout-minutes: 60
+
+    steps:
+      # -------------------------------------------------
+      # Checkout repository with Git LFS
+      # -------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 0
+
+      # -------------------------------------------------
+      # Detect changed files (push only)
+      # -------------------------------------------------
+      - name: Get changed files
+        if: github.event_name == 'push'
+        id: changed
+        uses: tj-actions/changed-files@v44
+
+      # -------------------------------------------------
+      # Set up Python
+      # -------------------------------------------------
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      # -------------------------------------------------
+      # Install dependencies
+      # -------------------------------------------------
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+
+      # -------------------------------------------------
+      # Run FULL suite on PR
+      # -------------------------------------------------
+      - name: Run full notebook suite (PR)
+        if: github.event_name == 'pull_request'
+        run: |
+          pytest -v tests/pass_fail_test.py
+
+      # -------------------------------------------------
+      # Run ONLY changed notebooks on push
+      # -------------------------------------------------
+      - name: Run changed notebooks (push)
+        if: github.event_name == 'push'
+        run: |
+          NOTEBOOKS=$(echo "${{ steps.changed.outputs.all_changed_files }}" | tr ' ' '\n' | grep '\.ipynb$' || true)
+
+          if [ -z "$NOTEBOOKS" ]; then
+            echo "No notebook changes detected. Skipping."
+            exit 0
+          fi
+
+          echo "Changed notebooks:"
+          echo "$NOTEBOOKS"
+
+          mapfile -t COLLECTED_NODE_IDS < <(pytest tests/pass_fail_test.py --collect-only -q | grep '^tests/pass_fail_test.py::test_notebook_execution\[')
+
+          NODE_IDS=()
+          while IFS= read -r nb; do
+            REL_PATH=$(realpath --relative-to=. "$nb")
+            MATCHED_NODE_ID=""
+
+            for node_id in "${COLLECTED_NODE_IDS[@]}"; do
+              if [[ "$node_id" == *"[$REL_PATH]" ]]; then
+                MATCHED_NODE_ID="$node_id"
+                break
+              fi
+            done
+
+            if [[ -n "$MATCHED_NODE_ID" ]]; then
+              NODE_IDS+=("$MATCHED_NODE_ID")
+            else
+              echo "Skipping changed notebook not included in test parametrization: $REL_PATH"
+            fi
+          done <<< "$NOTEBOOKS"
+
+          if [ ${#NODE_IDS[@]} -eq 0 ]; then
+            echo "No changed notebooks matched collected pytest node ids. Skipping."
+            exit 0
+          fi
+
+          echo "Running:"
+          printf 'pytest -v %q ' "${NODE_IDS[@]}"
+          echo
+
+          pytest -v "${NODE_IDS[@]}"

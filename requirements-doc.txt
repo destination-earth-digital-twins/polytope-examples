@@ -1,0 +1,4 @@
+jupyter-book<0.15
+sphinx<7.3
+sphinx-sitemap
+sphinx_new_tab_link
