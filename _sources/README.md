@@ -149,6 +149,10 @@ Polytope feature extraction reads only the user-requested data rather than whole
 - [Climate DT notebook feature extraction polygon](climate-dt/feature-extraction/climate-dt-earthkit-fe-polygon.ipynb)
 - [Climate DT notebook feature extraction pcolormesh](climate-dt/feature-extraction/climate-dt-earthkit-fe-pcolormesh.ipynb)
 - [Climate DT notebook feature extraction nudging story](climate-dt/feature-extraction/climate-dt-earthkit-fe-story-nudging.ipynb)
+- [Climate DT notebook feature extraction monthly mean timeseries (baseline)](climate-dt/feature-extraction/climate-dt-earthkit-fe-timeseries-clmn-baseline.ipynb)
+- [Climate DT notebook feature extraction monthly mean timeseries (projections)](climate-dt/feature-extraction/climate-dt-earthkit-fe-timeseries-clmn-projections.ipynb)
+- [Climate DT notebook feature extraction monthly mean polygon (baseline)](climate-dt/feature-extraction/climate-dt-earthkit-fe-polygon-clmn-baseline.ipynb)
+- [Climate DT notebook feature extraction monthly mean polygon (projections)](climate-dt/feature-extraction/climate-dt-earthkit-fe-polygon-clmn-projections.ipynb)
 
 ### Climate DT Explorer
 

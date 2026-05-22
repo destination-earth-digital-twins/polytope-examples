@@ -88,6 +88,10 @@ Notebooks that extract specific spatial or temporal features from Climate DT dat
 | [`climate-dt-earthkit-fe-country.ipynb`](feature-extraction/climate-dt-earthkit-fe-country.ipynb) | Cut out data for a specific country |
 | [`climate-dt-earthkit-fe-pcolormesh.ipynb`](feature-extraction/climate-dt-earthkit-fe-pcolormesh.ipynb) | Plot extracted data using pcolormesh and contourf |
 | [`climate-dt-earthkit-fe-story-nudging.ipynb`](feature-extraction/climate-dt-earthkit-fe-story-nudging.ipynb) | Time series extraction for storyline/nudging experiments |
+| [`climate-dt-earthkit-fe-timeseries-clmn-baseline.ipynb`](feature-extraction/climate-dt-earthkit-fe-timeseries-clmn-baseline.ipynb) | Monthly mean time series at a point — historical baseline (`clmn` stream) |
+| [`climate-dt-earthkit-fe-timeseries-clmn-projections.ipynb`](feature-extraction/climate-dt-earthkit-fe-timeseries-clmn-projections.ipynb) | Monthly mean time series at a point — SSP3-7.0 projections (`clmn` stream) |
+| [`climate-dt-earthkit-fe-polygon-clmn-baseline.ipynb`](feature-extraction/climate-dt-earthkit-fe-polygon-clmn-baseline.ipynb) | Monthly mean field over a polygon — historical baseline (`clmn` stream) |
+| [`climate-dt-earthkit-fe-polygon-clmn-projections.ipynb`](feature-extraction/climate-dt-earthkit-fe-polygon-clmn-projections.ipynb) | Monthly mean field over a polygon — SSP3-7.0 projections (`clmn` stream) |
 
 ### `full-field/`
 
