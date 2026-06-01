@@ -13,7 +13,3 @@ _config.yaml
 _toc.yaml
 _build/
 
-climate-dt/explorer/data/
-extremes-dt/data/
-climate-dt/data/
-on-demand-extremes-dt/data/
