@@ -1,0 +1,2590 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Analysing Destination Earth Climate Digital Twins with earthkit &#8212; Polytope Examples for DT Data Access</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'climate-dt/earthkit-1.0/solutions/02-earthkit-analysis';</script>
+    <link rel="canonical" href="https://destination-earth-digital-twins.github.io/polytope-examples/climate-dt/earthkit-1.0/solutions/02-earthkit-analysis.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../README.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../../_static/Logo_Destination_Earth_Colours.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/Logo_Destination_Earth_Colours.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../README.html">
+                        Climate DT Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../extremes-dt/README.html">
+                        Extremes DT
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../on-demand-extremes-dt/README.html">
+                        On-Demand Extremes-DT
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../nextgems/README.html">
+                        NextGEMS Data
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../README.html">
+                        Climate DT Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../extremes-dt/README.html">
+                        Extremes DT
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../on-demand-extremes-dt/README.html">
+                        On-Demand Extremes-DT
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../nextgems/README.html">
+                        NextGEMS Data
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">
+  
+
+
+<a class="navbar-brand logo" href="../../../README.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../../_static/Logo_Destination_Earth_Colours.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/Logo_Destination_Earth_Colours.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    </div>
+    <div class="sidebar-start-items__item">
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../README.html">
+                    Polytope Examples for DT Data Access
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../README.html">Climate DT Examples</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-earthkit-aoi-example.html">Polytope Climate-DT AOI example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-earthkit-area-example.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-earthkit-example.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-earthkit-example-domain.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-earthkit-grid-example.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-earthkit-monthly-mean-example.html">Polytope Climate-DT MN5 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-healpix-data.html">Climate-DT Healpix data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-healpix-ocean-example.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-highresmip-earthkit-example.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field-post-processing/climate-dt-earthkit-geotiff.html">Polytope Climate-DT Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field-post-processing/climate-dt-earthkit-healpix-interpolate.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field-post-processing/climate-dt-earthkit-serverside-interpolation.html">Polytope Climate-DT Serverside Interpolation example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-boundingbox.html">Polytope Climate-DT Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-country.html">Polytope Climate-DT Country cut-out example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-pcolormesh.html">Polytope Climate-DT Country pcolormesh example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-polygon.html">Polytope Climate-DT Polygon example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-polygon-clmn-baseline.html">Polytope Climate-DT Monthly Mean Polygon example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-polygon-clmn-projections.html">Polytope Climate-DT Monthly Mean Polygon (Projections) example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-story-nudging.html">Polytope Climate-DT Time Series example notebook for story nudging</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-timeseries.html">Polytope Climate-DT Time Series example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-timeseries-clmn-baseline.html">Polytope Climate-DT Monthly Mean Time Series example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-timeseries-clmn-projections.html">Polytope Climate-DT Monthly Mean Time Series (Projections) example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-trajectory.html">Polytope Climate-DT Trajectory example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-verticalprofile.html">Polytope Climate-DT Feature Extraction Vertical Profile example notebook</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../extremes-dt/README.html">Extremes DT</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/full-field/extremes-dt-earthkit-example.html">Polytope Extremes-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/full-field/extremes-dt-earthkit-example-H3.html">Polytope Extremes-DT Feature Extraction Timeseries H3 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/full-field/extremes-dt-earthkit-example-domain.html">Polytope Extremes-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/full-field-post-processing/extremes-dt-earthkit-example-regrid.html">Polytope Extremes-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/full-field-post-processing/extremes-dt-earthkit-serverside-interpolation.html">Polytope Extremes-DT Serverside Interpolation example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-boundingbox.html">Polytope Extremes-DT Feature Extraction Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-country.html">Polytope Extremes-DT Feature Extraction Country cut out example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-pcolormesh.html">Polytope Extremes-DT Feature Extraction pcolormesh example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-polygon.html">Polytope Extremes-DT Feature Extraction Polygon example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-polygon-H3.html">Polytope Extremes-DT Feature Extraction Polygon example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-timeseries.html">Polytope Extremes-DT Feature Extraction Timeseries example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-trajectory.html">Polytope Extremes-DT Feature Extraction Trajectory example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-trajectory4d.html">Polytope Extremes-DT Feature Extraction Trajectory 4d example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-verticalprofile.html">Polytope Extremes-DT Feature Extraction Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-wave.html">Polytope Extremes-DT Feature Extraction Timeseries example notebook</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../on-demand-extremes-dt/README.html">On-Demand Extremes-DT</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../on-demand-extremes-dt/full-field/on-demand-extremes-dt-example.html">Polytope On-Demand Extremes-DT example notebook</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../../on-demand-extremes-dt/feature-extraction/on-demand-country-fe-example.html">Polytope On-Demand-DT Country cut-out example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../on-demand-extremes-dt/feature-extraction/on-demand-extremes-dt-timeseries-fe-example.html">Polytope On-Demand DT Feature Extraction Timeseries example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../on-demand-extremes-dt/feature-extraction/on-demand-extremes-dt-vertical-profile-fe-example.html">Polytope On-Demand DT Feature Extraction</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../on-demand-extremes-dt/feature-extraction/on-demand-trajectory-fe-example.html">Polytope On-Demand DT Trajectory example notebook</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nextgems/README.html">NextGEMS Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../nextgems/full-field/nextGEMS-historical-earthkit-example.html">Polytope nextGEMS historical 1990-2020 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../nextgems/full-field/nextGEMS-scenario-earthkit-example.html">Polytope nextGEMS historical 2020-2050 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../nextgems/feature-extraction/nextGEMS-historical-fe-boundingbox-example.html">Polytope nextGEMS historical bounding box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../nextgems/feature-extraction/nextGEMS-historical-fe-country-example.html">Polytope nextGEMS historical bounding box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../nextgems/feature-extraction/nextGEMS-historical-fe-timeseries-example.html">Polytope nextGEMS historical timeseries example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../nextgems/feature-extraction/nextGEMS-historical-fe-trajectory-example.html">Polytope nextGEMS historical trajectory example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../nextgems/feature-extraction/nextGEMS-historical-fe-verticalprofile-example.html">Polytope nextGEMS historical vertical profile example notebook</a></li>
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
+            <span class="fa-solid fa-bars"></span>
+        </label>
+    </div>
+    <div class="header-article__right">
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+  </ul>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="../../../_sources/climate-dt/earthkit-1.0/solutions/02-earthkit-analysis.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</a>
+      
+      <li>
+<button onclick="printPdf(this)"
+  class="btn btn-sm dropdown-item"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</a>
+      
+  </ul>
+</div>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
+    </div>
+</div>
+            </div>
+            
+            
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analysing Destination Earth Climate Digital Twins with earthkit</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Analysing Destination Earth Climate Digital Twins with earthkit
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#retrieve-the-climate-dt-baseline-run-ifs-nemo">
+     Retrieve the Climate DT baseline run (IFS-NEMO)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#retrieve-era5-reanalysis-from-the-cliamte-data-store-for-the-same-period">
+     Retrieve ERA5 reanalysis from the Cliamte Data Store for the same period
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regridding-with-earthkit-geo">
+     Regridding with earthkit-geo
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#verify-the-regridded-snapshot">
+     Verify the regridded snapshot
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistics-with-earthkit-transforms">
+     Statistics with earthkit-transforms
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spatial-and-temporal-statistics">
+     Spatial and temporal statistics
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+            <article class="bd-article" role="main">
+              
+  <p><img alt="logo" src="../../../_images/Logo_Destination_Earth_Colours1.png" /></p>
+<section id="analysing-destination-earth-climate-digital-twins-with-earthkit">
+<h1>Analysing Destination Earth Climate Digital Twins with earthkit<a class="headerlink" href="#analysing-destination-earth-climate-digital-twins-with-earthkit" title="Permalink to this heading">#</a></h1>
+<p>This notebook works through a full analysis pipeline on multi-decadal Climate DT output: retrieval, regridding, temporal averaging, comparison against ERA5 reanalysis, climatology, anomaly calculation, spatial aggregation to administrative regions, and warming-stripe visualisation.</p>
+<p><strong>What you will learn</strong></p>
+<ul class="simple">
+<li><p>How to retrieve a multi-year monthly dataset from the Climate DT baseline stream</p></li>
+<li><p>How to retrieve matching ERA5 data from the CDS for comparison</p></li>
+<li><p>How to regrid and compute temporal means with <code class="docutils literal notranslate"><span class="pre">earthkit.transforms</span></code></p></li>
+<li><p>How to compute climatologies and anomalies</p></li>
+<li><p>How to spatially aggregate to NUTS administrative regions</p></li>
+<li><p>How to make choropleth and warming-stripe charts with <code class="docutils literal notranslate"><span class="pre">earthkit.plots</span></code></p></li>
+</ul>
+<p>This notebook uses the following components of earthkit:</p>
+<div align="center">
+  <br>
+  <a href="https://earthkit-data.readthedocs.io/en/latest/" target="_blank" style="display:inline-block; margin: 0 15px;">
+    <img src="https://raw.githubusercontent.com/ecmwf/logos/refs/heads/main/logos/earthkit/earthkit-data-light.svg" alt="earthkit-data" width="200">
+  </a>
+  <a href="https://earthkit-transforms.readthedocs.io/en/latest/" target="_blank" style="display:inline-block; margin: 0 15px;">
+    <img src="https://raw.githubusercontent.com/ecmwf/logos/refs/heads/main/logos/earthkit/earthkit-transforms-light.svg" alt="earthkit-transforms" width="200">
+  </a>
+  <a href="https://earthkit-plots.readthedocs.io/en/latest/" target="_blank" style="display:inline-block; margin: 0 15px;">
+    <img src="https://raw.githubusercontent.com/ecmwf/logos/refs/heads/main/logos/earthkit/earthkit-plots-light.svg" alt="earthkit-plots" width="200">
+  </a>
+  <a href="https://earthkit-plots.readthedocs.io/en/latest/" target="_blank" style="display:inline-block; margin: 0 15px;">
+    <img src="https://raw.githubusercontent.com/ecmwf/logos/refs/heads/main/logos/earthkit/earthkit-geo-light.svg" alt="earthkit-geo" width="200">
+  </a>
+</div></section>
+<section id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h1>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ekd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.plots</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ekp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.geo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ekg</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.transforms</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ekt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="n">xr</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="n">keep_attrs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.core.options.set_options at 0x108990b10&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="retrieve-the-climate-dt-baseline-run-ifs-nemo">
+<h2>Retrieve the Climate DT baseline run (IFS-NEMO)<a class="headerlink" href="#retrieve-the-climate-dt-baseline-run-ifs-nemo" title="Permalink to this heading">#</a></h2>
+<p>The <strong>baseline</strong> activity contains historical simulations driven by observed forcing.  Here we pull
+the IFS-NEMO coupled model, monthly-mean 2 m temperature (<code class="docutils literal notranslate"><span class="pre">param:</span> <span class="pre">228004</span></code>), for all 25 years of
+the 1990–2014 period across all 12 months.</p>
+<p><strong>Key differences from the projections request in notebook 01</strong></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">activity</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">baseline</span></code></p></td>
+<td><p>Historical run</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">experiment</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hist</span></code></p></td>
+<td><p>Historical forcing</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stream</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">clmn</span></code></p></td>
+<td><p>Climate <strong>monthly</strong> mean stream</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">year</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1990/to/2014</span></code></p></td>
+<td><p>25-year range using Polytope range syntax</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">month</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1/2/.../12</span></code></p></td>
+<td><p>All calendar months</p></td>
+</tr>
+</tbody>
+</table>
+<p>This produces 300 fields (25 years × 12 months), each on the native HEALPix grid.  The download
+is ~126 MB.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;climate-dt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0001&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;generation&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;realization&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;baseline&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="s2">&quot;hist&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;ifs-fesom&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;param&quot;</span><span class="p">:</span> <span class="s2">&quot;228004&quot;</span><span class="p">,</span>  <span class="c1"># 2 m temperature, monthly mean</span>
+    <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;sfc&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="s2">&quot;standard&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;clmn&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="s2">&quot;1990/to/2014&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;month&quot;</span><span class="p">:</span> <span class="s2">&quot;1/2/3/4/5/6/7/8/9/10/11/12&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">ifs_nemo</span> <span class="o">=</span> <span class="n">ekd</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span>
+    <span class="s2">&quot;polytope&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span>
+    <span class="n">request</span><span class="p">,</span>
+    <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.lumi.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span>
+    <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-06-05 14:13:10 - INFO - Key read from /Users/mavj/.polytopeapirc
+2026-06-05 14:13:10 - INFO - Sending request...
+{&#39;request&#39;: &#39;activity: baseline\n&#39;
+            &#39;class: d1\n&#39;
+            &#39;dataset: climate-dt\n&#39;
+            &#39;experiment: hist\n&#39;
+            &quot;expver: &#39;0001&#39;\n&quot;
+            &quot;generation: &#39;2&#39;\n&quot;
+            &#39;levtype: sfc\n&#39;
+            &#39;model: ifs-fesom\n&#39;
+            &#39;month: 1/2/3/4/5/6/7/8/9/10/11/12\n&#39;
+            &quot;param: &#39;228004&#39;\n&quot;
+            &quot;realization: &#39;1&#39;\n&quot;
+            &#39;resolution: standard\n&#39;
+            &#39;stream: clmn\n&#39;
+            &#39;type: fc\n&#39;
+            &#39;year: 1990/to/2014\n&#39;,
+ &#39;verb&#39;: &#39;retrieve&#39;}
+2026-06-05 14:13:10 - INFO - Polytope user key found in session cache for user mavj
+2026-06-05 14:13:10 - INFO - Request accepted. Please poll ./8f7d7cff-bf3b-4309-93bb-4e3b9cb271dc for status
+2026-06-05 14:13:10 - INFO - Polytope user key found in session cache for user mavj
+2026-06-05 14:13:10 - INFO - Checking request status (8f7d7cff-bf3b-4309-93bb-4e3b9cb271dc)...
+2026-06-05 14:13:11 - INFO - The current status of the request is &#39;queued&#39;
+2026-06-05 14:13:11 - INFO - The current status of the request is &#39;processing&#39;
+2026-06-05 14:13:17 - INFO - The current status of the request is &#39;processed&#39;
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="retrieve-era5-reanalysis-from-the-cliamte-data-store-for-the-same-period">
+<h2>Retrieve ERA5 reanalysis from the Cliamte Data Store for the same period<a class="headerlink" href="#retrieve-era5-reanalysis-from-the-cliamte-data-store-for-the-same-period" title="Permalink to this heading">#</a></h2>
+<p>ERA5 is ECMWF’s fifth-generation global reanalysis, widely used as the reference observational
+climatology.  We pull the same variable (2 m temperature), same period, and same temporal
+resolution (monthly means) from the Copernicus Climate Data Store (CDS).</p>
+<p>The CDS request uses a different vocabulary (<code class="docutils literal notranslate"><span class="pre">product_type</span></code>, <code class="docutils literal notranslate"><span class="pre">variable</span></code> by name) but earthkit
+normalises both datasets into the same interface, so downstream code is identical.</p>
+<p>Note that in order to access data from the Climate Data Store, you need to register and <a class="reference external" href="https://cds.climate.copernicus.eu/how-to-api">set up your API key access</a>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="s2">&quot;reanalysis-era5-single-levels-monthly-means&quot;</span>
+<span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;product_type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;monthly_averaged_reanalysis&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2m_temperature&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2015</span><span class="p">)],</span>
+    <span class="s2">&quot;month&quot;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">month</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)],</span>
+    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;00:00&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;data_format&quot;</span><span class="p">:</span> <span class="s2">&quot;grib&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;download_format&quot;</span><span class="p">:</span> <span class="s2">&quot;unarchived&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">era5</span> <span class="o">=</span> <span class="n">ekd</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;cds&quot;</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-06-05 14:13:20,680 INFO Request ID is e796b9bc-9c62-42b4-abbb-4d857c989a41
+2026-06-05 14:13:20,755 INFO status has been updated to accepted
+2026-06-05 14:13:39,061 INFO status has been updated to successful
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>Before committing to heavy computation, it’s worth visually checking that both datasets look
+reasonable for the same date.  <code class="docutils literal notranslate"><span class="pre">ekp.Figure</span></code> with <code class="docutils literal notranslate"><span class="pre">rows=1,</span> <span class="pre">columns=2</span></code> places both maps in a single
+row.  We use December 2014 (the last month in the dataset) as a representative snapshot.</p>
+<p>At this point the IFS-NEMO data is still on the HEALPix grid and ERA5 is on its native 0.25 °
+regular lat-lon grid — the <code class="docutils literal notranslate"><span class="pre">grid_cells</span></code> renderer handles both transparently.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATE</span> <span class="o">=</span> <span class="s2">&quot;2014-12-01&quot;</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;France&quot;</span><span class="p">,</span> <span class="s2">&quot;Belgium&quot;</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">ifs_nemo</span><span class="o">.</span><span class="n">to_fieldlist</span><span class="p">()</span><span class="o">.</span><span class="n">sel</span><span class="p">({</span><span class="s2">&quot;time.valid_datetime&quot;</span><span class="p">:</span> <span class="n">DATE</span><span class="p">}))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">era5</span><span class="o">.</span><span class="n">to_fieldlist</span><span class="p">()</span><span class="o">.</span><span class="n">sel</span><span class="p">({</span><span class="s2">&quot;time.valid_datetime&quot;</span><span class="p">:</span> <span class="n">DATE</span><span class="p">}))</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{time.valid_datetime}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;IFS-NEMO (HEALPix)&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ERA5 (0.25°)&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">borders</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/71babe6324b6a98b0d94d50604bb0807fddc47fef01c3761542524dc4a90959a.png" src="../../../_images/71babe6324b6a98b0d94d50604bb0807fddc47fef01c3761542524dc4a90959a.png" />
+</div>
+</div>
+</section>
+<section id="regridding-with-earthkit-geo">
+<h2>Regridding with earthkit-geo<a class="headerlink" href="#regridding-with-earthkit-geo" title="Permalink to this heading">#</a></h2>
+<p>To do arithmetic between IFS-NEMO and ERA5 we need them on the same grid.  We regrid IFS-NEMO
+down to the ERA5 native resolution (0.25 ° × 0.25 °) using bilinear interpolation.</p>
+<p>This is computationally the most expensive step (~300 fields).  The interpolation weights are
+cached so re-runs are fast.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ifs_nemo_regridded</span> <span class="o">=</span> <span class="n">ekg</span><span class="o">.</span><span class="n">regrid</span><span class="p">(</span><span class="n">ifs_nemo</span><span class="o">.</span><span class="n">to_fieldlist</span><span class="p">(),</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="verify-the-regridded-snapshot">
+<h2>Verify the regridded snapshot<a class="headerlink" href="#verify-the-regridded-snapshot" title="Permalink to this heading">#</a></h2>
+<p>A quick visual check that the regridded IFS-NEMO field looks plausible before we proceed.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekp</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span>
+    <span class="n">ifs_nemo_regridded</span><span class="o">.</span><span class="n">sel</span><span class="p">({</span><span class="s2">&quot;time.valid_datetime&quot;</span><span class="p">:</span> <span class="n">DATE</span><span class="p">}),</span>
+    <span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;France&quot;</span><span class="p">,</span> <span class="s2">&quot;Belgium&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;earthkit.plots.components.maps.Map at 0x30c83b8d0&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/a29bd46dd7eb5d2fb8d0772311683e75d5b3f8a8cccafaad248a03b5e7587523.png" src="../../../_images/a29bd46dd7eb5d2fb8d0772311683e75d5b3f8a8cccafaad248a03b5e7587523.png" />
+</div>
+</div>
+</section>
+<section id="statistics-with-earthkit-transforms">
+<h2>Statistics with earthkit-transforms<a class="headerlink" href="#statistics-with-earthkit-transforms" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ekt.temporal.mean</span></code> collapses the time dimension, returning a single field per variable that
+represents the 1990–2014 mean.  This is done on xarray Datasets (after <code class="docutils literal notranslate"><span class="pre">.to_xarray()</span></code>) for
+IFS-NEMO, and directly on the fieldlist for ERA5 — both paths produce compatible results.</p>
+<p>We rename the IFS-NEMO variable from <code class="docutils literal notranslate"><span class="pre">avg_2t</span></code> to <code class="docutils literal notranslate"><span class="pre">2t</span></code> to match the ERA5 naming before
+computing the difference.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ifs_nemo_mean</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ekt</span><span class="o">.</span><span class="n">temporal</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ifs_nemo_regridded</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">(</span><span class="n">time_dims</span><span class="o">=</span><span class="s2">&quot;valid_time&quot;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">rename_vars</span><span class="p">({</span><span class="s2">&quot;avg_2t&quot;</span><span class="p">:</span> <span class="s2">&quot;2t&quot;</span><span class="p">})</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">era5_mean</span> <span class="o">=</span> <span class="n">ekt</span><span class="o">.</span><span class="n">temporal</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">era5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>The difference between IFS-NEMO and ERA5 2m temperature shows us where IFS-NEMO is warmer or colder than ERA5.  Because both objects are on the same grid, the subtraction aligns by coordinate automatically.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">=</span> <span class="n">ifs_nemo_mean</span> <span class="o">-</span> <span class="n">era5_mean</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>We plot the 25-year mean for each dataset and their difference in a 2 × 2 Figure (with the
+difference spanning the full bottom row).  The Robinson projection works well for global maps.</p>
+<p>The diverging <code class="docutils literal notranslate"><span class="pre">RdBu_r</span></code> palette on the difference panel makes warm and cold differences immediately
+legible: blue = IFS-NEMO is warmer than ERA5, red = IFS-NEMO is colder.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="s2">&quot;Robinson&quot;</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">climatedt_plot</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span>
+<span class="n">climatedt_plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ifs_nemo_mean</span><span class="p">)</span>
+<span class="n">climatedt_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;IFS-NEMO&quot;</span><span class="p">)</span>
+
+<span class="n">era5_plot</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span>
+<span class="n">era5_plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">era5_mean</span><span class="p">)</span>
+<span class="n">era5_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ERA5&quot;</span><span class="p">)</span>
+
+<span class="n">diff_plot</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">diff_plot</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">)</span>
+<span class="n">diff_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;IFS-NEMO - ERA5&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{time}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/6f3b1af3f2c214e0e0d2c191b3b615f3485034585b89e018bdc071b05d69d437.png" src="../../../_images/6f3b1af3f2c214e0e0d2c191b3b615f3485034585b89e018bdc071b05d69d437.png" />
+</div>
+</div>
+</section>
+<section id="spatial-and-temporal-statistics">
+<h2>Spatial and temporal statistics<a class="headerlink" href="#spatial-and-temporal-statistics" title="Permalink to this heading">#</a></h2>
+<p>The remaining sections use the full regridded IFS-NEMO time series to compute climatologies,
+anomalies, and spatially-aggregated statistics.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ekt.climatology.mean</span></code> computes the long-term mean (here averaged over all months and years).
+<code class="docutils literal notranslate"><span class="pre">ekt.climatology.anomaly</span></code> subtracts it from each time step at the requested frequency — <code class="docutils literal notranslate"><span class="pre">&quot;year&quot;</span></code>
+means we first average each calendar year before computing the departure from the climatology,
+giving one anomaly field per year.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">ifs_nemo_regridded</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">(</span><span class="n">time_dims</span><span class="o">=</span><span class="s2">&quot;valid_time&quot;</span><span class="p">)</span>
+
+<span class="n">climatology_mean</span> <span class="o">=</span> <span class="n">ekt</span><span class="o">.</span><span class="n">climatology</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+<span class="n">anom</span> <span class="o">=</span> <span class="n">ekt</span><span class="o">.</span><span class="n">climatology</span><span class="o">.</span><span class="n">anomaly</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">climatology_mean</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inspect the anomaly dataset: 25 annual time steps on the 0.25° grid</span>
+<span class="n">anom</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in notebooks */
+
+:root {
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base rgba(0, 0, 0, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, white)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 15))
+  );
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base, rgba(255, 255, 255, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, #111111)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 15))
+  );
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-obj-name,
+.xr-group-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-group-name::before {
+  content: "📁";
+  padding-right: 0.3em;
+}
+
+.xr-group-name,
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+  margin: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+  border: 2px solid transparent !important;
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0) !important;
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-top: 4px;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-group-box {
+  display: inline-grid;
+  grid-template-columns: 0px 20px auto;
+  width: 100%;
+}
+
+.xr-group-box-vline {
+  grid-column-start: 1;
+  border-right: 0.2em solid;
+  border-color: var(--xr-border-color);
+  width: 0px;
+}
+
+.xr-group-box-hline {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  height: 1em;
+  width: 20px;
+  border-bottom: 0.2em solid;
+  border-color: var(--xr-border-color);
+}
+
+.xr-group-box-contents {
+  grid-column-start: 3;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  border-color: var(--xr-background-color-row-odd);
+  margin-bottom: 0;
+  padding-top: 2px;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+  border-color: var(--xr-background-color-row-even);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  border-top: 2px dotted var(--xr-background-color);
+  padding-bottom: 20px !important;
+  padding-top: 10px !important;
+}
+
+.xr-var-attrs-in + label,
+.xr-var-data-in + label,
+.xr-index-data-in + label {
+  padding: 0 1px;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-data > pre,
+.xr-index-data > pre,
+.xr-var-data > table > tbody > tr {
+  background-color: transparent !important;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.xr-var-attrs-in:checked + label > .xr-icon-file-text2,
+.xr-var-data-in:checked + label > .xr-icon-database,
+.xr-index-data-in:checked + label > .xr-icon-database {
+  color: var(--xr-font-color0);
+  filter: drop-shadow(1px 1px 5px var(--xr-font-color2));
+  stroke-width: 0.8px;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 216MB
+Dimensions:     (latitude: 721, longitude: 1440, valid_time: 26)
+Coordinates:
+  * latitude    (latitude) float64 6kB 90.0 89.75 89.5 ... -89.5 -89.75 -90.0
+  * longitude   (longitude) float64 12kB 0.0 0.25 0.5 0.75 ... 359.2 359.5 359.8
+  * valid_time  (valid_time) datetime64[ns] 208B 1990-12-31 ... 2015-12-31
+Data variables:
+    avg_2t      (valid_time, latitude, longitude) float64 216MB 0.9208 ... 18.28
+Attributes:
+    Conventions:  CF-1.8
+    institution:  ECMWF</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-e18495f4-aa3f-4bf5-be81-fcedc8349b72' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-e18495f4-aa3f-4bf5-be81-fcedc8349b72' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>latitude</span>: 721</li><li><span class='xr-has-index'>longitude</span>: 1440</li><li><span class='xr-has-index'>valid_time</span>: 26</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-54abc2c1-dfe6-4acc-be67-11c0ecd6cdde' class='xr-section-summary-in' type='checkbox'  checked><label for='section-54abc2c1-dfe6-4acc-be67-11c0ecd6cdde' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>90.0 89.75 89.5 ... -89.75 -90.0</div><input id='attrs-11afa431-b064-472f-b5cc-5861ffdb6a93' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-11afa431-b064-472f-b5cc-5861ffdb6a93' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a5501b3b-0893-4435-b393-bf51e554dbdb' class='xr-var-data-in' type='checkbox'><label for='data-a5501b3b-0893-4435-b393-bf51e554dbdb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><pre>array([ 90.  ,  89.75,  89.5 , ..., -89.5 , -89.75, -90.  ], shape=(721,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 0.25 0.5 ... 359.2 359.5 359.8</div><input id='attrs-c64005bd-f9f2-42fe-a730-02a8984d3ea6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c64005bd-f9f2-42fe-a730-02a8984d3ea6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5cfc07bc-1acc-4313-a3fd-de3346966696' class='xr-var-data-in' type='checkbox'><label for='data-5cfc07bc-1acc-4313-a3fd-de3346966696' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><pre>array([0.0000e+00, 2.5000e-01, 5.0000e-01, ..., 3.5925e+02, 3.5950e+02,
+       3.5975e+02], shape=(1440,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>valid_time</span></div><div class='xr-var-dims'>(valid_time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1990-12-31 ... 2015-12-31</div><input id='attrs-da2c4057-e3e2-4f64-bc6b-ecbf738ccd22' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-da2c4057-e3e2-4f64-bc6b-ecbf738ccd22' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b66c4846-2398-48c0-bf1d-d49648053a34' class='xr-var-data-in' type='checkbox'><label for='data-b66c4846-2398-48c0-bf1d-d49648053a34' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;1990-12-31T00:00:00.000000000&#x27;, &#x27;1991-12-31T00:00:00.000000000&#x27;,
+       &#x27;1992-12-31T00:00:00.000000000&#x27;, &#x27;1993-12-31T00:00:00.000000000&#x27;,
+       &#x27;1994-12-31T00:00:00.000000000&#x27;, &#x27;1995-12-31T00:00:00.000000000&#x27;,
+       &#x27;1996-12-31T00:00:00.000000000&#x27;, &#x27;1997-12-31T00:00:00.000000000&#x27;,
+       &#x27;1998-12-31T00:00:00.000000000&#x27;, &#x27;1999-12-31T00:00:00.000000000&#x27;,
+       &#x27;2000-12-31T00:00:00.000000000&#x27;, &#x27;2001-12-31T00:00:00.000000000&#x27;,
+       &#x27;2002-12-31T00:00:00.000000000&#x27;, &#x27;2003-12-31T00:00:00.000000000&#x27;,
+       &#x27;2004-12-31T00:00:00.000000000&#x27;, &#x27;2005-12-31T00:00:00.000000000&#x27;,
+       &#x27;2006-12-31T00:00:00.000000000&#x27;, &#x27;2007-12-31T00:00:00.000000000&#x27;,
+       &#x27;2008-12-31T00:00:00.000000000&#x27;, &#x27;2009-12-31T00:00:00.000000000&#x27;,
+       &#x27;2010-12-31T00:00:00.000000000&#x27;, &#x27;2011-12-31T00:00:00.000000000&#x27;,
+       &#x27;2012-12-31T00:00:00.000000000&#x27;, &#x27;2013-12-31T00:00:00.000000000&#x27;,
+       &#x27;2014-12-31T00:00:00.000000000&#x27;, &#x27;2015-12-31T00:00:00.000000000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-47ae75bd-3e3a-4f90-89c8-f5e9415733e7' class='xr-section-summary-in' type='checkbox'  checked><label for='section-47ae75bd-3e3a-4f90-89c8-f5e9415733e7' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>avg_2t</span></div><div class='xr-var-dims'>(valid_time, latitude, longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.9208 0.9208 ... 18.28 18.28</div><input id='attrs-71edbcd5-9f13-43c1-b58d-0bdebb2a519c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-71edbcd5-9f13-43c1-b58d-0bdebb2a519c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-39a799ae-1322-4e65-9776-8e783ec4e1e9' class='xr-var-data-in' type='checkbox'><label for='data-39a799ae-1322-4e65-9776-8e783ec4e1e9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>air_temperature_anomaly</dd><dt><span>long_name :</span></dt><dd>Time-mean 2 metre temperature anomaly</dd><dt><span>units :</span></dt><dd>kelvin</dd><dt><span>level_type :</span></dt><dd>height_above_ground_level</dd><dt><span>_earthkit :</span></dt><dd>{&#x27;message&#x27;: b&#x27;GRIB\xff\xff\x00\x02\x00\x00\x00\x00\x00\x00\x00\xee\x00\x00\x00\x15\x01\x00b\x03\xeb&quot;\x01\x02\x07\xc6\x01\x01\x00\x00\x00\x0c\x01\x00\x00\x00\x1f\x02\x00\x01\x00\x01\x00\x05\x00\x01\x02\x00\x03\x01\x00\x01\x00\x01\x00.\x00\t\x04K0001\x00\x00\x00H\x03\x00\x00\x0f\xd7\xa0\x00\x00\x00\x00\x06\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x05\xa0\x00\x00\x02\xd1\x00\x00\x00\x00\xff\xff\xff\xff\x05]J\x80\x00\x00\x00\x000\x85]J\x80\x15qYp\x00\x03\xd0\x90\x00\x03\xd0\x90\x00\x00\x00\x00:\x04\x00\x00\x00\x08\x00\x00\x02\xff\x9c\xff\xff\xff\x01\x00\x00\x00\x00g\x00\x00\x00\x00\x02\xff\xff\xff\xff\xff\xff\x07\xc6\x02\x01\x00\x00\x00\x01\x00\x00\x00\x00\x00\xff\x01\x00\x00\x02\xe8\r\x00\x00\x0e\x10\x00\x00\x00\x19\x05\x00\x0f\xd7\xa0\x00*C\x88\x80\x00\x00\x00\x00\x00\x00\x00\x0e \x00\x80\x00\x00\x00\x06\x06\xff\x00\x00\x00\x05\x077777&#x27;, &#x27;bitsPerValue&#x27;: 24, &#x27;grid_spec&#x27;: &#x27;{&quot;grid&quot;: [0.25, 0.25]}&#x27;}</dd><dt><span>earthkit_grid_spec :</span></dt><dd>{&quot;grid&quot;: [0.25, 0.25]}</dd></dl></div><div class='xr-var-data'><pre>array([[[ 9.20769598e-01,  9.20769598e-01,  9.20769598e-01, ...,
+          9.20769598e-01,  9.20769598e-01,  9.20769598e-01],
+        [ 8.37634922e-01,  8.37814491e-01,  8.37995152e-01, ...,
+          8.37107851e-01,  8.37281485e-01,  8.37457809e-01],
+        [ 7.32464246e-01,  7.32466646e-01,  7.32472042e-01, ...,
+          7.32471246e-01,  7.32467679e-01,  7.32463640e-01],
+        ...,
+        [-2.60688737e+00, -2.60608649e+00, -2.60529297e+00, ...,
+         -2.60931242e+00, -2.60849877e+00, -2.60769139e+00],
+        [-2.62424546e+00, -2.62424125e+00, -2.62423795e+00, ...,
+         -2.62427463e+00, -2.62426445e+00, -2.62425386e+00],
+        [-2.74476997e+00, -2.74476997e+00, -2.74476997e+00, ...,
+         -2.74476997e+00, -2.74476997e+00, -2.74476997e+00]],
+
+       [[ 1.66411278e+00,  1.66411278e+00,  1.66411278e+00, ...,
+          1.66411278e+00,  1.66411278e+00,  1.66411278e+00],
+        [ 1.65563034e+00,  1.65567599e+00,  1.65572146e+00, ...,
+          1.65549624e+00,  1.65553942e+00,  1.65558512e+00],
+        [ 1.58838671e+00,  1.58823306e+00,  1.58808095e+00, ...,
+          1.58885396e+00,  1.58869596e+00,  1.58854078e+00],
+...
+         -6.48908920e-01, -6.48805033e-01, -6.48703435e-01],
+        [-6.73614756e-01, -6.73630829e-01, -6.73650182e-01, ...,
+         -6.73565547e-01, -6.73579127e-01, -6.73597260e-01],
+        [-6.97403107e-01, -6.97403107e-01, -6.97403107e-01, ...,
+         -6.97403107e-01, -6.97403107e-01, -6.97403107e-01]],
+
+       [[-1.24781659e+01, -1.24781659e+01, -1.24781659e+01, ...,
+         -1.24781659e+01, -1.24781659e+01, -1.24781659e+01],
+        [-1.23859937e+01, -1.23859029e+01, -1.23858111e+01, ...,
+         -1.23862836e+01, -1.23861800e+01, -1.23860835e+01],
+        [-1.22879777e+01, -1.22878338e+01, -1.22877042e+01, ...,
+         -1.22884139e+01, -1.22882642e+01, -1.22881135e+01],
+        ...,
+        [ 1.78242379e+01,  1.78188035e+01,  1.78134033e+01, ...,
+          1.78406776e+01,  1.78351713e+01,  1.78296914e+01],
+        [ 1.78076455e+01,  1.78078336e+01,  1.78080380e+01, ...,
+          1.78071302e+01,  1.78072902e+01,  1.78074672e+01],
+        [ 1.82771236e+01,  1.82771236e+01,  1.82771236e+01, ...,
+          1.82771236e+01,  1.82771236e+01,  1.82771236e+01]]],
+      shape=(26, 721, 1440))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-448bddd7-5988-41c9-97fd-9b24d09342fb' class='xr-section-summary-in' type='checkbox'  checked><label for='section-448bddd7-5988-41c9-97fd-9b24d09342fb' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>institution :</span></dt><dd>ECMWF</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p>NUTS (Nomenclature of Territorial Units for Statistics) is the EU’s hierarchical system for
+administrative regions.  Level 0 corresponds to countries.  earthkit ships this dataset as a
+built-in sample so no separate download is needed.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nuts_level_0</span> <span class="o">=</span> <span class="n">ekd</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span> <span class="s2">&quot;NUTS_RG_60M_2021_4326_LEVL_0.geojson&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ekt.spatial.reduce</span></code> aggregates gridded data to arbitrary polygons.  Key options:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">weights=&quot;latitude&quot;</span></code></p></td>
+<td><p>cosine-area weighting</p></td>
+<td><p>Corrects for grid cells shrinking toward the poles</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mask_dim=&quot;NAME_LATN&quot;</span></code></p></td>
+<td><p>region label column</p></td>
+<td><p>Names each aggregated region</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">return_as=&quot;pandas&quot;</span></code></p></td>
+<td><p>output format</p></td>
+<td><p>Returns a tidy DataFrame</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">all_touched=True</span></code></p></td>
+<td><p>rasterisation rule</p></td>
+<td><p>Includes cells that touch a polygon boundary</p></td>
+</tr>
+</tbody>
+</table>
+<p>We select a single anomaly year before aggregating to keep the computation fast.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">YEAR</span> <span class="o">=</span> <span class="mi">2008</span>
+
+<span class="n">nuts_anom</span> <span class="o">=</span> <span class="n">ekt</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span>
+    <span class="n">anom</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">valid_time</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">YEAR</span><span class="si">}</span><span class="s2">-12-31&quot;</span><span class="p">),</span>
+    <span class="n">nuts_level_0</span><span class="p">,</span>
+    <span class="n">weights</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span>
+    <span class="n">mask_dim</span><span class="o">=</span><span class="s2">&quot;NAME_LATN&quot;</span><span class="p">,</span>
+    <span class="n">return_as</span><span class="o">=</span><span class="s2">&quot;pandas&quot;</span><span class="p">,</span>
+    <span class="n">all_touched</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">nuts_anom</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>NUTS_ID</th>
+      <th>LEVL_CODE</th>
+      <th>CNTR_CODE</th>
+      <th>NAME_LATN</th>
+      <th>NUTS_NAME</th>
+      <th>MOUNT_TYPE</th>
+      <th>URBN_TYPE</th>
+      <th>COAST_TYPE</th>
+      <th>FID</th>
+      <th>geometry</th>
+      <th>valid_time</th>
+      <th>avg_2t</th>
+    </tr>
+    <tr>
+      <th>NAME_LATN</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Danmark</th>
+      <td>DK</td>
+      <td>DK</td>
+      <td>0</td>
+      <td>DK</td>
+      <td>Danmark</td>
+      <td>Danmark</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>DK</td>
+      <td>MULTIPOLYGON (((15.1629 55.0937, 15.094 54.996...</td>
+      <td>2008-12-31</td>
+      <td>0.573214</td>
+    </tr>
+    <tr>
+      <th>Serbia</th>
+      <td>RS</td>
+      <td>RS</td>
+      <td>0</td>
+      <td>RS</td>
+      <td>Serbia</td>
+      <td>Srbija/Сpбија</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>RS</td>
+      <td>POLYGON ((21.4792 45.193, 21.3585 44.8216, 22....</td>
+      <td>2008-12-31</td>
+      <td>0.638894</td>
+    </tr>
+    <tr>
+      <th>Eesti</th>
+      <td>EE</td>
+      <td>EE</td>
+      <td>0</td>
+      <td>EE</td>
+      <td>Eesti</td>
+      <td>Eesti</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>EE</td>
+      <td>MULTIPOLYGON (((27.357 58.7871, 27.6449 57.981...</td>
+      <td>2008-12-31</td>
+      <td>-0.140054</td>
+    </tr>
+    <tr>
+      <th>Elláda</th>
+      <td>EL</td>
+      <td>EL</td>
+      <td>0</td>
+      <td>EL</td>
+      <td>Elláda</td>
+      <td>Ελλάδα</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>EL</td>
+      <td>MULTIPOLYGON (((28.0777 36.1182, 27.8606 35.92...</td>
+      <td>2008-12-31</td>
+      <td>0.385529</td>
+    </tr>
+    <tr>
+      <th>España</th>
+      <td>ES</td>
+      <td>ES</td>
+      <td>0</td>
+      <td>ES</td>
+      <td>España</td>
+      <td>España</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>ES</td>
+      <td>MULTIPOLYGON (((4.391 39.8617, 4.1907 39.7981,...</td>
+      <td>2008-12-31</td>
+      <td>0.238526</td>
+    </tr>
+    <tr>
+      <th>Suomi/Finland</th>
+      <td>FI</td>
+      <td>FI</td>
+      <td>0</td>
+      <td>FI</td>
+      <td>Suomi/Finland</td>
+      <td>Suomi/Finland</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>FI</td>
+      <td>MULTIPOLYGON (((28.8967 69.0426, 28.4782 68.51...</td>
+      <td>2008-12-31</td>
+      <td>0.025170</td>
+    </tr>
+    <tr>
+      <th>France</th>
+      <td>FR</td>
+      <td>FR</td>
+      <td>0</td>
+      <td>FR</td>
+      <td>France</td>
+      <td>France</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>FR</td>
+      <td>MULTIPOLYGON (((55.8498 -21.1858, 55.7858 -21....</td>
+      <td>2008-12-31</td>
+      <td>0.344974</td>
+    </tr>
+    <tr>
+      <th>Hrvatska</th>
+      <td>HR</td>
+      <td>HR</td>
+      <td>0</td>
+      <td>HR</td>
+      <td>Hrvatska</td>
+      <td>Hrvatska</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>HR</td>
+      <td>MULTIPOLYGON (((17.6515 45.8478, 17.9121 45.79...</td>
+      <td>2008-12-31</td>
+      <td>0.275761</td>
+    </tr>
+    <tr>
+      <th>Magyarország</th>
+      <td>HU</td>
+      <td>HU</td>
+      <td>0</td>
+      <td>HU</td>
+      <td>Magyarország</td>
+      <td>Magyarország</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>HU</td>
+      <td>POLYGON ((22.1211 48.3783, 22.1553 48.4034, 22...</td>
+      <td>2008-12-31</td>
+      <td>0.168932</td>
+    </tr>
+    <tr>
+      <th>Éire/Ireland</th>
+      <td>IE</td>
+      <td>IE</td>
+      <td>0</td>
+      <td>IE</td>
+      <td>Éire/Ireland</td>
+      <td>Éire/Ireland</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>IE</td>
+      <td>POLYGON ((-7.1885 54.3377, -6.8642 54.3302, -6...</td>
+      <td>2008-12-31</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Ísland</th>
+      <td>IS</td>
+      <td>IS</td>
+      <td>0</td>
+      <td>IS</td>
+      <td>Ísland</td>
+      <td>Ísland</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>IS</td>
+      <td>POLYGON ((-22.1255 64.0406, -21.7569 64.3256, ...</td>
+      <td>2008-12-31</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Italia</th>
+      <td>IT</td>
+      <td>IT</td>
+      <td>0</td>
+      <td>IT</td>
+      <td>Italia</td>
+      <td>Italia</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>IT</td>
+      <td>MULTIPOLYGON (((12.2407 47.0692, 12.2117 46.89...</td>
+      <td>2008-12-31</td>
+      <td>0.276437</td>
+    </tr>
+    <tr>
+      <th>Liechtenstein</th>
+      <td>LI</td>
+      <td>LI</td>
+      <td>0</td>
+      <td>LI</td>
+      <td>Liechtenstein</td>
+      <td>Liechtenstein</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>LI</td>
+      <td>POLYGON ((9.6206 47.1516, 9.6071 47.0608, 9.47...</td>
+      <td>2008-12-31</td>
+      <td>0.367954</td>
+    </tr>
+    <tr>
+      <th>Lietuva</th>
+      <td>LT</td>
+      <td>LT</td>
+      <td>0</td>
+      <td>LT</td>
+      <td>Lietuva</td>
+      <td>Lietuva</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>LT</td>
+      <td>POLYGON ((22.9205 56.3991, 23.1554 56.3288, 24...</td>
+      <td>2008-12-31</td>
+      <td>-0.109003</td>
+    </tr>
+    <tr>
+      <th>Luxembourg</th>
+      <td>LU</td>
+      <td>LU</td>
+      <td>0</td>
+      <td>LU</td>
+      <td>Luxembourg</td>
+      <td>Luxembourg</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>LU</td>
+      <td>POLYGON ((6.1377 50.13, 6.475 49.8213, 6.3801 ...</td>
+      <td>2008-12-31</td>
+      <td>0.307578</td>
+    </tr>
+    <tr>
+      <th>Latvija</th>
+      <td>LV</td>
+      <td>LV</td>
+      <td>0</td>
+      <td>LV</td>
+      <td>Latvija</td>
+      <td>Latvija</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>LV</td>
+      <td>POLYGON ((27.6908 57.3706, 28.1546 56.1698, 27...</td>
+      <td>2008-12-31</td>
+      <td>-0.159410</td>
+    </tr>
+    <tr>
+      <th>Crna Gora</th>
+      <td>ME</td>
+      <td>ME</td>
+      <td>0</td>
+      <td>ME</td>
+      <td>Crna Gora</td>
+      <td>Црна Гора</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>ME</td>
+      <td>POLYGON ((20.0639 43.0068, 20.3529 42.8334, 20...</td>
+      <td>2008-12-31</td>
+      <td>0.668818</td>
+    </tr>
+    <tr>
+      <th>Severna Makedonija</th>
+      <td>MK</td>
+      <td>MK</td>
+      <td>0</td>
+      <td>MK</td>
+      <td>Severna Makedonija</td>
+      <td>Северна Македонија</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>MK</td>
+      <td>POLYGON ((22.9683 41.5198, 22.9276 41.3385, 22...</td>
+      <td>2008-12-31</td>
+      <td>0.787854</td>
+    </tr>
+    <tr>
+      <th>Malta</th>
+      <td>MT</td>
+      <td>MT</td>
+      <td>0</td>
+      <td>MT</td>
+      <td>Malta</td>
+      <td>Malta</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>MT</td>
+      <td>MULTIPOLYGON (((14.6459 35.9333, 14.4334 35.71...</td>
+      <td>2008-12-31</td>
+      <td>0.274116</td>
+    </tr>
+    <tr>
+      <th>Sverige</th>
+      <td>SE</td>
+      <td>SE</td>
+      <td>0</td>
+      <td>SE</td>
+      <td>Sverige</td>
+      <td>Sverige</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>SE</td>
+      <td>MULTIPOLYGON (((20.5486 69.06, 23.4078 68.023,...</td>
+      <td>2008-12-31</td>
+      <td>0.674752</td>
+    </tr>
+    <tr>
+      <th>Slovenija</th>
+      <td>SI</td>
+      <td>SI</td>
+      <td>0</td>
+      <td>SI</td>
+      <td>Slovenija</td>
+      <td>Slovenija</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>SI</td>
+      <td>POLYGON ((16.3708 46.7222, 16.5968 46.4759, 16...</td>
+      <td>2008-12-31</td>
+      <td>0.067402</td>
+    </tr>
+    <tr>
+      <th>Slovensko</th>
+      <td>SK</td>
+      <td>SK</td>
+      <td>0</td>
+      <td>SK</td>
+      <td>Slovensko</td>
+      <td>Slovensko</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>SK</td>
+      <td>POLYGON ((19.4674 49.6138, 19.8839 49.2042, 20...</td>
+      <td>2008-12-31</td>
+      <td>0.161772</td>
+    </tr>
+    <tr>
+      <th>Türkiye</th>
+      <td>TR</td>
+      <td>TR</td>
+      <td>0</td>
+      <td>TR</td>
+      <td>Türkiye</td>
+      <td>Türkiye</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>TR</td>
+      <td>MULTIPOLYGON (((35.5137 41.636, 35.9494 41.699...</td>
+      <td>2008-12-31</td>
+      <td>0.083301</td>
+    </tr>
+    <tr>
+      <th>United Kingdom</th>
+      <td>UK</td>
+      <td>UK</td>
+      <td>0</td>
+      <td>UK</td>
+      <td>United Kingdom</td>
+      <td>United Kingdom</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>UK</td>
+      <td>MULTIPOLYGON (((-0.1102 51.5096, -0.0247 51.48...</td>
+      <td>2008-12-31</td>
+      <td>0.752657</td>
+    </tr>
+    <tr>
+      <th>Nederland</th>
+      <td>NL</td>
+      <td>NL</td>
+      <td>0</td>
+      <td>NL</td>
+      <td>Nederland</td>
+      <td>Nederland</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NL</td>
+      <td>MULTIPOLYGON (((7.2028 53.1133, 7.0927 52.8382...</td>
+      <td>2008-12-31</td>
+      <td>0.481099</td>
+    </tr>
+    <tr>
+      <th>Polska</th>
+      <td>PL</td>
+      <td>PL</td>
+      <td>0</td>
+      <td>PL</td>
+      <td>Polska</td>
+      <td>Polska</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>PL</td>
+      <td>POLYGON ((18.5417 54.5845, 18.95 54.3583, 19.6...</td>
+      <td>2008-12-31</td>
+      <td>-0.176064</td>
+    </tr>
+    <tr>
+      <th>Portugal</th>
+      <td>PT</td>
+      <td>PT</td>
+      <td>0</td>
+      <td>PT</td>
+      <td>Portugal</td>
+      <td>Portugal</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>PT</td>
+      <td>MULTIPOLYGON (((-8.199 42.1544, -8.1651 41.818...</td>
+      <td>2008-12-31</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>România</th>
+      <td>RO</td>
+      <td>RO</td>
+      <td>0</td>
+      <td>RO</td>
+      <td>România</td>
+      <td>România</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>RO</td>
+      <td>POLYGON ((27.3912 47.5894, 28.1138 46.8384, 28...</td>
+      <td>2008-12-31</td>
+      <td>0.177967</td>
+    </tr>
+    <tr>
+      <th>Shqipëria</th>
+      <td>AL</td>
+      <td>AL</td>
+      <td>0</td>
+      <td>AL</td>
+      <td>Shqipëria</td>
+      <td>Shqipëria</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>AL</td>
+      <td>POLYGON ((20.0763 42.5558, 20.2649 42.3929, 20...</td>
+      <td>2008-12-31</td>
+      <td>0.583699</td>
+    </tr>
+    <tr>
+      <th>Österreich</th>
+      <td>AT</td>
+      <td>AT</td>
+      <td>0</td>
+      <td>AT</td>
+      <td>Österreich</td>
+      <td>Österreich</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>AT</td>
+      <td>POLYGON ((16.9403 48.6172, 16.9498 48.5358, 16...</td>
+      <td>2008-12-31</td>
+      <td>0.134516</td>
+    </tr>
+    <tr>
+      <th>Belgique/België</th>
+      <td>BE</td>
+      <td>BE</td>
+      <td>0</td>
+      <td>BE</td>
+      <td>Belgique/België</td>
+      <td>Belgique/België</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>BE</td>
+      <td>POLYGON ((5.5663 51.2208, 5.7983 51.0599, 5.76...</td>
+      <td>2008-12-31</td>
+      <td>0.448432</td>
+    </tr>
+    <tr>
+      <th>Bulgaria</th>
+      <td>BG</td>
+      <td>BG</td>
+      <td>0</td>
+      <td>BG</td>
+      <td>Bulgaria</td>
+      <td>България</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>BG</td>
+      <td>POLYGON ((22.9664 44.0983, 22.9972 43.8079, 23...</td>
+      <td>2008-12-31</td>
+      <td>0.496493</td>
+    </tr>
+    <tr>
+      <th>Schweiz/Suisse/Svizzera</th>
+      <td>CH</td>
+      <td>CH</td>
+      <td>0</td>
+      <td>CH</td>
+      <td>Schweiz/Suisse/Svizzera</td>
+      <td>Schweiz/Suisse/Svizzera</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>CH</td>
+      <td>POLYGON ((9.1822 47.6559, 9.4956 47.5515, 9.55...</td>
+      <td>2008-12-31</td>
+      <td>0.284508</td>
+    </tr>
+    <tr>
+      <th>Kýpros</th>
+      <td>CY</td>
+      <td>CY</td>
+      <td>0</td>
+      <td>CY</td>
+      <td>Kýpros</td>
+      <td>Κύπρος</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>CY</td>
+      <td>POLYGON ((33.6251 34.8511, 32.9417 34.6418, 32...</td>
+      <td>2008-12-31</td>
+      <td>-0.138830</td>
+    </tr>
+    <tr>
+      <th>Česko</th>
+      <td>CZ</td>
+      <td>CZ</td>
+      <td>0</td>
+      <td>CZ</td>
+      <td>Česko</td>
+      <td>Česko</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>CZ</td>
+      <td>POLYGON ((14.4912 51.0435, 14.6188 50.8578, 14...</td>
+      <td>2008-12-31</td>
+      <td>-0.025651</td>
+    </tr>
+    <tr>
+      <th>Deutschland</th>
+      <td>DE</td>
+      <td>DE</td>
+      <td>0</td>
+      <td>DE</td>
+      <td>Deutschland</td>
+      <td>Deutschland</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>DE</td>
+      <td>MULTIPOLYGON (((9.1131 54.8736, 9.2736 54.8117...</td>
+      <td>2008-12-31</td>
+      <td>0.212809</td>
+    </tr>
+    <tr>
+      <th>Norge</th>
+      <td>NO</td>
+      <td>NO</td>
+      <td>0</td>
+      <td>NO</td>
+      <td>Norge</td>
+      <td>Norge</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NO</td>
+      <td>MULTIPOLYGON (((28.8967 69.0426, 29.1537 69.58...</td>
+      <td>2008-12-31</td>
+      <td>1.223447</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>A choropleth fills each polygon with a colour proportional to its aggregated value.  We add
+direct data labels (<code class="docutils literal notranslate"><span class="pre">labels=&quot;{avg_2t:+.1f}°C&quot;</span></code>) so the magnitude of the anomaly is readable
+without needing to consult the legend.  The <code class="docutils literal notranslate"><span class="pre">+</span></code> format flag forces the sign to be shown on both
+positive and negative values.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Europe&quot;</span><span class="p">)</span>
+
+<span class="n">chart</span><span class="o">.</span><span class="n">choropleth</span><span class="p">(</span>
+    <span class="n">nuts_anom</span><span class="p">,</span>
+    <span class="n">z</span><span class="o">=</span><span class="s2">&quot;avg_2t&quot;</span><span class="p">,</span>
+    <span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
+    <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span>
+    <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">labels</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{avg_2t:+.1f}</span><span class="s2">°C&quot;</span>
+<span class="p">)</span>
+
+<span class="n">chart</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;temperature anomaly (°C)&quot;</span><span class="p">)</span>
+
+<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;2m temperature anomaly — </span><span class="si">{</span><span class="n">YEAR</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;Data: IFS-NEMO  •  Baseline: 1990–2014&quot;</span>
+<span class="p">)</span>
+
+<span class="n">chart</span><span class="o">.</span><span class="n">attribution</span><span class="p">(</span><span class="s2">&quot;Credit: Destination Earth / ECMWF&quot;</span><span class="p">)</span>
+
+<span class="n">chart</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">borders</span><span class="p">()</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/320d60a5e9d02a7eb1ff16226195424449a2970f13b28fcc0292719b67eaba4f.png" src="../../../_images/320d60a5e9d02a7eb1ff16226195424449a2970f13b28fcc0292719b67eaba4f.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ekt.spatial.reduce</span></code> without a polygon argument collapses to a single global mean value per time
+step — effectively a globally-averaged time series.  We trim to the 1990–2013 range to exclude
+the partial year at each end.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">global_mean</span> <span class="o">=</span> <span class="n">ekt</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">anom</span><span class="p">)</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">valid_time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;1990-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2014-01-01&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>Warming stripes encode a temperature time series as a sequence of coloured bars — no axes, no
+numbers, just colour.  Originally created by Ed Hawkins (University of Reading), the format has
+become a widely recognised communication tool for climate change.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ekp.timeseries.stripes</span></code> implements this directly.  We add sparse x-axis tick marks (every 5
+years) and a brief title to provide just enough context.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">timeseries</span><span class="o">.</span><span class="n">stripes</span><span class="p">(</span><span class="n">global_mean</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">)</span>
+
+<span class="n">chart</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">frequency</span><span class="o">=</span><span class="s2">&quot;5Y&quot;</span><span class="p">)</span>
+
+<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;IFS-NEMO </span><span class="si">{variable_name}</span><span class="s2">  •  Baseline: 1991–2020&quot;</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">attribution</span><span class="p">(</span><span class="s2">&quot;Credit: Destination Earth / ECMWF&quot;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+
+<span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/48b344145337e4015950680219a8c13eca65beffff0b5a590c4b7c54e668f628.png" src="../../../_images/48b344145337e4015950680219a8c13eca65beffff0b5a590c4b7c54e668f628.png" />
+</div>
+</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Instead of finding the difference between IFS-NEMO and ERA5 over the whole time period, calculate monthly climatologies for both IFS-NEMO and ERA5 and find the differences for each month (hint: try <code class="docutils literal notranslate"><span class="pre">ekt.climatology.monthly_mean</span></code>). Do the differences change throughout the year?</p></li>
+</ol>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ifs_nemo_monthly_mean</span> <span class="o">=</span> <span class="n">ekt</span><span class="o">.</span><span class="n">climatology</span><span class="o">.</span><span class="n">monthly_mean</span><span class="p">(</span>
+    <span class="n">ifs_nemo_regridded</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">(</span><span class="n">time_dims</span><span class="o">=</span><span class="s2">&quot;valid_time&quot;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">rename_vars</span><span class="p">({</span><span class="s2">&quot;avg_2t&quot;</span><span class="p">:</span> <span class="s2">&quot;2t&quot;</span><span class="p">})</span>
+
+<span class="n">era5_monthly_mean</span> <span class="o">=</span> <span class="n">ekt</span><span class="o">.</span><span class="n">climatology</span><span class="o">.</span><span class="n">monthly_mean</span><span class="p">(</span><span class="n">era5</span><span class="p">)</span>
+
+<span class="n">monthly_diff</span> <span class="o">=</span> <span class="n">ifs_nemo_monthly_mean</span> <span class="o">-</span> <span class="n">era5_monthly_mean</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="s2">&quot;Robinson&quot;</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">monthly_diff</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">),</span> <span class="n">levels</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">)</span>
+    
+<span class="n">fig</span><span class="o">.</span><span class="n">subplot_titles</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{month}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;IFS-NEMO monthly temperature difference vs ERA5&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;2m temperature difference (</span><span class="si">{units}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/422f3da5c731ee1f293bc3ec419a9a0cdeba4b237e69ad510e8945ee9793980d.png" src="../../../_images/422f3da5c731ee1f293bc3ec419a9a0cdeba4b237e69ad510e8945ee9793980d.png" />
+</div>
+</div>
+<hr class="docutils" />
+</section>
+</section>
+<section id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h1>
+<p>In this notebook you built a complete analysis pipeline:</p>
+<ol class="arabic simple">
+<li><p><strong>Retrieved</strong> 25 years of monthly IFS-NEMO and ERA5 data</p></li>
+<li><p><strong>Regridded</strong> IFS-NEMO from HEALPix to 0.25 ° to match ERA5</p></li>
+<li><p><strong>Computed</strong> 25-year temporal means and visualised the model differences globally</p></li>
+<li><p><strong>Computed</strong> annual temperature anomalies relative to the 1990–2014 climatology</p></li>
+<li><p><strong>Aggregated</strong> anomalies to NUTS-0 country polygons with area weighting</p></li>
+<li><p><strong>Visualised</strong> the results as a choropleth map and as warming stripes</p></li>
+</ol>
+<p>To continue exploring earthkit, see the <a class="reference external" href="https://earthkit.ecmwf.int/">earthkit website</a>, <a class="reference external" href="https://earthkit.readthedocs.io/en/latest/">documentation</a> or <a class="reference external" href="https://github.com/ecmwf/earthkit">GitHub</a>.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "develop"
+        },
+        kernelOptions: {
+            name: "develop",
+            path: "./climate-dt/earthkit-1.0/solutions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'develop'</script>
+
+            </article>
+            
+
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Analysing Destination Earth Climate Digital Twins with earthkit
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#retrieve-the-climate-dt-baseline-run-ifs-nemo">
+     Retrieve the Climate DT baseline run (IFS-NEMO)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#retrieve-era5-reanalysis-from-the-cliamte-data-store-for-the-same-period">
+     Retrieve ERA5 reanalysis from the Cliamte Data Store for the same period
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regridding-with-earthkit-geo">
+     Regridding with earthkit-geo
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#verify-the-regridded-snapshot">
+     Verify the regridded snapshot
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistics-with-earthkit-transforms">
+     Statistics with earthkit-transforms
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spatial-and-temporal-statistics">
+     Spatial and temporal statistics
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Adam Warde, James Hawkes, Alice Sartori Monteiro de Barros and Tiago Quintino
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+Last updated on None.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </div>
+        </footer>
+        
+
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+
+  </body>
+</html>

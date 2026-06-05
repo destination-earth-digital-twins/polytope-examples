@@ -1,0 +1,1487 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Using earthkit with the Destination Earth Climate Digital Twins &#8212; Polytope Examples for DT Data Access</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'climate-dt/earthkit-1.0/solutions/01-earthkit-basics';</script>
+    <link rel="canonical" href="https://destination-earth-digital-twins.github.io/polytope-examples/climate-dt/earthkit-1.0/solutions/01-earthkit-basics.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../README.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../../_static/Logo_Destination_Earth_Colours.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/Logo_Destination_Earth_Colours.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../README.html">
+                        Climate DT Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../extremes-dt/README.html">
+                        Extremes DT
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../on-demand-extremes-dt/README.html">
+                        On-Demand Extremes-DT
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../nextgems/README.html">
+                        NextGEMS Data
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../README.html">
+                        Climate DT Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../extremes-dt/README.html">
+                        Extremes DT
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../on-demand-extremes-dt/README.html">
+                        On-Demand Extremes-DT
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../nextgems/README.html">
+                        NextGEMS Data
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">
+  
+
+
+<a class="navbar-brand logo" href="../../../README.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../../_static/Logo_Destination_Earth_Colours.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/Logo_Destination_Earth_Colours.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    </div>
+    <div class="sidebar-start-items__item">
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../README.html">
+                    Polytope Examples for DT Data Access
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../README.html">Climate DT Examples</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-earthkit-aoi-example.html">Polytope Climate-DT AOI example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-earthkit-area-example.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-earthkit-example.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-earthkit-example-domain.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-earthkit-grid-example.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-earthkit-monthly-mean-example.html">Polytope Climate-DT MN5 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-healpix-data.html">Climate-DT Healpix data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-healpix-ocean-example.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../full-field/climate-dt-highresmip-earthkit-example.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field-post-processing/climate-dt-earthkit-geotiff.html">Polytope Climate-DT Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field-post-processing/climate-dt-earthkit-healpix-interpolate.html">Polytope Climate-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../full-field-post-processing/climate-dt-earthkit-serverside-interpolation.html">Polytope Climate-DT Serverside Interpolation example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-boundingbox.html">Polytope Climate-DT Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-country.html">Polytope Climate-DT Country cut-out example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-pcolormesh.html">Polytope Climate-DT Country pcolormesh example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-polygon.html">Polytope Climate-DT Polygon example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-polygon-clmn-baseline.html">Polytope Climate-DT Monthly Mean Polygon example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-polygon-clmn-projections.html">Polytope Climate-DT Monthly Mean Polygon (Projections) example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-story-nudging.html">Polytope Climate-DT Time Series example notebook for story nudging</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-timeseries.html">Polytope Climate-DT Time Series example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-timeseries-clmn-baseline.html">Polytope Climate-DT Monthly Mean Time Series example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-timeseries-clmn-projections.html">Polytope Climate-DT Monthly Mean Time Series (Projections) example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-trajectory.html">Polytope Climate-DT Trajectory example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../feature-extraction/climate-dt-earthkit-fe-verticalprofile.html">Polytope Climate-DT Feature Extraction Vertical Profile example notebook</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../extremes-dt/README.html">Extremes DT</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/full-field/extremes-dt-earthkit-example.html">Polytope Extremes-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/full-field/extremes-dt-earthkit-example-H3.html">Polytope Extremes-DT Feature Extraction Timeseries H3 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/full-field/extremes-dt-earthkit-example-domain.html">Polytope Extremes-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/full-field-post-processing/extremes-dt-earthkit-example-regrid.html">Polytope Extremes-DT example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/full-field-post-processing/extremes-dt-earthkit-serverside-interpolation.html">Polytope Extremes-DT Serverside Interpolation example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-boundingbox.html">Polytope Extremes-DT Feature Extraction Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-country.html">Polytope Extremes-DT Feature Extraction Country cut out example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-pcolormesh.html">Polytope Extremes-DT Feature Extraction pcolormesh example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-polygon.html">Polytope Extremes-DT Feature Extraction Polygon example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-polygon-H3.html">Polytope Extremes-DT Feature Extraction Polygon example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-timeseries.html">Polytope Extremes-DT Feature Extraction Timeseries example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-trajectory.html">Polytope Extremes-DT Feature Extraction Trajectory example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-trajectory4d.html">Polytope Extremes-DT Feature Extraction Trajectory 4d example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-verticalprofile.html">Polytope Extremes-DT Feature Extraction Bounding Box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-wave.html">Polytope Extremes-DT Feature Extraction Timeseries example notebook</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../on-demand-extremes-dt/README.html">On-Demand Extremes-DT</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../on-demand-extremes-dt/full-field/on-demand-extremes-dt-example.html">Polytope On-Demand Extremes-DT example notebook</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../../on-demand-extremes-dt/feature-extraction/on-demand-country-fe-example.html">Polytope On-Demand-DT Country cut-out example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../on-demand-extremes-dt/feature-extraction/on-demand-extremes-dt-timeseries-fe-example.html">Polytope On-Demand DT Feature Extraction Timeseries example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../on-demand-extremes-dt/feature-extraction/on-demand-extremes-dt-vertical-profile-fe-example.html">Polytope On-Demand DT Feature Extraction</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../on-demand-extremes-dt/feature-extraction/on-demand-trajectory-fe-example.html">Polytope On-Demand DT Trajectory example notebook</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../nextgems/README.html">NextGEMS Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../nextgems/full-field/nextGEMS-historical-earthkit-example.html">Polytope nextGEMS historical 1990-2020 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../nextgems/full-field/nextGEMS-scenario-earthkit-example.html">Polytope nextGEMS historical 2020-2050 example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../nextgems/feature-extraction/nextGEMS-historical-fe-boundingbox-example.html">Polytope nextGEMS historical bounding box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../nextgems/feature-extraction/nextGEMS-historical-fe-country-example.html">Polytope nextGEMS historical bounding box example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../nextgems/feature-extraction/nextGEMS-historical-fe-timeseries-example.html">Polytope nextGEMS historical timeseries example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../nextgems/feature-extraction/nextGEMS-historical-fe-trajectory-example.html">Polytope nextGEMS historical trajectory example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../nextgems/feature-extraction/nextGEMS-historical-fe-verticalprofile-example.html">Polytope nextGEMS historical vertical profile example notebook</a></li>
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
+            <span class="fa-solid fa-bars"></span>
+        </label>
+    </div>
+    <div class="header-article__right">
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+  </ul>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="../../../_sources/climate-dt/earthkit-1.0/solutions/01-earthkit-basics.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</a>
+      
+      <li>
+<button onclick="printPdf(this)"
+  class="btn btn-sm dropdown-item"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</a>
+      
+  </ul>
+</div>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
+    </div>
+</div>
+            </div>
+            
+            
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Using earthkit with the Destination Earth Climate Digital Twins</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Using earthkit with the Destination Earth Climate Digital Twins
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#retrieving-data-from-the-climate-dt">
+     Retrieving data from the Climate DT
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualisation">
+     Visualisation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regridding">
+     Regridding
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     Exercises
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary">
+     Summary
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+            <article class="bd-article" role="main">
+              
+  <p><img alt="logo" src="../../../_images/Logo_Destination_Earth_Colours1.png" /></p>
+<section id="using-earthkit-with-the-destination-earth-climate-digital-twins">
+<h1>Using earthkit with the Destination Earth Climate Digital Twins<a class="headerlink" href="#using-earthkit-with-the-destination-earth-climate-digital-twins" title="Permalink to this heading">#</a></h1>
+<p>This notebook introduces the core earthkit libraries and shows how to retrieve, inspect, and visualise a snapshot of Destination Earth Climate DT data using the Polytope API.</p>
+<p><strong>What you will learn</strong></p>
+<ul class="simple">
+<li><p>How to build a Polytope request and pull data from the Climate DT stream</p></li>
+<li><p>How to explore data with <code class="docutils literal notranslate"><span class="pre">earthkit.data</span></code></p></li>
+<li><p>How to make quick global and regional maps with <code class="docutils literal notranslate"><span class="pre">earthkit.plots</span></code></p></li>
+<li><p>How to regrid from the native HEALPix grid to a regular latitude-longitude grid with <code class="docutils literal notranslate"><span class="pre">earthkit.geo</span></code></p></li>
+</ul>
+</section>
+<section id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h1>
+<p>The earthkit suite is a set of focused packages that work well together but can also be used
+independently.  Here we import the four we need:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Alias</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">earthkit.data</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ekd</span></code></p></td>
+<td><p>Data access, I/O, fieldlist operations</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">earthkit.plots</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ekp</span></code></p></td>
+<td><p>Cartographic and time-series visualisation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">earthkit.geo</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ekg</span></code></p></td>
+<td><p>Regridding, spatial utilities</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">earthkit.transforms</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ekt</span></code></p></td>
+<td><p>Temporal/spatial statistics and aggregations</p></td>
+</tr>
+</tbody>
+</table>
+<p>We also tell xarray to propagate metadata attributes through operations (<code class="docutils literal notranslate"><span class="pre">keep_attrs=True</span></code>), which
+means units and long names stay attached to arrays after arithmetic.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ekd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.plots</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ekp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.geo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ekg</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="retrieving-data-from-the-climate-dt">
+<h2>Retrieving data from the Climate DT<a class="headerlink" href="#retrieving-data-from-the-climate-dt" title="Permalink to this heading">#</a></h2>
+<p><strong>Key request fields</strong></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">activity</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">projections</span></code></p></td>
+<td><p>SSP scenario projections (vs. <code class="docutils literal notranslate"><span class="pre">baseline</span></code> historical runs)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">experiment</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SSP3-7.0</span></code></p></td>
+<td><p>Middle-of-the-road high-emissions scenario</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">model</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IFS-NEMO</span></code></p></td>
+<td><p>Coupled atmosphere–ocean model</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stream</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">clte</span></code></p></td>
+<td><p>Climate hourly time-step stream</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">param</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">151/165/166/167</span></code></p></td>
+<td><p>MSL pressure, 10 m U-wind, 10 m V-wind, 2 m temperature</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">levtype</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sfc</span></code></p></td>
+<td><p>Surface-level fields only</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">resolution</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">standard</span></code></p></td>
+<td><p>Native model resolution (~9 km HEALPix nside=512)</p></td>
+</tr>
+</tbody>
+</table>
+<p>The data arrives as GRIB and is automatically parsed into a <em>fieldlist</em> — an ordered collection of
+individual GRIB fields that earthkit can index, filter, and convert.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;activity&#39;</span><span class="p">:</span> <span class="s1">&#39;projections&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;d1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dataset&#39;</span><span class="p">:</span> <span class="s1">&#39;climate-dt&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;20260526&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;experiment&#39;</span><span class="p">:</span> <span class="s1">&#39;SSP3-7.0&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;expver&#39;</span><span class="p">:</span> <span class="s1">&#39;0001&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;generation&#39;</span><span class="p">:</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;levtype&#39;</span><span class="p">:</span> <span class="s1">&#39;sfc&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="s1">&#39;IFS-NEMO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;param&#39;</span><span class="p">:</span> <span class="s1">&#39;151/165/166/167&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;realization&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;resolution&#39;</span><span class="p">:</span> <span class="s1">&#39;standard&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;stream&#39;</span><span class="p">:</span> <span class="s1">&#39;clte&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="s1">&#39;0100&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;fc&#39;</span>
+<span class="p">}</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">ekd</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span>
+    <span class="s2">&quot;polytope&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span>
+    <span class="n">request</span><span class="p">,</span>
+    <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.mn5.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span>
+    <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span><span class="o">.</span><span class="n">to_fieldlist</span><span class="p">()</span>
+
+<span class="c1"># ls() prints a compact summary table: one row per GRIB field</span>
+<span class="n">data</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-06-05 11:56:57 - INFO - Key read from /Users/mavj/.polytopeapirc
+2026-06-05 11:56:57 - INFO - Sending request...
+{&#39;request&#39;: &#39;activity: projections\n&#39;
+            &#39;class: d1\n&#39;
+            &#39;dataset: climate-dt\n&#39;
+            &quot;date: &#39;20260526&#39;\n&quot;
+            &#39;experiment: SSP3-7.0\n&#39;
+            &quot;expver: &#39;0001&#39;\n&quot;
+            &quot;generation: &#39;2&#39;\n&quot;
+            &#39;levtype: sfc\n&#39;
+            &#39;model: IFS-NEMO\n&#39;
+            &#39;param: 151/165/166/167\n&#39;
+            &quot;realization: &#39;1&#39;\n&quot;
+            &#39;resolution: standard\n&#39;
+            &#39;stream: clte\n&#39;
+            &quot;time: &#39;0100&#39;\n&quot;
+            &#39;type: fc\n&#39;,
+ &#39;verb&#39;: &#39;retrieve&#39;}
+2026-06-05 11:56:57 - INFO - Polytope user key found in session cache for user mavj
+2026-06-05 11:56:58 - INFO - Request accepted. Please poll ./4207a01c-33a6-4993-bc44-0154947607dc for status
+2026-06-05 11:56:58 - INFO - Polytope user key found in session cache for user mavj
+2026-06-05 11:56:58 - INFO - Checking request status (4207a01c-33a6-4993-bc44-0154947607dc)...
+2026-06-05 11:56:58 - INFO - The current status of the request is &#39;queued&#39;
+2026-06-05 11:56:58 - INFO - The current status of the request is &#39;processing&#39;
+2026-06-05 11:57:00 - INFO - The current status of the request is &#39;processed&#39;
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>parameter.variable</th>
+      <th>time.valid_datetime</th>
+      <th>time.base_datetime</th>
+      <th>time.step</th>
+      <th>vertical.level</th>
+      <th>vertical.level_type</th>
+      <th>ensemble.member</th>
+      <th>geography.grid_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>msl</td>
+      <td>2026-05-26 01:00:00</td>
+      <td>2026-05-26 01:00:00</td>
+      <td>0 days</td>
+      <td>0</td>
+      <td>mean_sea</td>
+      <td>None</td>
+      <td>healpix</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10u</td>
+      <td>2026-05-26 01:00:00</td>
+      <td>2026-05-26 01:00:00</td>
+      <td>0 days</td>
+      <td>10</td>
+      <td>height_above_ground_level</td>
+      <td>None</td>
+      <td>healpix</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10v</td>
+      <td>2026-05-26 01:00:00</td>
+      <td>2026-05-26 01:00:00</td>
+      <td>0 days</td>
+      <td>10</td>
+      <td>height_above_ground_level</td>
+      <td>None</td>
+      <td>healpix</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2t</td>
+      <td>2026-05-26 01:00:00</td>
+      <td>2026-05-26 01:00:00</td>
+      <td>0 days</td>
+      <td>2</td>
+      <td>height_above_ground_level</td>
+      <td>None</td>
+      <td>healpix</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ekp.geo.plot</span></code> is the fastest way to see all fields at once.  It creates one panel per field and
+picks sensible defaults for colour scales and projections.  Useful for a sanity check right after
+retrieval.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekp</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;earthkit.plots.components.figures.Figure at 0x16d841190&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/dead6b90d43b210ff6d8985ad9954f145e847d3b018a8525da8953061b263a36.png" src="../../../_images/dead6b90d43b210ff6d8985ad9954f145e847d3b018a8525da8953061b263a36.png" />
+</div>
+</div>
+<p>The fieldlist is ordered the same way as the <code class="docutils literal notranslate"><span class="pre">param</span></code> string in the request (<code class="docutils literal notranslate"><span class="pre">151/165/166/167</span></code>),
+so we can unpack it directly into named variables.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msl</span><span class="p">,</span> <span class="n">wind_u</span><span class="p">,</span> <span class="n">wind_v</span><span class="p">,</span> <span class="n">t2m</span> <span class="o">=</span> <span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="visualisation">
+<h2>Visualisation<a class="headerlink" href="#visualisation" title="Permalink to this heading">#</a></h2>
+<p>Climate DT data is stored on a <strong>HEALPix</strong> grid - an equal-area hierarchical tiling originally
+developed for CMB cosmology. Unlike regular lat-lon grids, each cell covers the same solid angle
+on the sphere, which avoids the polar over-sampling problem.</p>
+<p><code class="docutils literal notranslate"><span class="pre">grid_cells</span></code> renders the actual grid polygons rather than interpolating to pixels, so you can see
+the cell shapes directly. <code class="docutils literal notranslate"><span class="pre">style=&quot;auto&quot;</span></code> picks the colour scale automatically from the field
+metadata. <code class="docutils literal notranslate"><span class="pre">.borders()</span></code> adds country borders as a layer on top.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekp</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Europe&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">borders</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;earthkit.plots.components.maps.Map at 0x3227ab0d0&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/29fca5f1bca21ce388791aec51b79eee1cf93b962897ab69685f04ab6823556f.png" src="../../../_images/29fca5f1bca21ce388791aec51b79eee1cf93b962897ab69685f04ab6823556f.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ekp.geo.plot</span></code> also accepts multiple fields.  Passing <code class="docutils literal notranslate"><span class="pre">t2m</span></code> and <code class="docutils literal notranslate"><span class="pre">msl</span></code> together renders temperature
+as a filled background and mean-sea-level pressure as contours — earthkit infers the most useful
+combination automatically.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekp</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="n">msl</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Europe&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;earthkit.plots.components.maps.Map at 0x32623db90&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/9dc4c16d17cff579a10d88347d4ec18e91a137d9376f46e592aa0e0c5415671a.png" src="../../../_images/9dc4c16d17cff579a10d88347d4ec18e91a137d9376f46e592aa0e0c5415671a.png" />
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">ekp.Map</span></code> class gives you fine-grained control over every layer.  The recipe below shows the
+typical workflow:</p>
+<ol class="arabic simple">
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">Map</span></code> for a named domain</p></li>
+<li><p>Add filled colour (<code class="docutils literal notranslate"><span class="pre">chart.plot</span></code>) for the primary variable, converting units on the fly</p></li>
+<li><p>Add pressure contours on top</p></li>
+<li><p>Add a wind barb / quiver layer</p></li>
+<li><p>Decorate with coastlines, borders, gridlines, legend, and an auto-generated title</p></li>
+</ol>
+<p>Unit conversion (K → °C, Pa → hPa) is handled by earthkit so you don’t need to transform the
+array yourself.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Europe&quot;</span><span class="p">)</span>
+
+<span class="n">chart</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;celsius&quot;</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">msl</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;hPa&quot;</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">chart</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">wind_u</span><span class="p">,</span> <span class="n">wind_v</span><span class="p">)</span>
+
+<span class="n">chart</span><span class="o">.</span><span class="n">borders</span><span class="p">()</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">gridlines</span><span class="p">()</span>
+
+<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+
+<span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/19a3ab2297d68e9370a7fbc36af62002a1f5f3290defbec262abdcd09ef5f8cd.png" src="../../../_images/19a3ab2297d68e9370a7fbc36af62002a1f5f3290defbec262abdcd09ef5f8cd.png" />
+</div>
+</div>
+</section>
+<section id="regridding">
+<h2>Regridding<a class="headerlink" href="#regridding" title="Permalink to this heading">#</a></h2>
+<p>Many downstream tools (statistical packages, other models, simple array arithmetic) expect data on
+a regular lat-lon grid.  <code class="docutils literal notranslate"><span class="pre">ekg.regrid</span></code> re-interpolates a field to any target resolution.</p>
+<p>The weight matrix for the interpolation is computed once and cached to disk, so subsequent calls
+with the same source/target combination are fast.  Here we target 0.5 ° × 0.5 °.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regular_ll</span> <span class="o">=</span> <span class="n">ekg</span><span class="o">.</span><span class="n">regrid</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+<span class="n">regular_ll</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css"> /* Based on:
+ https://codepen.io/htmlcssfreebies/pen/WNpVeRK
+ https://github.com/pydata/xarray/blob/main/xarray/static/css/style.css
+ */
+
+ :root {
+    --eh-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+    --eh-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+    --eh-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+    --eh-border-color: var(--jp-border-color2, #e0e0e0);
+    --eh-disabled-color: var(--jp-layout-color3, #bdbdbd);
+    --eh-background-color: var(--jp-layout-color0, white);
+  }
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --eh-font-color0: rgba(255, 255, 255, 1);
+  --eh-font-color2: rgba(255, 255, 255, 0.54);
+  --eh-font-color3: rgba(255, 255, 255, 0.38);
+  --eh-border-color: #1F1F1F;
+  --eh-disabled-color: #515151;
+  --eh-background-color: #111111;
+}
+
+ /* Reset */
+ *,
+ *::before,
+ *::after {
+     box-sizing: border-box;
+ }
+
+ .eh-description {
+    color: var(--eh-font-color2);
+ }
+
+ .eh-section {
+    padding-left: 0px;
+ }
+
+ /* Tabs Container */
+ .eh-tabs-container {
+     padding: 0px;
+ }
+
+ /* Tabs Block */
+ .eh-tabs-block {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding-top: 4px;
+ }
+
+ /* Tabs */
+ .eh-tabs {
+     display: flex;
+     flex-wrap: wrap;
+     width: 100%;
+ }
+
+ .eh-tabs label {
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding-left: 6px;
+     padding-right: 6px;
+     font-weight: 400;
+     cursor: pointer;
+     color: var(--eh-font-color2);
+     background-color: var(--eh-background-color);
+     border-top: 1px solid var(--eh-background-color);
+     border-bottom: 1px solid var(--eh-disabled-color);
+ }
+
+ /* Tab page contents */
+ .eh-tabs .tab {
+     flex-grow: 1;
+     width: 100%;
+     height: 100%;
+     display: none;
+     padding: 2px 2px;
+ }
+
+ .eh-tabs [type=radio] {
+     display: none;
+ }
+
+ .eh-tabs [type=radio]:checked + label {
+     font-weight: 500;
+     color: var(--eh-font-color0);
+     border: 1px solid var(--eh-disabled-color);
+ }
+
+ .eh-tabs [type=radio]:checked + label + .tab {
+     display: block;
+ }
+
+ .eh-tabs [type=radio]:not(:checked) + label:hover {
+    color: var(--xr-font-color0);
+ }
+
+
+ @media (min-width: 768px) {
+
+     .eh-tabs-container {
+         padding: 1rem 1rem;
+     }
+
+     .eh-tabs label {
+         order: 1;
+         width: auto;
+     }
+
+     .eh-tabs .tab {
+         order: 9;
+     }
+
+     .eh-tabs [type=radio]:checked + label {
+         border-bottom: none;
+     }
+ }
+ @media (min-width: 992px) {
+
+     .eh-tabs {
+         width: 800px;
+     }
+ }
+</style><div class="eh-description">Field</div>
+<div>
+<section class="eh-section">
+<div class="eh-tabs-container">
+<div class="eh-tabs-block">
+<div class="eh-tabs">
+
+<input type="radio" name="eh-tabs" id="eb3daf15-3fad-4ed9-931a-8739958d49df"  />
+<label for="eb3daf15-3fad-4ed9-931a-8739958d49df" title="Keys in the data namespace">data</label>
+<div class="tab">
+<style type="text/css">table.ek td {
+    vertical-align: top;
+    text-align: left !important;
+}
+
+table.ek th {
+    vertical-align: top;
+    text-align: left !important;
+}
+</style>
+<table class="eh-table">
+<tr><td><b>number_of_values</b></td><td>259920</td></tr> <tr><td><b>array_type</b></td><td>ndarray</td></tr> <tr><td><b>array_dtype</b></td><td>float64</td></tr>
+</table>
+</div>
+     
+<input type="radio" name="eh-tabs" id="7ee4dd14-77d5-4872-82f6-a4b0cb5dbb87" checked />
+<label for="7ee4dd14-77d5-4872-82f6-a4b0cb5dbb87" title="Keys in the parameter namespace">parameter</label>
+<div class="tab">
+<style type="text/css">table.ek td {
+    vertical-align: top;
+    text-align: left !important;
+}
+
+table.ek th {
+    vertical-align: top;
+    text-align: left !important;
+}
+</style>
+<table class="eh-table">
+<tr><td><b>variable</b></td><td>2t</td></tr> <tr><td><b>standard_name</b></td><td>air_temperature</td></tr> <tr><td><b>long_name</b></td><td>2 metre temperature</td></tr> <tr><td><b>units</b></td><td>kelvin</td></tr> <tr><td><b>chem_variable</b></td><td>None</td></tr>
+</table>
+</div>
+     
+<input type="radio" name="eh-tabs" id="c4f08580-dfc9-4b02-9b24-a8f34a7e9e2b"  />
+<label for="c4f08580-dfc9-4b02-9b24-a8f34a7e9e2b" title="Keys in the time namespace">time</label>
+<div class="tab">
+<style type="text/css">table.ek td {
+    vertical-align: top;
+    text-align: left !important;
+}
+
+table.ek th {
+    vertical-align: top;
+    text-align: left !important;
+}
+</style>
+<table class="eh-table">
+<tr><td><b>valid_datetime</b></td><td>2026-05-26 01:00:00</td></tr> <tr><td><b>base_datetime</b></td><td>2026-05-26 01:00:00</td></tr> <tr><td><b>step</b></td><td>0:00:00</td></tr>
+</table>
+</div>
+     
+<input type="radio" name="eh-tabs" id="b9afc9fe-f16c-494c-9429-13ac35b128db"  />
+<label for="b9afc9fe-f16c-494c-9429-13ac35b128db" title="Keys in the vertical namespace">vertical</label>
+<div class="tab">
+<style type="text/css">table.ek td {
+    vertical-align: top;
+    text-align: left !important;
+}
+
+table.ek th {
+    vertical-align: top;
+    text-align: left !important;
+}
+</style>
+<table class="eh-table">
+<tr><td><b>level</b></td><td>2</td></tr> <tr><td><b>layer</b></td><td>None</td></tr> <tr><td><b>level_type</b></td><td>height_above_ground_level</td></tr>
+</table>
+</div>
+     
+<input type="radio" name="eh-tabs" id="3862daaa-8ca5-4b9e-ae4f-08df91596c3a"  />
+<label for="3862daaa-8ca5-4b9e-ae4f-08df91596c3a" title="Keys in the ensemble namespace">ensemble</label>
+<div class="tab">
+<style type="text/css">table.ek td {
+    vertical-align: top;
+    text-align: left !important;
+}
+
+table.ek th {
+    vertical-align: top;
+    text-align: left !important;
+}
+</style>
+<table class="eh-table">
+<tr><td><b>member</b></td><td>None</td></tr>
+</table>
+</div>
+     
+<input type="radio" name="eh-tabs" id="126f4826-5447-4208-af9c-9014e1b84f2d"  />
+<label for="126f4826-5447-4208-af9c-9014e1b84f2d" title="Keys in the geography namespace">geography</label>
+<div class="tab">
+<style type="text/css">table.ek td {
+    vertical-align: top;
+    text-align: left !important;
+}
+
+table.ek th {
+    vertical-align: top;
+    text-align: left !important;
+}
+</style>
+<table class="eh-table">
+<tr><td><b>grid_spec</b></td><td>{'grid': [0.5, 0.5]}</td></tr> <tr><td><b>grid_type</b></td><td>regular_ll</td></tr> <tr><td><b>shape</b></td><td>(361, 720)</td></tr> <tr><td><b>area</b></td><td>(90.0, 0.0, -90.0, 359.5)</td></tr>
+</table>
+</div>
+    
+</div>
+</div>
+</div>
+</section>
+</div>
+        </div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ekp.Figure</span></code> lets you arrange multiple map panels in a grid layout.  This comparison panel shows
+the same temperature field on both grids over France and Spain, making the hexagonal HEALPix cells
+and the rectangular lat-lon cells visually obvious at this zoom level.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;France&quot;</span><span class="p">,</span> <span class="s2">&quot;Spain&quot;</span><span class="p">],</span> <span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">healpix_plot</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span>
+<span class="n">healpix_plot</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">healpix_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;HEALPix grid&quot;</span><span class="p">)</span>
+
+<span class="n">regular_ll_plot</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span>
+<span class="n">regular_ll_plot</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">regular_ll</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">regular_ll_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Regular latitude-longitude grid&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">borders</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/c612ccab5ef3db93e3417913e54681583f5d7eefec664e6bc0b1573e06fedc7e.png" src="../../../_images/c612ccab5ef3db93e3417913e54681583f5d7eefec664e6bc0b1573e06fedc7e.png" />
+</div>
+</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Try regridding the same 2m temperature data to a higher (e.g. 0.1 degrees) or lower (e.g. 1 degrees) resolution, and plot it side-by-side with the original HEALPix grid.</p></li>
+</ol>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t2m_0p1</span> <span class="o">=</span> <span class="n">ekg</span><span class="o">.</span><span class="n">regrid</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;France&quot;</span><span class="p">,</span> <span class="s2">&quot;Spain&quot;</span><span class="p">],</span> <span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">healpix_plot</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span>
+<span class="n">healpix_plot</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">healpix_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;HEALPix grid&quot;</span><span class="p">)</span>
+
+<span class="n">regular_ll_plot</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span>
+<span class="n">regular_ll_plot</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">t2m_0p1</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">regular_ll_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;0.1°$\times$0.1° regular latitude-longitude grid&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">borders</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/563c4a2122e4a461e1811a8d12f618ed3c5b755d50b1ab9967995b38963298b4.png" src="../../../_images/563c4a2122e4a461e1811a8d12f618ed3c5b755d50b1ab9967995b38963298b4.png" />
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>In this notebook you:</p>
+<ul class="simple">
+<li><p>Retrieved a single time-step of four surface fields from the Climate DT projections stream</p></li>
+<li><p>Inspected the fieldlist and visualised the data at global and regional scales</p></li>
+<li><p>Built a fully annotated, multi-layer European chart with wind vectors</p></li>
+<li><p>Regridded the native HEALPix data to a regular 0.5 ° grid and compared the two representations</p></li>
+</ul>
+<p><strong>Next:</strong> <code class="docutils literal notranslate"><span class="pre">02-earthkit-analysis.ipynb</span></code> extends these ideas to a full multi-decadal dataset,
+introduces temporal and spatial statistics, and shows how to compare Climate DT output against
+ERA5 reanalysis.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "develop"
+        },
+        kernelOptions: {
+            name: "develop",
+            path: "./climate-dt/earthkit-1.0/solutions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'develop'</script>
+
+            </article>
+            
+
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Using earthkit with the Destination Earth Climate Digital Twins
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#retrieving-data-from-the-climate-dt">
+     Retrieving data from the Climate DT
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualisation">
+     Visualisation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regridding">
+     Regridding
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     Exercises
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary">
+     Summary
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Adam Warde, James Hawkes, Alice Sartori Monteiro de Barros and Tiago Quintino
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+Last updated on None.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </div>
+        </footer>
+        
+
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+
+  </body>
+</html>
