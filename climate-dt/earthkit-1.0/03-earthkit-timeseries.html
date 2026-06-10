@@ -618,11 +618,6 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
 </ul>
 
             </nav>
@@ -639,41 +634,25 @@ title="Print to PDF"
 <p><strong>What you will learn</strong></p>
 <ul class="simple">
 <li><p>How to use Polytope’s <code class="docutils literal notranslate"><span class="pre">timeseries</span></code> feature to retrieve hourly data efficiently at a single lat/lon</p></li>
-<li><p>How to compute monthly statistics with <code class="docutils literal notranslate"><span class="pre">earthkit.transforms</span></code></p></li>
-<li><p>How to build multi-layer time series charts — lines, filled ranges, and multi-model overlays — using the <code class="docutils literal notranslate"><span class="pre">TimeSeries</span></code> class</p></li>
+<li><p>How to compute temporal statistics with <code class="docutils literal notranslate"><span class="pre">earthkit.transforms</span></code></p></li>
+<li><p>How to build multi-layer time series charts - lines, filled ranges, and multi-model overlays - using the <code class="docutils literal notranslate"><span class="pre">TimeSeries</span></code> class.</p></li>
 </ul>
 </section>
 <section id="setup">
 <h1>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h1>
-<p>We import the four earthkit packages used in this notebook:</p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Package</p></th>
-<th class="head"><p>Alias</p></th>
-<th class="head"><p>Purpose</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">earthkit.data</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ekd</span></code></p></td>
-<td><p>Data access and I/O</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">earthkit.plots</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ekp</span></code></p></td>
-<td><p>Time series visualisation</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">earthkit.geo</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ekg</span></code></p></td>
-<td><p>Spatial utilities</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">earthkit.transforms</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ekt</span></code></p></td>
-<td><p>Temporal statistics</p></td>
-</tr>
-</tbody>
-</table>
-<p>We also import <code class="docutils literal notranslate"><span class="pre">TimeSeries</span></code> directly — the lower-level class that gives full control over chart layers.</p>
-<div class="cell tag_hide-input docutils container">
+<p>This notebook uses the following components of earthkit:</p>
+<div align="center">
+  <br>
+  <a href="https://earthkit-data.readthedocs.io/en/latest/" target="_blank" style="display:inline-block; margin: 0 15px;">
+    <img src="https://raw.githubusercontent.com/ecmwf/logos/refs/heads/main/logos/earthkit/earthkit-data-light.svg" alt="earthkit-data" width="200">
+  </a>
+  <a href="https://earthkit-transforms.readthedocs.io/en/latest/" target="_blank" style="display:inline-block; margin: 0 15px;">
+    <img src="https://raw.githubusercontent.com/ecmwf/logos/refs/heads/main/logos/earthkit/earthkit-transforms-light.svg" alt="earthkit-transforms" width="200">
+  </a>
+  <a href="https://earthkit-plots.readthedocs.io/en/latest/" target="_blank" style="display:inline-block; margin: 0 15px;">
+    <img src="https://raw.githubusercontent.com/ecmwf/logos/refs/heads/main/logos/earthkit/earthkit-plots-light.svg" alt="earthkit-plots" width="200">
+  </a>
+</div><div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -682,9 +661,8 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ekd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.plots</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ekp</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.geo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ekg</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.transforms</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ekt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">earthkit.plots.temporal</span><span class="w"> </span><span class="kn">import</span> <span class="n">TimeSeries</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.transforms</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ekt</span>
 </pre></div>
 </div>
 </div>
@@ -709,46 +687,7 @@ title="Print to PDF"
 </section>
 <section id="retrieve-an-hourly-time-series-from-the-climate-dt">
 <h2>Retrieve an hourly time series from the Climate DT<a class="headerlink" href="#retrieve-an-hourly-time-series-from-the-climate-dt" title="Permalink to this heading">#</a></h2>
-<p>Polytope’s <code class="docutils literal notranslate"><span class="pre">timeseries</span></code> feature type does server-side extraction at a single point, so only the values for that location are transferred rather than a full global field for every time step. This makes retrieving a year of hourly data fast and lightweight.</p>
-<p><strong>Key request fields</strong></p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Value</p></th>
-<th class="head"><p>Meaning</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">activity</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">projections</span></code></p></td>
-<td><p>SSP scenario projections</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">experiment</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ssp3-7.0</span></code></p></td>
-<td><p>Middle-of-the-road high-emissions scenario</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">model</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ifs-nemo</span></code></p></td>
-<td><p>Coupled atmosphere–ocean model</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stream</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">clte</span></code></p></td>
-<td><p>Climate hourly time-step stream</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">param</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">167</span></code></p></td>
-<td><p>2 m temperature</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">20400101/to/20401231</span></code></p></td>
-<td><p>Full year 2040</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">time</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0000/to/2300</span></code></p></td>
-<td><p>All hours of the day</p></td>
-</tr>
-</tbody>
-</table>
+<p>Polytope’s <code class="docutils literal notranslate"><span class="pre">timeseries</span></code> feature type does server-side extraction at a single point, so only the values for that location are transferred rather than a full global field for every time step. This makes retrieving for example a year of hourly data very fast and lightweight.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">feature</span></code> dictionary sets <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">timeseries</span></code> and passes the target coordinates. The <code class="docutils literal notranslate"><span class="pre">time_axis:</span> <span class="pre">date</span></code> option tells Polytope to organise the result along the date dimension.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -758,25 +697,25 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ifs_nemo_request</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;projections&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;climate-dt&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="s2">&quot;ssp3-7.0&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;generation&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;sfc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;20400101/to/20401231&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;ifs-nemo&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0001&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;param&quot;</span><span class="p">:</span> <span class="s2">&quot;167&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;realization&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="s2">&quot;standard&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;clte&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;0000/to/2300&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;feature&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;timeseries&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="n">LOCATION</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">LOCATION</span><span class="p">[</span><span class="mi">1</span><span class="p">]]],</span>
-        <span class="s2">&quot;time_axis&quot;</span><span class="p">:</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;projections&quot;</span><span class="p">,</span>   <span class="c1"># CMIP activity: SSP scenario projections</span>
+    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>               <span class="c1"># DestinE data class</span>
+    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;climate-dt&quot;</span><span class="p">,</span>     <span class="c1"># dataset family</span>
+    <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="s2">&quot;ssp3-7.0&quot;</span><span class="p">,</span>    <span class="c1"># experiment/scenario (middle-of-the-road high emissions)</span>
+    <span class="s2">&quot;generation&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>           <span class="c1"># dataset generation</span>
+    <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;sfc&quot;</span><span class="p">,</span>            <span class="c1"># vertical level type: surface fields</span>
+    <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;20400101/to/20401231&quot;</span><span class="p">,</span>  <span class="c1"># date range: full year 2040 (Polytope range syntax)</span>
+    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;ifs-nemo&quot;</span><span class="p">,</span>         <span class="c1"># coupled atmosphere-ocean model</span>
+    <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0001&quot;</span><span class="p">,</span>            <span class="c1"># experiment version (operations / research exp.)</span>
+    <span class="s2">&quot;param&quot;</span><span class="p">:</span> <span class="s2">&quot;167&quot;</span><span class="p">,</span>              <span class="c1"># parameter ID: 2 m temperature</span>
+    <span class="s2">&quot;realization&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>          <span class="c1"># initial-condition run</span>
+    <span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="s2">&quot;standard&quot;</span><span class="p">,</span>    <span class="c1"># quick-view (&#39;standard&#39;) or full (&#39;high&#39;) resolution</span>
+    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;clte&quot;</span><span class="p">,</span>            <span class="c1"># climate hourly time-step stream</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>                <span class="c1"># forecast fields</span>
+    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;0000/to/2300&quot;</span><span class="p">,</span>      <span class="c1"># all hours of the day</span>
+    <span class="s2">&quot;feature&quot;</span><span class="p">:</span> <span class="p">{</span>                 <span class="c1"># server-side extraction at a single point</span>
+        <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;timeseries&quot;</span><span class="p">,</span>   <span class="c1"># feature type: extract a time series</span>
+        <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="n">LOCATION</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">LOCATION</span><span class="p">[</span><span class="mi">1</span><span class="p">]]],</span>  <span class="c1"># target [lat, lon]</span>
+        <span class="s2">&quot;time_axis&quot;</span><span class="p">:</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span>     <span class="c1"># organise the result along the date dimension</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -812,7 +751,7 @@ title="Print to PDF"
 </section>
 <section id="hourly-line-plot">
 <h2>Hourly line plot<a class="headerlink" href="#hourly-line-plot" title="Permalink to this heading">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">TimeSeries</span></code> class is the lower-level API for building charts layer by layer. Here we plot the raw hourly series and group the x-axis ticks by month with <code class="docutils literal notranslate"><span class="pre">frequency=&quot;M&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">period=True</span></code>. The title template uses <code class="docutils literal notranslate"><span class="pre">{model!u}</span></code> to uppercase the model name and <code class="docutils literal notranslate"><span class="pre">{location:%c},</span> <span class="pre">{location:%C}</span></code> to format the city and country.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">TimeSeries</span></code> class in earthkit-plots has many built-in features to support quick and easy plotting of timeseries data. Here we plot the raw hourly series and group the x-axis ticks by month with <code class="docutils literal notranslate"><span class="pre">frequency=&quot;M&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">period=True</span></code>. The title template uses <code class="docutils literal notranslate"><span class="pre">{model!u}</span></code> to uppercase the model name and <code class="docutils literal notranslate"><span class="pre">{location:%c},</span> <span class="pre">{location:%C}</span></code> to format the city and country.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -885,8 +824,8 @@ title="Print to PDF"
 </section>
 <section id="multi-model-comparison">
 <h2>Multi-model comparison<a class="headerlink" href="#multi-model-comparison" title="Permalink to this heading">#</a></h2>
-<p>One of the strengths of the Climate DT is that multiple models ran the same scenario. We retrieve the same 2040 hourly series for <strong>ICON</strong> and <strong>IFS-FESOM</strong> by copying the original request dict and swapping the <code class="docutils literal notranslate"><span class="pre">model</span></code> key — all other fields stay identical.</p>
-<p>Note that ICON and IFS-FESOM are served from the LUMI endpoint rather than MN5.</p>
+<p>One of the strengths of the Climate DT is that multiple models are run for the same scenario. We can retrieve the same 2040 hourly series for the <strong>ICON</strong> and <strong>IFS-FESOM</strong> models by copying the original request dict and swapping the <code class="docutils literal notranslate"><span class="pre">model</span></code> key - all other fields stay identical.</p>
+<p>Note that ICON and IFS-FESOM are served from the LUMI endpoint rather than MN5, requiring a small change to the <code class="docutils literal notranslate"><span class="pre">address</span></code> key.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -955,19 +894,7 @@ title="Print to PDF"
 </div>
 </details>
 </div>
-<hr class="docutils" />
 </section>
-</section>
-<section id="summary">
-<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h1>
-<p>In this notebook you:</p>
-<ul class="simple">
-<li><p>Used Polytope’s <code class="docutils literal notranslate"><span class="pre">timeseries</span></code> feature to retrieve a full year of hourly 2 m temperature at Brussels from three Climate DT models</p></li>
-<li><p>Computed monthly mean, min, and max with <code class="docutils literal notranslate"><span class="pre">earthkit.transforms</span></code></p></li>
-<li><p>Built a multi-layer chart with a shaded min–max range and a mean line</p></li>
-<li><p>Overlaid daily-mean time series from IFS-NEMO, ICON, and IFS-FESOM to compare model behaviour</p></li>
-</ul>
-<p><strong>Next steps:</strong> Try a different location, variable, or year range — or extend the multi-model comparison to look at monthly climatologies rather than a single year.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -979,16 +906,16 @@ title="Print to PDF"
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "develop"
+            mode: "earthkit-1.0-conda"
         },
         kernelOptions: {
-            name: "develop",
+            name: "earthkit-1.0-conda",
             path: "./climate-dt/earthkit-1.0"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'develop'</script>
+    <script>kernelName = 'earthkit-1.0-conda'</script>
 
             </article>
             
@@ -1065,11 +992,6 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
  </li>
 </ul>
 

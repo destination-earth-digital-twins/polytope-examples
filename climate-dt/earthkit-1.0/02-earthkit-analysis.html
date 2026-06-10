@@ -582,8 +582,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#retrieve-era5-reanalysis-from-the-cliamte-data-store-for-the-same-period">
-     Retrieve ERA5 reanalysis from the Cliamte Data Store for the same period
+    <a class="reference internal nav-link" href="#retrieve-era5-reanalysis-from-the-climate-data-store-for-the-same-period">
+     Retrieve ERA5 reanalysis from the Climate Data Store for the same period
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -652,7 +652,7 @@ title="Print to PDF"
   <a href="https://earthkit-plots.readthedocs.io/en/latest/" target="_blank" style="display:inline-block; margin: 0 15px;">
     <img src="https://raw.githubusercontent.com/ecmwf/logos/refs/heads/main/logos/earthkit/earthkit-plots-light.svg" alt="earthkit-plots" width="200">
   </a>
-  <a href="https://earthkit-plots.readthedocs.io/en/latest/" target="_blank" style="display:inline-block; margin: 0 15px;">
+  <a href="https://earthkit-geo.readthedocs.io/en/latest/" target="_blank" style="display:inline-block; margin: 0 15px;">
     <img src="https://raw.githubusercontent.com/ecmwf/logos/refs/heads/main/logos/earthkit/earthkit-geo-light.svg" alt="earthkit-geo" width="200">
   </a>
 </div></section>
@@ -682,39 +682,8 @@ title="Print to PDF"
 <p>The <strong>baseline</strong> activity contains historical simulations driven by observed forcing.  Here we pull
 the IFS-NEMO coupled model, monthly-mean 2 m temperature (<code class="docutils literal notranslate"><span class="pre">param:</span> <span class="pre">228004</span></code>), for all 25 years of
 the 1990–2014 period across all 12 months.</p>
-<p><strong>Key differences from the projections request in notebook 01</strong></p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Value</p></th>
-<th class="head"><p>Meaning</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">activity</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">baseline</span></code></p></td>
-<td><p>Historical run</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">experiment</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hist</span></code></p></td>
-<td><p>Historical forcing</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stream</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">clmn</span></code></p></td>
-<td><p>Climate <strong>monthly</strong> mean stream</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">year</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1990/to/2014</span></code></p></td>
-<td><p>25-year range using Polytope range syntax</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">month</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1/2/.../12</span></code></p></td>
-<td><p>All calendar months</p></td>
-</tr>
-</tbody>
-</table>
-<p>This produces 300 fields (25 years × 12 months), each on the native HEALPix grid.  The download
-is ~126 MB.</p>
+<p>This produces 300 fields (25 years × 12 months), each on the native HEALPix grid.  <strong>The download
+is ~126 MB</strong>.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -723,21 +692,21 @@ is ~126 MB.</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;climate-dt&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0001&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;generation&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;realization&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;baseline&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="s2">&quot;hist&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;ifs-fesom&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;param&quot;</span><span class="p">:</span> <span class="s2">&quot;228004&quot;</span><span class="p">,</span>  <span class="c1"># 2 m temperature, monthly mean</span>
-    <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;sfc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="s2">&quot;standard&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;clmn&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="s2">&quot;1990/to/2014&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;month&quot;</span><span class="p">:</span> <span class="s2">&quot;1/2/3/4/5/6/7/8/9/10/11/12&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>               <span class="c1"># DestinE data class</span>
+    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;climate-dt&quot;</span><span class="p">,</span>     <span class="c1"># dataset family</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>                <span class="c1"># forecast fields</span>
+    <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0001&quot;</span><span class="p">,</span>            <span class="c1"># experiment version (operations / research exp.)</span>
+    <span class="s2">&quot;generation&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>           <span class="c1"># dataset generation</span>
+    <span class="s2">&quot;realization&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>          <span class="c1"># initial-condition run</span>
+    <span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;baseline&quot;</span><span class="p">,</span>      <span class="c1"># CMIP activity: baseline historical run (vs. &#39;projections&#39;)</span>
+    <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="s2">&quot;hist&quot;</span><span class="p">,</span>        <span class="c1"># experiment/scenario: historical forcing</span>
+    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;ifs-fesom&quot;</span><span class="p">,</span>        <span class="c1"># coupled atmosphere-ocean model</span>
+    <span class="s2">&quot;param&quot;</span><span class="p">:</span> <span class="s2">&quot;228004&quot;</span><span class="p">,</span>           <span class="c1"># parameter ID: 2 m temperature, monthly mean</span>
+    <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;sfc&quot;</span><span class="p">,</span>            <span class="c1"># vertical level type: surface fields</span>
+    <span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="s2">&quot;standard&quot;</span><span class="p">,</span>    <span class="c1"># quick-view (&#39;standard&#39;) or full (&#39;high&#39;) resolution</span>
+    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;clmn&quot;</span><span class="p">,</span>            <span class="c1"># climate monthly-mean stream</span>
+    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="s2">&quot;1990/to/2014&quot;</span><span class="p">,</span>      <span class="c1"># 25-year range (Polytope range syntax)</span>
+    <span class="s2">&quot;month&quot;</span><span class="p">:</span> <span class="s2">&quot;1/2/3/4/5/6/7/8/9/10/11/12&quot;</span><span class="p">,</span>  <span class="c1"># all calendar months</span>
 <span class="p">}</span>
 
 <span class="n">ifs_nemo</span> <span class="o">=</span> <span class="n">ekd</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span>
@@ -753,8 +722,8 @@ is ~126 MB.</p>
 </details>
 </div>
 </section>
-<section id="retrieve-era5-reanalysis-from-the-cliamte-data-store-for-the-same-period">
-<h2>Retrieve ERA5 reanalysis from the Cliamte Data Store for the same period<a class="headerlink" href="#retrieve-era5-reanalysis-from-the-cliamte-data-store-for-the-same-period" title="Permalink to this heading">#</a></h2>
+<section id="retrieve-era5-reanalysis-from-the-climate-data-store-for-the-same-period">
+<h2>Retrieve ERA5 reanalysis from the Climate Data Store for the same period<a class="headerlink" href="#retrieve-era5-reanalysis-from-the-climate-data-store-for-the-same-period" title="Permalink to this heading">#</a></h2>
 <p>ERA5 is ECMWF’s fifth-generation global reanalysis, widely used as the reference observational
 climatology.  We pull the same variable (2 m temperature), same period, and same temporal
 resolution (monthly means) from the Copernicus Climate Data Store (CDS).</p>
@@ -892,7 +861,7 @@ computing the difference.</p>
 </div>
 </details>
 </div>
-<p>The difference between IFS-NEMO and ERA5 shows us where IFS-NEMO is hotter or colder than ERA5.  Because both objects are on the same grid and xarray tracks, the subtraction aligns by coordinate automatically.</p>
+<p>The difference between IFS-NEMO and ERA5 2m temperature shows us where IFS-NEMO is warmer or colder than ERA5.  Because both objects are on the same grid, the subtraction aligns by coordinate automatically.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1133,6 +1102,41 @@ years) and a brief title to provide just enough context.</p>
 <ol class="arabic simple">
 <li><p>Instead of finding the difference between IFS-NEMO and ERA5 over the whole time period, calculate monthly climatologies for both IFS-NEMO and ERA5 and find the differences for each month (hint: try <code class="docutils literal notranslate"><span class="pre">ekt.climatology.monthly_mean</span></code>). Do the differences change throughout the year?</p></li>
 </ol>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ifs_nemo_monthly_mean</span> <span class="o">=</span> <span class="n">ekt</span><span class="o">.</span><span class="n">climatology</span><span class="o">.</span><span class="n">monthly_mean</span><span class="p">(</span>
+    <span class="n">ifs_nemo_regridded</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">(</span><span class="n">time_dims</span><span class="o">=</span><span class="s2">&quot;valid_time&quot;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">rename_vars</span><span class="p">({</span><span class="s2">&quot;avg_2t&quot;</span><span class="p">:</span> <span class="s2">&quot;2t&quot;</span><span class="p">})</span>
+
+<span class="n">era5_monthly_mean</span> <span class="o">=</span> <span class="n">ekt</span><span class="o">.</span><span class="n">climatology</span><span class="o">.</span><span class="n">monthly_mean</span><span class="p">(</span><span class="n">era5</span><span class="p">)</span>
+
+<span class="n">monthly_diff</span> <span class="o">=</span> <span class="n">ifs_nemo_monthly_mean</span> <span class="o">-</span> <span class="n">era5_monthly_mean</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="s2">&quot;Robinson&quot;</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">style</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">styles</span><span class="o">.</span><span class="n">Style</span><span class="p">(</span>
+    <span class="n">levels</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
+    <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span>
+    <span class="n">extend</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">monthly_diff</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
+    
+<span class="n">fig</span><span class="o">.</span><span class="n">subplot_titles</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{month}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;IFS-NEMO monthly temperature difference vs ERA5&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;2m temperature difference (</span><span class="si">{units}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 <hr class="docutils" />
 </section>
 </section>
@@ -1210,8 +1214,8 @@ years) and a brief title to provide just enough context.</p>
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#retrieve-era5-reanalysis-from-the-cliamte-data-store-for-the-same-period">
-     Retrieve ERA5 reanalysis from the Cliamte Data Store for the same period
+    <a class="reference internal nav-link" href="#retrieve-era5-reanalysis-from-the-climate-data-store-for-the-same-period">
+     Retrieve ERA5 reanalysis from the Climate Data Store for the same period
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">

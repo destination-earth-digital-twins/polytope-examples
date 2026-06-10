@@ -618,11 +618,6 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
 </ul>
 
             </nav>
@@ -639,41 +634,25 @@ title="Print to PDF"
 <p><strong>What you will learn</strong></p>
 <ul class="simple">
 <li><p>How to use Polytope’s <code class="docutils literal notranslate"><span class="pre">timeseries</span></code> feature to retrieve hourly data efficiently at a single lat/lon</p></li>
-<li><p>How to compute monthly statistics with <code class="docutils literal notranslate"><span class="pre">earthkit.transforms</span></code></p></li>
-<li><p>How to build multi-layer time series charts — lines, filled ranges, and multi-model overlays — using the <code class="docutils literal notranslate"><span class="pre">TimeSeries</span></code> class</p></li>
+<li><p>How to compute temporal statistics with <code class="docutils literal notranslate"><span class="pre">earthkit.transforms</span></code></p></li>
+<li><p>How to build multi-layer time series charts - lines, filled ranges, and multi-model overlays - using the <code class="docutils literal notranslate"><span class="pre">TimeSeries</span></code> class.</p></li>
 </ul>
 </section>
 <section id="setup">
 <h1>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h1>
-<p>We import the four earthkit packages used in this notebook:</p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Package</p></th>
-<th class="head"><p>Alias</p></th>
-<th class="head"><p>Purpose</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">earthkit.data</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ekd</span></code></p></td>
-<td><p>Data access and I/O</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">earthkit.plots</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ekp</span></code></p></td>
-<td><p>Time series visualisation</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">earthkit.geo</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ekg</span></code></p></td>
-<td><p>Spatial utilities</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">earthkit.transforms</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ekt</span></code></p></td>
-<td><p>Temporal statistics</p></td>
-</tr>
-</tbody>
-</table>
-<p>We also import <code class="docutils literal notranslate"><span class="pre">TimeSeries</span></code> directly — the lower-level class that gives full control over chart layers.</p>
-<div class="cell tag_hide-input docutils container">
+<p>This notebook uses the following components of earthkit:</p>
+<div align="center">
+  <br>
+  <a href="https://earthkit-data.readthedocs.io/en/latest/" target="_blank" style="display:inline-block; margin: 0 15px;">
+    <img src="https://raw.githubusercontent.com/ecmwf/logos/refs/heads/main/logos/earthkit/earthkit-data-light.svg" alt="earthkit-data" width="200">
+  </a>
+  <a href="https://earthkit-transforms.readthedocs.io/en/latest/" target="_blank" style="display:inline-block; margin: 0 15px;">
+    <img src="https://raw.githubusercontent.com/ecmwf/logos/refs/heads/main/logos/earthkit/earthkit-transforms-light.svg" alt="earthkit-transforms" width="200">
+  </a>
+  <a href="https://earthkit-plots.readthedocs.io/en/latest/" target="_blank" style="display:inline-block; margin: 0 15px;">
+    <img src="https://raw.githubusercontent.com/ecmwf/logos/refs/heads/main/logos/earthkit/earthkit-plots-light.svg" alt="earthkit-plots" width="200">
+  </a>
+</div><div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -682,9 +661,8 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ekd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.plots</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ekp</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.geo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ekg</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.transforms</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ekt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">earthkit.plots.temporal</span><span class="w"> </span><span class="kn">import</span> <span class="n">TimeSeries</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.transforms</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ekt</span>
 </pre></div>
 </div>
 </div>
@@ -709,46 +687,7 @@ title="Print to PDF"
 </section>
 <section id="retrieve-an-hourly-time-series-from-the-climate-dt">
 <h2>Retrieve an hourly time series from the Climate DT<a class="headerlink" href="#retrieve-an-hourly-time-series-from-the-climate-dt" title="Permalink to this heading">#</a></h2>
-<p>Polytope’s <code class="docutils literal notranslate"><span class="pre">timeseries</span></code> feature type does server-side extraction at a single point, so only the values for that location are transferred rather than a full global field for every time step. This makes retrieving a year of hourly data fast and lightweight.</p>
-<p><strong>Key request fields</strong></p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Value</p></th>
-<th class="head"><p>Meaning</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">activity</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">projections</span></code></p></td>
-<td><p>SSP scenario projections</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">experiment</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ssp3-7.0</span></code></p></td>
-<td><p>Middle-of-the-road high-emissions scenario</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">model</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ifs-nemo</span></code></p></td>
-<td><p>Coupled atmosphere–ocean model</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stream</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">clte</span></code></p></td>
-<td><p>Climate hourly time-step stream</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">param</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">167</span></code></p></td>
-<td><p>2 m temperature</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">20400101/to/20401231</span></code></p></td>
-<td><p>Full year 2040</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">time</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0000/to/2300</span></code></p></td>
-<td><p>All hours of the day</p></td>
-</tr>
-</tbody>
-</table>
+<p>Polytope’s <code class="docutils literal notranslate"><span class="pre">timeseries</span></code> feature type does server-side extraction at a single point, so only the values for that location are transferred rather than a full global field for every time step. This makes retrieving for example a year of hourly data very fast and lightweight.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">feature</span></code> dictionary sets <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">timeseries</span></code> and passes the target coordinates. The <code class="docutils literal notranslate"><span class="pre">time_axis:</span> <span class="pre">date</span></code> option tells Polytope to organise the result along the date dimension.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -758,25 +697,25 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ifs_nemo_request</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;projections&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;climate-dt&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="s2">&quot;ssp3-7.0&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;generation&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;sfc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;20400101/to/20401231&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;ifs-nemo&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0001&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;param&quot;</span><span class="p">:</span> <span class="s2">&quot;167&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;realization&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="s2">&quot;standard&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;clte&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;0000/to/2300&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;feature&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;timeseries&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="n">LOCATION</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">LOCATION</span><span class="p">[</span><span class="mi">1</span><span class="p">]]],</span>
-        <span class="s2">&quot;time_axis&quot;</span><span class="p">:</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;projections&quot;</span><span class="p">,</span>   <span class="c1"># CMIP activity: SSP scenario projections</span>
+    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>               <span class="c1"># DestinE data class</span>
+    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;climate-dt&quot;</span><span class="p">,</span>     <span class="c1"># dataset family</span>
+    <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="s2">&quot;ssp3-7.0&quot;</span><span class="p">,</span>    <span class="c1"># experiment/scenario (middle-of-the-road high emissions)</span>
+    <span class="s2">&quot;generation&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>           <span class="c1"># dataset generation</span>
+    <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;sfc&quot;</span><span class="p">,</span>            <span class="c1"># vertical level type: surface fields</span>
+    <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;20400101/to/20401231&quot;</span><span class="p">,</span>  <span class="c1"># date range: full year 2040 (Polytope range syntax)</span>
+    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;ifs-nemo&quot;</span><span class="p">,</span>         <span class="c1"># coupled atmosphere-ocean model</span>
+    <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0001&quot;</span><span class="p">,</span>            <span class="c1"># experiment version (operations / research exp.)</span>
+    <span class="s2">&quot;param&quot;</span><span class="p">:</span> <span class="s2">&quot;167&quot;</span><span class="p">,</span>              <span class="c1"># parameter ID: 2 m temperature</span>
+    <span class="s2">&quot;realization&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>          <span class="c1"># initial-condition run</span>
+    <span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="s2">&quot;standard&quot;</span><span class="p">,</span>    <span class="c1"># quick-view (&#39;standard&#39;) or full (&#39;high&#39;) resolution</span>
+    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;clte&quot;</span><span class="p">,</span>            <span class="c1"># climate hourly time-step stream</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>                <span class="c1"># forecast fields</span>
+    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;0000/to/2300&quot;</span><span class="p">,</span>      <span class="c1"># all hours of the day</span>
+    <span class="s2">&quot;feature&quot;</span><span class="p">:</span> <span class="p">{</span>                 <span class="c1"># server-side extraction at a single point</span>
+        <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;timeseries&quot;</span><span class="p">,</span>   <span class="c1"># feature type: extract a time series</span>
+        <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="n">LOCATION</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">LOCATION</span><span class="p">[</span><span class="mi">1</span><span class="p">]]],</span>  <span class="c1"># target [lat, lon]</span>
+        <span class="s2">&quot;time_axis&quot;</span><span class="p">:</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span>     <span class="c1"># organise the result along the date dimension</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -792,8 +731,8 @@ title="Print to PDF"
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-06-09 17:53:17 - INFO - Key read from /Users/mavj/.polytopeapirc
-2026-06-09 17:53:17 - INFO - Sending request...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-06-10 13:01:39 - INFO - Key read from /Users/mavj/.polytopeapirc
+2026-06-10 13:01:39 - INFO - Sending request...
 {&#39;request&#39;: &#39;activity: projections\n&#39;
             &#39;class: d1\n&#39;
             &#39;dataset: climate-dt\n&#39;
@@ -816,16 +755,17 @@ title="Print to PDF"
             &#39;time: 0000/to/2300\n&#39;
             &#39;type: fc\n&#39;,
  &#39;verb&#39;: &#39;retrieve&#39;}
-2026-06-09 17:53:17 - INFO - Polytope user key found in session cache for user mavj
-2026-06-09 17:53:18 - INFO - Request accepted. Please poll ./b6752685-415d-43d6-b4d6-98d1925c15fb for status
-2026-06-09 17:53:18 - INFO - Polytope user key found in session cache for user mavj
-2026-06-09 17:53:18 - INFO - Checking request status (b6752685-415d-43d6-b4d6-98d1925c15fb)...
-2026-06-09 17:53:18 - INFO - The current status of the request is &#39;queued&#39;
-2026-06-09 17:53:18 - INFO - The current status of the request is &#39;processing&#39;
-2026-06-09 17:53:30 - INFO - The current status of the request is &#39;processed&#39;
+2026-06-10 13:01:39 - INFO - Polytope user key found in session cache for user mavj
+2026-06-10 13:01:40 - INFO - Request accepted. Please poll ./8af4870f-56ae-4730-9fb8-d20518199271 for status
+2026-06-10 13:01:40 - INFO - Polytope user key found in session cache for user mavj
+2026-06-10 13:01:40 - INFO - Checking request status (8af4870f-56ae-4730-9fb8-d20518199271)...
+2026-06-10 13:01:40 - INFO - The current status of the request is &#39;queued&#39;
+2026-06-10 13:01:40 - INFO - The current status of the request is &#39;processing&#39;
+2026-06-10 13:01:52 - INFO - The current status of the request is &#39;processed&#39;
+                                                                                                                                           
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script></div>
+</div>
 </div>
 </section>
 <section id="inspect-the-dataset">
@@ -939,6 +879,7 @@ body.vscode-dark {
   min-width: 300px;
   max-width: 700px;
   line-height: 1.6;
+  padding-bottom: 4px;
 }
 
 .xr-text-repr-fallback {
@@ -949,8 +890,11 @@ body.vscode-dark {
 .xr-header {
   padding-top: 6px;
   padding-bottom: 6px;
-  margin-bottom: 4px;
+}
+
+.xr-header {
   border-bottom: solid 1px var(--xr-border-color);
+  margin-bottom: 4px;
 }
 
 .xr-header > div,
@@ -961,20 +905,15 @@ body.vscode-dark {
 }
 
 .xr-obj-type,
-.xr-obj-name,
-.xr-group-name {
+.xr-obj-name {
   margin-left: 2px;
   margin-right: 10px;
 }
 
-.xr-group-name::before {
-  content: "📁";
-  padding-right: 0.3em;
-}
-
-.xr-group-name,
-.xr-obj-type {
+.xr-obj-type,
+.xr-group-box-contents > label {
   color: var(--xr-font-color2);
+  display: block;
 }
 
 .xr-sections {
@@ -989,28 +928,39 @@ body.vscode-dark {
   display: contents;
 }
 
-.xr-section-item input {
-  display: inline-block;
+.xr-section-item > input,
+.xr-group-box-contents > input,
+.xr-array-wrap > input {
+  display: block;
   opacity: 0;
   height: 0;
   margin: 0;
 }
 
-.xr-section-item input + label {
+.xr-section-item > input + label,
+.xr-var-item > input + label {
   color: var(--xr-disabled-color);
-  border: 2px solid transparent !important;
 }
 
-.xr-section-item input:enabled + label {
+.xr-section-item > input:enabled + label,
+.xr-var-item > input:enabled + label,
+.xr-array-wrap > input:enabled + label,
+.xr-group-box-contents > input:enabled + label {
   cursor: pointer;
   color: var(--xr-font-color2);
 }
 
-.xr-section-item input:focus + label {
-  border: 2px solid var(--xr-font-color0) !important;
+.xr-section-item > input:focus-visible + label,
+.xr-var-item > input:focus-visible + label,
+.xr-array-wrap > input:focus-visible + label,
+.xr-group-box-contents > input:focus-visible + label {
+  outline: auto;
 }
 
-.xr-section-item input:enabled + label:hover {
+.xr-section-item > input:enabled + label:hover,
+.xr-var-item > input:enabled + label:hover,
+.xr-array-wrap > input:enabled + label:hover,
+.xr-group-box-contents > input:enabled + label:hover {
   color: var(--xr-font-color0);
 }
 
@@ -1018,11 +968,25 @@ body.vscode-dark {
   grid-column: 1;
   color: var(--xr-font-color2);
   font-weight: 500;
+  white-space: nowrap;
+}
+
+.xr-section-summary > em {
+  font-weight: normal;
+}
+
+.xr-span-grid {
+  grid-column-end: -1;
 }
 
 .xr-section-summary > span {
   display: inline-block;
-  padding-left: 0.5em;
+  padding-left: 0.3em;
+}
+
+.xr-group-box-contents > input:checked + label > span {
+  display: inline-block;
+  padding-left: 0.6em;
 }
 
 .xr-section-summary-in:disabled + label {
@@ -1050,7 +1014,8 @@ body.vscode-dark {
 }
 
 .xr-section-summary,
-.xr-section-inline-details {
+.xr-section-inline-details,
+.xr-group-box-contents > label {
   padding-top: 4px;
 }
 
@@ -1059,20 +1024,29 @@ body.vscode-dark {
 }
 
 .xr-section-details {
-  display: none;
   grid-column: 1 / -1;
   margin-top: 4px;
   margin-bottom: 5px;
+}
+
+.xr-section-summary-in ~ .xr-section-details {
+  display: none;
 }
 
 .xr-section-summary-in:checked ~ .xr-section-details {
   display: contents;
 }
 
+.xr-children {
+  display: inline-grid;
+  grid-template-columns: 100%;
+  grid-column: 1 / -1;
+  padding-top: 4px;
+}
+
 .xr-group-box {
   display: inline-grid;
-  grid-template-columns: 0px 20px auto;
-  width: 100%;
+  grid-template-columns: 0px 30px auto;
 }
 
 .xr-group-box-vline {
@@ -1086,13 +1060,43 @@ body.vscode-dark {
   grid-column-start: 2;
   grid-row-start: 1;
   height: 1em;
-  width: 20px;
+  width: 26px;
   border-bottom: 0.2em solid;
   border-color: var(--xr-border-color);
 }
 
 .xr-group-box-contents {
   grid-column-start: 3;
+  padding-bottom: 4px;
+}
+
+.xr-group-box-contents > label::before {
+  content: "📂";
+  padding-right: 0.3em;
+}
+
+.xr-group-box-contents > input:checked + label::before {
+  content: "📁";
+}
+
+.xr-group-box-contents > input:checked + label {
+  padding-bottom: 0px;
+}
+
+.xr-group-box-contents > input:checked ~ .xr-sections {
+  display: none;
+}
+
+.xr-group-box-contents > input + label > span {
+  display: none;
+}
+
+.xr-group-box-ellipsis {
+  font-size: 1.4em;
+  font-weight: 900;
+  color: var(--xr-font-color2);
+  letter-spacing: 0.15em;
+  cursor: default;
 }
 
 .xr-array-wrap {
@@ -1347,17 +1351,17 @@ Attributes: (12/14)
     stream:         clte
     type:           fc
     number:         0
-    Forecast date:  2040-12-31 00:00:00Z</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-28f91317-e0bd-43e1-bc04-dd1abe80ae0b' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-28f91317-e0bd-43e1-bc04-dd1abe80ae0b' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>latitude</span>: 1</li><li><span class='xr-has-index'>longitude</span>: 1</li><li><span class='xr-has-index'>levelist</span>: 1</li><li><span class='xr-has-index'>number</span>: 1</li><li><span class='xr-has-index'>datetime</span>: 1</li><li><span class='xr-has-index'>t</span>: 8784</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-42fcc373-4698-4c1a-9e57-01591bf72db2' class='xr-section-summary-in' type='checkbox'  checked><label for='section-42fcc373-4698-4c1a-9e57-01591bf72db2' class='xr-section-summary' >Coordinates: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>50.87</div><input id='attrs-b105ebe8-de9d-4d89-a2c1-398dae9a0a3f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-b105ebe8-de9d-4d89-a2c1-398dae9a0a3f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-19b788a1-bcb2-42b5-a456-75c0009b3fed' class='xr-var-data-in' type='checkbox'><label for='data-19b788a1-bcb2-42b5-a456-75c0009b3fed' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([50.868159])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>4.714</div><input id='attrs-cde4cf6e-3f9f-4585-84a9-598f46ad38ec' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-cde4cf6e-3f9f-4585-84a9-598f46ad38ec' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-038c259c-22e4-4701-ae7c-0d1196b1b7b0' class='xr-var-data-in' type='checkbox'><label for='data-038c259c-22e4-4701-ae7c-0d1196b1b7b0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([4.714286])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>levelist</span></div><div class='xr-var-dims'>(levelist)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-0226e43d-237a-4601-88fb-e5d4daa8de2b' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-0226e43d-237a-4601-88fb-e5d4daa8de2b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-75900bdd-7ebe-4709-9401-bdf023135906' class='xr-var-data-in' type='checkbox'><label for='data-75900bdd-7ebe-4709-9401-bdf023135906' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>number</span></div><div class='xr-var-dims'>(number)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-8c4c94d1-f8ec-40cc-b5ba-668177b56782' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-8c4c94d1-f8ec-40cc-b5ba-668177b56782' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ca4dcd30-868b-4c7e-a958-60c3f3350e13' class='xr-var-data-in' type='checkbox'><label for='data-ca4dcd30-868b-4c7e-a958-60c3f3350e13' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>datetime</span></div><div class='xr-var-dims'>(datetime)</div><div class='xr-var-dtype'>&lt;U20</div><div class='xr-var-preview xr-preview'>&#x27;2040-12-31 00:00:00Z&#x27;</div><input id='attrs-848aef6a-e3b2-4fa6-97f3-f64372113149' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-848aef6a-e3b2-4fa6-97f3-f64372113149' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-84e0f57a-fdee-4a3e-bda8-12d0a8be81b8' class='xr-var-data-in' type='checkbox'><label for='data-84e0f57a-fdee-4a3e-bda8-12d0a8be81b8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2040-12-31 00:00:00Z&#x27;], dtype=&#x27;&lt;U20&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>t</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2040-01-01 ... 2040-12-31T23:00:00</div><input id='attrs-baa02915-af64-4b6a-b56a-058382aba08b' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-baa02915-af64-4b6a-b56a-058382aba08b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-41f10c3e-447c-4fa1-8258-18711c55f653' class='xr-var-data-in' type='checkbox'><label for='data-41f10c3e-447c-4fa1-8258-18711c55f653' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2040-01-01T00:00:00.000000000&#x27;, &#x27;2040-01-01T01:00:00.000000000&#x27;,
+    Forecast date:  2040-12-31 00:00:00Z</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-1945af98-2c38-4fdb-8420-d8fc3cc74377' class='xr-section-summary-in' type='checkbox' disabled /><label for='section-1945af98-2c38-4fdb-8420-d8fc3cc74377' class='xr-section-summary'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>latitude</span>: 1</li><li><span class='xr-has-index'>longitude</span>: 1</li><li><span class='xr-has-index'>levelist</span>: 1</li><li><span class='xr-has-index'>number</span>: 1</li><li><span class='xr-has-index'>datetime</span>: 1</li><li><span class='xr-has-index'>t</span>: 8784</li></ul></div></li><li class='xr-section-item'><input id='section-017bb11f-b694-47b9-a660-998dfb6bc281' class='xr-section-summary-in' type='checkbox' checked /><label for='section-017bb11f-b694-47b9-a660-998dfb6bc281' class='xr-section-summary' title='Expand/collapse section'>Coordinates: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>50.87</div><input id='attrs-5cf12f88-206f-4184-b74b-0a76df2330ca' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-5cf12f88-206f-4184-b74b-0a76df2330ca' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8bfd79c3-2555-47ff-8de4-571b011220c8' class='xr-var-data-in' type='checkbox'><label for='data-8bfd79c3-2555-47ff-8de4-571b011220c8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([50.868159])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>4.714</div><input id='attrs-7f67fb5d-4fc0-4d8b-99b7-d8c1d3ce0c72' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-7f67fb5d-4fc0-4d8b-99b7-d8c1d3ce0c72' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-48206314-13c9-4b4c-a3ed-d98463842e5c' class='xr-var-data-in' type='checkbox'><label for='data-48206314-13c9-4b4c-a3ed-d98463842e5c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([4.714286])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>levelist</span></div><div class='xr-var-dims'>(levelist)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-b7f6bd49-17a5-4bf7-abfd-b763382ad573' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-b7f6bd49-17a5-4bf7-abfd-b763382ad573' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d759fa88-5b5d-4dc0-8ef4-49504c06a520' class='xr-var-data-in' type='checkbox'><label for='data-d759fa88-5b5d-4dc0-8ef4-49504c06a520' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>number</span></div><div class='xr-var-dims'>(number)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-30de0e37-c59a-40cf-8506-74f581fc483a' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-30de0e37-c59a-40cf-8506-74f581fc483a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-03d41d70-8501-4763-a685-42459d334e0e' class='xr-var-data-in' type='checkbox'><label for='data-03d41d70-8501-4763-a685-42459d334e0e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>datetime</span></div><div class='xr-var-dims'>(datetime)</div><div class='xr-var-dtype'>&lt;U20</div><div class='xr-var-preview xr-preview'>&#x27;2040-12-31 00:00:00Z&#x27;</div><input id='attrs-2b3798a8-00b6-4b9e-babd-0a26ad3c599c' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-2b3798a8-00b6-4b9e-babd-0a26ad3c599c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9591c8a7-e5bb-4410-bd9e-082c45076d38' class='xr-var-data-in' type='checkbox'><label for='data-9591c8a7-e5bb-4410-bd9e-082c45076d38' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2040-12-31 00:00:00Z&#x27;], dtype=&#x27;&lt;U20&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>t</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2040-01-01 ... 2040-12-31T23:00:00</div><input id='attrs-e06c579d-c090-42cc-83d2-55797fd622f7' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-e06c579d-c090-42cc-83d2-55797fd622f7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cf984bc5-63da-4625-8cb7-88d2e0d6e33d' class='xr-var-data-in' type='checkbox'><label for='data-cf984bc5-63da-4625-8cb7-88d2e0d6e33d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2040-01-01T00:00:00.000000000&#x27;, &#x27;2040-01-01T01:00:00.000000000&#x27;,
        &#x27;2040-01-01T02:00:00.000000000&#x27;, ..., &#x27;2040-12-31T21:00:00.000000000&#x27;,
        &#x27;2040-12-31T22:00:00.000000000&#x27;, &#x27;2040-12-31T23:00:00.000000000&#x27;],
-      shape=(8784,), dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ca800760-6a3e-4c41-9b58-bc54c5f36da2' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ca800760-6a3e-4c41-9b58-bc54c5f36da2' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>2t</span></div><div class='xr-var-dims'>(latitude, longitude, levelist, number, datetime, t)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>273.7 273.2 272.8 ... 275.4 274.7</div><input id='attrs-cb7dff23-cafe-4508-a433-f9b60b5c0b96' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cb7dff23-cafe-4508-a433-f9b60b5c0b96' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dca99733-97d2-47b6-8936-0827f97725bd' class='xr-var-data-in' type='checkbox'><label for='data-dca99733-97d2-47b6-8936-0827f97725bd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>type :</span></dt><dd>Parameter</dd><dt><span>units :</span></dt><dd>K</dd><dt><span>long_name :</span></dt><dd>2t</dd></dl></div><div class='xr-var-data'><pre>array([[[[[[273.73364258, 273.20134735, 272.82113647, ...,
+      shape=(8784,), dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-86ebe7d4-0a61-4fde-a1da-01091a4a1d51' class='xr-section-summary-in' type='checkbox' checked /><label for='section-86ebe7d4-0a61-4fde-a1da-01091a4a1d51' class='xr-section-summary' title='Expand/collapse section'>Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>2t</span></div><div class='xr-var-dims'>(latitude, longitude, levelist, number, datetime, t)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>273.7 273.2 272.8 ... 275.4 274.7</div><input id='attrs-6c4caafa-2537-442c-b280-ce07e1d5d2e7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6c4caafa-2537-442c-b280-ce07e1d5d2e7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-730dfc9b-74fc-46ca-9a7f-5390f824b301' class='xr-var-data-in' type='checkbox'><label for='data-730dfc9b-74fc-46ca-9a7f-5390f824b301' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>type :</span></dt><dd>Parameter</dd><dt><span>units :</span></dt><dd>K</dd><dt><span>long_name :</span></dt><dd>2t</dd></dl></div><div class='xr-var-data'><pre>array([[[[[[273.73364258, 273.20134735, 272.82113647, ...,
             275.92724609, 275.3945694 , 274.68991852]]]]]],
-      shape=(1, 1, 1, 1, 1, 8784))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-e06368b4-e39f-43a7-a6e3-d32fcf7a7215' class='xr-section-summary-in' type='checkbox'  ><label for='section-e06368b4-e39f-43a7-a6e3-d32fcf7a7215' class='xr-section-summary' >Attributes: <span>(14)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>activity :</span></dt><dd>projections</dd><dt><span>class :</span></dt><dd>d1</dd><dt><span>dataset :</span></dt><dd>climate-dt</dd><dt><span>experiment :</span></dt><dd>ssp3-7.0</dd><dt><span>expver :</span></dt><dd>0001</dd><dt><span>generation :</span></dt><dd>2</dd><dt><span>levtype :</span></dt><dd>sfc</dd><dt><span>model :</span></dt><dd>ifs-nemo</dd><dt><span>realization :</span></dt><dd>1</dd><dt><span>resolution :</span></dt><dd>standard</dd><dt><span>stream :</span></dt><dd>clte</dd><dt><span>type :</span></dt><dd>fc</dd><dt><span>number :</span></dt><dd>0</dd><dt><span>Forecast date :</span></dt><dd>2040-12-31 00:00:00Z</dd></dl></div></li></ul></div></div></div></div>
+      shape=(1, 1, 1, 1, 1, 8784))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a4e982c0-2db5-48b1-86ef-e8ddf525825a' class='xr-section-summary-in' type='checkbox' /><label for='section-a4e982c0-2db5-48b1-86ef-e8ddf525825a' class='xr-section-summary' title='Expand/collapse section'>Attributes: <span>(14)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>activity :</span></dt><dd>projections</dd><dt><span>class :</span></dt><dd>d1</dd><dt><span>dataset :</span></dt><dd>climate-dt</dd><dt><span>experiment :</span></dt><dd>ssp3-7.0</dd><dt><span>expver :</span></dt><dd>0001</dd><dt><span>generation :</span></dt><dd>2</dd><dt><span>levtype :</span></dt><dd>sfc</dd><dt><span>model :</span></dt><dd>ifs-nemo</dd><dt><span>realization :</span></dt><dd>1</dd><dt><span>resolution :</span></dt><dd>standard</dd><dt><span>stream :</span></dt><dd>clte</dd><dt><span>type :</span></dt><dd>fc</dd><dt><span>number :</span></dt><dd>0</dd><dt><span>Forecast date :</span></dt><dd>2040-12-31 00:00:00Z</dd></dl></div></li></ul></div></div></div></div>
 </div>
 </section>
 <section id="hourly-line-plot">
 <h2>Hourly line plot<a class="headerlink" href="#hourly-line-plot" title="Permalink to this heading">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">TimeSeries</span></code> class is the lower-level API for building charts layer by layer. Here we plot the raw hourly series and group the x-axis ticks by month with <code class="docutils literal notranslate"><span class="pre">frequency=&quot;M&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">period=True</span></code>. The title template uses <code class="docutils literal notranslate"><span class="pre">{model!u}</span></code> to uppercase the model name and <code class="docutils literal notranslate"><span class="pre">{location:%c},</span> <span class="pre">{location:%C}</span></code> to format the city and country.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">TimeSeries</span></code> class in earthkit-plots has many built-in features to support quick and easy plotting of timeseries data. Here we plot the raw hourly series and group the x-axis ticks by month with <code class="docutils literal notranslate"><span class="pre">frequency=&quot;M&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">period=True</span></code>. The title template uses <code class="docutils literal notranslate"><span class="pre">{model!u}</span></code> to uppercase the model name and <code class="docutils literal notranslate"><span class="pre">{location:%c},</span> <span class="pre">{location:%C}</span></code> to format the city and country.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1377,7 +1381,7 @@ Attributes: (12/14)
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../../_images/320f4581c9866dc25cc84ea6f723f5341e35ab501142da5af239c56cd6181255.png" src="../../../_images/320f4581c9866dc25cc84ea6f723f5341e35ab501142da5af239c56cd6181255.png" />
+<img alt="../../../_images/3e9f7051ef15b556da94483b15b1e9275e71362b062eeb31000f4206690fd200.png" src="../../../_images/3e9f7051ef15b556da94483b15b1e9275e71362b062eeb31000f4206690fd200.png" />
 </div>
 </div>
 </section>
@@ -1430,14 +1434,14 @@ Attributes: (12/14)
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../../_images/165153df50531bb8cf9f446458a12d9f96f5fcd2109e082610e6e629abe6bf83.png" src="../../../_images/165153df50531bb8cf9f446458a12d9f96f5fcd2109e082610e6e629abe6bf83.png" />
+<img alt="../../../_images/bb4e347fb20e3851c462ada57a4f33cf67381b544d323e29dfe7a4ec170d9805.png" src="../../../_images/bb4e347fb20e3851c462ada57a4f33cf67381b544d323e29dfe7a4ec170d9805.png" />
 </div>
 </div>
 </section>
 <section id="multi-model-comparison">
 <h2>Multi-model comparison<a class="headerlink" href="#multi-model-comparison" title="Permalink to this heading">#</a></h2>
-<p>One of the strengths of the Climate DT is that multiple models ran the same scenario. We retrieve the same 2040 hourly series for <strong>ICON</strong> and <strong>IFS-FESOM</strong> by copying the original request dict and swapping the <code class="docutils literal notranslate"><span class="pre">model</span></code> key — all other fields stay identical.</p>
-<p>Note that ICON and IFS-FESOM are served from the LUMI endpoint rather than MN5.</p>
+<p>One of the strengths of the Climate DT is that multiple models are run for the same scenario. We can retrieve the same 2040 hourly series for the <strong>ICON</strong> and <strong>IFS-FESOM</strong> models by copying the original request dict and swapping the <code class="docutils literal notranslate"><span class="pre">model</span></code> key - all other fields stay identical.</p>
+<p>Note that ICON and IFS-FESOM are served from the LUMI endpoint rather than MN5, requiring a small change to the <code class="docutils literal notranslate"><span class="pre">address</span></code> key.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1471,8 +1475,8 @@ Attributes: (12/14)
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-06-09 17:53:33 - INFO - Key read from /Users/mavj/.polytopeapirc
-2026-06-09 17:53:33 - INFO - Sending request...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-06-10 13:01:54 - INFO - Key read from /Users/mavj/.polytopeapirc
+2026-06-10 13:01:54 - INFO - Sending request...
 {&#39;request&#39;: &#39;activity: projections\n&#39;
             &#39;class: d1\n&#39;
             &#39;dataset: climate-dt\n&#39;
@@ -1495,17 +1499,15 @@ Attributes: (12/14)
             &#39;time: 0000/to/2300\n&#39;
             &#39;type: fc\n&#39;,
  &#39;verb&#39;: &#39;retrieve&#39;}
-2026-06-09 17:53:33 - INFO - Polytope user key found in session cache for user mavj
-2026-06-09 17:53:34 - INFO - Request accepted. Please poll ./f671e17f-4534-4076-b65c-563d0a9256d4 for status
-2026-06-09 17:53:34 - INFO - Polytope user key found in session cache for user mavj
-2026-06-09 17:53:34 - INFO - Checking request status (f671e17f-4534-4076-b65c-563d0a9256d4)...
-2026-06-09 17:53:34 - INFO - The current status of the request is &#39;queued&#39;
-2026-06-09 17:53:35 - INFO - The current status of the request is &#39;processing&#39;
-2026-06-09 17:53:45 - INFO - The current status of the request is &#39;processed&#39;
-</pre></div>
-</div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-06-09 17:53:46 - INFO - Key read from /Users/mavj/.polytopeapirc
-2026-06-09 17:53:46 - INFO - Sending request...
+2026-06-10 13:01:54 - INFO - Polytope user key found in session cache for user mavj
+2026-06-10 13:01:55 - INFO - Request accepted. Please poll ./306596cc-7f7d-4ae7-9762-e7ab8c055377 for status
+2026-06-10 13:01:55 - INFO - Polytope user key found in session cache for user mavj
+2026-06-10 13:01:55 - INFO - Checking request status (306596cc-7f7d-4ae7-9762-e7ab8c055377)...
+2026-06-10 13:01:55 - INFO - The current status of the request is &#39;queued&#39;
+2026-06-10 13:01:55 - INFO - The current status of the request is &#39;processing&#39;
+2026-06-10 13:02:06 - INFO - The current status of the request is &#39;processed&#39;
+2026-06-10 13:02:06 - INFO - Key read from /Users/mavj/.polytopeapirc                                                                      
+2026-06-10 13:02:06 - INFO - Sending request...
 {&#39;request&#39;: &#39;activity: projections\n&#39;
             &#39;class: d1\n&#39;
             &#39;dataset: climate-dt\n&#39;
@@ -1528,16 +1530,17 @@ Attributes: (12/14)
             &#39;time: 0000/to/2300\n&#39;
             &#39;type: fc\n&#39;,
  &#39;verb&#39;: &#39;retrieve&#39;}
-2026-06-09 17:53:46 - INFO - Polytope user key found in session cache for user mavj
-2026-06-09 17:53:46 - INFO - Request accepted. Please poll ./92a0c3a3-5f0d-4793-a4ef-c9ff04127c60 for status
-2026-06-09 17:53:46 - INFO - Polytope user key found in session cache for user mavj
-2026-06-09 17:53:46 - INFO - Checking request status (92a0c3a3-5f0d-4793-a4ef-c9ff04127c60)...
-2026-06-09 17:53:47 - INFO - The current status of the request is &#39;queued&#39;
-2026-06-09 17:53:47 - INFO - The current status of the request is &#39;processing&#39;
-2026-06-09 17:54:00 - INFO - The current status of the request is &#39;processed&#39;
+2026-06-10 13:02:06 - INFO - Polytope user key found in session cache for user mavj
+2026-06-10 13:02:07 - INFO - Request accepted. Please poll ./a6729ae0-1954-4096-85d0-6174e79d7f26 for status
+2026-06-10 13:02:07 - INFO - Polytope user key found in session cache for user mavj
+2026-06-10 13:02:07 - INFO - Checking request status (a6729ae0-1954-4096-85d0-6174e79d7f26)...
+2026-06-10 13:02:07 - INFO - The current status of the request is &#39;queued&#39;
+2026-06-10 13:02:07 - INFO - The current status of the request is &#39;processing&#39;
+2026-06-10 13:02:19 - INFO - The current status of the request is &#39;processed&#39;
+                                                                                                                                           
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script></div>
+</div>
 </div>
 </section>
 <section id="overlay-all-three-models">
@@ -1574,22 +1577,10 @@ Attributes: (12/14)
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../../_images/ee03a195be37dfa316479f8c4fd2f6acc137a9a954f8d1e03b3b26840b654dc3.png" src="../../../_images/ee03a195be37dfa316479f8c4fd2f6acc137a9a954f8d1e03b3b26840b654dc3.png" />
+<img alt="../../../_images/3ace84ac04b8c7eb314675c07d01d6ce32a3f132a7e71121a22ab3933205be35.png" src="../../../_images/3ace84ac04b8c7eb314675c07d01d6ce32a3f132a7e71121a22ab3933205be35.png" />
 </div>
 </div>
-<hr class="docutils" />
 </section>
-</section>
-<section id="summary">
-<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h1>
-<p>In this notebook you:</p>
-<ul class="simple">
-<li><p>Used Polytope’s <code class="docutils literal notranslate"><span class="pre">timeseries</span></code> feature to retrieve a full year of hourly 2 m temperature at Brussels from three Climate DT models</p></li>
-<li><p>Computed monthly mean, min, and max with <code class="docutils literal notranslate"><span class="pre">earthkit.transforms</span></code></p></li>
-<li><p>Built a multi-layer chart with a shaded min–max range and a mean line</p></li>
-<li><p>Overlaid daily-mean time series from IFS-NEMO, ICON, and IFS-FESOM to compare model behaviour</p></li>
-</ul>
-<p><strong>Next steps:</strong> Try a different location, variable, or year range — or extend the multi-model comparison to look at monthly climatologies rather than a single year.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1601,16 +1592,16 @@ Attributes: (12/14)
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "develop"
+            mode: "earthkit-1.0-conda"
         },
         kernelOptions: {
-            name: "develop",
+            name: "earthkit-1.0-conda",
             path: "./climate-dt/earthkit-1.0/solutions"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'develop'</script>
+    <script>kernelName = 'earthkit-1.0-conda'</script>
 
             </article>
             
@@ -1687,11 +1678,6 @@ Attributes: (12/14)
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
  </li>
 </ul>
 
