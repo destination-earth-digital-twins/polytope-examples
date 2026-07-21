@@ -157,7 +157,6 @@ def fetch_period(model, experiment, years, param,
     chunks = [years_list[i:i + chunk_size]
               for i in range(0, len(years_list), chunk_size)]
     chunk_arrays = []
-    print("here")
 
     for chunk_years in chunks:
         print(f"Processing years {chunk_years[0]}-{chunk_years[-1]}...")
