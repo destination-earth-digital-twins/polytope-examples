@@ -648,7 +648,12 @@ class PolytopeZarrStore(MutableMapping):
         for s in chunk_shape:
             n_cells *= s
 
-        fields = list(data)
+        # earthkit-data >= 1.0 returns a GribData wrapper that is not directly
+        # iterable; call to_fieldlist() to get a concrete iterable FieldList.
+        try:
+            fields = list(data.to_fieldlist())
+        except AttributeError:
+            fields = list(data)
 
         # ── Time dimension: match fields by metadata ────────────────────
         if self._batch_dim == "time" and dims[batch_pos] == "time":
