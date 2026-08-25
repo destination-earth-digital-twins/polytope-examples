@@ -622,7 +622,7 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'}</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">access_token</span> <span class="o">=</span> <span class="n">output_1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -660,7 +660,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defaults to making a live data request. Set to false to use the cached GRIB file instead.</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="n">LIVE_REQUEST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LIVE_REQUEST&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span>
+<span class="n">LIVE_REQUEST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"LIVE_REQUEST"</span><span class="p">,</span> <span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"true"</span>
 <span class="n">LIVE_REQUEST</span>
 </pre></div>
 </div>
@@ -675,22 +675,22 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;climate-dt&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;projections&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="s2">&quot;SSP3-7.0&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;realization&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;generation&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;ICON&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="s2">&quot;standard&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0001&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;clte&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;20251129&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;0000&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;levelist&quot;</span> <span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;o3d&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;param&quot;</span><span class="p">:</span> <span class="s2">&quot;avg_thetao&quot;</span>
+        <span class="s2">"class"</span><span class="p">:</span> <span class="s2">"d1"</span><span class="p">,</span>
+        <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"climate-dt"</span><span class="p">,</span>
+        <span class="s2">"activity"</span><span class="p">:</span> <span class="s2">"projections"</span><span class="p">,</span>
+        <span class="s2">"experiment"</span><span class="p">:</span> <span class="s2">"SSP3-7.0"</span><span class="p">,</span>
+        <span class="s2">"realization"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+        <span class="s2">"generation"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+        <span class="s2">"model"</span><span class="p">:</span> <span class="s2">"ICON"</span><span class="p">,</span>
+        <span class="s2">"resolution"</span><span class="p">:</span> <span class="s2">"standard"</span><span class="p">,</span>
+        <span class="s2">"expver"</span><span class="p">:</span> <span class="s2">"0001"</span><span class="p">,</span>
+        <span class="s2">"stream"</span><span class="p">:</span> <span class="s2">"clte"</span><span class="p">,</span>
+        <span class="s2">"date"</span><span class="p">:</span> <span class="s2">"20251129"</span><span class="p">,</span>
+        <span class="s2">"time"</span><span class="p">:</span> <span class="s2">"0000"</span><span class="p">,</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"fc"</span><span class="p">,</span>
+        <span class="s2">"levelist"</span> <span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+        <span class="s2">"levtype"</span><span class="p">:</span> <span class="s2">"o3d"</span><span class="p">,</span>
+        <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"avg_thetao"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -704,12 +704,12 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;../data/climate-dt-healpix-ocean-example.grib&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">"../data/climate-dt-healpix-ocean-example.grib"</span>
 <span class="k">if</span> <span class="n">LIVE_REQUEST</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;polytope&quot;</span><span class="p">,</span> <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.lumi.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">data</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"polytope"</span><span class="p">,</span> <span class="s2">"destination-earth"</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">"polytope.lumi.apps.dte.destination-earth.eu"</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span> 
+    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -730,7 +730,7 @@ title="Print to PDF"
 </div>
 </details>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -738,18 +738,18 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated_data</span> <span class="o">=</span> <span class="n">hp</span><span class="o">.</span><span class="n">cartview</span><span class="p">(</span><span class="n">dnp</span><span class="p">,</span>
-            <span class="n">flip</span><span class="o">=</span><span class="s2">&quot;geo&quot;</span><span class="p">,</span> 
+            <span class="n">flip</span><span class="o">=</span><span class="s2">"geo"</span><span class="p">,</span> 
             <span class="n">nest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
             <span class="n">rot</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,],</span>
-            <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;temperature&#39;</span><span class="p">,</span>
+            <span class="n">unit</span><span class="o">=</span><span class="s1">'temperature'</span><span class="p">,</span>
             <span class="n">lonra</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="o">-</span><span class="mi">30</span><span class="p">],</span>
             <span class="n">latra</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span>
-            <span class="n">title</span><span class="o">=</span><span class="s1">&#39;lev 2 pot-temperature over GS (ICON)&#39;</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="s1">'lev 2 pot-temperature over GS (ICON)'</span><span class="p">,</span>
             <span class="nb">min</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
             <span class="nb">max</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
             <span class="c1"># notext=True</span>
             <span class="n">cmap</span> <span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">RdBu_r</span><span class="p">,</span>
-            <span class="n">badcolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+            <span class="n">badcolor</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span>
             <span class="n">return_projected_map</span><span class="o">=</span><span class="kc">True</span>
            <span class="p">)</span>
 <span class="n">hp</span><span class="o">.</span><span class="n">graticule</span><span class="p">(</span><span class="n">dpar</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">dmer</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -769,22 +769,22 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request2</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;climate-dt&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;projections&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="s2">&quot;SSP3-7.0&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;realization&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;generation&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;IFS-NEMO&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="s2">&quot;standard&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0001&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;clte&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;20251129&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;0000&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;levelist&quot;</span> <span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;o3d&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;param&quot;</span><span class="p">:</span> <span class="s2">&quot;avg_thetao&quot;</span>
+        <span class="s2">"class"</span><span class="p">:</span> <span class="s2">"d1"</span><span class="p">,</span>
+        <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"climate-dt"</span><span class="p">,</span>
+        <span class="s2">"activity"</span><span class="p">:</span> <span class="s2">"projections"</span><span class="p">,</span>
+        <span class="s2">"experiment"</span><span class="p">:</span> <span class="s2">"SSP3-7.0"</span><span class="p">,</span>
+        <span class="s2">"realization"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+        <span class="s2">"generation"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+        <span class="s2">"model"</span><span class="p">:</span> <span class="s2">"IFS-NEMO"</span><span class="p">,</span>
+        <span class="s2">"resolution"</span><span class="p">:</span> <span class="s2">"standard"</span><span class="p">,</span>
+        <span class="s2">"expver"</span><span class="p">:</span> <span class="s2">"0001"</span><span class="p">,</span>
+        <span class="s2">"stream"</span><span class="p">:</span> <span class="s2">"clte"</span><span class="p">,</span>
+        <span class="s2">"date"</span><span class="p">:</span> <span class="s2">"20251129"</span><span class="p">,</span>
+        <span class="s2">"time"</span><span class="p">:</span> <span class="s2">"0000"</span><span class="p">,</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"fc"</span><span class="p">,</span>
+        <span class="s2">"levelist"</span> <span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+        <span class="s2">"levtype"</span><span class="p">:</span> <span class="s2">"o3d"</span><span class="p">,</span>
+        <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"avg_thetao"</span>
     <span class="p">}</span>
 </pre></div>
 </div>
@@ -798,18 +798,18 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file2</span> <span class="o">=</span> <span class="s2">&quot;../data/climate-dt-healpix-ocean-example2.grib&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file2</span> <span class="o">=</span> <span class="s2">"../data/climate-dt-healpix-ocean-example2.grib"</span>
 <span class="k">if</span> <span class="n">LIVE_REQUEST</span><span class="p">:</span>
-    <span class="n">data2</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;polytope&quot;</span><span class="p">,</span> <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span> <span class="n">request2</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.mn5.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">data2</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file2</span><span class="p">)</span>
+    <span class="n">data2</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"polytope"</span><span class="p">,</span> <span class="s2">"destination-earth"</span><span class="p">,</span> <span class="n">request2</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">"polytope.mn5.apps.dte.destination-earth.eu"</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">data2</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file2</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">data2</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file2</span><span class="p">)</span> 
+    <span class="n">data2</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file2</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
 </details>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -819,18 +819,18 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dnp2</span><span class="o">=</span><span class="n">data2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">-</span><span class="mi">273</span>
 
 <span class="n">interpolated_data</span> <span class="o">=</span> <span class="n">hp</span><span class="o">.</span><span class="n">cartview</span><span class="p">(</span><span class="n">dnp2</span><span class="p">,</span>
-            <span class="n">flip</span><span class="o">=</span><span class="s2">&quot;geo&quot;</span><span class="p">,</span> 
+            <span class="n">flip</span><span class="o">=</span><span class="s2">"geo"</span><span class="p">,</span> 
             <span class="n">nest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
             <span class="n">rot</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,],</span>
-            <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;temperature&#39;</span><span class="p">,</span>
+            <span class="n">unit</span><span class="o">=</span><span class="s1">'temperature'</span><span class="p">,</span>
             <span class="n">lonra</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="o">-</span><span class="mi">30</span><span class="p">],</span>
             <span class="n">latra</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span>
-            <span class="n">title</span><span class="o">=</span><span class="s1">&#39;lev 2 pot-temperature over GS (IFS)&#39;</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="s1">'lev 2 pot-temperature over GS (IFS)'</span><span class="p">,</span>
             <span class="nb">min</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
             <span class="nb">max</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
             <span class="c1"># notext=True</span>
             <span class="n">cmap</span> <span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">RdBu_r</span><span class="p">,</span>
-            <span class="n">badcolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+            <span class="n">badcolor</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span>
             <span class="n">return_projected_map</span><span class="o">=</span><span class="kc">True</span>
            <span class="p">)</span>
 <span class="n">hp</span><span class="o">.</span><span class="n">graticule</span><span class="p">(</span><span class="n">dpar</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">dmer</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>

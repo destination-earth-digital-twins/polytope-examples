@@ -617,7 +617,7 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'}</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">access_token</span> <span class="o">=</span> <span class="n">output_1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -670,7 +670,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defaults to making a live data request. Set to false to use the cached GRIB file instead.</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="n">LIVE_REQUEST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LIVE_REQUEST&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span>
+<span class="n">LIVE_REQUEST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"LIVE_REQUEST"</span><span class="p">,</span> <span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"true"</span>
 <span class="n">LIVE_REQUEST</span>
 </pre></div>
 </div>
@@ -685,21 +685,21 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;activity&#39;</span><span class="p">:</span> <span class="s1">&#39;projections&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;d1&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;dataset&#39;</span><span class="p">:</span> <span class="s1">&#39;climate-dt&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;20400102&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;experiment&#39;</span><span class="p">:</span> <span class="s1">&#39;SSP3-7.0&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;expver&#39;</span><span class="p">:</span> <span class="s1">&#39;0001&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;generation&#39;</span><span class="p">:</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;levtype&#39;</span><span class="p">:</span> <span class="s1">&#39;sfc&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="s1">&#39;IFS-NEMO&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;param&#39;</span><span class="p">:</span> <span class="s1">&#39;134/165/166/167&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;realization&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;resolution&#39;</span><span class="p">:</span> <span class="s1">&#39;standard&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;stream&#39;</span><span class="p">:</span> <span class="s1">&#39;clte&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="s1">&#39;0100&#39;</span><span class="p">,</span> <span class="c1"># &#39;0100/0200/0300/0400/0500/0600&#39;</span>
-    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;fc&#39;</span>
+    <span class="s1">'activity'</span><span class="p">:</span> <span class="s1">'projections'</span><span class="p">,</span>
+    <span class="s1">'class'</span><span class="p">:</span> <span class="s1">'d1'</span><span class="p">,</span>
+    <span class="s1">'dataset'</span><span class="p">:</span> <span class="s1">'climate-dt'</span><span class="p">,</span>
+    <span class="s1">'date'</span><span class="p">:</span> <span class="s1">'20400102'</span><span class="p">,</span>
+    <span class="s1">'experiment'</span><span class="p">:</span> <span class="s1">'SSP3-7.0'</span><span class="p">,</span>
+    <span class="s1">'expver'</span><span class="p">:</span> <span class="s1">'0001'</span><span class="p">,</span>
+    <span class="s1">'generation'</span><span class="p">:</span> <span class="s1">'2'</span><span class="p">,</span>
+    <span class="s1">'levtype'</span><span class="p">:</span> <span class="s1">'sfc'</span><span class="p">,</span>
+    <span class="s1">'model'</span><span class="p">:</span> <span class="s1">'IFS-NEMO'</span><span class="p">,</span>
+    <span class="s1">'param'</span><span class="p">:</span> <span class="s1">'134/165/166/167'</span><span class="p">,</span>
+    <span class="s1">'realization'</span><span class="p">:</span> <span class="s1">'1'</span><span class="p">,</span>
+    <span class="s1">'resolution'</span><span class="p">:</span> <span class="s1">'standard'</span><span class="p">,</span>
+    <span class="s1">'stream'</span><span class="p">:</span> <span class="s1">'clte'</span><span class="p">,</span>
+    <span class="s1">'time'</span><span class="p">:</span> <span class="s1">'0100'</span><span class="p">,</span> <span class="c1"># '0100/0200/0300/0400/0500/0600'</span>
+    <span class="s1">'type'</span><span class="p">:</span> <span class="s1">'fc'</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -713,18 +713,18 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;../data/climate-dt-earthkit-aoi-example.grib&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">"../data/climate-dt-earthkit-aoi-example.grib"</span>
 <span class="k">if</span> <span class="n">LIVE_REQUEST</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;polytope&quot;</span><span class="p">,</span> <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.mn5.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">data</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"polytope"</span><span class="p">,</span> <span class="s2">"destination-earth"</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">"polytope.mn5.apps.dte.destination-earth.eu"</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -824,14 +824,14 @@ title="Print to PDF"
 </table>
 </div></div></div>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Europe&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="s2">"Europe"</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">gridlines</span><span class="p">()</span>
@@ -854,13 +854,13 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Regrid t=from healpix for conversion to xarray</span>
-<span class="n">data_latlon</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">regrid</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">out_grid</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;grid&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]},</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<span class="n">data_latlon</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">regrid</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">out_grid</span><span class="o">=</span><span class="p">{</span><span class="s2">"grid"</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]},</span> <span class="n">method</span><span class="o">=</span><span class="s2">"linear"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -1374,14 +1374,14 @@ Attributes:
     institution:  ECMWF</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-46d3106d-3f3e-4182-9f6c-7a9fa03c3281' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-46d3106d-3f3e-4182-9f6c-7a9fa03c3281' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>latitude</span>: 1801</li><li><span class='xr-has-index'>longitude</span>: 3600</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-ca647536-c651-4ab0-b609-606fc1233948' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ca647536-c651-4ab0-b609-606fc1233948' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>90.0 89.9 89.8 ... -89.9 -90.0</div><input id='attrs-c67f2652-4811-4cd1-a8e3-ca9c22535a28' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c67f2652-4811-4cd1-a8e3-ca9c22535a28' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2fb91e44-b1c2-4e1d-9570-9dbfddbc7d12' class='xr-var-data-in' type='checkbox'><label for='data-2fb91e44-b1c2-4e1d-9570-9dbfddbc7d12' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><pre>array([ 90. ,  89.9,  89.8, ..., -89.8, -89.9, -90. ], shape=(1801,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 0.1 0.2 ... 359.7 359.8 359.9</div><input id='attrs-45d694db-e376-4269-8fec-c71e3faa9606' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-45d694db-e376-4269-8fec-c71e3faa9606' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-100e7749-f9ac-4a67-9eaa-75cab3442a4c' class='xr-var-data-in' type='checkbox'><label for='data-100e7749-f9ac-4a67-9eaa-75cab3442a4c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><pre>array([0.000e+00, 1.000e-01, 2.000e-01, ..., 3.597e+02, 3.598e+02, 3.599e+02],
       shape=(3600,))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f63ecf9d-5ce6-4781-b0d2-b382df6d0a13' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f63ecf9d-5ce6-4781-b0d2-b382df6d0a13' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>2t</span></div><div class='xr-var-dims'>(latitude, longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-00b03d04-bf6b-41ae-959c-47690fafa3f2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-00b03d04-bf6b-41ae-959c-47690fafa3f2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-70877469-7746-4451-8b8d-117a560edb59' class='xr-var-data-in' type='checkbox'><label for='data-70877469-7746-4451-8b8d-117a560edb59' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>air_temperature</dd><dt><span>long_name :</span></dt><dd>2 metre temperature</dd><dt><span>units :</span></dt><dd>K</dd><dt><span>_earthkit :</span></dt><dd>{&#x27;message&#x27;: b&#x27;GRIB\xff\xff\x00\x02\x00\x00\x00\x00\x00\x00\x00\xd6\x00\x00\x00\x15\x01\x00b\x03\xeb\x1f\x01\x02\x07\xe4\x01\x02\x01\x00\x00\x0c\x01\x00\x00\x00\x1f\x02\x00\x01\x00\x01\x00\x02\x00\x07\x01\x00\x02\x01\x00\x01\x00\x01\x00.\x00\t\x04J0001\x00\x00\x00H\x03\x00\x00b\xee\x90\x00\x00\x00\x00\x06\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x0e\x10\x00\x00\x07\t\x00\x00\x00\x00\xff\xff\xff\xff\x05]J\x80\x00\x00\x00\x000\x85]J\x80\x15s\xa3`\x00\x01\x86\xa0\x00\x01\x86\xa0\x00\x00\x00\x00&quot;\x04\x00\x00\x00\x00\x00\x00\x02\xff\x9c\xff\xff\xff\x01\x00\x00\x00\x00g\x00\x00\x00\x00\x02\xff\xff\xff\xff\xff\xff\x00\x00\x00\x19\x05\x00b\xee\x90\x00*\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0e \x00\x80\x00\x00\x00\x06\x06\xff\x00\x00\x00\x05\x077777&#x27;, &#x27;bitsPerValue&#x27;: 24}</dd></dl></div><div class='xr-var-data'><pre>[6483600 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-4d827fd6-bfc0-4050-a1ba-5ef3ee6e6218' class='xr-section-summary-in' type='checkbox'  ><label for='section-4d827fd6-bfc0-4050-a1ba-5ef3ee6e6218' class='xr-section-summary' >Attributes: <span>(11)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>param :</span></dt><dd>2t</dd><dt><span>paramId :</span></dt><dd>167</dd><dt><span>class :</span></dt><dd>d1</dd><dt><span>stream :</span></dt><dd>clte</dd><dt><span>levtype :</span></dt><dd>sfc</dd><dt><span>type :</span></dt><dd>fc</dd><dt><span>expver :</span></dt><dd>0001</dd><dt><span>date :</span></dt><dd>20200102</dd><dt><span>time :</span></dt><dd>100</dd><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>institution :</span></dt><dd>ECMWF</dd></dl></div></li></ul></div></div></div></div>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Europe&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="s2">"Europe"</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">data_latlon</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">gridlines</span><span class="p">()</span>
@@ -1404,17 +1404,17 @@ Attributes:
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># remote_nuts_url = earthkit_remote_test_data_file(&quot;test-data&quot;, &quot;NUTS_RG_60M_2021_4326_LEVL_0.geojson&quot;)</span>
-<span class="c1"># nuts_data = earthkit.data.from_source(&quot;url&quot;, remote_nuts_url)</span>
-<span class="c1"># nuts_data.save(&quot;../data/NUTS_RG_60M_2021_4326_LEVL_0.geojson&quot;)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># remote_nuts_url = earthkit_remote_test_data_file("test-data", "NUTS_RG_60M_2021_4326_LEVL_0.geojson")</span>
+<span class="c1"># nuts_data = earthkit.data.from_source("url", remote_nuts_url)</span>
+<span class="c1"># nuts_data.save("../data/NUTS_RG_60M_2021_4326_LEVL_0.geojson")</span>
 
-<span class="n">nuts_data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="s2">&quot;../data/NUTS_RG_60M_2021_4326_LEVL_0.geojson&quot;</span><span class="p">)</span>
+<span class="n">nuts_data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="s2">"../data/NUTS_RG_60M_2021_4326_LEVL_0.geojson"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -1534,7 +1534,7 @@ Attributes:
 </div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">spatial.mask</span></code> applies all the features in the geometry object (<code class="docutils literal notranslate"><span class="pre">nuts_data</span></code>) to the data object (<code class="docutils literal notranslate"><span class="pre">xarr</span></code>). It returns an xarray object the same shape and type as the input xarray object with all points outside of the geometry masked.</p>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -2165,7 +2165,7 @@ Attributes:
 </table></div></li></ul></div></li><li class='xr-section-item'><input id='section-d452c613-960e-4f8e-ac49-700b8f52e546' class='xr-section-summary-in' type='checkbox'  ><label for='section-d452c613-960e-4f8e-ac49-700b8f52e546' class='xr-section-summary' >Attributes: <span>(11)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>param :</span></dt><dd>2t</dd><dt><span>paramId :</span></dt><dd>167</dd><dt><span>class :</span></dt><dd>d1</dd><dt><span>stream :</span></dt><dd>clte</dd><dt><span>levtype :</span></dt><dd>sfc</dd><dt><span>type :</span></dt><dd>fc</dd><dt><span>expver :</span></dt><dd>0001</dd><dt><span>date :</span></dt><dd>20200102</dd><dt><span>time :</span></dt><dd>100</dd><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>institution :</span></dt><dd>ECMWF</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>We can now plot the original data against our masked data</p>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -2173,14 +2173,14 @@ Attributes:
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">xarr</span><span class="p">[</span><span class="s2">&quot;2t&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original data&#39;</span><span class="p">)</span>
+<span class="n">xarr</span><span class="p">[</span><span class="s2">"2t"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Original data'</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>  <span class="c1"># Longitude range for Europe</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">35</span><span class="p">,</span> <span class="mi">70</span><span class="p">])</span>   <span class="c1"># Latitude range for Europe</span>
 
 <span class="c1"># Single masked data</span>
-<span class="n">single_masked_data</span><span class="p">[</span><span class="s2">&quot;2t&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Masked data&#39;</span><span class="p">)</span>
+<span class="n">single_masked_data</span><span class="p">[</span><span class="s2">"2t"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">'index'</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Masked data'</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>  <span class="c1"># Longitude range for Europe</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">35</span><span class="p">,</span> <span class="mi">70</span><span class="p">])</span>   <span class="c1"># Latitude range for Europe</span>
 </pre></div>
@@ -2195,14 +2195,14 @@ Attributes:
 </div>
 </div>
 <p>We can further mask to only get the data for a given country.</p>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masked_data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">xarr</span><span class="p">,</span> <span class="n">nuts_data</span><span class="p">,</span> <span class="n">mask_dim</span><span class="o">=</span><span class="s2">&quot;FID&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masked_data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">xarr</span><span class="p">,</span> <span class="n">nuts_data</span><span class="p">,</span> <span class="n">mask_dim</span><span class="o">=</span><span class="s2">"FID"</span><span class="p">)</span>
 <span class="n">masked_data</span>
 </pre></div>
 </div>
@@ -2827,7 +2827,7 @@ Attributes:
 </table></div></li></ul></div></li><li class='xr-section-item'><input id='section-78db486b-4438-4fc0-a596-eed05770fc68' class='xr-section-summary-in' type='checkbox'  ><label for='section-78db486b-4438-4fc0-a596-eed05770fc68' class='xr-section-summary' >Attributes: <span>(11)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>param :</span></dt><dd>2t</dd><dt><span>paramId :</span></dt><dd>167</dd><dt><span>class :</span></dt><dd>d1</dd><dt><span>stream :</span></dt><dd>clte</dd><dt><span>levtype :</span></dt><dd>sfc</dd><dt><span>type :</span></dt><dd>fc</dd><dt><span>expver :</span></dt><dd>0001</dd><dt><span>date :</span></dt><dd>20200102</dd><dt><span>time :</span></dt><dd>100</dd><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>institution :</span></dt><dd>ECMWF</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>Here we only retrieve data for Germany, and plot.</p>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -2835,23 +2835,23 @@ Attributes:
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="n">xarr</span><span class="p">[</span><span class="s2">&quot;2t&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original data&#39;</span><span class="p">)</span>
+<span class="n">xarr</span><span class="p">[</span><span class="s2">"2t"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Original data'</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>  <span class="c1"># Longitude range for Europe</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">35</span><span class="p">,</span> <span class="mi">70</span><span class="p">])</span>   <span class="c1"># Latitude range for Europe</span>
-<span class="n">masked_data</span><span class="p">[</span><span class="s2">&quot;2t&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">FID</span><span class="o">=</span><span class="s1">&#39;DE&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Masked for Germany&#39;</span><span class="p">)</span>
+<span class="n">masked_data</span><span class="p">[</span><span class="s2">"2t"</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">FID</span><span class="o">=</span><span class="s1">'DE'</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Masked for Germany'</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>  <span class="c1"># Longitude range for Europe</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">35</span><span class="p">,</span> <span class="mi">70</span><span class="p">])</span>   <span class="c1"># Latitude range for Europe</span>
-<span class="n">germany_data</span> <span class="o">=</span> <span class="n">masked_data</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">FID</span><span class="o">=</span><span class="s1">&#39;DE&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
-<span class="n">germany_data</span><span class="p">[</span><span class="s2">&quot;2t&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Masked Germany Zoom&#39;</span><span class="p">)</span>
+<span class="n">germany_data</span> <span class="o">=</span> <span class="n">masked_data</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">FID</span><span class="o">=</span><span class="s1">'DE'</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">'latitude'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'all'</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">'longitude'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'all'</span><span class="p">)</span>
+<span class="n">germany_data</span><span class="p">[</span><span class="s2">"2t"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Masked Germany Zoom'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Masked Germany Zoom&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, 'Masked Germany Zoom')
 </pre></div>
 </div>
 <img alt="../../_images/46b8cf958985d6e891c0f6de4ca7727d049021ea73ffd72144aae109cbacbea8.png" src="../../_images/46b8cf958985d6e891c0f6de4ca7727d049021ea73ffd72144aae109cbacbea8.png" />

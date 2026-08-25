@@ -658,7 +658,7 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'}</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">access_token</span> <span class="o">=</span> <span class="n">output_1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -696,7 +696,7 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LIVE_REQUEST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LIVE_REQUEST&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LIVE_REQUEST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"LIVE_REQUEST"</span><span class="p">,</span> <span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"true"</span>
 <span class="n">LIVE_REQUEST</span>
 </pre></div>
 </div>
@@ -730,23 +730,23 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request_serverside</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;projections&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;climate-dt&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;20400102&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;0000&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="s2">&quot;SSP3-7.0&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0001&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;generation&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;sfc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;IFS-NEMO&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;param&quot;</span><span class="p">:</span> <span class="s2">&quot;167&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;realization&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="s2">&quot;standard&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;clte&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;grid&quot;</span><span class="p">:</span> <span class="s2">&quot;O256&quot;</span><span class="p">,</span>  <span class="c1"># EXERCISE: Change to O1280</span>
-    <span class="c1"># EXERCISE: Add &quot;interpolation&quot;: &quot;linear&quot; here</span>
+    <span class="s2">"activity"</span><span class="p">:</span> <span class="s2">"projections"</span><span class="p">,</span>
+    <span class="s2">"class"</span><span class="p">:</span> <span class="s2">"d1"</span><span class="p">,</span>
+    <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"climate-dt"</span><span class="p">,</span>
+    <span class="s2">"date"</span><span class="p">:</span> <span class="s2">"20400102"</span><span class="p">,</span>
+    <span class="s2">"time"</span><span class="p">:</span> <span class="s2">"0000"</span><span class="p">,</span>
+    <span class="s2">"experiment"</span><span class="p">:</span> <span class="s2">"SSP3-7.0"</span><span class="p">,</span>
+    <span class="s2">"expver"</span><span class="p">:</span> <span class="s2">"0001"</span><span class="p">,</span>
+    <span class="s2">"generation"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+    <span class="s2">"levtype"</span><span class="p">:</span> <span class="s2">"sfc"</span><span class="p">,</span>
+    <span class="s2">"model"</span><span class="p">:</span> <span class="s2">"IFS-NEMO"</span><span class="p">,</span>
+    <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"167"</span><span class="p">,</span>
+    <span class="s2">"realization"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+    <span class="s2">"resolution"</span><span class="p">:</span> <span class="s2">"standard"</span><span class="p">,</span>
+    <span class="s2">"stream"</span><span class="p">:</span> <span class="s2">"clte"</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"fc"</span><span class="p">,</span>
+    <span class="s2">"grid"</span><span class="p">:</span> <span class="s2">"O256"</span><span class="p">,</span>  <span class="c1"># EXERCISE: Change to O1280</span>
+    <span class="c1"># EXERCISE: Add "interpolation": "linear" here</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -763,17 +763,17 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;../climate-dt/data/climate-dt-serverside-training.grib&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">"../climate-dt/data/climate-dt-serverside-training.grib"</span>
 
 <span class="k">if</span> <span class="n">LIVE_REQUEST</span><span class="p">:</span>
     <span class="n">data_ss</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span>
-        <span class="s2">&quot;polytope&quot;</span><span class="p">,</span> <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span> <span class="n">request_serverside</span><span class="p">,</span>
-        <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.mn5.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span>
+        <span class="s2">"polytope"</span><span class="p">,</span> <span class="s2">"destination-earth"</span><span class="p">,</span> <span class="n">request_serverside</span><span class="p">,</span>
+        <span class="n">address</span><span class="o">=</span><span class="s2">"polytope.mn5.apps.dte.destination-earth.eu"</span><span class="p">,</span>
         <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="n">data_ss</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
+    <span class="n">data_ss</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">data_ss</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
+    <span class="n">data_ss</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
 
 <span class="n">data_ss</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span>
 </pre></div>
@@ -794,34 +794,34 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request_native</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;projections&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;climate-dt&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;20400102&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;0000&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="s2">&quot;SSP3-7.0&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0001&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;generation&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;sfc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;IFS-NEMO&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;param&quot;</span><span class="p">:</span> <span class="s2">&quot;167&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;realization&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="s2">&quot;standard&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;clte&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>
+    <span class="s2">"activity"</span><span class="p">:</span> <span class="s2">"projections"</span><span class="p">,</span>
+    <span class="s2">"class"</span><span class="p">:</span> <span class="s2">"d1"</span><span class="p">,</span>
+    <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"climate-dt"</span><span class="p">,</span>
+    <span class="s2">"date"</span><span class="p">:</span> <span class="s2">"20400102"</span><span class="p">,</span>
+    <span class="s2">"time"</span><span class="p">:</span> <span class="s2">"0000"</span><span class="p">,</span>
+    <span class="s2">"experiment"</span><span class="p">:</span> <span class="s2">"SSP3-7.0"</span><span class="p">,</span>
+    <span class="s2">"expver"</span><span class="p">:</span> <span class="s2">"0001"</span><span class="p">,</span>
+    <span class="s2">"generation"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+    <span class="s2">"levtype"</span><span class="p">:</span> <span class="s2">"sfc"</span><span class="p">,</span>
+    <span class="s2">"model"</span><span class="p">:</span> <span class="s2">"IFS-NEMO"</span><span class="p">,</span>
+    <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"167"</span><span class="p">,</span>
+    <span class="s2">"realization"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+    <span class="s2">"resolution"</span><span class="p">:</span> <span class="s2">"standard"</span><span class="p">,</span>
+    <span class="s2">"stream"</span><span class="p">:</span> <span class="s2">"clte"</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"fc"</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">data_file_native</span> <span class="o">=</span> <span class="s2">&quot;../climate-dt/data/climate-dt-native-training.grib&quot;</span>
+<span class="n">data_file_native</span> <span class="o">=</span> <span class="s2">"../climate-dt/data/climate-dt-native-training.grib"</span>
 
 <span class="k">if</span> <span class="n">LIVE_REQUEST</span><span class="p">:</span>
     <span class="n">data_native</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span>
-        <span class="s2">&quot;polytope&quot;</span><span class="p">,</span> <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span> <span class="n">request_native</span><span class="p">,</span>
-        <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.mn5.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span>
+        <span class="s2">"polytope"</span><span class="p">,</span> <span class="s2">"destination-earth"</span><span class="p">,</span> <span class="n">request_native</span><span class="p">,</span>
+        <span class="n">address</span><span class="o">=</span><span class="s2">"polytope.mn5.apps.dte.destination-earth.eu"</span><span class="p">,</span>
         <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="n">data_native</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file_native</span><span class="p">)</span>
+    <span class="n">data_native</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file_native</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">data_native</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file_native</span><span class="p">)</span>
+    <span class="n">data_native</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file_native</span><span class="p">)</span>
 
 <span class="n">data_native</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span>
 </pre></div>
@@ -841,16 +841,16 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXERCISE: Change the output grid from [1, 1] to [0.5, 0.5]</span>
-<span class="n">out_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;grid&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]}</span>  <span class="c1"># &lt;- CHANGE THIS</span>
+<span class="n">out_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"grid"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]}</span>  <span class="c1"># &lt;- CHANGE THIS</span>
 
 <span class="n">data_regridded</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">regrid</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span>
     <span class="n">data_native</span><span class="p">,</span> 
     <span class="n">out_grid</span><span class="o">=</span><span class="n">out_grid</span><span class="p">,</span> 
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">"linear"</span>
 <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Native fields: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data_native</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Regridded fields: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data_regridded</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Native fields: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data_native</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Regridded fields: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data_regridded</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -875,16 +875,16 @@ Regridded fields: 1
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot native HEALPix data</span>
 <span class="n">chart1</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span>
-<span class="n">chart1</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">data_native</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">chart1</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">data_native</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">)</span>
 <span class="n">chart1</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
-<span class="n">chart1</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Native HEALPix Grid&quot;</span><span class="p">)</span>
+<span class="n">chart1</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Native HEALPix Grid"</span><span class="p">)</span>
 <span class="n">chart1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># Plot regridded data</span>
 <span class="n">chart2</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span>
-<span class="n">chart2</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">data_regridded</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">chart2</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">data_regridded</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">)</span>
 <span class="n">chart2</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
-<span class="n">chart2</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Regridded to Regular Lat-Lon&quot;</span><span class="p">)</span>
+<span class="n">chart2</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Regridded to Regular Lat-Lon"</span><span class="p">)</span>
 <span class="n">chart2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -905,9 +905,9 @@ Regridded fields: 1
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">data_regridded</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
 
-<span class="c1"># Plot using xarray&#39;s built-in plotting</span>
-<span class="n">ds</span><span class="p">[</span><span class="s2">&quot;2t&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlBu_r&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;2m Temperature (regridded)&quot;</span><span class="p">)</span>
+<span class="c1"># Plot using xarray's built-in plotting</span>
+<span class="n">ds</span><span class="p">[</span><span class="s2">"2t"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"RdYlBu_r"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"2m Temperature (regridded)"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -927,23 +927,23 @@ Regridded fields: 1
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request_extremes</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;extremes-dt&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0001&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;oper&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;-14&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;0000&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;sfc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;param&quot;</span><span class="p">:</span> <span class="s2">&quot;167&quot;</span><span class="p">,</span>
+    <span class="s2">"class"</span><span class="p">:</span> <span class="s2">"d1"</span><span class="p">,</span>
+    <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"extremes-dt"</span><span class="p">,</span>
+    <span class="s2">"expver"</span><span class="p">:</span> <span class="s2">"0001"</span><span class="p">,</span>
+    <span class="s2">"stream"</span><span class="p">:</span> <span class="s2">"oper"</span><span class="p">,</span>
+    <span class="s2">"date"</span><span class="p">:</span> <span class="s2">"-14"</span><span class="p">,</span>
+    <span class="s2">"time"</span><span class="p">:</span> <span class="s2">"0000"</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"fc"</span><span class="p">,</span>
+    <span class="s2">"levtype"</span><span class="p">:</span> <span class="s2">"sfc"</span><span class="p">,</span>
+    <span class="s2">"step"</span><span class="p">:</span> <span class="s2">"0"</span><span class="p">,</span>
+    <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"167"</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="c1"># EXERCISE: Retrieve the data and regrid it to [1, 1]</span>
 <span class="c1"># Hints:</span>
-<span class="c1">#   1. Use earthkit.data.from_source(&quot;polytope&quot;, &quot;destination-earth&quot;, request_extremes, </span>
-<span class="c1">#      address=&quot;polytope.lumi.apps.dte.destination-earth.eu&quot;, stream=False)</span>
-<span class="c1">#   2. Use earthkit.regrid.interpolate(data, out_grid={&quot;grid&quot;: [1, 1]}, method=&quot;linear&quot;)</span>
+<span class="c1">#   1. Use earthkit.data.from_source("polytope", "destination-earth", request_extremes, </span>
+<span class="c1">#      address="polytope.lumi.apps.dte.destination-earth.eu", stream=False)</span>
+<span class="c1">#   2. Use earthkit.regrid.interpolate(data, out_grid={"grid": [1, 1]}, method="linear")</span>
 
 <span class="c1"># YOUR CODE HERE</span>
 </pre></div>

@@ -697,75 +697,39 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ifs_nemo_request</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;projections&quot;</span><span class="p">,</span>   <span class="c1"># CMIP activity: SSP scenario projections</span>
-    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>               <span class="c1"># DestinE data class</span>
-    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;climate-dt&quot;</span><span class="p">,</span>     <span class="c1"># dataset family</span>
-    <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="s2">&quot;ssp3-7.0&quot;</span><span class="p">,</span>    <span class="c1"># experiment/scenario (middle-of-the-road high emissions)</span>
-    <span class="s2">&quot;generation&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>           <span class="c1"># dataset generation</span>
-    <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;sfc&quot;</span><span class="p">,</span>            <span class="c1"># vertical level type: surface fields</span>
-    <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;20400101/to/20401231&quot;</span><span class="p">,</span>  <span class="c1"># date range: full year 2040 (Polytope range syntax)</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;ifs-nemo&quot;</span><span class="p">,</span>         <span class="c1"># coupled atmosphere-ocean model</span>
-    <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0001&quot;</span><span class="p">,</span>            <span class="c1"># experiment version (operations / research exp.)</span>
-    <span class="s2">&quot;param&quot;</span><span class="p">:</span> <span class="s2">&quot;167&quot;</span><span class="p">,</span>              <span class="c1"># parameter ID: 2 m temperature</span>
-    <span class="s2">&quot;realization&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>          <span class="c1"># initial-condition run</span>
-    <span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="s2">&quot;standard&quot;</span><span class="p">,</span>    <span class="c1"># quick-view (&#39;standard&#39;) or full (&#39;high&#39;) resolution</span>
-    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;clte&quot;</span><span class="p">,</span>            <span class="c1"># climate hourly time-step stream</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>                <span class="c1"># forecast fields</span>
-    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;0000/to/2300&quot;</span><span class="p">,</span>      <span class="c1"># all hours of the day</span>
-    <span class="s2">&quot;feature&quot;</span><span class="p">:</span> <span class="p">{</span>                 <span class="c1"># server-side extraction at a single point</span>
-        <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;timeseries&quot;</span><span class="p">,</span>   <span class="c1"># feature type: extract a time series</span>
-        <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="n">LOCATION</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">LOCATION</span><span class="p">[</span><span class="mi">1</span><span class="p">]]],</span>  <span class="c1"># target [lat, lon]</span>
-        <span class="s2">&quot;time_axis&quot;</span><span class="p">:</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span>     <span class="c1"># organise the result along the date dimension</span>
+    <span class="s2">"activity"</span><span class="p">:</span> <span class="s2">"projections"</span><span class="p">,</span>   <span class="c1"># CMIP activity: SSP scenario projections</span>
+    <span class="s2">"class"</span><span class="p">:</span> <span class="s2">"d1"</span><span class="p">,</span>               <span class="c1"># DestinE data class</span>
+    <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"climate-dt"</span><span class="p">,</span>     <span class="c1"># dataset family</span>
+    <span class="s2">"experiment"</span><span class="p">:</span> <span class="s2">"ssp3-7.0"</span><span class="p">,</span>    <span class="c1"># experiment/scenario (middle-of-the-road high emissions)</span>
+    <span class="s2">"generation"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>           <span class="c1"># dataset generation</span>
+    <span class="s2">"levtype"</span><span class="p">:</span> <span class="s2">"sfc"</span><span class="p">,</span>            <span class="c1"># vertical level type: surface fields</span>
+    <span class="s2">"date"</span><span class="p">:</span> <span class="s2">"20400101/to/20401231"</span><span class="p">,</span>  <span class="c1"># date range: full year 2040 (Polytope range syntax)</span>
+    <span class="s2">"model"</span><span class="p">:</span> <span class="s2">"ifs-nemo"</span><span class="p">,</span>         <span class="c1"># coupled atmosphere-ocean model</span>
+    <span class="s2">"expver"</span><span class="p">:</span> <span class="s2">"0001"</span><span class="p">,</span>            <span class="c1"># experiment version (operations / research exp.)</span>
+    <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"167"</span><span class="p">,</span>              <span class="c1"># parameter ID: 2 m temperature</span>
+    <span class="s2">"realization"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>          <span class="c1"># initial-condition run</span>
+    <span class="s2">"resolution"</span><span class="p">:</span> <span class="s2">"standard"</span><span class="p">,</span>    <span class="c1"># quick-view ('standard') or full ('high') resolution</span>
+    <span class="s2">"stream"</span><span class="p">:</span> <span class="s2">"clte"</span><span class="p">,</span>            <span class="c1"># climate hourly time-step stream</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"fc"</span><span class="p">,</span>                <span class="c1"># forecast fields</span>
+    <span class="s2">"time"</span><span class="p">:</span> <span class="s2">"0000/to/2300/by/0100"</span><span class="p">,</span>      <span class="c1"># all hours of the day</span>
+    <span class="s2">"feature"</span><span class="p">:</span> <span class="p">{</span>                 <span class="c1"># server-side extraction at a single point</span>
+        <span class="s2">"type"</span> <span class="p">:</span> <span class="s2">"timeseries"</span><span class="p">,</span>   <span class="c1"># feature type: extract a time series</span>
+        <span class="s2">"points"</span><span class="p">:</span> <span class="p">[[</span><span class="n">LOCATION</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">LOCATION</span><span class="p">[</span><span class="mi">1</span><span class="p">]]],</span>  <span class="c1"># target [lat, lon]</span>
+        <span class="s2">"time_axis"</span><span class="p">:</span> <span class="s2">"date"</span><span class="p">,</span>     <span class="c1"># organise the result along the date dimension</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="n">ifs_nemo</span> <span class="o">=</span> <span class="n">ekd</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span>
-    <span class="s2">&quot;polytope&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span>
+    <span class="s2">"polytope"</span><span class="p">,</span>
+    <span class="s2">"destination-earth"</span><span class="p">,</span>
     <span class="n">ifs_nemo_request</span><span class="p">,</span>
-    <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.mn5.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span>
+    <span class="n">address</span><span class="o">=</span><span class="s2">"polytope.mn5.apps.dte.destination-earth.eu"</span><span class="p">,</span>
     <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-06-10 13:01:39 - INFO - Key read from /Users/mavj/.polytopeapirc
-2026-06-10 13:01:39 - INFO - Sending request...
-{&#39;request&#39;: &#39;activity: projections\n&#39;
-            &#39;class: d1\n&#39;
-            &#39;dataset: climate-dt\n&#39;
-            &#39;date: 20400101/to/20401231\n&#39;
-            &#39;experiment: ssp3-7.0\n&#39;
-            &quot;expver: &#39;0001&#39;\n&quot;
-            &#39;feature:\n&#39;
-            &#39;  points:\n&#39;
-            &#39;  - - 50.85\n&#39;
-            &#39;    - 4.35\n&#39;
-            &#39;  time_axis: date\n&#39;
-            &#39;  type: timeseries\n&#39;
-            &quot;generation: &#39;2&#39;\n&quot;
-            &#39;levtype: sfc\n&#39;
-            &#39;model: ifs-nemo\n&#39;
-            &quot;param: &#39;167&#39;\n&quot;
-            &quot;realization: &#39;1&#39;\n&quot;
-            &#39;resolution: standard\n&#39;
-            &#39;stream: clte\n&#39;
-            &#39;time: 0000/to/2300\n&#39;
-            &#39;type: fc\n&#39;,
- &#39;verb&#39;: &#39;retrieve&#39;}
-2026-06-10 13:01:39 - INFO - Polytope user key found in session cache for user mavj
-2026-06-10 13:01:40 - INFO - Request accepted. Please poll ./8af4870f-56ae-4730-9fb8-d20518199271 for status
-2026-06-10 13:01:40 - INFO - Polytope user key found in session cache for user mavj
-2026-06-10 13:01:40 - INFO - Checking request status (8af4870f-56ae-4730-9fb8-d20518199271)...
-2026-06-10 13:01:40 - INFO - The current status of the request is &#39;queued&#39;
-2026-06-10 13:01:40 - INFO - The current status of the request is &#39;processing&#39;
-2026-06-10 13:01:52 - INFO - The current status of the request is &#39;processed&#39;
-                                                                                                                                           
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="inspect-the-dataset">
@@ -1371,10 +1335,10 @@ Attributes: (12/14)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">()</span>
 
-<span class="n">chart</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">ifs_nemo</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;celsius&quot;</span><span class="p">)</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{units}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;{model!u} 2m temperature at {location:</span><span class="si">%c</span><span class="s2">}, {location:%C} ({latitude:%Lt}, {longitude:%Ln})&quot;</span><span class="p">)</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">frequency</span><span class="o">=</span><span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">ifs_nemo</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">"celsius"</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"</span><span class="si">{units}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"{model!u} 2m temperature at {location:</span><span class="si">%c</span><span class="s2">}, {location:%C} ({latitude:%Lt}, {longitude:%Ln})"</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">frequency</span><span class="o">=</span><span class="s2">"M"</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1422,11 +1386,11 @@ Attributes: (12/14)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">()</span>
 
-<span class="n">chart</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">monthly_min</span><span class="p">,</span> <span class="n">monthly_max</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;monthly range&quot;</span><span class="p">,</span> <span class="n">time_offset</span><span class="o">=</span><span class="s2">&quot;15D&quot;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;celsius&quot;</span><span class="p">)</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">monthly_mean</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">time_offset</span><span class="o">=</span><span class="s2">&quot;15D&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;monthly mean&quot;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;celsius&quot;</span><span class="p">)</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{units}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;{model!u} monthly mean 2m temperature at {location:</span><span class="si">%c</span><span class="s2">}, {location:%C} ({latitude:%Lt}, {longitude:%Ln})&quot;</span><span class="p">)</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">frequency</span><span class="o">=</span><span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">monthly_min</span><span class="p">,</span> <span class="n">monthly_max</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"monthly range"</span><span class="p">,</span> <span class="n">time_offset</span><span class="o">=</span><span class="s2">"15D"</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">"celsius"</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">monthly_mean</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">time_offset</span><span class="o">=</span><span class="s2">"15D"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"monthly mean"</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">"celsius"</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"</span><span class="si">{units}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"{model!u} monthly mean 2m temperature at {location:</span><span class="si">%c</span><span class="s2">}, {location:%C} ({latitude:%Lt}, {longitude:%Ln})"</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">frequency</span><span class="o">=</span><span class="s2">"M"</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1450,24 +1414,24 @@ Attributes: (12/14)
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">icon_request</span> <span class="o">=</span> <span class="n">ifs_nemo_request</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">icon_request</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;icon&quot;</span>
+<span class="n">icon_request</span><span class="p">[</span><span class="s2">"model"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"icon"</span>
 
 <span class="n">icon</span> <span class="o">=</span> <span class="n">ekd</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span>
-    <span class="s2">&quot;polytope&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span>
+    <span class="s2">"polytope"</span><span class="p">,</span>
+    <span class="s2">"destination-earth"</span><span class="p">,</span>
     <span class="n">icon_request</span><span class="p">,</span>
-    <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.lumi.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span>
+    <span class="n">address</span><span class="o">=</span><span class="s2">"polytope.lumi.apps.dte.destination-earth.eu"</span><span class="p">,</span>
     <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
 
 <span class="n">ifs_fesom_request</span> <span class="o">=</span> <span class="n">ifs_nemo_request</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">ifs_fesom_request</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ifs-fesom&quot;</span>
+<span class="n">ifs_fesom_request</span><span class="p">[</span><span class="s2">"model"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"ifs-fesom"</span>
 
 <span class="n">ifs_fesom</span> <span class="o">=</span> <span class="n">ekd</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span>
-    <span class="s2">&quot;polytope&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span>
+    <span class="s2">"polytope"</span><span class="p">,</span>
+    <span class="s2">"destination-earth"</span><span class="p">,</span>
     <span class="n">ifs_fesom_request</span><span class="p">,</span>
-    <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.lumi.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span>
+    <span class="n">address</span><span class="o">=</span><span class="s2">"polytope.lumi.apps.dte.destination-earth.eu"</span><span class="p">,</span>
     <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
 </pre></div>
@@ -1477,66 +1441,66 @@ Attributes: (12/14)
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-06-10 13:01:54 - INFO - Key read from /Users/mavj/.polytopeapirc
 2026-06-10 13:01:54 - INFO - Sending request...
-{&#39;request&#39;: &#39;activity: projections\n&#39;
-            &#39;class: d1\n&#39;
-            &#39;dataset: climate-dt\n&#39;
-            &#39;date: 20400101/to/20401231\n&#39;
-            &#39;experiment: ssp3-7.0\n&#39;
-            &quot;expver: &#39;0001&#39;\n&quot;
-            &#39;feature:\n&#39;
-            &#39;  points:\n&#39;
-            &#39;  - - 50.85\n&#39;
-            &#39;    - 4.35\n&#39;
-            &#39;  time_axis: date\n&#39;
-            &#39;  type: timeseries\n&#39;
-            &quot;generation: &#39;2&#39;\n&quot;
-            &#39;levtype: sfc\n&#39;
-            &#39;model: icon\n&#39;
-            &quot;param: &#39;167&#39;\n&quot;
-            &quot;realization: &#39;1&#39;\n&quot;
-            &#39;resolution: standard\n&#39;
-            &#39;stream: clte\n&#39;
-            &#39;time: 0000/to/2300\n&#39;
-            &#39;type: fc\n&#39;,
- &#39;verb&#39;: &#39;retrieve&#39;}
+{'request': 'activity: projections\n'
+            'class: d1\n'
+            'dataset: climate-dt\n'
+            'date: 20400101/to/20401231\n'
+            'experiment: ssp3-7.0\n'
+            "expver: '0001'\n"
+            'feature:\n'
+            '  points:\n'
+            '  - - 50.85\n'
+            '    - 4.35\n'
+            '  time_axis: date\n'
+            '  type: timeseries\n'
+            "generation: '2'\n"
+            'levtype: sfc\n'
+            'model: icon\n'
+            "param: '167'\n"
+            "realization: '1'\n"
+            'resolution: standard\n'
+            'stream: clte\n'
+            'time: 0000/to/2300\n'
+            'type: fc\n',
+ 'verb': 'retrieve'}
 2026-06-10 13:01:54 - INFO - Polytope user key found in session cache for user mavj
 2026-06-10 13:01:55 - INFO - Request accepted. Please poll ./306596cc-7f7d-4ae7-9762-e7ab8c055377 for status
 2026-06-10 13:01:55 - INFO - Polytope user key found in session cache for user mavj
 2026-06-10 13:01:55 - INFO - Checking request status (306596cc-7f7d-4ae7-9762-e7ab8c055377)...
-2026-06-10 13:01:55 - INFO - The current status of the request is &#39;queued&#39;
-2026-06-10 13:01:55 - INFO - The current status of the request is &#39;processing&#39;
-2026-06-10 13:02:06 - INFO - The current status of the request is &#39;processed&#39;
+2026-06-10 13:01:55 - INFO - The current status of the request is 'queued'
+2026-06-10 13:01:55 - INFO - The current status of the request is 'processing'
+2026-06-10 13:02:06 - INFO - The current status of the request is 'processed'
 2026-06-10 13:02:06 - INFO - Key read from /Users/mavj/.polytopeapirc                                                                      
 2026-06-10 13:02:06 - INFO - Sending request...
-{&#39;request&#39;: &#39;activity: projections\n&#39;
-            &#39;class: d1\n&#39;
-            &#39;dataset: climate-dt\n&#39;
-            &#39;date: 20400101/to/20401231\n&#39;
-            &#39;experiment: ssp3-7.0\n&#39;
-            &quot;expver: &#39;0001&#39;\n&quot;
-            &#39;feature:\n&#39;
-            &#39;  points:\n&#39;
-            &#39;  - - 50.85\n&#39;
-            &#39;    - 4.35\n&#39;
-            &#39;  time_axis: date\n&#39;
-            &#39;  type: timeseries\n&#39;
-            &quot;generation: &#39;2&#39;\n&quot;
-            &#39;levtype: sfc\n&#39;
-            &#39;model: ifs-fesom\n&#39;
-            &quot;param: &#39;167&#39;\n&quot;
-            &quot;realization: &#39;1&#39;\n&quot;
-            &#39;resolution: standard\n&#39;
-            &#39;stream: clte\n&#39;
-            &#39;time: 0000/to/2300\n&#39;
-            &#39;type: fc\n&#39;,
- &#39;verb&#39;: &#39;retrieve&#39;}
+{'request': 'activity: projections\n'
+            'class: d1\n'
+            'dataset: climate-dt\n'
+            'date: 20400101/to/20401231\n'
+            'experiment: ssp3-7.0\n'
+            "expver: '0001'\n"
+            'feature:\n'
+            '  points:\n'
+            '  - - 50.85\n'
+            '    - 4.35\n'
+            '  time_axis: date\n'
+            '  type: timeseries\n'
+            "generation: '2'\n"
+            'levtype: sfc\n'
+            'model: ifs-fesom\n'
+            "param: '167'\n"
+            "realization: '1'\n"
+            'resolution: standard\n'
+            'stream: clte\n'
+            'time: 0000/to/2300\n'
+            'type: fc\n',
+ 'verb': 'retrieve'}
 2026-06-10 13:02:06 - INFO - Polytope user key found in session cache for user mavj
 2026-06-10 13:02:07 - INFO - Request accepted. Please poll ./a6729ae0-1954-4096-85d0-6174e79d7f26 for status
 2026-06-10 13:02:07 - INFO - Polytope user key found in session cache for user mavj
 2026-06-10 13:02:07 - INFO - Checking request status (a6729ae0-1954-4096-85d0-6174e79d7f26)...
-2026-06-10 13:02:07 - INFO - The current status of the request is &#39;queued&#39;
-2026-06-10 13:02:07 - INFO - The current status of the request is &#39;processing&#39;
-2026-06-10 13:02:19 - INFO - The current status of the request is &#39;processed&#39;
+2026-06-10 13:02:07 - INFO - The current status of the request is 'queued'
+2026-06-10 13:02:07 - INFO - The current status of the request is 'processing'
+2026-06-10 13:02:19 - INFO - The current status of the request is 'processed'
                                                                                                                                            
 </pre></div>
 </div>
@@ -1555,21 +1519,21 @@ Attributes: (12/14)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">()</span>
 
-<span class="n">COLORS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cornflowerblue&quot;</span><span class="p">,</span> <span class="s2">&quot;crimson&quot;</span><span class="p">,</span> <span class="s2">&quot;goldenrod&quot;</span><span class="p">]</span>
+<span class="n">COLORS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"cornflowerblue"</span><span class="p">,</span> <span class="s2">"crimson"</span><span class="p">,</span> <span class="s2">"goldenrod"</span><span class="p">]</span>
 <span class="n">MODELS</span> <span class="o">=</span> <span class="p">[</span><span class="n">ifs_nemo</span><span class="p">,</span> <span class="n">icon</span><span class="p">,</span> <span class="n">ifs_fesom</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">color</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">COLORS</span><span class="p">,</span> <span class="n">MODELS</span><span class="p">):</span>
     <span class="n">chart</span><span class="o">.</span><span class="n">line</span><span class="p">(</span>
         <span class="n">ekt</span><span class="o">.</span><span class="n">temporal</span><span class="o">.</span><span class="n">daily_mean</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
-        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;{model!u}&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">"{model!u}"</span><span class="p">,</span>
         <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-        <span class="n">units</span><span class="o">=</span><span class="s2">&quot;celsius&quot;</span><span class="p">,</span>
-        <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;spline&quot;</span><span class="p">,</span>
+        <span class="n">units</span><span class="o">=</span><span class="s2">"celsius"</span><span class="p">,</span>
+        <span class="n">drawstyle</span><span class="o">=</span><span class="s2">"spline"</span><span class="p">,</span>
     <span class="p">)</span>
 
-<span class="n">chart</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{units}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;{model!u} 2m temperature at {location:</span><span class="si">%c</span><span class="s2">}, {location:%C} ({latitude:%Lt}, {longitude:%Ln})&quot;</span><span class="p">)</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">frequency</span><span class="o">=</span><span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"</span><span class="si">{units}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"{model!u} 2m temperature at {location:</span><span class="si">%c</span><span class="s2">}, {location:%C} ({latitude:%Lt}, {longitude:%Ln})"</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">frequency</span><span class="o">=</span><span class="s2">"M"</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>

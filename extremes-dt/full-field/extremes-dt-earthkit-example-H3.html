@@ -617,7 +617,7 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'}</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">access_token</span> <span class="o">=</span> <span class="n">output_1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -660,7 +660,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defaults to making a live data request. Set to false to use the cached GRIB file instead.</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="n">LIVE_REQUEST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LIVE_REQUEST&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span>
+<span class="n">LIVE_REQUEST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"LIVE_REQUEST"</span><span class="p">,</span> <span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"true"</span>
 <span class="n">LIVE_REQUEST</span>
 </pre></div>
 </div>
@@ -675,25 +675,25 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cell</span> <span class="o">=</span> <span class="n">h3</span><span class="o">.</span><span class="n">latlng_to_cell</span><span class="p">(</span><span class="mf">51.5072</span><span class="p">,</span> <span class="mf">0.1276</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">latlng</span> <span class="o">=</span> <span class="n">h3</span><span class="o">.</span><span class="n">cell_to_latlng</span><span class="p">(</span><span class="s1">&#39;89194e6f357ffff&#39;</span><span class="p">)</span>
+<span class="n">latlng</span> <span class="o">=</span> <span class="n">h3</span><span class="o">.</span><span class="n">cell_to_latlng</span><span class="p">(</span><span class="s1">'89194e6f357ffff'</span><span class="p">)</span>
 <span class="n">LOCATION</span> <span class="o">=</span> <span class="n">latlng</span>
 
 <span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;extremes-dt&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;oper&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span>
-    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;0000&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;sfc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0001&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;param&quot;</span><span class="p">:</span> <span class="s2">&quot;165/167&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;feature&quot;</span> <span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;timeseries&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="n">LOCATION</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">LOCATION</span><span class="p">[</span><span class="mi">1</span><span class="p">]]],</span>
-        <span class="s2">&quot;time_axis&quot;</span><span class="p">:</span> <span class="s2">&quot;step&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;range&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;start&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
-        <span class="s2">&quot;axes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
+    <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"extremes-dt"</span><span class="p">,</span>
+    <span class="s2">"class"</span><span class="p">:</span> <span class="s2">"d1"</span><span class="p">,</span>
+    <span class="s2">"stream"</span><span class="p">:</span> <span class="s2">"oper"</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"fc"</span><span class="p">,</span>
+    <span class="s2">"date"</span><span class="p">:</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span>
+    <span class="s2">"time"</span><span class="p">:</span> <span class="s2">"0000"</span><span class="p">,</span>
+    <span class="s2">"levtype"</span><span class="p">:</span> <span class="s2">"sfc"</span><span class="p">,</span>
+    <span class="s2">"expver"</span><span class="p">:</span> <span class="s2">"0001"</span><span class="p">,</span>
+    <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"165/167"</span><span class="p">,</span>
+    <span class="s2">"feature"</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"type"</span> <span class="p">:</span> <span class="s2">"timeseries"</span><span class="p">,</span>
+        <span class="s2">"points"</span><span class="p">:</span> <span class="p">[[</span><span class="n">LOCATION</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">LOCATION</span><span class="p">[</span><span class="mi">1</span><span class="p">]]],</span>
+        <span class="s2">"time_axis"</span><span class="p">:</span> <span class="s2">"step"</span><span class="p">,</span>
+        <span class="s2">"range"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"start"</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"end"</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+        <span class="s2">"axes"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"latitude"</span><span class="p">,</span> <span class="s2">"longitude"</span><span class="p">]</span>
     <span class="p">},</span>
 <span class="p">}</span>
 </pre></div>
@@ -708,18 +708,18 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;../data/extremes-dt-earthkit-example-H3.covjson&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">"../data/extremes-dt-earthkit-example-H3.covjson"</span>
 <span class="k">if</span> <span class="n">LIVE_REQUEST</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;polytope&quot;</span><span class="p">,</span> <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.lumi.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">data</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"polytope"</span><span class="p">,</span> <span class="s2">"destination-earth"</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">"polytope.lumi.apps.dte.destination-earth.eu"</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span> 
+    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
 </details>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -1252,34 +1252,34 @@ Attributes:
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">location_to_string</span><span class="p">(</span><span class="n">location</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Converts latitude and longitude to a string representation with degrees</span>
 <span class="sd">    and N/S/E/W.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">)</span> <span class="o">=</span> <span class="n">location</span>
-    <span class="n">lat_dir</span> <span class="o">=</span> <span class="s2">&quot;N&quot;</span> <span class="k">if</span> <span class="n">lat</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;S&quot;</span>
-    <span class="n">lon_dir</span> <span class="o">=</span> <span class="s2">&quot;E&quot;</span> <span class="k">if</span> <span class="n">lon</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;W&quot;</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°</span><span class="si">{</span><span class="n">lat_dir</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°</span><span class="si">{</span><span class="n">lon_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">lat_dir</span> <span class="o">=</span> <span class="s2">"N"</span> <span class="k">if</span> <span class="n">lat</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">"S"</span>
+    <span class="n">lon_dir</span> <span class="o">=</span> <span class="s2">"E"</span> <span class="k">if</span> <span class="n">lon</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">"W"</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°</span><span class="si">{</span><span class="n">lat_dir</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°</span><span class="si">{</span><span class="n">lon_dir</span><span class="si">}</span><span class="s2">"</span>
 </pre></div>
 </div>
 </div>
 </details>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TIME_FREQUENCY</span> <span class="o">=</span> <span class="s2">&quot;1h&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TIME_FREQUENCY</span> <span class="o">=</span> <span class="s2">"1h"</span>
 <span class="n">QUANTILES</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="n">chart</span> <span class="o">=</span> <span class="n">Chart</span><span class="p">()</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ECMWF ensemble meteogram at </span><span class="si">{</span><span class="n">location_to_string</span><span class="p">(</span><span class="n">LOCATION</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"ECMWF ensemble meteogram at </span><span class="si">{</span><span class="n">location_to_string</span><span class="p">(</span><span class="n">LOCATION</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="c1">#chart.box(ds, time_frequency=TIME_FREQUENCY, quantiles=QUANTILES)</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">time_frequency</span><span class="o">=</span><span class="n">TIME_FREQUENCY</span><span class="p">)</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s2">&quot;png&quot;</span><span class="p">)</span> <span class="c1"># Replace with chart.show() in an interactive session!</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s1">'grey'</span><span class="p">,</span> <span class="n">time_frequency</span><span class="o">=</span><span class="n">TIME_FREQUENCY</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s2">"png"</span><span class="p">)</span> <span class="c1"># Replace with chart.show() in an interactive session!</span>
 </pre></div>
 </div>
 </div>

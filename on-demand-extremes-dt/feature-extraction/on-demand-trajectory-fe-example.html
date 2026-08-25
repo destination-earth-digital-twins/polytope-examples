@@ -623,7 +623,7 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'}</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">access_token</span> <span class="o">=</span> <span class="n">output_1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -671,7 +671,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defaults to making a live data request. Set to false to use the cached GRIB file instead.</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="n">LIVE_REQUEST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LIVE_REQUEST&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span>
+<span class="n">LIVE_REQUEST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"LIVE_REQUEST"</span><span class="p">,</span> <span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"true"</span>
 <span class="n">LIVE_REQUEST</span>
 </pre></div>
 </div>
@@ -723,23 +723,23 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request_feature</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;on-demand-extremes-dt&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;oper&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;20250926&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;0000&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;sfc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0099&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;param&quot;</span><span class="p">:</span> <span class="s2">&quot;167&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;georef&quot;</span><span class="p">:</span> <span class="s2">&quot;gcgkrb&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;feature&quot;</span> <span class="p">:{</span> 
-        <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;trajectory&quot;</span><span class="p">,</span> 
-        <span class="s2">&quot;points&quot;</span> <span class="p">:</span> <span class="n">train_route</span><span class="p">,</span> 
-        <span class="s2">&quot;inflation&quot;</span> <span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> 
-        <span class="s2">&quot;inflate&quot;</span> <span class="p">:</span> <span class="s2">&quot;round&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;axes&quot;</span> <span class="p">:[</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">],</span> 
+    <span class="s2">"class"</span><span class="p">:</span> <span class="s2">"d1"</span><span class="p">,</span>
+    <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"on-demand-extremes-dt"</span><span class="p">,</span>
+    <span class="s2">"stream"</span><span class="p">:</span> <span class="s2">"oper"</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"fc"</span><span class="p">,</span>
+    <span class="s2">"date"</span><span class="p">:</span> <span class="s2">"20250926"</span><span class="p">,</span>
+    <span class="s2">"time"</span><span class="p">:</span> <span class="s2">"0000"</span><span class="p">,</span>
+    <span class="s2">"levtype"</span><span class="p">:</span> <span class="s2">"sfc"</span><span class="p">,</span>
+    <span class="s2">"expver"</span><span class="p">:</span> <span class="s2">"0099"</span><span class="p">,</span>
+    <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"167"</span><span class="p">,</span>
+    <span class="s2">"georef"</span><span class="p">:</span> <span class="s2">"gcgkrb"</span><span class="p">,</span>
+    <span class="s2">"step"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+    <span class="s2">"feature"</span> <span class="p">:{</span> 
+        <span class="s2">"type"</span> <span class="p">:</span> <span class="s2">"trajectory"</span><span class="p">,</span> 
+        <span class="s2">"points"</span> <span class="p">:</span> <span class="n">train_route</span><span class="p">,</span> 
+        <span class="s2">"inflation"</span> <span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> 
+        <span class="s2">"inflate"</span> <span class="p">:</span> <span class="s2">"round"</span><span class="p">,</span>
+        <span class="s2">"axes"</span> <span class="p">:[</span><span class="s2">"latitude"</span><span class="p">,</span> <span class="s2">"longitude"</span><span class="p">],</span> 
     <span class="p">},</span>
 <span class="p">}</span>
 </pre></div>
@@ -754,18 +754,18 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;../data/on-demand-trajectory-fe-example_1.covjson&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">"../data/on-demand-trajectory-fe-example_1.covjson"</span>
 <span class="k">if</span> <span class="n">LIVE_REQUEST</span><span class="p">:</span>
-    <span class="n">data_feature</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;polytope&quot;</span><span class="p">,</span> <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span> <span class="n">request_feature</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.lumi.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">data_feature</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
+    <span class="n">data_feature</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"polytope"</span><span class="p">,</span> <span class="s2">"destination-earth"</span><span class="p">,</span> <span class="n">request_feature</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">"polytope.lumi.apps.dte.destination-earth.eu"</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">data_feature</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">data_feature</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
+    <span class="n">data_feature</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -1285,7 +1285,7 @@ Attributes:
        355.76797906, 355.77658993], shape=(3276,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>levelist</span></div><div class='xr-var-dims'>(points)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0</div><input id='attrs-fb2594fe-d3a4-4d03-8a49-3349908e5c74' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-fb2594fe-d3a4-4d03-8a49-3349908e5c74' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b307a208-c1ad-4bb9-86c9-7576237beae1' class='xr-var-data-in' type='checkbox'><label for='data-b307a208-c1ad-4bb9-86c9-7576237beae1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0., 0., 0., ..., 0., 0., 0.], shape=(3276,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>time</span></div><div class='xr-var-dims'>(points)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 1 1 1 1 1 1 1 ... 1 1 1 1 1 1 1 1</div><input id='attrs-8ac31c69-6c06-4edd-a90c-2aad5bd868d6' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-8ac31c69-6c06-4edd-a90c-2aad5bd868d6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-00218e9b-3f64-4c30-8f7e-a769ab67ef0f' class='xr-var-data-in' type='checkbox'><label for='data-00218e9b-3f64-4c30-8f7e-a769ab67ef0f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([1, 1, 1, ..., 1, 1, 1], shape=(3276,))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9dbeb4f1-e36a-472a-bb74-12648f50b2ab' class='xr-section-summary-in' type='checkbox'  checked><label for='section-9dbeb4f1-e36a-472a-bb74-12648f50b2ab' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>2t</span></div><div class='xr-var-dims'>(datetimes, number, steps, points)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>281.9 281.5 282.1 ... 282.3 282.7</div><input id='attrs-94701fe1-bc71-4214-b287-0d957c8a1b67' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-94701fe1-bc71-4214-b287-0d957c8a1b67' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b3e1b3f1-6fe2-4a50-bda8-cbe4066db58c' class='xr-var-data-in' type='checkbox'><label for='data-b3e1b3f1-6fe2-4a50-bda8-cbe4066db58c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>type :</span></dt><dd>Parameter</dd><dt><span>units :</span></dt><dd>K</dd><dt><span>long_name :</span></dt><dd>2t</dd></dl></div><div class='xr-var-data'><pre>array([[[[281.94549561, 281.46087646, 282.09100342, ..., 282.47015381,
           282.26727295, 282.73016357]]]], shape=(1, 1, 1, 3276))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f110f9eb-60c2-43f8-a162-b0ccb3e3f44b' class='xr-section-summary-in' type='checkbox'  ><label for='section-f110f9eb-60c2-43f8-a162-b0ccb3e3f44b' class='xr-section-summary' >Attributes: <span>(10)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>class :</span></dt><dd>d1</dd><dt><span>dataset :</span></dt><dd>on-demand-extremes-dt</dd><dt><span>stream :</span></dt><dd>oper</dd><dt><span>expver :</span></dt><dd>0099</dd><dt><span>type :</span></dt><dd>fc</dd><dt><span>Forecast date :</span></dt><dd>2025-09-26T00:00:00Z</dd><dt><span>levtype :</span></dt><dd>sfc</dd><dt><span>georef :</span></dt><dd>gcgkrb</dd><dt><span>step :</span></dt><dd>1</dd><dt><span>number :</span></dt><dd>0</dd></dl></div></li></ul></div></div></div></div>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -1293,13 +1293,13 @@ Attributes:
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.plots</span>
-<span class="n">chart</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Ireland&quot;</span><span class="p">,</span> <span class="s2">&quot;United Kingdom&quot;</span><span class="p">])</span>
+<span class="n">chart</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">"Ireland"</span><span class="p">,</span> <span class="s2">"United Kingdom"</span><span class="p">])</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">point_cloud</span><span class="p">(</span>
-    <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;2t&#39;</span><span class="p">],</span>
-    <span class="c1"># x=&quot;longitude&quot;,</span>
-    <span class="c1"># y=&quot;latitude&quot;,</span>
+    <span class="n">ds</span><span class="p">[</span><span class="s1">'2t'</span><span class="p">],</span>
+    <span class="c1"># x="longitude",</span>
+    <span class="c1"># y="latitude",</span>
 <span class="p">)</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Results from on-demand-extremes-dt&quot;</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Results from on-demand-extremes-dt"</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">gridlines</span><span class="p">()</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -1323,17 +1323,17 @@ Attributes:
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;on-demand-extremes-dt&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;oper&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;20250926&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;0000&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;sfc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0099&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;param&quot;</span><span class="p">:</span> <span class="s2">&quot;167&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;georef&quot;</span><span class="p">:</span> <span class="s2">&quot;gcgkrb&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="s2">"class"</span><span class="p">:</span> <span class="s2">"d1"</span><span class="p">,</span>
+    <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"on-demand-extremes-dt"</span><span class="p">,</span>
+    <span class="s2">"stream"</span><span class="p">:</span> <span class="s2">"oper"</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"fc"</span><span class="p">,</span>
+    <span class="s2">"date"</span><span class="p">:</span> <span class="s2">"20250926"</span><span class="p">,</span>
+    <span class="s2">"time"</span><span class="p">:</span> <span class="s2">"0000"</span><span class="p">,</span>
+    <span class="s2">"levtype"</span><span class="p">:</span> <span class="s2">"sfc"</span><span class="p">,</span>
+    <span class="s2">"expver"</span><span class="p">:</span> <span class="s2">"0099"</span><span class="p">,</span>
+    <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"167"</span><span class="p">,</span>
+    <span class="s2">"georef"</span><span class="p">:</span> <span class="s2">"gcgkrb"</span><span class="p">,</span>
+    <span class="s2">"step"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1347,12 +1347,12 @@ Attributes:
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;../data/on-demand-trajectory-fe-example_2.grib&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">"../data/on-demand-trajectory-fe-example_2.grib"</span>
 <span class="k">if</span> <span class="n">LIVE_REQUEST</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;polytope&quot;</span><span class="p">,</span> <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.lumi.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">data</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"polytope"</span><span class="p">,</span> <span class="s2">"destination-earth"</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">"polytope.lumi.apps.dte.destination-earth.eu"</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1388,15 +1388,15 @@ Attributes:
 <span class="kn">from</span><span class="w"> </span><span class="nn">earthkit.geo</span><span class="w"> </span><span class="kn">import</span> <span class="n">nearest_point_kdtree</span>
 
 <span class="n">latlon</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_latlon</span><span class="p">()</span>
-<span class="n">lat</span> <span class="o">=</span> <span class="n">latlon</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">]</span>
-<span class="n">lon</span> <span class="o">=</span> <span class="n">latlon</span><span class="p">[</span><span class="s2">&quot;lon&quot;</span><span class="p">]</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">latlon</span><span class="p">[</span><span class="s2">"lat"</span><span class="p">]</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">latlon</span><span class="p">[</span><span class="s2">"lon"</span><span class="p">]</span>
 <span class="n">idx</span><span class="p">,</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">nearest_point_kdtree</span><span class="p">([</span><span class="n">lats</span><span class="p">,</span><span class="n">lons</span><span class="p">],</span> <span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </details>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -1415,7 +1415,7 @@ Attributes:
 </div>
 </div>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -1425,14 +1425,14 @@ Attributes:
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the interapolated data, note that this </span>
 <span class="c1"># trajectory will only show the points we extracted</span>
 
-<span class="n">chart</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Ireland&quot;</span><span class="p">,</span> <span class="s2">&quot;United Kingdom&quot;</span><span class="p">])</span>
+<span class="n">chart</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">"Ireland"</span><span class="p">,</span> <span class="s2">"United Kingdom"</span><span class="p">])</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">point_cloud</span><span class="p">(</span>
     <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span>
     <span class="n">x</span><span class="o">=</span><span class="n">lons</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span><span class="n">lats</span><span class="p">,</span>
     <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Results from on-demand-extremes-dt&quot;</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Results from on-demand-extremes-dt"</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">gridlines</span><span class="p">()</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>

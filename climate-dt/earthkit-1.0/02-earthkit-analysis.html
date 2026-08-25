@@ -692,28 +692,28 @@ is ~126 MB</strong>.</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>               <span class="c1"># DestinE data class</span>
-    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;climate-dt&quot;</span><span class="p">,</span>     <span class="c1"># dataset family</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>                <span class="c1"># forecast fields</span>
-    <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0001&quot;</span><span class="p">,</span>            <span class="c1"># experiment version (operations / research exp.)</span>
-    <span class="s2">&quot;generation&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>           <span class="c1"># dataset generation</span>
-    <span class="s2">&quot;realization&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>          <span class="c1"># initial-condition run</span>
-    <span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;baseline&quot;</span><span class="p">,</span>      <span class="c1"># CMIP activity: baseline historical run (vs. &#39;projections&#39;)</span>
-    <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="s2">&quot;hist&quot;</span><span class="p">,</span>        <span class="c1"># experiment/scenario: historical forcing</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;ifs-fesom&quot;</span><span class="p">,</span>        <span class="c1"># coupled atmosphere-ocean model</span>
-    <span class="s2">&quot;param&quot;</span><span class="p">:</span> <span class="s2">&quot;228004&quot;</span><span class="p">,</span>           <span class="c1"># parameter ID: 2 m temperature, monthly mean</span>
-    <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;sfc&quot;</span><span class="p">,</span>            <span class="c1"># vertical level type: surface fields</span>
-    <span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="s2">&quot;standard&quot;</span><span class="p">,</span>    <span class="c1"># quick-view (&#39;standard&#39;) or full (&#39;high&#39;) resolution</span>
-    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;clmn&quot;</span><span class="p">,</span>            <span class="c1"># climate monthly-mean stream</span>
-    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="s2">&quot;1990/to/2014&quot;</span><span class="p">,</span>      <span class="c1"># 25-year range (Polytope range syntax)</span>
-    <span class="s2">&quot;month&quot;</span><span class="p">:</span> <span class="s2">&quot;1/2/3/4/5/6/7/8/9/10/11/12&quot;</span><span class="p">,</span>  <span class="c1"># all calendar months</span>
+    <span class="s2">"class"</span><span class="p">:</span> <span class="s2">"d1"</span><span class="p">,</span>               <span class="c1"># DestinE data class</span>
+    <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"climate-dt"</span><span class="p">,</span>     <span class="c1"># dataset family</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"fc"</span><span class="p">,</span>                <span class="c1"># forecast fields</span>
+    <span class="s2">"expver"</span><span class="p">:</span> <span class="s2">"0001"</span><span class="p">,</span>            <span class="c1"># experiment version (operations / research exp.)</span>
+    <span class="s2">"generation"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>           <span class="c1"># dataset generation</span>
+    <span class="s2">"realization"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>          <span class="c1"># initial-condition run</span>
+    <span class="s2">"activity"</span><span class="p">:</span> <span class="s2">"baseline"</span><span class="p">,</span>      <span class="c1"># CMIP activity: baseline historical run (vs. 'projections')</span>
+    <span class="s2">"experiment"</span><span class="p">:</span> <span class="s2">"hist"</span><span class="p">,</span>        <span class="c1"># experiment/scenario: historical forcing</span>
+    <span class="s2">"model"</span><span class="p">:</span> <span class="s2">"ifs-fesom"</span><span class="p">,</span>        <span class="c1"># coupled atmosphere-ocean model</span>
+    <span class="s2">"param"</span><span class="p">:</span> <span class="s2">"228004"</span><span class="p">,</span>           <span class="c1"># parameter ID: 2 m temperature, monthly mean</span>
+    <span class="s2">"levtype"</span><span class="p">:</span> <span class="s2">"sfc"</span><span class="p">,</span>            <span class="c1"># vertical level type: surface fields</span>
+    <span class="s2">"resolution"</span><span class="p">:</span> <span class="s2">"standard"</span><span class="p">,</span>    <span class="c1"># quick-view ('standard') or full ('high') resolution</span>
+    <span class="s2">"stream"</span><span class="p">:</span> <span class="s2">"clmn"</span><span class="p">,</span>            <span class="c1"># climate monthly-mean stream</span>
+    <span class="s2">"year"</span><span class="p">:</span> <span class="s2">"1990/to/2014"</span><span class="p">,</span>      <span class="c1"># 25-year range (Polytope range syntax)</span>
+    <span class="s2">"month"</span><span class="p">:</span> <span class="s2">"1/2/3/4/5/6/7/8/9/10/11/12"</span><span class="p">,</span>  <span class="c1"># all calendar months</span>
 <span class="p">}</span>
 
 <span class="n">ifs_nemo</span> <span class="o">=</span> <span class="n">ekd</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span>
-    <span class="s2">&quot;polytope&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span>
+    <span class="s2">"polytope"</span><span class="p">,</span>
+    <span class="s2">"destination-earth"</span><span class="p">,</span>
     <span class="n">request</span><span class="p">,</span>
-    <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.lumi.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span>
+    <span class="n">address</span><span class="o">=</span><span class="s2">"polytope.lumi.apps.dte.destination-earth.eu"</span><span class="p">,</span>
     <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -737,17 +737,17 @@ normalises both datasets into the same interface, so downstream code is identica
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="s2">&quot;reanalysis-era5-single-levels-monthly-means&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="s2">"reanalysis-era5-single-levels-monthly-means"</span>
 <span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;product_type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;monthly_averaged_reanalysis&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2m_temperature&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2015</span><span class="p">)],</span>
-    <span class="s2">&quot;month&quot;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">month</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)],</span>
-    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;00:00&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;data_format&quot;</span><span class="p">:</span> <span class="s2">&quot;grib&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;download_format&quot;</span><span class="p">:</span> <span class="s2">&quot;unarchived&quot;</span><span class="p">,</span>
+    <span class="s2">"product_type"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"monthly_averaged_reanalysis"</span><span class="p">],</span>
+    <span class="s2">"variable"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"2m_temperature"</span><span class="p">],</span>
+    <span class="s2">"year"</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2015</span><span class="p">)],</span>
+    <span class="s2">"month"</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">month</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)],</span>
+    <span class="s2">"time"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"00:00"</span><span class="p">],</span>
+    <span class="s2">"data_format"</span><span class="p">:</span> <span class="s2">"grib"</span><span class="p">,</span>
+    <span class="s2">"download_format"</span><span class="p">:</span> <span class="s2">"unarchived"</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="n">era5</span> <span class="o">=</span> <span class="n">ekd</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;cds&quot;</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+<span class="n">era5</span> <span class="o">=</span> <span class="n">ekd</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"cds"</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -765,16 +765,16 @@ regular lat-lon grid — the <code class="docutils literal notranslate"><span cl
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATE</span> <span class="o">=</span> <span class="s2">&quot;2014-12-01&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATE</span> <span class="o">=</span> <span class="s2">"2014-12-01"</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;France&quot;</span><span class="p">,</span> <span class="s2">&quot;Belgium&quot;</span><span class="p">])</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">"France"</span><span class="p">,</span> <span class="s2">"Belgium"</span><span class="p">])</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">ifs_nemo</span><span class="o">.</span><span class="n">to_fieldlist</span><span class="p">()</span><span class="o">.</span><span class="n">sel</span><span class="p">({</span><span class="s2">&quot;time.valid_datetime&quot;</span><span class="p">:</span> <span class="n">DATE</span><span class="p">}))</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">era5</span><span class="o">.</span><span class="n">to_fieldlist</span><span class="p">()</span><span class="o">.</span><span class="n">sel</span><span class="p">({</span><span class="s2">&quot;time.valid_datetime&quot;</span><span class="p">:</span> <span class="n">DATE</span><span class="p">}))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">ifs_nemo</span><span class="o">.</span><span class="n">to_fieldlist</span><span class="p">()</span><span class="o">.</span><span class="n">sel</span><span class="p">({</span><span class="s2">"time.valid_datetime"</span><span class="p">:</span> <span class="n">DATE</span><span class="p">}))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">era5</span><span class="o">.</span><span class="n">to_fieldlist</span><span class="p">()</span><span class="o">.</span><span class="n">sel</span><span class="p">({</span><span class="s2">"time.valid_datetime"</span><span class="p">:</span> <span class="n">DATE</span><span class="p">}))</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{time.valid_datetime}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
-<span class="n">fig</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;IFS-NEMO (HEALPix)&quot;</span><span class="p">)</span>
-<span class="n">fig</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ERA5 (0.25°)&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"</span><span class="si">{time.valid_datetime}</span><span class="s2">"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"IFS-NEMO (HEALPix)"</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"ERA5 (0.25°)"</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
@@ -816,8 +816,8 @@ cached so re-runs are fast.</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekp</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span>
-    <span class="n">ifs_nemo_regridded</span><span class="o">.</span><span class="n">sel</span><span class="p">({</span><span class="s2">&quot;time.valid_datetime&quot;</span><span class="p">:</span> <span class="n">DATE</span><span class="p">}),</span>
-    <span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;France&quot;</span><span class="p">,</span> <span class="s2">&quot;Belgium&quot;</span><span class="p">]</span>
+    <span class="n">ifs_nemo_regridded</span><span class="o">.</span><span class="n">sel</span><span class="p">({</span><span class="s2">"time.valid_datetime"</span><span class="p">:</span> <span class="n">DATE</span><span class="p">}),</span>
+    <span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">"France"</span><span class="p">,</span> <span class="s2">"Belgium"</span><span class="p">]</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -840,8 +840,8 @@ computing the difference.</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ifs_nemo_mean</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">ekt</span><span class="o">.</span><span class="n">temporal</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ifs_nemo_regridded</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">(</span><span class="n">time_dims</span><span class="o">=</span><span class="s2">&quot;valid_time&quot;</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">rename_vars</span><span class="p">({</span><span class="s2">&quot;avg_2t&quot;</span><span class="p">:</span> <span class="s2">&quot;2t&quot;</span><span class="p">})</span>
+    <span class="n">ekt</span><span class="o">.</span><span class="n">temporal</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ifs_nemo_regridded</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">(</span><span class="n">time_dims</span><span class="o">=</span><span class="s2">"valid_time"</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">rename_vars</span><span class="p">({</span><span class="s2">"avg_2t"</span><span class="p">:</span> <span class="s2">"2t"</span><span class="p">})</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -886,21 +886,21 @@ legible: blue = IFS-NEMO is warmer than ERA5, red = IFS-NEMO is colder.</p>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="s2">&quot;Robinson&quot;</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="s2">"Robinson"</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">climatedt_plot</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span>
 <span class="n">climatedt_plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ifs_nemo_mean</span><span class="p">)</span>
-<span class="n">climatedt_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;IFS-NEMO&quot;</span><span class="p">)</span>
+<span class="n">climatedt_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"IFS-NEMO"</span><span class="p">)</span>
 
 <span class="n">era5_plot</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span>
 <span class="n">era5_plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">era5_mean</span><span class="p">)</span>
-<span class="n">era5_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ERA5&quot;</span><span class="p">)</span>
+<span class="n">era5_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"ERA5"</span><span class="p">)</span>
 
 <span class="n">diff_plot</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">diff_plot</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">)</span>
-<span class="n">diff_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;IFS-NEMO - ERA5&quot;</span><span class="p">)</span>
+<span class="n">diff_plot</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span><span class="s2">"RdBu_r"</span><span class="p">)</span>
+<span class="n">diff_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"IFS-NEMO - ERA5"</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{time}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"</span><span class="si">{time}</span><span class="s2">"</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
@@ -926,10 +926,10 @@ giving one anomaly field per year.</p>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">ifs_nemo_regridded</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">(</span><span class="n">time_dims</span><span class="o">=</span><span class="s2">&quot;valid_time&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">ifs_nemo_regridded</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">(</span><span class="n">time_dims</span><span class="o">=</span><span class="s2">"valid_time"</span><span class="p">)</span>
 
 <span class="n">climatology_mean</span> <span class="o">=</span> <span class="n">ekt</span><span class="o">.</span><span class="n">climatology</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
-<span class="n">anom</span> <span class="o">=</span> <span class="n">ekt</span><span class="o">.</span><span class="n">climatology</span><span class="o">.</span><span class="n">anomaly</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">climatology_mean</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">)</span>
+<span class="n">anom</span> <span class="o">=</span> <span class="n">ekt</span><span class="o">.</span><span class="n">climatology</span><span class="o">.</span><span class="n">anomaly</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">climatology_mean</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s2">"year"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -959,7 +959,7 @@ built-in sample so no separate download is needed.</p>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nuts_level_0</span> <span class="o">=</span> <span class="n">ekd</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span> <span class="s2">&quot;NUTS_RG_60M_2021_4326_LEVL_0.geojson&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nuts_level_0</span> <span class="o">=</span> <span class="n">ekd</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"sample"</span><span class="p">,</span> <span class="s2">"NUTS_RG_60M_2021_4326_LEVL_0.geojson"</span><span class="p">)</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1003,11 +1003,11 @@ built-in sample so no separate download is needed.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">YEAR</span> <span class="o">=</span> <span class="mi">2008</span>
 
 <span class="n">nuts_anom</span> <span class="o">=</span> <span class="n">ekt</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span>
-    <span class="n">anom</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">valid_time</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">YEAR</span><span class="si">}</span><span class="s2">-12-31&quot;</span><span class="p">),</span>
+    <span class="n">anom</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">valid_time</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">YEAR</span><span class="si">}</span><span class="s2">-12-31"</span><span class="p">),</span>
     <span class="n">nuts_level_0</span><span class="p">,</span>
-    <span class="n">weights</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span>
-    <span class="n">mask_dim</span><span class="o">=</span><span class="s2">&quot;NAME_LATN&quot;</span><span class="p">,</span>
-    <span class="n">return_as</span><span class="o">=</span><span class="s2">&quot;pandas&quot;</span><span class="p">,</span>
+    <span class="n">weights</span><span class="o">=</span><span class="s2">"latitude"</span><span class="p">,</span>
+    <span class="n">mask_dim</span><span class="o">=</span><span class="s2">"NAME_LATN"</span><span class="p">,</span>
+    <span class="n">return_as</span><span class="o">=</span><span class="s2">"pandas"</span><span class="p">,</span>
     <span class="n">all_touched</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">nuts_anom</span>
@@ -1027,25 +1027,25 @@ positive and negative values.</p>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Europe&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="s2">"Europe"</span><span class="p">)</span>
 
 <span class="n">chart</span><span class="o">.</span><span class="n">choropleth</span><span class="p">(</span>
     <span class="n">nuts_anom</span><span class="p">,</span>
-    <span class="n">z</span><span class="o">=</span><span class="s2">&quot;avg_2t&quot;</span><span class="p">,</span>
+    <span class="n">z</span><span class="o">=</span><span class="s2">"avg_2t"</span><span class="p">,</span>
     <span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
-    <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span>
+    <span class="n">colors</span><span class="o">=</span><span class="s2">"RdBu_r"</span><span class="p">,</span>
     <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">labels</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{avg_2t:+.1f}</span><span class="s2">°C&quot;</span>
+    <span class="n">labels</span><span class="o">=</span><span class="s2">"</span><span class="si">{avg_2t:+.1f}</span><span class="s2">°C"</span>
 <span class="p">)</span>
 
-<span class="n">chart</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;temperature anomaly (°C)&quot;</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"temperature anomaly (°C)"</span><span class="p">)</span>
 
 <span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;2m temperature anomaly — </span><span class="si">{</span><span class="n">YEAR</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-    <span class="s2">&quot;Data: IFS-NEMO  •  Baseline: 1990–2014&quot;</span>
+    <span class="sa">f</span><span class="s2">"2m temperature anomaly — </span><span class="si">{</span><span class="n">YEAR</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="s2">"Data: IFS-NEMO  •  Baseline: 1990–2014"</span>
 <span class="p">)</span>
 
-<span class="n">chart</span><span class="o">.</span><span class="n">attribution</span><span class="p">(</span><span class="s2">&quot;Credit: Destination Earth&quot;</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">attribution</span><span class="p">(</span><span class="s2">"Credit: Destination Earth"</span><span class="p">)</span>
 
 <span class="n">chart</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">borders</span><span class="p">()</span>
@@ -1065,7 +1065,7 @@ the partial year at each end.</p>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">global_mean</span> <span class="o">=</span> <span class="n">ekt</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">anom</span><span class="p">)</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">valid_time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;1990-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2014-01-01&quot;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">global_mean</span> <span class="o">=</span> <span class="n">ekt</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">anom</span><span class="p">)</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">valid_time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s2">"1990-01-01"</span><span class="p">,</span> <span class="s2">"2014-01-01"</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1083,12 +1083,12 @@ years) and a brief title to provide just enough context.</p>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">timeseries</span><span class="o">.</span><span class="n">stripes</span><span class="p">(</span><span class="n">global_mean</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">timeseries</span><span class="o">.</span><span class="n">stripes</span><span class="p">(</span><span class="n">global_mean</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"RdBu_r"</span><span class="p">)</span>
 
-<span class="n">chart</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">frequency</span><span class="o">=</span><span class="s2">&quot;5Y&quot;</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">frequency</span><span class="o">=</span><span class="s2">"5Y"</span><span class="p">)</span>
 
-<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;IFS-NEMO </span><span class="si">{variable_name}</span><span class="s2">  •  Baseline: 1991–2020&quot;</span><span class="p">)</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">attribution</span><span class="p">(</span><span class="s2">&quot;Credit: Destination Earth&quot;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"IFS-NEMO </span><span class="si">{variable_name}</span><span class="s2">  •  Baseline: 1991–2020"</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">attribution</span><span class="p">(</span><span class="s2">"Credit: Destination Earth"</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">"lower right"</span><span class="p">)</span>
 
 <span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1110,27 +1110,27 @@ years) and a brief title to provide just enough context.</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ifs_nemo_monthly_mean</span> <span class="o">=</span> <span class="n">ekt</span><span class="o">.</span><span class="n">climatology</span><span class="o">.</span><span class="n">monthly_mean</span><span class="p">(</span>
-    <span class="n">ifs_nemo_regridded</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">(</span><span class="n">time_dims</span><span class="o">=</span><span class="s2">&quot;valid_time&quot;</span><span class="p">)</span>
-<span class="p">)</span><span class="o">.</span><span class="n">rename_vars</span><span class="p">({</span><span class="s2">&quot;avg_2t&quot;</span><span class="p">:</span> <span class="s2">&quot;2t&quot;</span><span class="p">})</span>
+    <span class="n">ifs_nemo_regridded</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">(</span><span class="n">time_dims</span><span class="o">=</span><span class="s2">"valid_time"</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">rename_vars</span><span class="p">({</span><span class="s2">"avg_2t"</span><span class="p">:</span> <span class="s2">"2t"</span><span class="p">})</span>
 
 <span class="n">era5_monthly_mean</span> <span class="o">=</span> <span class="n">ekt</span><span class="o">.</span><span class="n">climatology</span><span class="o">.</span><span class="n">monthly_mean</span><span class="p">(</span><span class="n">era5</span><span class="p">)</span>
 
 <span class="n">monthly_diff</span> <span class="o">=</span> <span class="n">ifs_nemo_monthly_mean</span> <span class="o">-</span> <span class="n">era5_monthly_mean</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="s2">&quot;Robinson&quot;</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="s2">"Robinson"</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="n">style</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">styles</span><span class="o">.</span><span class="n">Style</span><span class="p">(</span>
     <span class="n">levels</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
-    <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span>
-    <span class="n">extend</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span>
+    <span class="n">colors</span><span class="o">=</span><span class="s2">"RdBu_r"</span><span class="p">,</span>
+    <span class="n">extend</span><span class="o">=</span><span class="s2">"both"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">monthly_diff</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
     
-<span class="n">fig</span><span class="o">.</span><span class="n">subplot_titles</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{month}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;IFS-NEMO monthly temperature difference vs ERA5&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;2m temperature difference (</span><span class="si">{units}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplot_titles</span><span class="p">(</span><span class="s2">"</span><span class="si">{month}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"IFS-NEMO monthly temperature difference vs ERA5"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"2m temperature difference (</span><span class="si">{units}</span><span class="s2">)"</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
 </pre></div>
 </div>

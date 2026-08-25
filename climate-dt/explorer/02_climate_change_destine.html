@@ -608,19 +608,19 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Configuration ---</span>
-<span class="n">PARAM</span> <span class="o">=</span> <span class="s1">&#39;avg_2t&#39;</span>
-<span class="n">PARAM_NAME</span> <span class="o">=</span> <span class="s1">&#39;2m temperature&#39;</span>
-<span class="n">MODELS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;IFS-NEMO&#39;</span><span class="p">,</span> <span class="s1">&#39;IFS-FESOM&#39;</span><span class="p">,</span> <span class="s1">&#39;ICON&#39;</span><span class="p">]</span>
-<span class="n">RESOLUTION</span> <span class="o">=</span> <span class="s1">&#39;standard&#39;</span>
+<span class="n">PARAM</span> <span class="o">=</span> <span class="s1">'avg_2t'</span>
+<span class="n">PARAM_NAME</span> <span class="o">=</span> <span class="s1">'2m temperature'</span>
+<span class="n">MODELS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'IFS-NEMO'</span><span class="p">,</span> <span class="s1">'IFS-FESOM'</span><span class="p">,</span> <span class="s1">'ICON'</span><span class="p">]</span>
+<span class="n">RESOLUTION</span> <span class="o">=</span> <span class="s1">'standard'</span>
 <span class="n">STORE_DATA</span> <span class="o">=</span> <span class="kc">True</span>          <span class="c1"># Set True to cache NetCDF files to DATA_DIR</span>
-<span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s1">&#39;./data&#39;</span>
+<span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s1">'./data'</span>
 
 <span class="c1"># Historical period</span>
 <span class="n">HIST_YEARS</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2015</span><span class="p">)</span>
-<span class="n">HIST_EXPERIMENT</span> <span class="o">=</span> <span class="s1">&#39;hist&#39;</span>        <span class="c1"># activity: baseline</span>
+<span class="n">HIST_EXPERIMENT</span> <span class="o">=</span> <span class="s1">'hist'</span>        <span class="c1"># activity: baseline</span>
 
 <span class="c1"># Future period</span>
-<span class="n">SCEN_EXPERIMENT</span> <span class="o">=</span> <span class="s1">&#39;SSP3-7.0&#39;</span>   <span class="c1"># activity: projections</span>
+<span class="n">SCEN_EXPERIMENT</span> <span class="o">=</span> <span class="s1">'SSP3-7.0'</span>   <span class="c1"># activity: projections</span>
 <span class="n">SCEN_YEARS</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -637,17 +637,17 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download monthly data for all models and both periods</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">MODELS</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">=== </span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s1"> ===&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">=== </span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s1"> ==='</span><span class="p">)</span>
     
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Fetching </span><span class="si">{</span><span class="n">HIST_EXPERIMENT</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">HIST_YEARS</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">HIST_YEARS</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">)...&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Fetching </span><span class="si">{</span><span class="n">HIST_EXPERIMENT</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">HIST_YEARS</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">HIST_YEARS</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">)...'</span><span class="p">)</span>
     <span class="n">hist</span> <span class="o">=</span> <span class="n">fetch_period</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">HIST_EXPERIMENT</span><span class="p">,</span> <span class="n">HIST_YEARS</span><span class="p">,</span> <span class="n">PARAM</span><span class="p">,</span> <span class="n">RESOLUTION</span><span class="p">,</span> <span class="n">STORE_DATA</span><span class="p">,</span> <span class="n">DATA_DIR</span><span class="p">)</span>
 
     <span class="c1"># end year is per-model at release time (see _MODEL_ENDYEAR_RELEASE)</span>
     <span class="n">SCEN_YEARS</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="n">_MODEL_ENDYEAR_RELEASE</span><span class="p">[</span><span class="n">model</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Fetching </span><span class="si">{</span><span class="n">SCEN_EXPERIMENT</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">SCEN_YEARS</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">SCEN_YEARS</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">)...&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Fetching </span><span class="si">{</span><span class="n">SCEN_EXPERIMENT</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">SCEN_YEARS</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">SCEN_YEARS</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">)...'</span><span class="p">)</span>
     <span class="n">scen</span> <span class="o">=</span> <span class="n">fetch_period</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">SCEN_EXPERIMENT</span><span class="p">,</span> <span class="n">SCEN_YEARS</span><span class="p">,</span> <span class="n">PARAM</span><span class="p">,</span> <span class="n">RESOLUTION</span><span class="p">,</span> <span class="n">STORE_DATA</span><span class="p">,</span> <span class="n">DATA_DIR</span><span class="p">)</span>
     
-    <span class="n">data</span><span class="p">[</span><span class="n">model</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;hist&#39;</span><span class="p">:</span> <span class="n">hist</span><span class="p">,</span> <span class="s1">&#39;scen&#39;</span><span class="p">:</span> <span class="n">scen</span><span class="p">}</span>
+    <span class="n">data</span><span class="p">[</span><span class="n">model</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'hist'</span><span class="p">:</span> <span class="n">hist</span><span class="p">,</span> <span class="s1">'scen'</span><span class="p">:</span> <span class="n">scen</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -656,7 +656,7 @@ title="Print to PDF"
 <ul class="simple">
 <li><p><strong>The resulting data is cached in the following folder structure</strong> if you have set <code class="docutils literal notranslate"><span class="pre">STORE_DATA</span> <span class="pre">=</span> <span class="pre">True</span></code></p></li>
 </ul>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -703,7 +703,7 @@ data/ICON/SSP3-7.0/clmn/standard/avg_2t_2034.nc
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;IFS-FESOM&#39;</span><span class="p">][</span><span class="s1">&#39;scen&#39;</span><span class="p">]</span> <span class="c1"># ICON/IFS-NEMO/IFS-FESOM + hist/scen</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">'IFS-FESOM'</span><span class="p">][</span><span class="s1">'scen'</span><span class="p">]</span> <span class="c1"># ICON/IFS-NEMO/IFS-FESOM + hist/scen</span>
 </pre></div>
 </div>
 </div>
@@ -719,15 +719,15 @@ data/ICON/SSP3-7.0/clmn/standard/avg_2t_2034.nc
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute climate change signal: future mean minus historical mean</span>
 <span class="n">diffs</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">MODELS</span><span class="p">:</span>
-    <span class="n">hist_mean</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">model</span><span class="p">][</span><span class="s1">&#39;hist&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;valid_time&#39;</span><span class="p">)</span>
-    <span class="n">scen_mean</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">model</span><span class="p">][</span><span class="s1">&#39;scen&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;valid_time&#39;</span><span class="p">)</span>
+    <span class="n">hist_mean</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">model</span><span class="p">][</span><span class="s1">'hist'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">'valid_time'</span><span class="p">)</span>
+    <span class="n">scen_mean</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">model</span><span class="p">][</span><span class="s1">'scen'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">'valid_time'</span><span class="p">)</span>
     <span class="n">diffs</span><span class="p">[</span><span class="n">model</span><span class="p">]</span> <span class="o">=</span> <span class="n">scen_mean</span> <span class="o">-</span> <span class="n">hist_mean</span>
 </pre></div>
 </div>
 </div>
 </details>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -742,11 +742,11 @@ data/ICON/SSP3-7.0/clmn/standard/avg_2t_2034.nc
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">MODELS</span><span class="p">):</span>
     <span class="n">scen_end</span> <span class="o">=</span> <span class="n">_MODEL_ENDYEAR_RELEASE</span><span class="p">[</span><span class="n">model</span><span class="p">]</span>
     <span class="n">hp</span><span class="o">.</span><span class="n">mollview</span><span class="p">(</span>
-        <span class="n">diffs</span><span class="p">[</span><span class="n">model</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">nest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">flip</span><span class="o">=</span><span class="s1">&#39;geo&#39;</span><span class="p">,</span>
-        <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s1">: </span><span class="se">\u0394</span><span class="s1">T (</span><span class="si">{</span><span class="n">SCEN_EXPERIMENT</span><span class="si">}</span><span class="s1"> 2015-</span><span class="si">{</span><span class="n">scen_end</span><span class="si">}</span><span class="s1">&#39;</span>
-              <span class="sa">f</span><span class="s1">&#39; minus </span><span class="si">{</span><span class="n">HIST_EXPERIMENT</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">HIST_YEARS</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">HIST_YEARS</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span>
-        <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="n">sub</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">MODELS</span><span class="p">),</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="n">diffs</span><span class="p">[</span><span class="n">model</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">nest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">flip</span><span class="o">=</span><span class="s1">'geo'</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s1">'RdBu_r'</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s1">: </span><span class="se">\u0394</span><span class="s1">T (</span><span class="si">{</span><span class="n">SCEN_EXPERIMENT</span><span class="si">}</span><span class="s1"> 2015-</span><span class="si">{</span><span class="n">scen_end</span><span class="si">}</span><span class="s1">'</span>
+              <span class="sa">f</span><span class="s1">' minus </span><span class="si">{</span><span class="n">HIST_EXPERIMENT</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">HIST_YEARS</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">HIST_YEARS</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">)'</span><span class="p">,</span>
+        <span class="n">unit</span><span class="o">=</span><span class="s1">'K'</span><span class="p">,</span> <span class="n">sub</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">MODELS</span><span class="p">),</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
     <span class="p">)</span>
 </pre></div>
 </div>
@@ -756,7 +756,7 @@ data/ICON/SSP3-7.0/clmn/standard/avg_2t_2034.nc
 <img alt="../../_images/9e5e97ad18b3a50f37542892659304da6505414a277781788dc1d6baf550ac1f.png" src="../../_images/9e5e97ad18b3a50f37542892659304da6505414a277781788dc1d6baf550ac1f.png" />
 </div>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -766,7 +766,7 @@ data/ICON/SSP3-7.0/clmn/standard/avg_2t_2034.nc
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Global mean temperature change per model</span>
 <span class="c1"># (HEALPix pixels are equal-area, so a simple mean is area-weighted)</span>
 <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">MODELS</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s1">: global mean </span><span class="se">\u0394</span><span class="s1">T = </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">diffs</span><span class="p">[</span><span class="n">model</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> K&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s1">: global mean </span><span class="se">\u0394</span><span class="s1">T = </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">diffs</span><span class="p">[</span><span class="n">model</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> K'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

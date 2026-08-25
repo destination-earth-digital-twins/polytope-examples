@@ -616,7 +616,7 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'}</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">access_token</span> <span class="o">=</span> <span class="n">output_1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -663,7 +663,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defaults to making a live data request. Set to false to use the cached GRIB file instead.</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="n">LIVE_REQUEST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LIVE_REQUEST&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span>
+<span class="n">LIVE_REQUEST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"LIVE_REQUEST"</span><span class="p">,</span> <span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"true"</span>
 <span class="n">LIVE_REQUEST</span>
 </pre></div>
 </div>
@@ -678,21 +678,21 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;projections&quot;</span><span class="p">,</span>
-    <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;d1&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;dataset&#39;</span><span class="p">:</span> <span class="s1">&#39;climate-dt&#39;</span><span class="p">,</span>
-    <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;20400102&quot;</span><span class="p">,</span>
-    <span class="s1">&#39;experiment&#39;</span><span class="p">:</span> <span class="s1">&#39;SSP3-7.0&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;expver&#39;</span><span class="p">:</span> <span class="s1">&#39;0001&#39;</span><span class="p">,</span>
-    <span class="s2">&quot;generation&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-    <span class="s1">&#39;levtype&#39;</span><span class="p">:</span> <span class="s1">&#39;sfc&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="s1">&#39;IFS-NEMO&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;param&#39;</span><span class="p">:</span> <span class="s1">&#39;134/165/166&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;realization&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-    <span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="s2">&quot;standard&quot;</span><span class="p">,</span>
-    <span class="s1">&#39;stream&#39;</span><span class="p">:</span> <span class="s1">&#39;clte&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="s1">&#39;0100&#39;</span><span class="p">,</span> <span class="c1"># &#39;0100/0200/0300/0400/0500/0600&#39;</span>
-    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;fc&#39;</span>
+    <span class="s2">"activity"</span><span class="p">:</span> <span class="s2">"projections"</span><span class="p">,</span>
+    <span class="s1">'class'</span><span class="p">:</span> <span class="s1">'d1'</span><span class="p">,</span>
+    <span class="s1">'dataset'</span><span class="p">:</span> <span class="s1">'climate-dt'</span><span class="p">,</span>
+    <span class="s2">"date"</span><span class="p">:</span> <span class="s2">"20400102"</span><span class="p">,</span>
+    <span class="s1">'experiment'</span><span class="p">:</span> <span class="s1">'SSP3-7.0'</span><span class="p">,</span>
+    <span class="s1">'expver'</span><span class="p">:</span> <span class="s1">'0001'</span><span class="p">,</span>
+    <span class="s2">"generation"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+    <span class="s1">'levtype'</span><span class="p">:</span> <span class="s1">'sfc'</span><span class="p">,</span>
+    <span class="s1">'model'</span><span class="p">:</span> <span class="s1">'IFS-NEMO'</span><span class="p">,</span>
+    <span class="s1">'param'</span><span class="p">:</span> <span class="s1">'134/165/166'</span><span class="p">,</span>
+    <span class="s1">'realization'</span><span class="p">:</span> <span class="s1">'1'</span><span class="p">,</span>
+    <span class="s2">"resolution"</span><span class="p">:</span> <span class="s2">"standard"</span><span class="p">,</span>
+    <span class="s1">'stream'</span><span class="p">:</span> <span class="s1">'clte'</span><span class="p">,</span>
+    <span class="s1">'time'</span><span class="p">:</span> <span class="s1">'0100'</span><span class="p">,</span> <span class="c1"># '0100/0200/0300/0400/0500/0600'</span>
+    <span class="s1">'type'</span><span class="p">:</span> <span class="s1">'fc'</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -706,18 +706,18 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;../data/climate-dt-earthkit-example-domain.grib&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">"../data/climate-dt-earthkit-example-domain.grib"</span>
 <span class="k">if</span> <span class="n">LIVE_REQUEST</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;polytope&quot;</span><span class="p">,</span> <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.mn5.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">data</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"polytope"</span><span class="p">,</span> <span class="s2">"destination-earth"</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">"polytope.mn5.apps.dte.destination-earth.eu"</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span> 
+    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
 </details>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -804,7 +804,7 @@ title="Print to PDF"
 </table>
 </div></div></div>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -816,7 +816,7 @@ title="Print to PDF"
     <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="p">)</span>
 
-<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Surface Pressure&quot;</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Surface Pressure"</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">gridlines</span><span class="p">()</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -828,7 +828,7 @@ title="Print to PDF"
 <img alt="../../_images/2b444cde1220df7ae2ea860a108f13d2de04ed1ca1637f77f0c58a8ea01bd6c7.png" src="../../_images/2b444cde1220df7ae2ea860a108f13d2de04ed1ca1637f77f0c58a8ea01bd6c7.png" />
 </div>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -836,7 +836,7 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Regrid t=from healpix for conversion to xarray</span>
-<span class="n">data_latlon</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">regrid</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">out_grid</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;grid&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]},</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<span class="n">data_latlon</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">regrid</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">out_grid</span><span class="o">=</span><span class="p">{</span><span class="s2">"grid"</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]},</span> <span class="n">method</span><span class="o">=</span><span class="s2">"linear"</span><span class="p">)</span>
 <span class="c1"># Convert data to xarray</span>
 <span class="n">data_latlon</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
 </pre></div>
@@ -1344,14 +1344,14 @@ Attributes:
       shape=(3600,))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-c03d705d-d959-4a5f-806f-701cc5e7265a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c03d705d-d959-4a5f-806f-701cc5e7265a' class='xr-section-summary' >Data variables: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>10u</span></div><div class='xr-var-dims'>(latitude, longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-157cde5e-ce41-4a40-8bc8-43c301beec37' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-157cde5e-ce41-4a40-8bc8-43c301beec37' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-00fa471a-d7be-48ea-9aa3-9d59f8e982e4' class='xr-var-data-in' type='checkbox'><label for='data-00fa471a-d7be-48ea-9aa3-9d59f8e982e4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>param :</span></dt><dd>10u</dd><dt><span>standard_name :</span></dt><dd>eastward_wind</dd><dt><span>long_name :</span></dt><dd>10 metre U wind component</dd><dt><span>paramId :</span></dt><dd>165</dd><dt><span>units :</span></dt><dd>m s**-1</dd><dt><span>_earthkit :</span></dt><dd>{&#x27;message&#x27;: b&#x27;GRIB\xff\xff\x00\x02\x00\x00\x00\x00\x00\x00\x00\xd6\x00\x00\x00\x15\x01\x00b\x03\xeb\x1f\x01\x02\x07\xe4\x01\x02\x01\x00\x00\x0c\x01\x00\x00\x00\x1f\x02\x00\x01\x00\x01\x00\x02\x00\x07\x01\x00\x02\x01\x00\x01\x00\x01\x00.\x00\t\x04J0001\x00\x00\x00H\x03\x00\x00b\xee\x90\x00\x00\x00\x00\x06\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x0e\x10\x00\x00\x07\t\x00\x00\x00\x00\xff\xff\xff\xff\x05]J\x80\x00\x00\x00\x000\x85]J\x80\x15s\xa3`\x00\x01\x86\xa0\x00\x01\x86\xa0\x00\x00\x00\x00&quot;\x04\x00\x00\x00\x00\x02\x02\x02\xff\x9c\xff\xff\xff\x01\x00\x00\x00\x00g\x00\x00\x00\x00\n\xff\xff\xff\xff\xff\xff\x00\x00\x00\x19\x05\x00b\xee\x90\x00*\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0e \x00\x80\x00\x00\x00\x06\x06\xff\x00\x00\x00\x05\x077777&#x27;, &#x27;bitsPerValue&#x27;: 24}</dd></dl></div><div class='xr-var-data'><pre>[6483600 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>10v</span></div><div class='xr-var-dims'>(latitude, longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-1aaca528-4e01-4f05-8a55-7401a9cbcbed' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1aaca528-4e01-4f05-8a55-7401a9cbcbed' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7bbbcf34-9756-464b-80ad-4c868cea9319' class='xr-var-data-in' type='checkbox'><label for='data-7bbbcf34-9756-464b-80ad-4c868cea9319' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>param :</span></dt><dd>10v</dd><dt><span>standard_name :</span></dt><dd>northward_wind</dd><dt><span>long_name :</span></dt><dd>10 metre V wind component</dd><dt><span>paramId :</span></dt><dd>166</dd><dt><span>units :</span></dt><dd>m s**-1</dd><dt><span>_earthkit :</span></dt><dd>{&#x27;message&#x27;: b&#x27;GRIB\xff\xff\x00\x02\x00\x00\x00\x00\x00\x00\x00\xd6\x00\x00\x00\x15\x01\x00b\x03\xeb\x1f\x01\x02\x07\xe4\x01\x02\x01\x00\x00\x0c\x01\x00\x00\x00\x1f\x02\x00\x01\x00\x01\x00\x02\x00\x07\x01\x00\x02\x01\x00\x01\x00\x01\x00.\x00\t\x04J0001\x00\x00\x00H\x03\x00\x00b\xee\x90\x00\x00\x00\x00\x06\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x0e\x10\x00\x00\x07\t\x00\x00\x00\x00\xff\xff\xff\xff\x05]J\x80\x00\x00\x00\x000\x85]J\x80\x15s\xa3`\x00\x01\x86\xa0\x00\x01\x86\xa0\x00\x00\x00\x00&quot;\x04\x00\x00\x00\x00\x02\x03\x02\xff\x9c\xff\xff\xff\x01\x00\x00\x00\x00g\x00\x00\x00\x00\n\xff\xff\xff\xff\xff\xff\x00\x00\x00\x19\x05\x00b\xee\x90\x00*\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0e \x00\x80\x00\x00\x00\x06\x06\xff\x00\x00\x00\x05\x077777&#x27;, &#x27;bitsPerValue&#x27;: 24}</dd></dl></div><div class='xr-var-data'><pre>[6483600 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sp</span></div><div class='xr-var-dims'>(latitude, longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e441faf1-2370-4aa9-ae4a-9db21ea01007' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e441faf1-2370-4aa9-ae4a-9db21ea01007' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8dc2a99d-595e-4091-8728-71c3666ae712' class='xr-var-data-in' type='checkbox'><label for='data-8dc2a99d-595e-4091-8728-71c3666ae712' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>param :</span></dt><dd>sp</dd><dt><span>standard_name :</span></dt><dd>surface_air_pressure</dd><dt><span>long_name :</span></dt><dd>Surface pressure</dd><dt><span>paramId :</span></dt><dd>134</dd><dt><span>units :</span></dt><dd>Pa</dd><dt><span>_earthkit :</span></dt><dd>{&#x27;message&#x27;: b&#x27;GRIB\xff\xff\x00\x02\x00\x00\x00\x00\x00\x00\x00\xd6\x00\x00\x00\x15\x01\x00b\x03\xeb\x1f\x01\x02\x07\xe4\x01\x02\x01\x00\x00\x0c\x01\x00\x00\x00\x1f\x02\x00\x01\x00\x01\x00\x02\x00\x07\x01\x00\x02\x01\x00\x01\x00\x01\x00.\x00\t\x04J0001\x00\x00\x00H\x03\x00\x00b\xee\x90\x00\x00\x00\x00\x06\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x0e\x10\x00\x00\x07\t\x00\x00\x00\x00\xff\xff\xff\xff\x05]J\x80\x00\x00\x00\x000\x85]J\x80\x15s\xa3`\x00\x01\x86\xa0\x00\x01\x86\xa0\x00\x00\x00\x00&quot;\x04\x00\x00\x00\x00\x03\x00\x02\xff\x9c\xff\xff\xff\x01\x00\x00\x00\x00\x01\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x19\x05\x00b\xee\x90\x00*\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0e \x00\x80\x00\x00\x00\x06\x06\xff\x00\x00\x00\x05\x077777&#x27;, &#x27;bitsPerValue&#x27;: 24}</dd></dl></div><div class='xr-var-data'><pre>[6483600 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-4f88ff3b-9d90-42d8-b712-f2d25c5f3254' class='xr-section-summary-in' type='checkbox'  checked><label for='section-4f88ff3b-9d90-42d8-b712-f2d25c5f3254' class='xr-section-summary' >Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>class :</span></dt><dd>d1</dd><dt><span>stream :</span></dt><dd>clte</dd><dt><span>levtype :</span></dt><dd>sfc</dd><dt><span>type :</span></dt><dd>fc</dd><dt><span>expver :</span></dt><dd>0001</dd><dt><span>date :</span></dt><dd>20200102</dd><dt><span>time :</span></dt><dd>100</dd><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>institution :</span></dt><dd>ECMWF</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>Now we will plot a specific area using earthkit-plots. In this case we will plot the data we have retrieved over Europe.</p>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Europe&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">"Europe"</span><span class="p">])</span>
 
 <span class="n">chart</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">data_latlon</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
@@ -1369,21 +1369,21 @@ Attributes:
 </div>
 </div>
 <p>We can plot all the parameters we have as well using earthkit-plots</p>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Europe&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">domain</span><span class="o">=</span><span class="s2">"Europe"</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">ls</span><span class="p">()))):</span>
       <span class="n">figure</span><span class="o">.</span><span class="n">add_map</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
 <span class="n">figure</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">figure</span><span class="o">.</span><span class="n">land</span><span class="p">()</span>
 <span class="n">figure</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
-<span class="n">figure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Surface pressure, 10m U wind component at 10 meter V wind component&quot;</span><span class="p">)</span>
+<span class="n">figure</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Surface pressure, 10m U wind component at 10 meter V wind component"</span><span class="p">)</span>
 
 <span class="n">figure</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>

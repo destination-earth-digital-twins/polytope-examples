@@ -594,12 +594,12 @@ title="Print to PDF"
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">r2_score_multi</span><span class="p">(</span><span class="n">y_pred</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y_true</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculated the r-squared score between 2 arrays of values</span>
+<span class="w">    </span><span class="sd">"""Calculated the r-squared score between 2 arrays of values</span>
 
 <span class="sd">    :param y_pred: predicted array</span>
-<span class="sd">    :param y_true: &quot;truth&quot; array</span>
+<span class="sd">    :param y_true: "truth" array</span>
 <span class="sd">    :return: r-squared metric</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_pred</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">y_true</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -613,9 +613,9 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feat_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;tcwv&quot;</span><span class="p">,</span> <span class="s2">&quot;sd&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_tsrwe&quot;</span><span class="p">,</span> <span class="s2">&quot;2t&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_ie&quot;</span><span class="p">,</span> <span class="s2">&quot;tcc&quot;</span><span class="p">,</span> <span class="s2">&quot;tclw&quot;</span><span class="p">,</span> <span class="s2">&quot;tciw&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_tprate&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_sdswrf&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feat_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"tcwv"</span><span class="p">,</span> <span class="s2">"sd"</span><span class="p">,</span> <span class="s2">"avg_tsrwe"</span><span class="p">,</span> <span class="s2">"2t"</span><span class="p">,</span> <span class="s2">"avg_ie"</span><span class="p">,</span> <span class="s2">"tcc"</span><span class="p">,</span> <span class="s2">"tclw"</span><span class="p">,</span> <span class="s2">"tciw"</span><span class="p">,</span> <span class="s2">"avg_tprate"</span><span class="p">,</span> <span class="s2">"avg_sdswrf"</span><span class="p">]</span>
 
-<span class="n">targ_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sd&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_tsrwe&quot;</span><span class="p">,</span> <span class="s2">&quot;avg_sdswrf&quot;</span><span class="p">]</span>
+<span class="n">targ_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"sd"</span><span class="p">,</span> <span class="s2">"avg_tsrwe"</span><span class="p">,</span> <span class="s2">"avg_sdswrf"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -629,19 +629,19 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_req</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;d1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;climate-dt&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;projections&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="s2">&quot;cont&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;generation&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;ifs-nemo&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;realization&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;expver&quot;</span><span class="p">:</span> <span class="s2">&quot;0001&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="s2">&quot;clte&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="s2">&quot;standard&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;levtype&quot;</span><span class="p">:</span> <span class="s2">&quot;sfc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;0000/to/2300&quot;</span><span class="p">,</span>
+    <span class="s2">"class"</span><span class="p">:</span> <span class="s2">"d1"</span><span class="p">,</span>
+    <span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"climate-dt"</span><span class="p">,</span>
+    <span class="s2">"activity"</span><span class="p">:</span> <span class="s2">"projections"</span><span class="p">,</span>
+    <span class="s2">"experiment"</span><span class="p">:</span> <span class="s2">"cont"</span><span class="p">,</span>
+    <span class="s2">"generation"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+    <span class="s2">"model"</span><span class="p">:</span> <span class="s2">"ifs-nemo"</span><span class="p">,</span>
+    <span class="s2">"realization"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+    <span class="s2">"expver"</span><span class="p">:</span> <span class="s2">"0001"</span><span class="p">,</span>
+    <span class="s2">"stream"</span><span class="p">:</span> <span class="s2">"clte"</span><span class="p">,</span>
+    <span class="s2">"resolution"</span><span class="p">:</span> <span class="s2">"standard"</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"fc"</span><span class="p">,</span>
+    <span class="s2">"levtype"</span><span class="p">:</span> <span class="s2">"sfc"</span><span class="p">,</span>
+    <span class="s2">"time"</span><span class="p">:</span> <span class="s2">"0000/to/2300/by/0100"</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -656,16 +656,16 @@ title="Print to PDF"
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add_time_location_to_request</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">point_locs</span><span class="p">):</span>
-    <span class="n">date_range</span> <span class="o">=</span> <span class="n">start_date</span> <span class="o">+</span> <span class="s2">&quot;/to/&quot;</span> <span class="o">+</span> <span class="n">end_date</span>
-    <span class="n">base_req</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date_range</span>
+    <span class="n">date_range</span> <span class="o">=</span> <span class="n">start_date</span> <span class="o">+</span> <span class="s2">"/to/"</span> <span class="o">+</span> <span class="n">end_date</span>
+    <span class="n">base_req</span><span class="p">[</span><span class="s2">"date"</span><span class="p">]</span> <span class="o">=</span> <span class="n">date_range</span>
 
     <span class="n">timeseries_feature</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;timeseries&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="n">point_locs</span><span class="p">,</span>
-            <span class="s2">&quot;time_axis&quot;</span><span class="p">:</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span>
+            <span class="s2">"type"</span> <span class="p">:</span> <span class="s2">"timeseries"</span><span class="p">,</span>
+            <span class="s2">"points"</span><span class="p">:</span> <span class="n">point_locs</span><span class="p">,</span>
+            <span class="s2">"time_axis"</span><span class="p">:</span> <span class="s2">"date"</span><span class="p">,</span>
         <span class="p">}</span>
     
-    <span class="n">base_req</span><span class="p">[</span><span class="s2">&quot;feature&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">timeseries_feature</span>
+    <span class="n">base_req</span><span class="p">[</span><span class="s2">"feature"</span><span class="p">]</span> <span class="o">=</span> <span class="n">timeseries_feature</span>
 
     <span class="k">return</span> <span class="n">base_req</span>
 </pre></div>
@@ -683,15 +683,15 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.data</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">extract_params</span><span class="p">(</span><span class="n">param_list</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">point_locs</span><span class="p">):</span>
-    <span class="n">param_str</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">param_list</span><span class="p">)</span>
+    <span class="n">param_str</span> <span class="o">=</span> <span class="s2">"/"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">param_list</span><span class="p">)</span>
 
     <span class="n">request</span> <span class="o">=</span> <span class="n">add_time_location_to_request</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">point_locs</span><span class="p">)</span>
 
-    <span class="n">request</span><span class="p">[</span><span class="s2">&quot;param&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">param_str</span>
+    <span class="n">request</span><span class="p">[</span><span class="s2">"param"</span><span class="p">]</span> <span class="o">=</span> <span class="n">param_str</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 
-    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;polytope&quot;</span><span class="p">,</span> <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.mn5.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"polytope"</span><span class="p">,</span> <span class="s2">"destination-earth"</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">"polytope.mn5.apps.dte.destination-earth.eu"</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="n">ds</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
 
@@ -708,9 +708,9 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_start_date</span> <span class="o">=</span> <span class="s2">&quot;19900101&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_start_date</span> <span class="o">=</span> <span class="s2">"19900101"</span>
 
-<span class="n">training_end_date</span> <span class="o">=</span> <span class="s2">&quot;19990101&quot;</span>
+<span class="n">training_end_date</span> <span class="o">=</span> <span class="s2">"19990101"</span>
 
 <span class="n">training_loc</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">38</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.5</span><span class="p">)]</span>
 
@@ -722,7 +722,7 @@ title="Print to PDF"
 </div>
 </details>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -1240,7 +1240,7 @@ Attributes: (12/14)
                &#x27;2002-01-01 22:00:00&#x27;, &#x27;2002-01-01 23:00:00&#x27;],
               dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;t&#x27;, length=105216, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-997aba67-eb82-4179-a3b5-a3f92a28edb6' class='xr-section-summary-in' type='checkbox'  ><label for='section-997aba67-eb82-4179-a3b5-a3f92a28edb6' class='xr-section-summary' >Attributes: <span>(14)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>activity :</span></dt><dd>highresmip</dd><dt><span>class :</span></dt><dd>d1</dd><dt><span>dataset :</span></dt><dd>climate-dt</dd><dt><span>experiment :</span></dt><dd>cont</dd><dt><span>expver :</span></dt><dd>0001</dd><dt><span>generation :</span></dt><dd>1</dd><dt><span>levtype :</span></dt><dd>sfc</dd><dt><span>model :</span></dt><dd>ifs-nemo</dd><dt><span>realization :</span></dt><dd>1</dd><dt><span>resolution :</span></dt><dd>high</dd><dt><span>stream :</span></dt><dd>clte</dd><dt><span>type :</span></dt><dd>fc</dd><dt><span>number :</span></dt><dd>0</dd><dt><span>Forecast date :</span></dt><dd>2002-01-01 00:00:00Z</dd></dl></div></li></ul></div></div></div></div>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -1742,14 +1742,14 @@ Attributes: (12/14)
                &#x27;2002-01-01 22:00:00&#x27;, &#x27;2002-01-01 23:00:00&#x27;],
               dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;t&#x27;, length=105216, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ada1090d-48e8-41c3-bddc-f476b4b231c4' class='xr-section-summary-in' type='checkbox'  ><label for='section-ada1090d-48e8-41c3-bddc-f476b4b231c4' class='xr-section-summary' >Attributes: <span>(14)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>activity :</span></dt><dd>highresmip</dd><dt><span>class :</span></dt><dd>d1</dd><dt><span>dataset :</span></dt><dd>climate-dt</dd><dt><span>experiment :</span></dt><dd>cont</dd><dt><span>expver :</span></dt><dd>0001</dd><dt><span>generation :</span></dt><dd>1</dd><dt><span>levtype :</span></dt><dd>sfc</dd><dt><span>model :</span></dt><dd>ifs-nemo</dd><dt><span>realization :</span></dt><dd>1</dd><dt><span>resolution :</span></dt><dd>high</dd><dt><span>stream :</span></dt><dd>clte</dd><dt><span>type :</span></dt><dd>fc</dd><dt><span>number :</span></dt><dd>0</dd><dt><span>Forecast date :</span></dt><dd>2002-01-01 00:00:00Z</dd></dl></div></li></ul></div></div></div></div>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feats_ds_2</span> <span class="o">=</span> <span class="n">feats_ds</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">levelist</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">datetime</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;t&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feats_ds_2</span> <span class="o">=</span> <span class="n">feats_ds</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">levelist</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">datetime</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"float32"</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="p">(</span><span class="s2">"longitude"</span><span class="p">,</span> <span class="s2">"latitude"</span><span class="p">,</span> <span class="s2">"t"</span><span class="p">))</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
 
 <span class="n">feats_ds_2</span>
 </pre></div>
@@ -2283,14 +2283,14 @@ Attributes: (12/14)
             (350.5078125, 37.968952367503, &#x27;2002-01-01 23:00:00&#x27;)],
            name=&#x27;z&#x27;, length=105216))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-865a9253-22f8-4ebb-a32b-92c9ca577330' class='xr-section-summary-in' type='checkbox'  ><label for='section-865a9253-22f8-4ebb-a32b-92c9ca577330' class='xr-section-summary' >Attributes: <span>(14)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>activity :</span></dt><dd>highresmip</dd><dt><span>class :</span></dt><dd>d1</dd><dt><span>dataset :</span></dt><dd>climate-dt</dd><dt><span>experiment :</span></dt><dd>cont</dd><dt><span>expver :</span></dt><dd>0001</dd><dt><span>generation :</span></dt><dd>1</dd><dt><span>levtype :</span></dt><dd>sfc</dd><dt><span>model :</span></dt><dd>ifs-nemo</dd><dt><span>realization :</span></dt><dd>1</dd><dt><span>resolution :</span></dt><dd>high</dd><dt><span>stream :</span></dt><dd>clte</dd><dt><span>type :</span></dt><dd>fc</dd><dt><span>number :</span></dt><dd>0</dd><dt><span>Forecast date :</span></dt><dd>2002-01-01 00:00:00Z</dd></dl></div></li></ul></div></div></div></div>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_ds_2</span> <span class="o">=</span> <span class="n">target_ds</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">levelist</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">datetime</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;t&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="o">-</span> <span class="n">feats_ds_2</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_ds_2</span> <span class="o">=</span> <span class="n">target_ds</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">levelist</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">datetime</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"float32"</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="p">(</span><span class="s2">"longitude"</span><span class="p">,</span> <span class="s2">"latitude"</span><span class="p">,</span> <span class="s2">"t"</span><span class="p">))</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="o">-</span> <span class="n">feats_ds_2</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
 
 <span class="n">target_ds_2</span>
 </pre></div>
@@ -2810,15 +2810,15 @@ Coordinates:
 <span class="c1"># Setup the xgboost model instance and choose some parameters to control the training</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBRegressor</span><span class="p">(</span>
     <span class="n">n_estimators</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
-    <span class="n">tree_method</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">,</span>
+    <span class="n">tree_method</span><span class="o">=</span><span class="s2">"hist"</span><span class="p">,</span>
     <span class="n">objevtive</span><span class="o">=</span><span class="n">mean_absolute_error</span><span class="p">,</span>
-    <span class="c1"># multi_strategy=&quot;multi_output_tree&quot;,</span>
+    <span class="c1"># multi_strategy="multi_output_tree",</span>
     <span class="c1"># learning_rate=0.3,</span>
     <span class="n">eval_metric</span><span class="o">=</span><span class="n">r2_score_multi</span><span class="p">,</span>
     <span class="n">subsample</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fitting XGB model...&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Fitting XGB model..."</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eval_set</span><span class="o">=</span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)])</span>
 </pre></div>
 </div>
@@ -2832,9 +2832,9 @@ Coordinates:
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_start_date</span> <span class="o">=</span> <span class="s2">&quot;19950101&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_start_date</span> <span class="o">=</span> <span class="s2">"19950101"</span>
 
-<span class="n">training_end_date</span> <span class="o">=</span> <span class="s2">&quot;19950102&quot;</span>
+<span class="n">training_end_date</span> <span class="o">=</span> <span class="s2">"19950102"</span>
 
 <span class="n">training_loc</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">38</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.5</span><span class="p">)]</span>
 
@@ -2844,7 +2844,7 @@ Coordinates:
 </div>
 </details>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -2889,7 +2889,7 @@ Coordinates:
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feats_test</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;on step</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">....&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"on step</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">...."</span><span class="p">)</span>
     <span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">feats_test</span><span class="p">[[</span><span class="n">x</span><span class="p">]][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
     
 </pre></div>

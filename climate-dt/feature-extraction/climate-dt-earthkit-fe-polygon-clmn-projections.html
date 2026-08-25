@@ -617,7 +617,7 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'}</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">access_token</span> <span class="o">=</span> <span class="n">output_1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -664,7 +664,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defaults to making a live data request. Set to False to use the cached file instead.</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="n">LIVE_REQUEST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LIVE_REQUEST&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span>
+<span class="n">LIVE_REQUEST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"LIVE_REQUEST"</span><span class="p">,</span> <span class="s2">"true"</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"true"</span>
 <span class="n">LIVE_REQUEST</span>
 </pre></div>
 </div>
@@ -678,29 +678,29 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Poland&quot;</span><span class="p">]</span> <span class="c1"># List of countries</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Poland"</span><span class="p">]</span> <span class="c1"># List of countries</span>
 
 <span class="n">shapes</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">cartography</span><span class="o">.</span><span class="n">country_polygons</span><span class="p">(</span><span class="n">countries</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mf">50e6</span><span class="p">)</span>
 
 <span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;activity&quot;</span><span class="p">:</span>    <span class="s2">&quot;projections&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;class&quot;</span><span class="p">:</span>       <span class="s2">&quot;d1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span>     <span class="s2">&quot;climate-dt&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;experiment&quot;</span><span class="p">:</span>  <span class="s2">&quot;SSP3-7.0&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;generation&quot;</span><span class="p">:</span>  <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;expver&quot;</span><span class="p">:</span>      <span class="s2">&quot;0001&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span>       <span class="s2">&quot;IFS-NEMO&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;realization&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;resolution&quot;</span><span class="p">:</span>  <span class="s2">&quot;high&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;stream&quot;</span><span class="p">:</span>      <span class="s2">&quot;clmn&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span>        <span class="s2">&quot;fc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;year&quot;</span><span class="p">:</span>        <span class="s2">&quot;2040&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;month&quot;</span><span class="p">:</span>       <span class="s2">&quot;7&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;levtype&quot;</span><span class="p">:</span>     <span class="s2">&quot;sfc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;param&quot;</span><span class="p">:</span>       <span class="s2">&quot;avg_2t&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;feature&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;polygon&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;shape&quot;</span><span class="p">:</span> <span class="n">shapes</span>
+    <span class="s2">"activity"</span><span class="p">:</span>    <span class="s2">"projections"</span><span class="p">,</span>
+    <span class="s2">"class"</span><span class="p">:</span>       <span class="s2">"d1"</span><span class="p">,</span>
+    <span class="s2">"dataset"</span><span class="p">:</span>     <span class="s2">"climate-dt"</span><span class="p">,</span>
+    <span class="s2">"experiment"</span><span class="p">:</span>  <span class="s2">"SSP3-7.0"</span><span class="p">,</span>
+    <span class="s2">"generation"</span><span class="p">:</span>  <span class="s2">"2"</span><span class="p">,</span>
+    <span class="s2">"expver"</span><span class="p">:</span>      <span class="s2">"0001"</span><span class="p">,</span>
+    <span class="s2">"model"</span><span class="p">:</span>       <span class="s2">"IFS-NEMO"</span><span class="p">,</span>
+    <span class="s2">"realization"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+    <span class="s2">"resolution"</span><span class="p">:</span>  <span class="s2">"high"</span><span class="p">,</span>
+    <span class="s2">"stream"</span><span class="p">:</span>      <span class="s2">"clmn"</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span>        <span class="s2">"fc"</span><span class="p">,</span>
+    <span class="s2">"year"</span><span class="p">:</span>        <span class="s2">"2040"</span><span class="p">,</span>
+    <span class="s2">"month"</span><span class="p">:</span>       <span class="s2">"7"</span><span class="p">,</span>
+    <span class="s2">"levtype"</span><span class="p">:</span>     <span class="s2">"sfc"</span><span class="p">,</span>
+    <span class="s2">"param"</span><span class="p">:</span>       <span class="s2">"avg_2t"</span><span class="p">,</span>
+    <span class="s2">"feature"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"polygon"</span><span class="p">,</span>
+        <span class="s2">"shape"</span><span class="p">:</span> <span class="n">shapes</span>
     <span class="p">},</span>
 <span class="p">}</span>
 </pre></div>
@@ -715,21 +715,21 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;../data/climate-dt-earthkit-fe-polygon-clmn-projections.covjson&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">"../data/climate-dt-earthkit-fe-polygon-clmn-projections.covjson"</span>
 <span class="k">if</span> <span class="n">LIVE_REQUEST</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span>
-        <span class="s2">&quot;polytope&quot;</span><span class="p">,</span> <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span>
-        <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.mn5.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span>
+        <span class="s2">"polytope"</span><span class="p">,</span> <span class="s2">"destination-earth"</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span>
+        <span class="n">address</span><span class="o">=</span><span class="s2">"polytope.mn5.apps.dte.destination-earth.eu"</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span>
     <span class="p">)</span>
-    <span class="n">data</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">to_target</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="s2">"file"</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -1315,24 +1315,24 @@ Attributes: (12/16)
        18.22559367, 18.34432718], shape=(7707,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>levelist</span></div><div class='xr-var-dims'>(points)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0</div><input id='attrs-06efa509-f5c7-4c34-8adb-f71cd5420caf' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-06efa509-f5c7-4c34-8adb-f71cd5420caf' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9e237b01-9700-4b52-9b6e-5db53224cf15' class='xr-var-data-in' type='checkbox'><label for='data-9e237b01-9700-4b52-9b6e-5db53224cf15' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0., 0., 0., ..., 0., 0., 0.], shape=(7707,))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ce466bb3-c9a7-4615-b7fd-50af659ca499' class='xr-section-summary-in' type='checkbox' checked /><label for='section-ce466bb3-c9a7-4615-b7fd-50af659ca499' class='xr-section-summary' title='Expand/collapse section'>Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>avg_2t</span></div><div class='xr-var-dims'>(datetimes, number, steps, points)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>294.4 293.7 293.6 ... 291.2 290.8</div><input id='attrs-8add8d01-8f7d-40d9-9787-1d5ed6e554d9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8add8d01-8f7d-40d9-9787-1d5ed6e554d9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b6abe097-cde3-4427-9fbd-22f84054c272' class='xr-var-data-in' type='checkbox'><label for='data-b6abe097-cde3-4427-9fbd-22f84054c272' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>type :</span></dt><dd>Parameter</dd><dt><span>units :</span></dt><dd>K</dd><dt><span>long_name :</span></dt><dd>avg_2t</dd></dl></div><div class='xr-var-data'><pre>array([[[[294.36897278, 293.70609283, 293.60488892, ..., 291.29142761,
           291.18623352, 290.83128357]]]], shape=(1, 1, 1, 7707))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-be737c07-af7e-42c6-b4ed-47831eaed914' class='xr-section-summary-in' type='checkbox' /><label for='section-be737c07-af7e-42c6-b4ed-47831eaed914' class='xr-section-summary' title='Expand/collapse section'>Attributes: <span>(16)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>activity :</span></dt><dd>projections</dd><dt><span>class :</span></dt><dd>d1</dd><dt><span>dataset :</span></dt><dd>climate-dt</dd><dt><span>experiment :</span></dt><dd>ssp3-7.0</dd><dt><span>expver :</span></dt><dd>0001</dd><dt><span>generation :</span></dt><dd>2</dd><dt><span>levtype :</span></dt><dd>sfc</dd><dt><span>model :</span></dt><dd>ifs-nemo</dd><dt><span>realization :</span></dt><dd>1</dd><dt><span>resolution :</span></dt><dd>high</dd><dt><span>stream :</span></dt><dd>clmn</dd><dt><span>type :</span></dt><dd>fc</dd><dt><span>number :</span></dt><dd>0</dd><dt><span>Forecast date :</span></dt><dd>2040-07-01T00:00:00Z</dd><dt><span>step :</span></dt><dd>0</dd><dt><span>date :</span></dt><dd>2040-07-01T00:00:00Z</dd></dl></div></li></ul></div></div></div></div>
 </div>
-<div class="cell tag_hide-input tag_keep_output docutils container">
+<div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Poland&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="s2">"Poland"</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">point_cloud</span><span class="p">(</span>
-    <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;avg_2t&quot;</span><span class="p">],</span>
-    <span class="n">units</span><span class="o">=</span><span class="s2">&quot;celsius&quot;</span>
+    <span class="n">ds</span><span class="p">[</span><span class="s2">"avg_2t"</span><span class="p">],</span>
+    <span class="n">units</span><span class="o">=</span><span class="s2">"celsius"</span>
 <span class="p">)</span>
 
 <span class="n">chart</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">borders</span><span class="p">()</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">gridlines</span><span class="p">()</span>
 
-<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Monthly mean 2 m temperature — July 2040 (IFS-NEMO SSP3-7.0)&quot;</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Monthly mean 2 m temperature — July 2040 (IFS-NEMO SSP3-7.0)"</span><span class="p">)</span>
 
 <span class="n">chart</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 

@@ -590,11 +590,11 @@ Once authenticated, all other notebooks (e.g. <code class="docutils literal notr
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verify the key was stored</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="n">keyfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/.polytopeapirc&#39;</span><span class="p">)</span>
+<span class="n">keyfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">'~/.polytopeapirc'</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">keyfile</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Key stored in </span><span class="si">{</span><span class="n">keyfile</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Key stored in </span><span class="si">{</span><span class="n">keyfile</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;WARNING: key file not found — authentication may have failed&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'WARNING: key file not found — authentication may have failed'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

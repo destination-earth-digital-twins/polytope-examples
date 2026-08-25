@@ -668,28 +668,28 @@ individual GRIB fields that earthkit can index, filter, and convert.</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;activity&#39;</span><span class="p">:</span> <span class="s1">&#39;projections&#39;</span><span class="p">,</span>   <span class="c1"># CMIP activity: SSP scenario projections (vs. &#39;baseline&#39; historical)</span>
-    <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;d1&#39;</span><span class="p">,</span>               <span class="c1"># DestinE data class</span>
-    <span class="s1">&#39;dataset&#39;</span><span class="p">:</span> <span class="s1">&#39;climate-dt&#39;</span><span class="p">,</span>     <span class="c1"># dataset family</span>
-    <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;20260526&#39;</span><span class="p">,</span>          <span class="c1"># date index</span>
-    <span class="s1">&#39;experiment&#39;</span><span class="p">:</span> <span class="s1">&#39;SSP3-7.0&#39;</span><span class="p">,</span>    <span class="c1"># experiment/scenario (middle-of-the-road high emissions)</span>
-    <span class="s1">&#39;expver&#39;</span><span class="p">:</span> <span class="s1">&#39;0001&#39;</span><span class="p">,</span>            <span class="c1"># experiment version (operations / research exp.)</span>
-    <span class="s1">&#39;generation&#39;</span><span class="p">:</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span>           <span class="c1"># dataset generation</span>
-    <span class="s1">&#39;levtype&#39;</span><span class="p">:</span> <span class="s1">&#39;sfc&#39;</span><span class="p">,</span>            <span class="c1"># vertical level type: surface fields</span>
-    <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="s1">&#39;IFS-NEMO&#39;</span><span class="p">,</span>         <span class="c1"># coupled atmosphere-ocean model</span>
-    <span class="s1">&#39;param&#39;</span><span class="p">:</span> <span class="s1">&#39;151/165/166/167&#39;</span><span class="p">,</span>  <span class="c1"># parameter IDs: MSL pressure, 10m U-wind, 10m V-wind, 2m temperature</span>
-    <span class="s1">&#39;realization&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>          <span class="c1"># initial-condition run</span>
-    <span class="s1">&#39;resolution&#39;</span><span class="p">:</span> <span class="s1">&#39;standard&#39;</span><span class="p">,</span>    <span class="c1"># quick-view (&#39;standard&#39;) or full (&#39;high&#39;) resolution</span>
-    <span class="s1">&#39;stream&#39;</span><span class="p">:</span> <span class="s1">&#39;clte&#39;</span><span class="p">,</span>            <span class="c1"># climate hourly time-step stream</span>
-    <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="s1">&#39;0100&#39;</span><span class="p">,</span>              <span class="c1"># time index</span>
-    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;fc&#39;</span>                 <span class="c1"># forecast fields</span>
+    <span class="s1">'activity'</span><span class="p">:</span> <span class="s1">'projections'</span><span class="p">,</span>   <span class="c1"># CMIP activity: SSP scenario projections (vs. 'baseline' historical)</span>
+    <span class="s1">'class'</span><span class="p">:</span> <span class="s1">'d1'</span><span class="p">,</span>               <span class="c1"># DestinE data class</span>
+    <span class="s1">'dataset'</span><span class="p">:</span> <span class="s1">'climate-dt'</span><span class="p">,</span>     <span class="c1"># dataset family</span>
+    <span class="s1">'date'</span><span class="p">:</span> <span class="s1">'20260526'</span><span class="p">,</span>          <span class="c1"># date index</span>
+    <span class="s1">'experiment'</span><span class="p">:</span> <span class="s1">'SSP3-7.0'</span><span class="p">,</span>    <span class="c1"># experiment/scenario (middle-of-the-road high emissions)</span>
+    <span class="s1">'expver'</span><span class="p">:</span> <span class="s1">'0001'</span><span class="p">,</span>            <span class="c1"># experiment version (operations / research exp.)</span>
+    <span class="s1">'generation'</span><span class="p">:</span> <span class="s1">'2'</span><span class="p">,</span>           <span class="c1"># dataset generation</span>
+    <span class="s1">'levtype'</span><span class="p">:</span> <span class="s1">'sfc'</span><span class="p">,</span>            <span class="c1"># vertical level type: surface fields</span>
+    <span class="s1">'model'</span><span class="p">:</span> <span class="s1">'IFS-NEMO'</span><span class="p">,</span>         <span class="c1"># coupled atmosphere-ocean model</span>
+    <span class="s1">'param'</span><span class="p">:</span> <span class="s1">'151/165/166/167'</span><span class="p">,</span>  <span class="c1"># parameter IDs: MSL pressure, 10m U-wind, 10m V-wind, 2m temperature</span>
+    <span class="s1">'realization'</span><span class="p">:</span> <span class="s1">'1'</span><span class="p">,</span>          <span class="c1"># initial-condition run</span>
+    <span class="s1">'resolution'</span><span class="p">:</span> <span class="s1">'standard'</span><span class="p">,</span>    <span class="c1"># quick-view ('standard') or full ('high') resolution</span>
+    <span class="s1">'stream'</span><span class="p">:</span> <span class="s1">'clte'</span><span class="p">,</span>            <span class="c1"># climate hourly time-step stream</span>
+    <span class="s1">'time'</span><span class="p">:</span> <span class="s1">'0100'</span><span class="p">,</span>              <span class="c1"># time index</span>
+    <span class="s1">'type'</span><span class="p">:</span> <span class="s1">'fc'</span>                 <span class="c1"># forecast fields</span>
 <span class="p">}</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">ekd</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span>
-    <span class="s2">&quot;polytope&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;destination-earth&quot;</span><span class="p">,</span>
+    <span class="s2">"polytope"</span><span class="p">,</span>
+    <span class="s2">"destination-earth"</span><span class="p">,</span>
     <span class="n">request</span><span class="p">,</span>
-    <span class="n">address</span><span class="o">=</span><span class="s2">&quot;polytope.mn5.apps.dte.destination-earth.eu&quot;</span><span class="p">,</span>
+    <span class="n">address</span><span class="o">=</span><span class="s2">"polytope.mn5.apps.dte.destination-earth.eu"</span><span class="p">,</span>
     <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span><span class="o">.</span><span class="n">to_fieldlist</span><span class="p">()</span>
 
@@ -702,29 +702,29 @@ individual GRIB fields that earthkit can index, filter, and convert.</p>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-06-10 12:55:54 - INFO - Key read from /Users/mavj/.polytopeapirc
 2026-06-10 12:55:54 - INFO - Sending request...
-{&#39;request&#39;: &#39;activity: projections\n&#39;
-            &#39;class: d1\n&#39;
-            &#39;dataset: climate-dt\n&#39;
-            &quot;date: &#39;20260526&#39;\n&quot;
-            &#39;experiment: SSP3-7.0\n&#39;
-            &quot;expver: &#39;0001&#39;\n&quot;
-            &quot;generation: &#39;2&#39;\n&quot;
-            &#39;levtype: sfc\n&#39;
-            &#39;model: IFS-NEMO\n&#39;
-            &#39;param: 151/165/166/167\n&#39;
-            &quot;realization: &#39;1&#39;\n&quot;
-            &#39;resolution: standard\n&#39;
-            &#39;stream: clte\n&#39;
-            &quot;time: &#39;0100&#39;\n&quot;
-            &#39;type: fc\n&#39;,
- &#39;verb&#39;: &#39;retrieve&#39;}
+{'request': 'activity: projections\n'
+            'class: d1\n'
+            'dataset: climate-dt\n'
+            "date: '20260526'\n"
+            'experiment: SSP3-7.0\n'
+            "expver: '0001'\n"
+            "generation: '2'\n"
+            'levtype: sfc\n'
+            'model: IFS-NEMO\n'
+            'param: 151/165/166/167\n'
+            "realization: '1'\n"
+            'resolution: standard\n'
+            'stream: clte\n'
+            "time: '0100'\n"
+            'type: fc\n',
+ 'verb': 'retrieve'}
 2026-06-10 12:55:54 - INFO - Polytope user key found in session cache for user mavj
 2026-06-10 12:55:55 - INFO - Request accepted. Please poll ./583d852a-75ae-4abc-bcae-2b0d323e8528 for status
 2026-06-10 12:55:55 - INFO - Polytope user key found in session cache for user mavj
 2026-06-10 12:55:55 - INFO - Checking request status (583d852a-75ae-4abc-bcae-2b0d323e8528)...
-2026-06-10 12:55:56 - INFO - The current status of the request is &#39;queued&#39;
-2026-06-10 12:55:56 - INFO - The current status of the request is &#39;processing&#39;
-2026-06-10 12:55:58 - INFO - The current status of the request is &#39;processed&#39;
+2026-06-10 12:55:56 - INFO - The current status of the request is 'queued'
+2026-06-10 12:55:56 - INFO - The current status of the request is 'processing'
+2026-06-10 12:55:58 - INFO - The current status of the request is 'processed'
                                                                                                                                            
 </pre></div>
 </div>
@@ -853,7 +853,7 @@ so we can unpack it directly into named variables.</p>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekp</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Europe&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">borders</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekp</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">"Europe"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">)</span><span class="o">.</span><span class="n">borders</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -874,7 +874,7 @@ as a filled background and mean-sea-level pressure as contours. The titles and l
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekp</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="n">msl</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Europe&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ekp</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="n">msl</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">"Europe"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -898,10 +898,10 @@ as a filled background and mean-sea-level pressure as contours. The titles and l
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="s2">&quot;Europe&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="s2">"Europe"</span><span class="p">)</span>
 
-<span class="n">chart</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;celsius&quot;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">26</span><span class="p">))</span>
-<span class="n">chart</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">msl</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;hPa&quot;</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">"celsius"</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">"RdBu_r"</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">26</span><span class="p">))</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">msl</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">"hPa"</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">chart</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">wind_u</span><span class="p">,</span> <span class="n">wind_v</span><span class="p">)</span>
@@ -1198,15 +1198,15 @@ table.ek th {
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;France&quot;</span><span class="p">,</span> <span class="s2">&quot;Spain&quot;</span><span class="p">],</span> <span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">"France"</span><span class="p">,</span> <span class="s2">"Spain"</span><span class="p">],</span> <span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">healpix_plot</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span>
-<span class="n">healpix_plot</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
-<span class="n">healpix_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;HEALPix grid&quot;</span><span class="p">)</span>
+<span class="n">healpix_plot</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">)</span>
+<span class="n">healpix_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"HEALPix grid"</span><span class="p">)</span>
 
 <span class="n">regular_ll_plot</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span>
-<span class="n">regular_ll_plot</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">regular_ll</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
-<span class="n">regular_ll_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Regular latitude-longitude grid&quot;</span><span class="p">)</span>
+<span class="n">regular_ll_plot</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">regular_ll</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">)</span>
+<span class="n">regular_ll_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Regular latitude-longitude grid"</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">borders</span><span class="p">()</span>
@@ -1238,15 +1238,15 @@ table.ek th {
 
 <span class="n">t2m_0p1</span> <span class="o">=</span> <span class="n">ekg</span><span class="o">.</span><span class="n">regrid</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="n">out_grid</span><span class="o">=</span><span class="n">GRID</span><span class="p">)</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;France&quot;</span><span class="p">,</span> <span class="s2">&quot;Spain&quot;</span><span class="p">],</span> <span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">ekp</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">"France"</span><span class="p">,</span> <span class="s2">"Spain"</span><span class="p">],</span> <span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">healpix_plot</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span>
-<span class="n">healpix_plot</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
-<span class="n">healpix_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;HEALPix grid&quot;</span><span class="p">)</span>
+<span class="n">healpix_plot</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">t2m</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">)</span>
+<span class="n">healpix_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"HEALPix grid"</span><span class="p">)</span>
 
 <span class="n">regular_ll_plot</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_map</span><span class="p">()</span>
-<span class="n">regular_ll_plot</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">t2m_0p1</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
-<span class="n">regular_ll_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">GRID</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">°$\times$</span><span class="si">{</span><span class="n">GRID</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">° regular latitude-longitude grid&quot;</span><span class="p">)</span>
+<span class="n">regular_ll_plot</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span><span class="n">t2m_0p1</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">)</span>
+<span class="n">regular_ll_plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">rf</span><span class="s2">"</span><span class="si">{</span><span class="n">GRID</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">°$\times$</span><span class="si">{</span><span class="n">GRID</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">° regular latitude-longitude grid"</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">borders</span><span class="p">()</span>
