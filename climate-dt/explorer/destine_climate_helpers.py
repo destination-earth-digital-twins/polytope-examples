@@ -13,6 +13,8 @@ import earthkit.data
 import xarray as xr
 import numpy as np
 
+from destine_registry import infer_activity, resolve_address
+
 # Earthkit cache configuration — prevents unbounded cache growth
 earthkit.data.config.set("cache-policy", "temporary")
 earthkit.data.config.set("maximum-cache-size", "2G")
@@ -23,28 +25,23 @@ for _logger_name in ("earthkit.data", "polytope", "polytope.api",
     logging.getLogger(_logger_name).setLevel(logging.WARNING)
 
 
-def get_polytope_address(model):
-    """Return the correct Polytope server address for a given model."""
-    if model.upper() == 'IFS-NEMO':
-        return "polytope.mn5.apps.dte.destination-earth.eu"
-    return "polytope.lumi.apps.dte.destination-earth.eu"
+def get_polytope_address(model, experiment=None, activity=None, generation=2):
+    """Return the Polytope server address serving a given simulation.
+
+    Looked up in simulations.yaml — see destine_registry.
+    """
+    return resolve_address(model, experiment=experiment, activity=activity,
+                           generation=generation)
 
 
 def _infer_activity(experiment):
     """Infer the activity from the experiment name."""
-    if experiment in ('hist', 'cont'):
-        return 'baseline'
-    elif experiment == 'SSP3-7.0':
-        return 'projections'
-    else:
-        raise ValueError(
-            f"Unknown experiment '{experiment}'. "
-            "Expected 'hist', 'cont', or 'SSP3-7.0'."
-        )
+    return infer_activity(experiment)
 
 
 def build_clmn_request(model, experiment, years, param,
-                        resolution='standard', realization='1'):
+                        resolution='standard', realization='1',
+                        generation='2'):
     """Build a Polytope request dict for the clmn (monthly) stream.
 
     years can be a single int or an iterable of ints. Multiple years
@@ -60,7 +57,7 @@ def build_clmn_request(model, experiment, years, param,
         "dataset": "climate-dt",
         "type": "fc",
         "expver": "0001",
-        "generation": "2",
+        "generation": str(generation),
         "realization": realization,
         "activity": _infer_activity(experiment),
         "experiment": experiment,
@@ -75,16 +72,17 @@ def build_clmn_request(model, experiment, years, param,
 
 
 def _fetch_chunk(model, experiment, years, param,
-                 resolution='standard', realization='1'):
+                 resolution='standard', realization='1', generation='2'):
     """
     Download a chunk of years in a single Polytope request.
 
     Returns an xarray DataArray with a 'valid_time' dimension, or None on failure.
     """
     request = build_clmn_request(model, experiment, years, param,
-                                  resolution, realization)
+                                  resolution, realization, generation)
     print(request)
-    address = get_polytope_address(model)
+    address = get_polytope_address(model, experiment=experiment,
+                                   generation=generation)
 
     try:
         #earthkit.data.cache.purge()
@@ -122,7 +120,7 @@ def _fetch_chunk(model, experiment, years, param,
 def fetch_period(model, experiment, years, param,
                  resolution='standard', store_data=False,
                  data_dir='./data', realization='1',
-                 chunk_size=35):
+                 chunk_size=35, generation='2'):
     """
     Download multiple years of monthly data, optionally caching to disk.
 
@@ -146,6 +144,9 @@ def fetch_period(model, experiment, years, param,
         Realization number (default '1').
     chunk_size : int
         Number of years per Polytope request.
+    generation : str
+        Climate DT generation (default '2'). Also selects the Polytope
+        server via simulations.yaml.
 
     Returns
     -------
@@ -190,7 +191,7 @@ def fetch_period(model, experiment, years, param,
         print(f"  {model} {experiment} {y0}-{y1}: downloading "
               f"({len(chunk_years)} years in one request)...")
         da = _fetch_chunk(model, experiment, chunk_years, param,
-                          resolution, realization)
+                          resolution, realization, generation)
 
         if da is None and len(chunk_years) > 1:
             # Chunk request failed, e.g. ICON, then fall back to year-by-year requests
@@ -198,7 +199,7 @@ def fetch_period(model, experiment, years, param,
                   f"retrying year by year...")
             for y in chunk_years:
                 da_y = _fetch_chunk(model, experiment, [y], param,
-                                    resolution, realization)
+                                    resolution, realization, generation)
                 if da_y is not None:
                     if store_data:
                         fp = os.path.join(outdir, f"{param}_{y}.nc")

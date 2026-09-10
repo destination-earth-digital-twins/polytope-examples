@@ -69,6 +69,7 @@ class PolytopeZarrStore(MutableMapping):
                         resolution="standard",
                         realization=1,
                         activity=None,
+                        generation=2,
                         address=None,
                         filter_months=None,
                         filter_hours=None):
@@ -115,11 +116,15 @@ class PolytopeZarrStore(MutableMapping):
             Default None = auto-detect ("hist"/"cont" → "baseline",
             else "projections").  Must be set explicitly for storyline
             simulations ("story-nudging"); storylines are IFS-FESOM only.
+        generation : int, optional
+            Climate DT generation.  Default 2.  Together with model,
+            activity and experiment this selects the Polytope server.
         address : str, optional
             Override the Polytope server URL.  When set, all models use
             this address (e.g. for test servers like
             ``"polytope.mn5.apps.dte.destination-earth.eu"``).
-            Default None = auto-detect per model.
+            Default None = looked up per simulation in ``simulations.yaml``
+            (see ``destine_registry``).
 
         Returns
         -------
@@ -127,6 +132,8 @@ class PolytopeZarrStore(MutableMapping):
         """
         from destine_portfolio import (PORTFOLIO_GEN2_CLMN, PORTFOLIO_GEN2_CLTE,
                                        PORTFOLIO_GEN2_STORYLINE)
+        from destine_registry import (infer_activity, resolve_address,
+                                      resolve_addresses)
 
         # ── Storyline path ──────────────────────────────────────────
         if activity == "story-nudging":
@@ -136,7 +143,25 @@ class PolytopeZarrStore(MutableMapping):
             experiments = experiment if isinstance(experiment, list) else [experiment]
             stream = "clte"
             portfolio = PORTFOLIO_GEN2_STORYLINE
-            _address = address or "polytope.mn5.apps.dte.destination-earth.eu"
+            if address is not None:
+                _address = address
+            else:
+                # Storylines are IFS-FESOM only; every experiment of the run
+                # must live on the same server, since the store fetches them
+                # all through a single address.
+                per_experiment = {
+                    exp: resolve_address("IFS-FESOM", experiment=exp,
+                                         activity="story-nudging",
+                                         generation=generation)
+                    for exp in experiments
+                }
+                if len(set(per_experiment.values())) > 1:
+                    raise ValueError(
+                        "Storyline experiments are served by different "
+                        f"Polytope addresses: {per_experiment}. Request them "
+                        "separately, or pass address= to force one server."
+                    )
+                _address = next(iter(per_experiment.values()))
 
             # Storylines ran at 9 km (nside 512), not 4.4 km (nside 1024)
             nside = 128 if resolution == "standard" else 512
@@ -165,7 +190,7 @@ class PolytopeZarrStore(MutableMapping):
                 "dataset": "climate-dt",
                 "type": "fc",
                 "expver": "0001",
-                "generation": "2",
+                "generation": str(generation),
                 "realization": str(realization),
                 "activity": "story-nudging",
                 "model": "IFS-FESOM",
@@ -210,14 +235,13 @@ class PolytopeZarrStore(MutableMapping):
         nside = 128 if resolution == "standard" else 1024
         n_cells = 12 * nside ** 2
         if activity is None:
-            activity = "baseline" if experiment in ("hist", "cont") else "projections"
+            activity = infer_activity(experiment)
         if address is not None:
             _address = address
         else:
-            _address = {m: ("polytope.mn5.apps.dte.destination-earth.eu"
-                            if m == "IFS-NEMO" else
-                            "polytope.lumi.apps.dte.destination-earth.eu")
-                        for m in models}
+            _address = resolve_addresses(models, experiment=experiment,
+                                         activity=activity,
+                                         generation=generation)
 
         # Portfolio lookup
         lt = portfolio[levtype]
@@ -260,7 +284,7 @@ class PolytopeZarrStore(MutableMapping):
             "dataset": "climate-dt",
             "type": "fc",
             "expver": "0001",
-            "generation": "2",
+            "generation": str(generation),
             "realization": str(realization),
             "activity": activity,
             "experiment": experiment,

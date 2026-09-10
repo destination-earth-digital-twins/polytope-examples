@@ -1,0 +1,75 @@
+# Polytope address registry for the DestinE Climate DT.
+#
+# Every simulation is served by exactly one Polytope bridge.  The rules below
+# map the four keys that identify a simulation — model, activity, experiment,
+# generation — onto the site that serves it.
+#
+# ── How to add a simulation ────────────────────────────────────────────────
+#   1. Add the server under `sites:` if it is not listed yet.
+#   2. Add a rule under `simulations:`, or widen an existing rule by adding a
+#      value to one of its lists.
+#   3. If the experiment is new, add it to `activity_by_experiment:` so the
+#      activity can be inferred when the caller does not pass one, and add any
+#      alternative spellings to `experiment_aliases:`.
+#
+# ── How rules are matched ──────────────────────────────────────────────────
+#   A rule matches when every selector it declares matches the query.  A
+#   selector may be a single value or a list of accepted values; a selector
+#   the rule omits matches anything, and so does a query key left unset.
+#   Comparison is case-insensitive.  Order does not matter: a query that
+#   matches rules on more than one site is rejected as ambiguous rather than
+#   resolved to whichever rule comes first.
+#
+#   Recognised rule keys: site, model, activity, experiment, generation, notes.
+
+version: 1
+
+sites:
+  mn5:  polytope.mn5.apps.dte.destination-earth.eu
+  lumi: polytope.lumi.apps.dte.destination-earth.eu
+  leo:  polytope.leo.apps.dte.destination-earth.eu
+
+# Canonical spelling for experiments that are written in more than one way.
+# Keys are matched case-insensitively; values must be the canonical spelling
+# used in `simulations:` and `activity_by_experiment:` below.
+experiment_aliases:
+  ssp370:  SSP3-7.0
+  ssp3-70: SSP3-7.0
+  ssp3.70: SSP3-7.0
+  tplus2k: Tplus2.0K
+
+# Activity implied by an experiment when the caller does not pass one.
+# `hist` and `cont` exist both as baseline runs and as storylines, so they
+# default to baseline here — storyline callers must pass
+# activity: story-nudging explicitly.
+activity_by_experiment:
+  hist:      baseline
+  cont:      baseline
+  SSP3-7.0:  projections
+  Tplus2.0K: story-nudging
+
+simulations:
+  # ── Generation 1 ─────────────────────────────────────────────────────────
+  - site: leo
+    generation: 1
+    model: IFS-NEMO
+    notes: All Generation 1 IFS-NEMO simulations, every activity and experiment.
+
+  # ── Generation 2 ─────────────────────────────────────────────────────────
+  - site: mn5
+    generation: 2
+    model: IFS-FESOM
+    activity: story-nudging
+    experiment: [cont, hist, Tplus2.0K]
+
+  - site: mn5
+    generation: 2
+    model: IFS-NEMO
+    activity: [baseline, projections]
+    experiment: [cont, hist, SSP3-7.0]
+
+  - site: lumi
+    generation: 2
+    model: [ICON, IFS-FESOM]
+    activity: [baseline, projections]
+    experiment: [cont, hist, SSP3-7.0]

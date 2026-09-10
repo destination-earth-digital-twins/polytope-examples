@@ -7,6 +7,8 @@ env/
 # Local dev sandbox (not pushed upstream)
 climate-dt/polytope-explorer/dev/
 
+# Data directories
+climate-dt/explorer/data/
 
 # Jupyter Book configs and TOC files
 _config.yaml
