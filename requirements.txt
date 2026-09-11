@@ -33,3 +33,4 @@ cartopy
 # zarr>=2.18,<3
 zarr
 numcodecs<0.16
+geopandas
