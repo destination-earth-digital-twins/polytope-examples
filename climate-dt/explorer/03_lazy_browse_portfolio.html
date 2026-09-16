@@ -1385,10 +1385,6 @@ selected model, time, and variable.</p>
 <h2>4. Compare experiments: climate change signal<a class="headerlink" href="#compare-experiments-climate-change-signal" title="Permalink to this heading">#</a></h2>
 <p>Create a second store for the scenario experiment, then take the difference to the historical.
 <code class="docutils literal notranslate"><span class="pre">.polytope.sel()</span></code> automatically sets <code class="docutils literal notranslate"><span class="pre">batch_years</span></code> from the time slice so each call fetches all requested years in one Polytope request.</p>
-<blockquote>
-<div><p><strong>Note:</strong> ICON scenario data is available to <strong>2040</strong>; IFS-NEMO/IFS-FESOM to <strong>2049</strong>.
-When slicing ICON scenario data, use <code class="docutils literal notranslate"><span class="pre">time=slice(&quot;2015-01&quot;,</span> <span class="pre">&quot;2040-12&quot;)</span></code>.</p>
-</div></blockquote>
 <div class="cell tag_keep_output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
