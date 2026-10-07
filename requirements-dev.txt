@@ -1,3 +1,4 @@
+# DEVELOPMENT ONLY — These dependencies are only required for local development, testing, linting, etc.
 pre-commit
 pytest
 pytest-timeout
