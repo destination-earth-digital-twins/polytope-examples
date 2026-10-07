@@ -157,13 +157,6 @@ const thebe_selector_output = ".output, .cell_output"
                       </a>
                     </li>
                 
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../nextgems/README.html">
-                        NextGEMS Data
-                      </a>
-                    </li>
-                
     </ul>
 </nav>
       </div>
@@ -251,13 +244,6 @@ const thebe_selector_output = ".output, .cell_output"
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../on-demand-extremes-dt/README.html">
                         On-Demand Extremes-DT
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../nextgems/README.html">
-                        NextGEMS Data
                       </a>
                     </li>
                 
@@ -381,15 +367,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../extremes-dt/README.html">Extremes DT</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/full-field/extremes-dt-earthkit-example.html">Polytope Extremes-DT example notebook</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/full-field/extremes-dt-earthkit-example-H3.html">Polytope Extremes-DT Feature Extraction Timeseries H3 example notebook</a></li>
-
 <li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/full-field/extremes-dt-earthkit-example-domain.html">Polytope Extremes-DT example notebook</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/full-field-post-processing/extremes-dt-earthkit-example-regrid.html">Polytope Extremes-DT example notebook</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/full-field-post-processing/extremes-dt-earthkit-serverside-interpolation.html">Polytope Extremes-DT Serverside Interpolation example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-H3.html">Polytope Extremes-DT Feature Extraction Timeseries H3 example notebook</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../../extremes-dt/feature-extraction/extremes-dt-earthkit-example-fe-boundingbox.html">Polytope Extremes-DT Feature Extraction Bounding Box example notebook</a></li>
 
@@ -425,23 +409,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../on-demand-extremes-dt/feature-extraction/on-demand-extremes-dt-vertical-profile-fe-example.html">Polytope On-Demand DT Feature Extraction</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../../on-demand-extremes-dt/feature-extraction/on-demand-trajectory-fe-example.html">Polytope On-Demand DT Trajectory example notebook</a></li>
-
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../nextgems/README.html">NextGEMS Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../nextgems/full-field/nextGEMS-historical-earthkit-example.html">Polytope nextGEMS historical 1990-2020 example notebook</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="../../nextgems/full-field/nextGEMS-scenario-earthkit-example.html">Polytope nextGEMS historical 2020-2050 example notebook</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="../../nextgems/feature-extraction/nextGEMS-historical-fe-boundingbox-example.html">Polytope nextGEMS historical bounding box example notebook</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="../../nextgems/feature-extraction/nextGEMS-historical-fe-country-example.html">Polytope nextGEMS historical bounding box example notebook</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="../../nextgems/feature-extraction/nextGEMS-historical-fe-timeseries-example.html">Polytope nextGEMS historical timeseries example notebook</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="../../nextgems/feature-extraction/nextGEMS-historical-fe-trajectory-example.html">Polytope nextGEMS historical trajectory example notebook</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="../../nextgems/feature-extraction/nextGEMS-historical-fe-verticalprofile-example.html">Polytope nextGEMS historical vertical profile example notebook</a></li>
 
 </ul>
 </li>
@@ -722,7 +689,21 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dnp</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">-</span><span class="mi">273</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_fieldlist</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dnp</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">-</span><span class="mi">273</span>
 
 <span class="n">hp</span><span class="o">.</span><span class="n">pixelfunc</span><span class="o">.</span><span class="n">get_map_size</span><span class="p">(</span><span class="n">dnp</span><span class="p">)</span>
 </pre></div>
@@ -730,7 +711,7 @@ title="Print to PDF"
 </div>
 </details>
 </div>
-<div class="cell tag_keep_output tag_hide-input docutils container">
+<div class="cell tag_hide-input tag_keep_output docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -758,7 +739,7 @@ title="Print to PDF"
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0bad3542b374aca55b5b93f1d77a74c0b402472797e47d4dfddf925882a30629.png" src="../../_images/0bad3542b374aca55b5b93f1d77a74c0b402472797e47d4dfddf925882a30629.png" />
+<img alt="../../_images/932e14dd338abb26c5339ee280f67dba378fc5c2a02f2e62f79fd24d3d5e94f9.png" src="../../_images/932e14dd338abb26c5339ee280f67dba378fc5c2a02f2e62f79fd24d3d5e94f9.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -809,14 +790,28 @@ title="Print to PDF"
 </div>
 </details>
 </div>
-<div class="cell tag_keep_output tag_hide-input docutils container">
+<div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dnp2</span><span class="o">=</span><span class="n">data2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">-</span><span class="mi">273</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">data2</span><span class="o">.</span><span class="n">to_fieldlist</span><span class="p">()</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input tag_keep_output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dnp2</span><span class="o">=</span><span class="n">df2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">-</span><span class="mi">273</span>
 
 <span class="n">interpolated_data</span> <span class="o">=</span> <span class="n">hp</span><span class="o">.</span><span class="n">cartview</span><span class="p">(</span><span class="n">dnp2</span><span class="p">,</span>
             <span class="n">flip</span><span class="o">=</span><span class="s2">"geo"</span><span class="p">,</span> 
@@ -839,7 +834,7 @@ title="Print to PDF"
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/5e55c2a93627aecf8b89a7bd93008a428d0f8d1af121d06e84e2e87e9a3b00a2.png" src="../../_images/5e55c2a93627aecf8b89a7bd93008a428d0f8d1af121d06e84e2e87e9a3b00a2.png" />
+<img alt="../../_images/81f4c04090d14f0c833e13447d7c5f8a8fb00e69f687913b954910a2793d1de4.png" src="../../_images/81f4c04090d14f0c833e13447d7c5f8a8fb00e69f687913b954910a2793d1de4.png" />
 </div>
 </div>
 </section>

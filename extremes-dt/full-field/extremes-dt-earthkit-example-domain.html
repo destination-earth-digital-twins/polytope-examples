@@ -63,7 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Polytope Extremes-DT example notebook" href="../full-field-post-processing/extremes-dt-earthkit-example-regrid.html" />
-    <link rel="prev" title="Polytope Extremes-DT Feature Extraction Timeseries H3 example notebook" href="extremes-dt-earthkit-example-H3.html" />
+    <link rel="prev" title="Extremes DT" href="../README.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -157,13 +157,6 @@ const thebe_selector_output = ".output, .cell_output"
                       </a>
                     </li>
                 
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../nextgems/README.html">
-                        NextGEMS Data
-                      </a>
-                    </li>
-                
     </ul>
 </nav>
       </div>
@@ -251,13 +244,6 @@ const thebe_selector_output = ".output, .cell_output"
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../on-demand-extremes-dt/README.html">
                         On-Demand Extremes-DT
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../nextgems/README.html">
-                        NextGEMS Data
                       </a>
                     </li>
                 
@@ -381,15 +367,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../README.html">Extremes DT</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="extremes-dt-earthkit-example.html">Polytope Extremes-DT example notebook</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="extremes-dt-earthkit-example-H3.html">Polytope Extremes-DT Feature Extraction Timeseries H3 example notebook</a></li>
-
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Polytope Extremes-DT example notebook</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../full-field-post-processing/extremes-dt-earthkit-example-regrid.html">Polytope Extremes-DT example notebook</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../full-field-post-processing/extremes-dt-earthkit-serverside-interpolation.html">Polytope Extremes-DT Serverside Interpolation example notebook</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../feature-extraction/extremes-dt-earthkit-example-H3.html">Polytope Extremes-DT Feature Extraction Timeseries H3 example notebook</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../feature-extraction/extremes-dt-earthkit-example-fe-boundingbox.html">Polytope Extremes-DT Feature Extraction Bounding Box example notebook</a></li>
 
@@ -425,23 +409,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../on-demand-extremes-dt/feature-extraction/on-demand-extremes-dt-vertical-profile-fe-example.html">Polytope On-Demand DT Feature Extraction</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../../on-demand-extremes-dt/feature-extraction/on-demand-trajectory-fe-example.html">Polytope On-Demand DT Trajectory example notebook</a></li>
-
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../nextgems/README.html">NextGEMS Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../nextgems/full-field/nextGEMS-historical-earthkit-example.html">Polytope nextGEMS historical 1990-2020 example notebook</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="../../nextgems/full-field/nextGEMS-scenario-earthkit-example.html">Polytope nextGEMS historical 2020-2050 example notebook</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="../../nextgems/feature-extraction/nextGEMS-historical-fe-boundingbox-example.html">Polytope nextGEMS historical bounding box example notebook</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="../../nextgems/feature-extraction/nextGEMS-historical-fe-country-example.html">Polytope nextGEMS historical bounding box example notebook</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="../../nextgems/feature-extraction/nextGEMS-historical-fe-timeseries-example.html">Polytope nextGEMS historical timeseries example notebook</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="../../nextgems/feature-extraction/nextGEMS-historical-fe-trajectory-example.html">Polytope nextGEMS historical trajectory example notebook</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="../../nextgems/feature-extraction/nextGEMS-historical-fe-verticalprofile-example.html">Polytope nextGEMS historical vertical profile example notebook</a></li>
 
 </ul>
 </li>
@@ -642,7 +609,7 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.data</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.plots</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">earthkit.regrid</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">earthkit.geo</span><span class="w"> </span><span class="kn">import</span> <span class="n">regrid</span>
 </pre></div>
 </div>
 </div>
@@ -710,14 +677,15 @@ title="Print to PDF"
 </div>
 </details>
 </div>
-<div class="cell tag_keep_output tag_hide-input docutils container">
+<div class="cell tag_hide-input tag_keep_output docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_fieldlist</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -741,29 +709,25 @@ title="Print to PDF"
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>centre</th>
-      <th>shortName</th>
-      <th>typeOfLevel</th>
-      <th>level</th>
-      <th>dataDate</th>
-      <th>dataTime</th>
-      <th>stepRange</th>
-      <th>dataType</th>
-      <th>number</th>
-      <th>gridType</th>
+      <th>parameter.variable</th>
+      <th>time.valid_datetime</th>
+      <th>time.base_datetime</th>
+      <th>time.step</th>
+      <th>vertical.level</th>
+      <th>vertical.level_type</th>
+      <th>ensemble.member</th>
+      <th>geography.grid_type</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>ecmf</td>
       <td>2t</td>
-      <td>heightAboveGround</td>
+      <td>2026-08-28</td>
+      <td>2026-08-28</td>
+      <td>0 days</td>
       <td>2</td>
-      <td>20251104</td>
-      <td>0</td>
-      <td>0</td>
-      <td>fc</td>
+      <td>height_above_ground_level</td>
       <td>None</td>
       <td>reduced_gg</td>
     </tr>
@@ -778,41 +742,18 @@ title="Print to PDF"
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># regrid to 1x1 degree</span>
-<span class="n">out_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"grid"</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]}</span>
-<span class="n">data_interpolated</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">regrid</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">out_grid</span><span class="o">=</span><span class="n">out_grid</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"linear"</span><span class="p">)</span>
+<span class="n">data_latlon</span> <span class="o">=</span> <span class="n">regrid</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">out_grid</span><span class="o">=</span><span class="p">{</span><span class="s2">"grid"</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]},</span>
+    <span class="n">interpolation</span><span class="o">=</span><span class="s2">"linear"</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 </div>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_interpolated</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_keep_output tag_hide-input docutils container">
+<div class="cell tag_hide-input tag_keep_output docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -821,9 +762,9 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span>
-    <span class="n">data_interpolated</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">data_latlon</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
     <span class="n">colors</span><span class="o">=</span><span class="s2">"turbo"</span><span class="p">,</span>
-    <span class="n">auto_style</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
     <span class="n">units</span><span class="o">=</span><span class="s2">"celsius"</span>
 <span class="p">)</span>
 
@@ -836,11 +777,11 @@ title="Print to PDF"
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/6ef3f346616cffbb0e261bf22b97a75d92a1a2cff9b89d65a0f7309d301d0e6a.png" src="../../_images/6ef3f346616cffbb0e261bf22b97a75d92a1a2cff9b89d65a0f7309d301d0e6a.png" />
+<img alt="../../_images/1238bf73c4bc56c90038990f1c62e1bbeb5b0afed9cf72a1315fcedc49ca3f29.png" src="../../_images/1238bf73c4bc56c90038990f1c62e1bbeb5b0afed9cf72a1315fcedc49ca3f29.png" />
 </div>
 </div>
 <p>Now we will plot a specific area using earthkit-plots. In this case we will plot the data we have retrieved over Europe.</p>
-<div class="cell tag_keep_output tag_hide-input docutils container">
+<div class="cell tag_hide-input tag_keep_output docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -849,9 +790,9 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span> <span class="o">=</span> <span class="n">earthkit</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="s2">"Europe"</span><span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">grid_cells</span><span class="p">(</span>
-    <span class="n">data_interpolated</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">data_latlon</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
     <span class="n">colors</span><span class="o">=</span><span class="s2">"turbo"</span><span class="p">,</span>
-    <span class="n">auto_style</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
     <span class="n">units</span><span class="o">=</span><span class="s2">"celsius"</span>
 <span class="p">)</span>
 <span class="n">chart</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -864,7 +805,7 @@ title="Print to PDF"
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/4649b0683ac723bb1e5e05bb0ee1c3db11c6150f8e1a893796c3d6e8a09b2c65.png" src="../../_images/4649b0683ac723bb1e5e05bb0ee1c3db11c6150f8e1a893796c3d6e8a09b2c65.png" />
+<img alt="../../_images/67c608505fd28b05e470567d92bae677b9f1742257a66b963d1a02a5d451e223.png" src="../../_images/67c608505fd28b05e470567d92bae677b9f1742257a66b963d1a02a5d451e223.png" />
 </div>
 </div>
 </section>
@@ -897,11 +838,11 @@ title="Print to PDF"
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="extremes-dt-earthkit-example-H3.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="../README.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Polytope Extremes-DT Feature Extraction Timeseries H3 example notebook</p>
+          <p class="prev-next-title">Extremes DT</p>
       </div>
   </a>
   <a class='right-next' id="next-link" href="../full-field-post-processing/extremes-dt-earthkit-example-regrid.html" title="next page">
