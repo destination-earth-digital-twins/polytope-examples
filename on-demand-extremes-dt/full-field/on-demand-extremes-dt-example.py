@@ -42,7 +42,8 @@ data = earthkit.data.from_source("polytope", "destination-earth", request, addre
 # We can list the data using the `ls` method. Here we see e.g. that we run the model in the `lambert_lam` projection.
 
 
-data.ls()
+df = data.to_fieldlist()
+df.ls()
 
 
 # Plotting
@@ -51,7 +52,7 @@ data.ls()
 
 import earthkit.plots
 chart = earthkit.plots.Map()
-chart.grid_cells(data)
+chart.grid_cells(df)
 chart.title(f"Results from on-demand-extremes-dt")
 chart.coastlines()
 chart.gridlines()

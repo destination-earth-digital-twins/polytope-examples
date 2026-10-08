@@ -18,12 +18,12 @@ request = {
     "expver": "0001",
     "dataset": "extremes-dt",
     "stream": "oper",
-    "date": "-7/to/-1",
+    "date": "-7",
     "time": "0000",
     "type": "fc",
     "levtype": "sfc",
-    "step": "0/to/120",
-    "param": "31"
+    "step": "0",
+    "param": "167"
 }
 
 # The data will be saved in the current working directory

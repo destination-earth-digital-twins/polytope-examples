@@ -17,11 +17,10 @@ NOTEBOOK_ROOTS = [
     PROJECT_ROOT / "climate-dt",
     PROJECT_ROOT / "extremes-dt",
     PROJECT_ROOT / "on-demand-extremes-dt",
-    PROJECT_ROOT / "nextgems",
 ]
 
 SKIP_NOTEBOOKS = {
-    PROJECT_ROOT / "climate-dt/full-field-post-processing/climate-dt-train-ai-timeseries-polytope.ipynb",
+    # PROJECT_ROOT / "climate-dt/full-field-post-processing/climate-dt-train-ai-timeseries-polytope.ipynb",
 }
 
 SKIP_DIRS = {
