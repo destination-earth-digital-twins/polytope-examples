@@ -18,7 +18,8 @@
   - [Extremes-DT Examples](#extremes-dt-examples)
   - [On-Demand Extremes-DT Examples](#on-demand-extremes-dt-examples)
   - [NextGEMS Examples](#nextgems-examples)
-  - [Polytope Quota Limits for DestinE](#polytope-quota-limits-for-destine)
+  - [Polytope Documentation](#polytope-documentation)
+  - [Polytope Quota Limits for DestinE Users](#polytope-quota-limits-for-destine-users)
 
 
 ## Access using your Destination Earth Service Platform credentials
@@ -215,11 +216,16 @@ The Climate DT Explorer notebooks allow you to lazily browse the full Climate DT
 
 General information about the Polytope Web service and how to use it can be found here: https://polytope.readthedocs.io/en/latest/Service/Full_fields/
 
-## Polytope Quota Limits for DestinE
+## Polytope Quota Limits for DestinE Users
 
 To ensure system stability and fair usage, the following operational limits are enforced:
 
-- **API Rate Limit:** Up to 50 requests per second. This limit may be adjusted based on system usage.
-- **Concurrent Operations Limit:** A maximum of 5 download requests can be active at the same time.
+- **API Rate Limit:** Up to 50 requests per second.
+- **Concurrent Operations Limit:**
+  - **6 concurrent requests** for feature extraction requests.
+  - **2 concurrent requests** for non-feature-extraction requests considered "heavy" (i.e. where interpolation is performed), such as requests using the `grid` or `area` keywords.
+  - **8 concurrent requests** for all other requests.
 
-Please plan your usage accordingly to avoid interruptions.
+These limits apply per HPC (Lumi, MN5) and are currently the same across all HPC systems. This means that, in theory, a user can submit up to 16 concurrent requests per HPC, provided they stay within the limit for each request type.
+
+These limits are subject to change based on system load.
