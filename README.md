@@ -20,6 +20,7 @@
   - [NextGEMS Examples](#nextgems-examples)
   - [Polytope Documentation](#polytope-documentation)
   - [Polytope Quota Limits for DestinE Users](#polytope-quota-limits-for-destine-users)
+    - [What Happens When a Limit Is Exceeded](#what-happens-when-a-limit-is-exceeded)
 
 
 ## Access using your Destination Earth Service Platform credentials
@@ -221,11 +222,21 @@ General information about the Polytope Web service and how to use it can be foun
 To ensure system stability and fair usage, the following operational limits are enforced:
 
 - **API Rate Limit:** Up to 50 requests per second.
-- **Concurrent Operations Limit:**
-  - **6 concurrent requests** for feature extraction requests.
-  - **2 concurrent requests** for non-feature-extraction requests considered "heavy" (i.e. where interpolation is performed), such as requests using the `grid` or `area` keywords.
+- **Concurrent Requests Limit (queued + running combined, per user, per HPC):**
+  - **6 concurrent requests** for feature extraction.
+  - **2 concurrent requests** for non-feature-extraction considered "heavy" (i.e. where interpolation/cropping is performed), such as requests using the `grid` or `area` keywords.
   - **8 concurrent requests** for all other requests.
 
 These limits apply per HPC (Lumi, MN5) and are currently the same across all HPC systems. This means that, in theory, a user can submit up to 16 concurrent requests per HPC, provided they stay within the limit for each request type.
 
 These limits are subject to change based on system load.
+
+### What Happens When a Limit Is Exceeded
+
+| Limit Exceeded | Scope | HTTP Status | Notes |
+|---|---|---|---|
+| Concurrent requests limit (per user, per pool) | Single user | `429 Too Many Requests` | Returned immediately on submission; the request is rejected, not queued. Response includes `Retry-After: 5` and `"retryable": true`. |
+| Overall system capacity (broker-wide) | All users | `529` (non-standard "overloaded" status) | A backstop for extreme load, independent of any single user's quota. Includes `Retry-After: 5` and `"retryable": true`. |
+| API rate limit (50 requests/second) | Per client connection | `429 Too Many Requests` | Enforced at the network ingress, before the request reaches Polytope itself. |
+
+In all cases, clients should treat these responses as transient and retry after a short backoff rather than as permanent failures.
